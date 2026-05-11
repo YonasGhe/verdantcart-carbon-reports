@@ -1,0 +1,354 @@
+/* =========================
+   1) Tokens / Base
+   ========================= */
+.wrap.gc-wrap {
+    --gc-bg: #f6f7fb;
+    --gc-card: #ffffff;
+    --gc-text: #0f172a;
+    --gc-muted: #64748b;
+
+    --gc-border: #e5e7eb;
+    --gc-border-strong: #d1d5db;
+
+    --gc-green: #16a34a;
+    --gc-green-dark: #15803d;
+    --gc-blue: #3b82f6;
+    --gc-amber: #f59e0b;
+    --gc-amber-bg: #fffbeb;
+    --gc-amber-border: #fde68a;
+    --gc-red: #dc2626;
+
+    --gc-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+    --gc-shadow-lg: 0 10px 28px rgba(15, 23, 42, 0.10);
+
+    --gc-radius: 16px;
+    --gc-radius-sm: 12px;
+    --gc-gap: 16px;
+
+    margin-right: 20px;
+    color: var(--gc-text);
+}
+
+.wrap.gc-wrap,
+.wrap.gc-wrap * {
+    box-sizing: border-box;
+}
+
+.wrap.gc-wrap .gc-title {
+    margin: 0 0 10px;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 850;
+    letter-spacing: -0.02em;
+    color: var(--gc-text);
+}
+
+.wrap.gc-wrap .gc-muted {
+    color: var(--gc-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.wrap.gc-wrap .gc-empty {
+    padding: 18px 10px;
+    text-align: center;
+    color: var(--gc-muted);
+    font-size: 14px;
+}
+
+/* =========================
+   2) Shared cards / layout
+   ========================= */
+.wrap.gc-wrap .gc-panel,
+.wrap.gc-wrap .gc-card,
+.wrap.gc-wrap .gc-settings-card {
+    background: var(--gc-card);
+    border: 1px solid var(--gc-border);
+    border-radius: var(--gc-radius);
+    box-shadow: var(--gc-shadow-sm);
+}
+
+.wrap.gc-wrap .gc-panel {
+    margin: 16px 0;
+    padding: 16px 18px;
+}
+
+.wrap.gc-wrap .gc-card {
+    margin: 14px 0;
+    padding: 16px 18px;
+}
+
+.wrap.gc-wrap .gc-settings-card {
+    padding: 20px 22px;
+}
+
+.wrap.gc-wrap .gc-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gc-gap);
+    margin: 10px 0 14px;
+}
+
+.wrap.gc-wrap .gc-header__left {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.wrap.gc-wrap .gc-header__right {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.wrap.gc-wrap .gc-topbar-saas {
+    background: var(--gc-card);
+    border: 1px solid var(--gc-border);
+    border-radius: var(--gc-radius);
+    padding: 18px 18px 10px;
+    box-shadow: var(--gc-shadow-sm);
+}
+
+.wrap.gc-wrap .gc-section {
+    margin-top: 18px;
+}
+
+.wrap.gc-wrap .gc-section__head {
+    margin-bottom: 12px;
+}
+
+.wrap.gc-wrap .gc-section__title {
+    margin: 0 0 6px;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 850;
+    color: var(--gc-text);
+}
+
+.wrap.gc-wrap .gc-section__sub {
+    margin: 0;
+}
+
+.wrap.gc-wrap .gc-chart-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 340px;
+    height: 340px;
+    padding: 18px;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.wrap.gc-wrap #gcCarbonChart,
+.wrap.gc-wrap .gc-chart-wrap canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* =========================
+   3) Pills / badges
+   ========================= */
+.wrap.gc-wrap .gc-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid var(--gc-border);
+    border-radius: 999px;
+    background: #f8fafc;
+    color: var(--gc-text);
+    font-size: 12px;
+    font-weight: 850;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.wrap.gc-wrap .gc-pill--ok {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+    color: #065f46;
+}
+
+.wrap.gc-wrap .gc-pill--warn {
+    background: var(--gc-amber-bg);
+    border-color: var(--gc-amber-border);
+    color: #92400e;
+}
+
+.wrap.gc-wrap .gc-pill--info {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+    color: #3730a3;
+}
+
+.wrap.gc-wrap .gc-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+.wrap.gc-wrap .gc-badge--green {
+    background: var(--gc-green);
+    color: #fff;
+}
+
+.wrap.gc-wrap .gc-badge--red {
+    background: var(--gc-red);
+    color: #fff;
+}
+
+/* =========================
+   4) Buttons
+   ========================= */
+.wrap.gc-wrap .gc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid var(--gc-border);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--gc-text);
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        opacity 0.15s ease;
+}
+
+.wrap.gc-wrap .gc-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.10);
+    border-color: var(--gc-border-strong);
+}
+
+.wrap.gc-wrap .gc-btn--primary {
+    background: var(--gc-green);
+    border-color: var(--gc-green);
+    color: #fff;
+}
+
+.wrap.gc-wrap .gc-btn--primary:hover {
+    background: var(--gc-green-dark);
+    border-color: var(--gc-green-dark);
+}
+
+.wrap.gc-wrap .gc-btn--secondary {
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+    color: var(--gc-text);
+}
+
+.wrap.gc-wrap .gc-btn--secondary:hover {
+    background: #cbd5e1;
+    border-color: #94a3b8;
+}
+
+.wrap.gc-wrap .gc-btn--ghost {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.wrap.gc-wrap .gc-btn--ghost:hover {
+    background: #fff;
+    border-color: #94a3b8;
+}
+
+.wrap.gc-wrap .gc-btn--full {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+}
+
+.wrap.gc-wrap .gc-btn:disabled,
+.wrap.gc-wrap .gc-btn--disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* =========================
+   5) Shared page brand/header
+   ========================= */
+.wrap.gc-wrap .gc-page-brand {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 4px 0 22px;
+}
+
+.wrap.gc-wrap .gc-page-brand__content {
+    min-width: 0;
+}
+
+.wrap.gc-wrap .gc-page-brand__title {
+    margin: 0;
+    color: #071126;
+    font-size: 34px;
+    line-height: 1.05;
+    font-weight: 950;
+    letter-spacing: -0.04em;
+}
+
+.wrap.gc-wrap .gc-page-brand__subtitle {
+    margin: 10px 0 0;
+    max-width: 780px;
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+/* =========================
+   6) Strong shared admin headings
+   ========================= */
+.wrap.gc-wrap .gc-title {
+    margin: 0 0 10px;
+    color: #071126;
+    font-size: 30px;
+    line-height: 1.08;
+    font-weight: 950;
+    letter-spacing: -0.04em;
+}
+
+.wrap.gc-wrap .gc-section__title {
+    margin: 0 0 6px;
+    color: #071126;
+    font-size: 22px;
+    line-height: 1.15;
+    font-weight: 950;
+    letter-spacing: -0.03em;
+}
+
+/* =========================
+   7) Strong shared SaaS card
+   ========================= */
+.wrap.gc-wrap .gc-topbar-saas {
+    background: #ffffff;
+    border: 1px solid var(--gc-border);
+    border-radius: 22px;
+    padding: 22px 24px 14px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.wrap.gc-wrap .gc-card-saas,
+.wrap.gc-wrap .gc-panel {
+    background: #ffffff;
+    border: 1px solid var(--gc-border);
+    border-radius: 22px;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+}

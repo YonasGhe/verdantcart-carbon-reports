@@ -1,0 +1,413 @@
+/* ==============================
+   VerdantCart Carbon Reports Insights
+   File: public/css/verdantcart-insights.css
+   SINGLE SOURCE OF TRUTH
+================================= */
+
+.gc-insights {
+    --gc-text: #0f172a;
+    --gc-muted: #64748b;
+    --gc-border: rgba(15, 23, 42, 0.08);
+    --gc-bg: #ffffff;
+    --gc-shell: #f8fafc;
+
+    --gc-green: #15803d;
+    --gc-amber: #b45309;
+    --gc-red: #e11d48;
+
+    --gc-r-lg: 20px;
+    --gc-r-md: 16px;
+    --gc-r-sm: 12px;
+
+    --gc-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --gc-shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+    width: 100%;
+    max-width: 100%;
+    margin: 18px 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--gc-text);
+}
+
+/* Admin-safe reset so WP styles don’t break buttons/links */
+.wp-admin .gc-insights button {
+    font: inherit;
+    line-height: inherit;
+}
+
+.wp-admin .gc-insights a {
+    text-decoration: none;
+}
+
+/* ------------------------------
+   Header
+--------------------------------- */
+.gc-insights__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 0 12px;
+    position: relative;
+    z-index: 5;
+}
+
+.gc-insights__title {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.gc-insights__hint {
+    margin-top: 6px;
+    color: var(--gc-muted);
+    font-size: 14px;
+}
+
+.gc-insights__headerLink {
+    margin-top: 8px;
+    font-weight: 800;
+    color: var(--gc-green);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* ------------------------------
+   Filters
+--------------------------------- */
+.gc-insights__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 12px 0 18px;
+    position: relative;
+    z-index: 20;
+}
+
+.gc-insights__filter {
+    -webkit-appearance: none;
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(15, 23, 42, 0.10) !important;
+    background: #fff !important;
+    color: var(--gc-text) !important;
+    border-radius: 999px !important;
+    padding: 10px 14px !important;
+    font: inherit !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease,
+        background 0.15s ease;
+    position: relative;
+    z-index: 21;
+}
+
+.gc-insights__filter:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--gc-shadow-sm) !important;
+    border-color: rgba(21, 128, 61, 0.35) !important;
+}
+
+.gc-insights__filter.is-active {
+    background: var(--gc-green) !important;
+    border-color: var(--gc-green) !important;
+    color: #fff !important;
+    box-shadow: 0 12px 26px rgba(21, 128, 61, 0.16) !important;
+}
+
+.gc-insights__filter:focus {
+    outline: none !important;
+}
+
+.gc-insights__filter:focus-visible {
+    outline: 3px solid rgba(21, 128, 61, 0.35) !important;
+    outline-offset: 2px !important;
+}
+
+/* ------------------------------
+   Grid
+--------------------------------- */
+.gc-insights__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+@media (max-width: 1100px) {
+    .gc-insights__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==============================
+   Groups
+================================= */
+.gc-insights__group {
+    min-width: 0;
+}
+
+.gc-insights__group.is-hidden {
+    display: none !important;
+}
+
+/* ==============================
+   Cards
+================================= */
+.gc-insights__card {
+    background: rgba(248, 250, 252, 0.65);
+    border: 1px solid var(--gc-border);
+    border-radius: var(--gc-r-lg);
+    padding: 18px;
+    box-shadow: var(--gc-shadow-sm);
+}
+
+.gc-insights__cardHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.gc-insights__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 800;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: #fff;
+}
+
+.gc-insights__badge--positive {
+    background: #dcfce7;
+    border-color: #86efac;
+    color: #065f46;
+}
+
+.gc-insights__badge--warning {
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e;
+}
+
+.gc-insights__badge--risk {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #991b1b;
+}
+
+.gc-insights__count {
+    font-weight: 800;
+    color: rgba(15, 23, 42, 0.65);
+}
+
+/* ==============================
+   List
+================================= */
+.gc-insights__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gc-insights__li {
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: var(--gc-r-md);
+    padding: 18px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    position: relative;
+}
+
+.gc-insights__li+.gc-insights__li {
+    margin-top: 12px;
+}
+
+.gc-insights__liTitle {
+    margin-bottom: 10px;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+}
+
+.gc-insights__liMsg {
+    color: #334155;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.gc-insights__liMsg p {
+    margin: 0 0 10px 0;
+}
+
+.gc-insights__liMsg p:last-child {
+    margin-bottom: 0;
+}
+
+.gc-insights__liMsg ul,
+.gc-insights__liMsg ol {
+    margin: 8px 0 0 0;
+    list-style: none !important;
+    padding-left: 0 !important;
+}
+
+.gc-insights__liMsg ul li,
+.gc-insights__liMsg ol li {
+    list-style: none !important;
+    margin-left: 0 !important;
+}
+
+.gc-insights__actions {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.gc-insights__actions li {
+    margin: 6px 0 0;
+    color: var(--gc-muted);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.gc-insights__empty {
+    color: var(--gc-muted);
+    font-size: 14px;
+    padding: 8px 2px;
+}
+
+/* ==============================
+   Recommendations
+================================= */
+.gc-insights__recs {
+    margin-top: 18px;
+}
+
+.gc-insights__subtitle {
+    margin: 0 0 12px;
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* ==============================
+   Buttons inside insights
+================================= */
+.gc-insights .gc-btn.gc-btn--primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    border-radius: 14px;
+    background: var(--gc-green);
+    color: #fff !important;
+    font-weight: 800;
+    border: 1px solid transparent;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+.gc-insights .gc-btn.gc-btn--primary:hover {
+    background: #166534;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(22, 101, 52, 0.18);
+}
+
+/* ==============================
+   Misc cleanup
+================================= */
+.gc-insights__lockedLink {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.gc-insights__lockedLink:hover,
+.gc-insights__lockedLink:focus,
+.gc-insights__lockedLink:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==============================
+   Responsive
+================================= */
+@media (max-width: 782px) {
+    .gc-insights__title {
+        font-size: 30px;
+    }
+
+    .gc-insights__subtitle {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 640px) {
+    .gc-insights {
+        padding: 0;
+    }
+
+    .gc-insights__header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .gc-insights__title {
+        font-size: 26px;
+    }
+
+    .gc-insights__subtitle {
+        font-size: 22px;
+    }
+
+    .gc-insights__card {
+        padding: 16px;
+    }
+
+    .gc-insights__li {
+        padding: 16px;
+    }
+}
+
+.gc-insights__meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+    color: var(--gc-muted);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.gc-insights__metric {
+    font-weight: 700;
+    color: #334155;
+}
+
+.gc-insights__severity {
+    font-weight: 700;
+    color: var(--gc-muted);
+}
+
+.gc-insights__metaSep {
+    opacity: 0.55;
+}
