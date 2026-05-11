@@ -6,6 +6,7 @@ class VCARB_Dashboard
     use VCARB_Snapshot_Trait;
     use VCARB_Period_Trait;
 
+    public const SHORTCODE_SHORT      = 'vcarb_dashboard';
     public const SHORTCODE            = 'verdantcart_dashboard';
     public const ALT_SHORTCODE        = 'verdantcart_carbon_dashboard';
     public const LEGACY_SHORTCODE     = 'amatorcarbon_dashboard';
@@ -19,10 +20,21 @@ class VCARB_Dashboard
 
     public function __construct()
     {
+        /*
+     * Main recommended shortcode:
+     * [vcarb_dashboard]
+     */
+        add_shortcode(self::SHORTCODE_SHORT, [$this, 'render']);
+
+        /*
+     * Longer VerdantCart aliases kept for clarity/backward compatibility.
+     */
         add_shortcode(self::SHORTCODE, [$this, 'render']);
         add_shortcode(self::ALT_SHORTCODE, [$this, 'render']);
 
-        // Legacy shortcodes kept so older pages do not break.
+        /*
+     * Legacy shortcodes kept so older pages do not break.
+     */
         add_shortcode(self::LEGACY_SHORTCODE, [$this, 'render']);
         add_shortcode(self::LEGACY_SHORTCODE_OLD, [$this, 'render']);
         add_shortcode(self::LEGACY_SHORTCODE_ACR, [$this, 'render']);
@@ -31,13 +43,15 @@ class VCARB_Dashboard
 
         add_action('wp_ajax_' . self::AJAX_ACTION, [$this, 'ajax_dashboard_report']);
 
-        // Temporary legacy AJAX action support for old cached frontend JS.
+        /*
+     * Temporary legacy AJAX action support for old cached frontend JS.
+     */
         add_action('wp_ajax_amatorcarbon_dashboard_report', [$this, 'ajax_dashboard_report']);
     }
 
     /* -------------------------------------------------------------------------
-     * Assets
-     * ---------------------------------------------------------------------- */
+ * Assets
+ * ---------------------------------------------------------------------- */
 
     public function enqueue_assets(): void
     {
@@ -85,6 +99,7 @@ class VCARB_Dashboard
             $content = (string) $post->post_content;
 
             if (
+                has_shortcode($content, self::SHORTCODE_SHORT) ||
                 has_shortcode($content, self::SHORTCODE) ||
                 has_shortcode($content, self::ALT_SHORTCODE) ||
                 has_shortcode($content, self::LEGACY_SHORTCODE) ||
