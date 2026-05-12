@@ -132,8 +132,8 @@ final class VCARB_Reports_Activator
             self::ensure_page(
                 self::OPT_DASHBOARD_ID,
                 self::SLUG_DASHBOARD,
-                __('VerdantCart Carbon Dashboard', 'verdantcart-ai-reports'),
-                '[verdantcart_dashboard]',
+                __('VerdantCart Dashboard', 'verdantcart-ai-reports'),
+                '[vcarb_dashboard]',
                 'dashboard'
             );
         } finally {
@@ -229,8 +229,23 @@ final class VCARB_Reports_Activator
 
         $content = (string) $post->post_content;
 
-        if (stripos($content, $required_shortcode) !== false) {
-            return;
+        /*
+     * Do not append the new shortcode if any supported dashboard shortcode
+     * already exists. This prevents duplicate dashboard output on migrated pages.
+     */
+        $dashboard_shortcodes = [
+            'vcarb_dashboard',
+            'verdantcart_dashboard',
+            'verdantcart_carbon_dashboard',
+            'amatorcarbon_dashboard',
+            'amator_carbon_dashboard',
+            'acr_dashboard',
+        ];
+
+        foreach ($dashboard_shortcodes as $shortcode) {
+            if (has_shortcode($content, $shortcode)) {
+                return;
+            }
         }
 
         $new_content = trim($content) === ''

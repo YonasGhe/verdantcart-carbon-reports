@@ -5,17 +5,17 @@ defined('ABSPATH') || exit;
  * VerdantCart Carbon Reports deactivation handler.
  *
  * Responsibilities:
- * - Clear plugin cron events
- * - Flush rewrite rules
+ * - Clear plugin cron events.
+ * - Flush rewrite rules.
  *
  * Important:
- * - Does not delete plugin data
- * - Does not delete reports, snapshots, audit logs, pages, or settings
+ * - Does not delete plugin data.
+ * - Does not delete reports, snapshots, audit logs, pages, or settings.
  *
  * Migration note:
  * - New internal prefix is VCARB_/vcarb_.
- * - Legacy amatorcarbon cron hooks are still cleared so existing installs do
- *   not leave old scheduled events behind after the rename.
+ * - Legacy cron hooks are still cleared so existing installs do not leave
+ *   old scheduled events behind after the rename.
  */
 final class VCARB_Reports_Deactivator
 {
@@ -52,6 +52,10 @@ final class VCARB_Reports_Deactivator
             'ai_carbon_monthly_event',
             'ai_carbon_yearly_event',
             'ai_carbon_run_aggregate',
+            'gc_ai_weekly_event',
+            'gc_ai_monthly_event',
+            'gc_ai_yearly_event',
+            'gc_ai_run_aggregate',
         ];
     }
 
@@ -61,8 +65,8 @@ final class VCARB_Reports_Deactivator
     public static function deactivate(): void
     {
         if (function_exists('wp_clear_scheduled_hook')) {
-            foreach (self::cron_hooks() as $hook) {
-                wp_clear_scheduled_hook($hook);
+            foreach (self::cron_hooks() as $vcarb_cron_hook) {
+                wp_clear_scheduled_hook($vcarb_cron_hook);
             }
         }
 

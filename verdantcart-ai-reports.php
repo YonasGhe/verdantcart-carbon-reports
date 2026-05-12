@@ -9,6 +9,7 @@
  * Domain Path: /languages
  * Requires at least: 6.4
  * Requires PHP: 8.0
+ * Requires Plugins: woocommerce
  * WC requires at least: 8.0
  * WC tested up to: 9.7
  * License: GPL v2 or later
@@ -362,10 +363,13 @@ add_action('plugins_loaded', 'vcarb_maybe_upgrade_db', 5);
  */
 function vcarb_register_default_filters(): void
 {
-    add_filter('vcarb_skip_items_without_weight', '__return_true');
-
-    // Temporary legacy support for 1.0.x custom code using the old filter.
-    add_filter('amatorcarbon_skip_items_without_weight', '__return_true');
+    /*
+     * No forced defaults here.
+     * Calculation classes already pass safe default values to apply_filters().
+     * Merchants/developers can override:
+     * - vcarb_skip_items_without_weight
+     * - vcarb_default_product_weight
+     */
 }
 
 function vcarb_bootstrap(): void

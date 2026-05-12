@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('gc-app-template'); ?>>
+<body <?php body_class('vcarb-app-template'); ?>>
     <?php
     if (function_exists('wp_body_open')) {
         wp_body_open();
@@ -21,8 +21,8 @@ defined('ABSPATH') || exit;
         <?php esc_html_e('Skip to content', 'verdantcart-ai-reports'); ?>
     </a>
 
-    <main id="main" class="gc-app-template__main">
-        <div class="gc-app-template__inner">
+    <main id="main" class="vcarb-app-template__main">
+        <div class="vcarb-app-template__inner">
             <?php
             while (have_posts()) :
                 the_post();

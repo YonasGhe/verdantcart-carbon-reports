@@ -8,12 +8,13 @@ class VCARB_Front_Context
 
     /** @var array<int,string> */
     private const DASHBOARD_SHORTCODES = [
+        'vcarb_dashboard',
         'verdantcart_dashboard',
         'verdantcart_carbon_dashboard',
 
         /*
-         * Legacy shortcodes kept so existing pages do not break.
-         */
+     * Legacy shortcodes kept so existing pages do not break.
+     */
         'amatorcarbon_dashboard',
         'amator_carbon_dashboard',
         'acr_dashboard',
@@ -21,12 +22,13 @@ class VCARB_Front_Context
 
     /** @var array<int,string> */
     private const DASHBOARD_SLUGS = [
-        'verdantcart-carbon-dashboard',
         'verdantcart-dashboard',
+        'vcarb-dashboard',
+        'vcarb-carbon-dashboard',
 
         /*
-         * Legacy page slug kept so older dashboard pages still use app layout.
-         */
+     * Legacy page slug kept so older dashboard pages still use app layout.
+     */
         'amator-carbon-dashboard',
     ];
 
@@ -140,9 +142,9 @@ class VCARB_Front_Context
             return $template;
         }
 
-        $custom = trailingslashit(VCARB_PLUGIN_DIR) . 'frontend/app-dashboard-template.php';
+        $custom = trailingslashit(VCARB_PLUGIN_DIR) . 'frontend/templates/vcarb-app-template.php';
 
-        if (file_exists($custom) && is_readable($custom)) {
+        if (is_readable($custom)) {
             return $custom;
         }
 

@@ -30,8 +30,7 @@ delete_site_option('vcarb_dashboard_page_id');
  * ------------------------------------------------------------
  * Transitional AmatorCarbon options
  *
- * Keep these here because the 1.1.0 migration still preserves/reads some
- * old option names for safe upgrade from previous builds.
+ * Kept because previous builds used these option names.
  * ------------------------------------------------------------
  */
 delete_option('amatorcarbon_db_version');
@@ -76,30 +75,38 @@ delete_site_option('acr_dashboard_page_id');
  * ------------------------------------------------------------
  */
 if (function_exists('wp_clear_scheduled_hook')) {
-    $vcarb_hooks = [
-        // Current hooks.
+    $vcarb_cron_hooks = [
+        // Current VCARB hooks.
         'vcarb_weekly_event',
         'vcarb_monthly_event',
         'vcarb_yearly_event',
         'vcarb_run_aggregate',
 
-        // Transitional/old hooks.
+        // Transitional/old AmatorCarbon hooks.
         'amatorcarbon_weekly_event',
         'amatorcarbon_monthly_event',
         'amatorcarbon_yearly_event',
         'amatorcarbon_run_aggregate',
 
-        // Older legacy hooks.
+        // Older ACR hooks.
+        'acr_weekly_event',
+        'acr_monthly_event',
+        'acr_yearly_event',
+        'acr_run_aggregate',
+
+        // Old AI Carbon / GreenCart hooks.
         'ai_carbon_weekly_event',
         'ai_carbon_monthly_event',
         'ai_carbon_yearly_event',
+        'ai_carbon_run_aggregate',
         'gc_ai_weekly_event',
         'gc_ai_monthly_event',
         'gc_ai_yearly_event',
+        'gc_ai_run_aggregate',
     ];
 
-    foreach ($vcarb_hooks as $vcarb_hook) {
-        wp_clear_scheduled_hook($vcarb_hook);
+    foreach ($vcarb_cron_hooks as $vcarb_cron_hook) {
+        wp_clear_scheduled_hook($vcarb_cron_hook);
     }
 }
 
@@ -115,23 +122,19 @@ if (function_exists('wp_clear_scheduled_hook')) {
 global $wpdb;
 
 if (isset($wpdb) && $wpdb instanceof wpdb) {
-    $wpdb->delete(
-        $wpdb->usermeta,
-        ['meta_key' => 'vcarb_plan'],
-        ['%s']
-    );
+    $vcarb_user_meta_keys = [
+        'vcarb_plan',
+        'amatorcarbon_plan',
+        'ai_plan',
+    ];
 
-    $wpdb->delete(
-        $wpdb->usermeta,
-        ['meta_key' => 'amatorcarbon_plan'],
-        ['%s']
-    );
-
-    $wpdb->delete(
-        $wpdb->usermeta,
-        ['meta_key' => 'ai_plan'],
-        ['%s']
-    );
+    foreach ($vcarb_user_meta_keys as $vcarb_user_meta_key) {
+        $wpdb->delete(
+            $wpdb->usermeta,
+            ['meta_key' => $vcarb_user_meta_key],
+            ['%s']
+        );
+    }
 }
 */
 
@@ -140,7 +143,7 @@ if (isset($wpdb) && $wpdb instanceof wpdb) {
 global $wpdb;
 
 if (isset($wpdb) && $wpdb instanceof wpdb) {
-    $order_meta_keys = [
+    $vcarb_order_meta_keys = [
         '_vcarb_order_co2_kg',
         '_vcarb_order_co2_counted',
         '_vcarb_order_hotspots_counted',
@@ -156,10 +159,10 @@ if (isset($wpdb) && $wpdb instanceof wpdb) {
         '_gc_order_co2_kg',
     ];
 
-    foreach ($order_meta_keys as $meta_key) {
+    foreach ($vcarb_order_meta_keys as $vcarb_order_meta_key) {
         $wpdb->delete(
             $wpdb->postmeta,
-            ['meta_key' => $meta_key],
+            ['meta_key' => $vcarb_order_meta_key],
             ['%s']
         );
     }
@@ -173,7 +176,7 @@ if (isset($wpdb) && $wpdb instanceof wpdb) {
 global $wpdb;
 
 if (isset($wpdb) && $wpdb instanceof wpdb) {
-    $page_meta_keys = [
+    $vcarb_page_meta_keys = [
         '_vcarb_managed_page',
         'vcarb_plugin_page',
 
@@ -181,16 +184,16 @@ if (isset($wpdb) && $wpdb instanceof wpdb) {
         'amatorcarbon_plugin_page',
     ];
 
-    foreach ($page_meta_keys as $meta_key) {
-        $page_ids = $wpdb->get_col(
+    foreach ($vcarb_page_meta_keys as $vcarb_page_meta_key) {
+        $vcarb_page_ids = $wpdb->get_col(
             $wpdb->prepare(
                 "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = %s",
-                $meta_key
+                $vcarb_page_meta_key
             )
         );
 
-        foreach ((array) $page_ids as $page_id) {
-            wp_delete_post((int) $page_id, true);
+        foreach ((array) $vcarb_page_ids as $vcarb_page_id) {
+            wp_delete_post((int) $vcarb_page_id, true);
         }
     }
 }
@@ -201,7 +204,7 @@ if (isset($wpdb) && $wpdb instanceof wpdb) {
 global $wpdb;
 
 if (isset($wpdb) && $wpdb instanceof wpdb) {
-    $tables = [
+    $vcarb_tables = [
         // Current 1.1.0 still intentionally uses these table names
         // to preserve existing user data.
         $wpdb->prefix . 'amatorcarbon_logs',
@@ -220,11 +223,11 @@ if (isset($wpdb) && $wpdb instanceof wpdb) {
         $wpdb->prefix . 'acr_logs',
     ];
 
-    foreach ($tables as $table) {
-        $table = esc_sql($table);
+    foreach ($vcarb_tables as $vcarb_table) {
+        $vcarb_table = esc_sql($vcarb_table);
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Optional uninstall cleanup for plugin-owned tables.
-        $wpdb->query("DROP TABLE IF EXISTS {$table}");
+        $wpdb->query("DROP TABLE IF EXISTS {$vcarb_table}");
     }
 }
 */

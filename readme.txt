@@ -4,6 +4,7 @@ Tags: woocommerce, carbon footprint, emissions, sustainability, reporting
 Requires at least: 6.4
 Tested up to: 6.9
 Requires PHP: 8.0
+Requires Plugins: woocommerce
 Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -30,9 +31,11 @@ Main reporting features include:
 VerdantCart Carbon Reports is useful for:
 
 * WooCommerce stores that want visibility into estimated order emissions
-* Merchants preparing internal sustainability reporting
+* Merchants preparing internal sustainability summaries
 * Brands monitoring emission trends over time
 * Store owners who need exportable reporting data
+
+This plugin provides operational sustainability reporting based on WooCommerce order data. It is not a certified ESG report, GHG Protocol report, legal compliance document, or verified carbon audit.
 
 == Features ==
 
@@ -70,6 +73,12 @@ You can use the dashboards to:
 * Monitor trends over time
 * Identify higher-impact products
 * Export reports for further use
+
+The customer-facing dashboard can be displayed with this shortcode:
+
+`[vcarb_dashboard]`
+
+Legacy shortcodes from earlier builds may still work for compatibility, but `[vcarb_dashboard]` is the recommended shortcode.
 
 == How It Works ==
 
@@ -116,6 +125,10 @@ Yes. WooCommerce must be installed and active.
 = Does the plugin send order data to an external service? =
 
 No. Core reporting calculations are performed locally inside your WordPress installation.
+
+= Is this a certified ESG or carbon audit report? =
+
+No. VerdantCart Carbon Reports provides operational sustainability summaries and estimated emissions reporting. It is not a certified ESG report, GHG Protocol report, legal compliance document, or verified carbon audit.
 
 == Screenshots ==
 

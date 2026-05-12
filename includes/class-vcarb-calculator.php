@@ -335,24 +335,56 @@ class VCARB_Calculator
 
     public static function percent_change($current, $previous)
     {
-        $current  = (float) ($current ?? 0);
-        $previous = ($previous === null) ? null : (float) $previous;
-
-        if ($previous === null) {
+        if ($previous === null || $previous === '' || !is_numeric($previous)) {
             return null;
         }
 
-        if ($previous == 0.0 && $current == 0.0) {
-            return 0.0;
-        }
+        $current  = is_numeric($current) ? (float) $current : 0.0;
+        $previous = (float) $previous;
 
-        if ($previous == 0.0) {
+        /*
+     * No meaningful comparison when previous value is zero.
+     * This prevents ugly first-period output like -100%, +100%, or fake 0%.
+     */
+        if ($previous <= 0.0) {
             return null;
         }
 
         return (($current - $previous) / abs($previous)) * 100.0;
     }
 
+    public static function format_percent($percent): string
+    {
+        if ($percent === null || $percent === '' || !is_numeric($percent)) {
+            return '<span class="gc-neutral">—</span>';
+        }
+
+        $percent = (float) $percent;
+
+        if (abs($percent) < 0.01) {
+            return '<span class="gc-neutral">0%</span>';
+        }
+
+        if ($percent > 999.9) {
+            return '<span class="gc-up">' . esc_html__('Up sharply', 'verdantcart-ai-reports') . '</span>';
+        }
+
+        if ($percent < -999.9) {
+            return '<span class="gc-down">' . esc_html__('Down sharply', 'verdantcart-ai-reports') . '</span>';
+        }
+
+        if ($percent > 0) {
+            return sprintf(
+                '<span class="gc-up">%s%%</span>',
+                esc_html(number_format_i18n(abs($percent), 1))
+            );
+        }
+
+        return sprintf(
+            '<span class="gc-down">%s%%</span>',
+            esc_html(number_format_i18n(abs($percent), 1))
+        );
+    }
     public static function compare(int $user_id, string $view = 'month', string $anchor = ''): array
     {
         $view   = self::normalize_view($view);
@@ -385,39 +417,6 @@ class VCARB_Calculator
             'previous' => $previous_row,
             'delta'    => self::percent_change($current_co2, $previous_co2),
         ];
-    }
-
-    public static function format_percent($percent): string
-    {
-        if ($percent === null) {
-            return '<span class="gc-neutral">' . esc_html__('New', 'verdantcart-ai-reports') . '</span>';
-        }
-
-        $percent = (float) $percent;
-
-        if (abs($percent) < 0.01) {
-            return '<span class="gc-neutral">0%</span>';
-        }
-
-        if ($percent > 999.9) {
-            return '<span class="gc-up">' . esc_html__('Up sharply', 'verdantcart-ai-reports') . '</span>';
-        }
-
-        if ($percent < -999.9) {
-            return '<span class="gc-down">' . esc_html__('Down sharply', 'verdantcart-ai-reports') . '</span>';
-        }
-
-        if ($percent > 0) {
-            return sprintf(
-                '<span class="gc-up">%s%%</span>',
-                esc_html(number_format_i18n(abs($percent), 1))
-            );
-        }
-
-        return sprintf(
-            '<span class="gc-down">%s%%</span>',
-            esc_html(number_format_i18n(abs($percent), 1))
-        );
     }
 
     private static function logs_table(): string
