@@ -1,185 +1,134 @@
-=== VerdantCart Carbon Reports ===
-Contributors: greencart2026
-Tags: woocommerce, carbon footprint, emissions, sustainability, reporting
-Requires at least: 6.4
-Tested up to: 6.9
-Requires PHP: 8.0
-Requires Plugins: woocommerce
-Stable tag: 1.1.0
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+# 🌿 VerdantCart Carbon Reports
 
-Estimate WooCommerce order emissions and review carbon reports with dashboards, trends, exports, and product insights.
+[![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-21759B?logo=wordpress)](https://wordpress.org)
+[![WooCommerce](https://img.shields.io/badge/WooCommerce-8.0%2B-96588A?logo=woocommerce)](https://woocommerce.com)
+[![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4?logo=php)](https://php.net)
+[![License](https://img.shields.io/badge/License-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 
-== Description ==
+**Carbon analytics and reporting for WooCommerce stores.**
 
-VerdantCart Carbon Reports helps WooCommerce stores estimate carbon emissions from orders and review reporting data over time.
+VerdantCart Carbon Reports helps WooCommerce store owners estimate order emissions, review carbon reporting trends, identify product hotspots, and export structured reports from inside WordPress.
 
-The plugin calculates estimated emissions for eligible WooCommerce orders, aggregates reporting data by period, and displays results in dashboards for both store-level and customer-level reporting.
+---
 
-Main reporting features include:
+## 📸 Live Demo
 
-* Estimated carbon emissions per WooCommerce order
-* Monthly, weekly, and yearly reporting views
-* Store-level and customer-level dashboards
-* Trend comparison against previous periods
-* Product hotspot reporting
-* CSV and PDF exports
-* Sustainability insights
-* Snapshot-based reporting for stable historical results
+👉 **[View Live Demo](https://bean-and-bond.myshopify.com)** - See carbon tracking in action on a real coffee roaster store
 
-VerdantCart Carbon Reports is useful for:
+---
 
-* WooCommerce stores that want visibility into estimated order emissions
-* Merchants preparing internal sustainability summaries
-* Brands monitoring emission trends over time
-* Store owners who need exportable reporting data
+## 📸 Plugin Screenshots
 
-This plugin provides operational sustainability reporting based on WooCommerce order data. It is not a certified ESG report, GHG Protocol report, legal compliance document, or verified carbon audit.
+### Admin Carbon Dashboard
+![Carbon Dashboard](assets/images/dashboard-preview.png)
 
-== Features ==
+*Store-wide emissions dashboard with monthly/weekly/yearly views*
 
-* Estimate emissions for WooCommerce orders
-* View reporting by month, week, and year
-* Review store-level reporting data
-* Review customer-level reporting data
-* Compare reporting periods
-* Identify higher-impact products with hotspot reporting
-* Use snapshot-based reporting for stable results
-* Export reports as CSV or PDF
-* View sustainability insights
-* Run backfill for historical WooCommerce orders
+### Customer Frontend View
+![Customer Dashboard](assets/images/customer-view.png)
 
-== Installation ==
+*Frontend dashboard showing customers their individual impact*
 
-1. Upload the plugin folder to the `/wp-content/plugins/` directory, or install the plugin through the WordPress Plugins screen.
-2. Activate the plugin through the **Plugins** screen in WordPress.
-3. Make sure **WooCommerce** is installed and activated.
-4. Open **VerdantCart Carbon Reports** from the WordPress admin menu.
-5. Create a completed order or run **Backfill** to generate historical reporting data.
+### Hotspot Analysis
+![Hotspot Reporting](assets/images/hotspot-reporting.png)
 
-== Usage ==
+*Identify which products contribute most to your carbon footprint*
 
-After activation, the plugin can:
+---
 
-* Estimate emissions for eligible WooCommerce orders
-* Aggregate reporting data for supported periods
-* Display reporting inside store and customer dashboards
+## 🚀 Overview
 
-You can use the dashboards to:
+VerdantCart Carbon Reports is a WooCommerce-focused reporting plugin built to make store emissions visible in a practical and structured way.
 
-* View emissions by reporting period
-* Review store and customer reporting data
-* Monitor trends over time
-* Identify higher-impact products
-* Export reports for further use
+Instead of behaving like a generic carbon calculator, it works from WooCommerce order activity and saved reporting snapshots so merchants can review carbon data in a more stable and auditable format.
 
-The customer-facing dashboard can be displayed with this shortcode:
+---
 
-`[vcarb_dashboard]`
+## 💡 Core Idea
 
-Legacy shortcodes from earlier builds may still work for compatibility, but `[vcarb_dashboard]` is the recommended shortcode.
+**Carbon data should behave like financial data.**
 
-== How It Works ==
+That means it should be:
 
-VerdantCart Carbon Reports estimates emissions using internal calculation rules applied to WooCommerce order data.
+- ✅ tied to real store activity
+- ✅ based on saved reporting snapshots
+- ✅ visible in clear dashboards
+- ✅ comparable over time
+- ✅ exportable
+- ✅ useful for operational review
 
-Reporting data is stored inside your WordPress installation and organized into aggregated snapshots used by dashboards, comparisons, insights, hotspots, and exports.
+---
 
-The plugin uses snapshot-based reporting so historical reporting periods remain stable instead of being recalculated during normal dashboard page loads.
+## ✨ Features
 
-== Data & Privacy ==
+### 📊 Admin Reporting
 
-All core calculations are performed locally in your WordPress installation.
+| Feature | Description |
+|---------|-------------|
+| Store-wide dashboard | Complete carbon reporting overview |
+| Multi-period views | Monthly, weekly, and yearly reporting |
+| Snapshot reporting | Consistent, auditable data |
+| Customer breakdown | Per-period customer reporting |
+| Product hotspots | Identify emission-heavy products |
+| Sustainability insights | Smart, actionable recommendations |
 
-The plugin does not require sending WooCommerce order data to an external service for its core reporting features.
+### 🏠 Front Dashboard
 
-== Requirements ==
+- Customer-facing dashboard shortcode
+- Logged-in user reporting view
+- Month, week, and year period tabs
+- Snapshot-aware reporting display
+- Frontend metrics, trends, hotspots, and insights
 
-* WordPress 6.4 or higher
-* PHP 8.0 or higher
-* WooCommerce 8.0 or higher
+### 📄 Exports
 
-== Frequently Asked Questions ==
+- CSV export
+- PDF-style printable report export
+- Snapshot-based export validation
+- Export audit support
 
-= Why does my dashboard show "No snapshot available"? =
+### 🛒 WooCommerce Integration
 
-That reporting period does not yet have generated snapshot data. Create a completed order or run the **Backfill** tool to generate reporting data.
+- Tracks eligible WooCommerce orders
+- Calculates estimated emissions from product weights
+- Supports historical backfill
+- Updates aggregate reporting periods
+- Supports store-level and customer-level reporting
 
-= How are emissions calculated? =
+---
 
-Emissions are estimated using internal calculation rules applied to WooCommerce order data.
+## 📋 Requirements
 
-= Can I export reports? =
+| Requirement | Version |
+|-------------|---------|
+| WordPress | 6.4 or later |
+| PHP | 8.0 or later |
+| WooCommerce | 8.0 or later |
 
-Yes. The plugin supports CSV and print-ready PDF exports.
+---
 
-= Which reporting periods are supported? =
+## 📦 Installation
 
-The plugin supports month, week, and year reporting views.
+### Manual Installation
 
-= Does this plugin require WooCommerce? =
+1. Download the plugin from this repository
+2. Upload `verdantcart-carbon-reports` to your `/wp-content/plugins/` directory
+3. Activate **VerdantCart Carbon Reports** in WordPress
+4. Make sure WooCommerce is active
+5. Open the plugin admin pages from the WordPress dashboard
 
-Yes. WooCommerce must be installed and active.
+---
 
-= Does the plugin send order data to an external service? =
+## 🔧 Shortcodes
 
-No. Core reporting calculations are performed locally inside your WordPress installation.
+| Shortcode | Description |
+|-----------|-------------|
+| `[verdantcart_dashboard]` | Main customer carbon dashboard |
+| `[vccr_dashboard]` | Alternative dashboard shortcode |
 
-= Is this a certified ESG or carbon audit report? =
+---
 
-No. VerdantCart Carbon Reports provides operational sustainability summaries and estimated emissions reporting. It is not a certified ESG report, GHG Protocol report, legal compliance document, or verified carbon audit.
+## 📁 Main Plugin File
 
-== Screenshots ==
-
-1. Dashboard overview
-2. Emissions trend chart
-3. Product hotspot reporting
-4. Sustainability insights
-5. CSV and PDF exports
-
-== Changelog ==
-
-= 1.1.0 =
-* Updated internal naming to the VerdantCart Carbon Reports namespace.
-* Improved dashboard, AJAX, export, and backfill naming consistency.
-* Improved snapshot-based reporting flow for month, week, and year views.
-* Improved admin dashboard period navigation and export handling.
-* Improved compatibility during migration from earlier internal AmatorCarbon builds.
-* Preserved existing reporting table names to avoid losing historical data.
-* Added safer uninstall cleanup for current and legacy lightweight options.
-* Removed local paid feature gating from the WordPress.org build.
-
-= 1.0.2 =
-* Improved VerdantCart branding consistency.
-* Cleaned language folder contents.
-* Improved dashboard and reporting asset organization.
-* Minor Plugin Check cleanup.
-
-= 1.0.1 =
-* Updated branding to VerdantCart Carbon Reports.
-* Cleaned up readme content and plugin metadata.
-* Improved submission readiness and compatibility updates.
-
-= 1.0.0 =
-* Initial public release.
-* Estimated carbon emission tracking for WooCommerce orders.
-* Month, week, and year reporting views.
-* Sustainability insights.
-* Product hotspot reporting.
-* CSV and PDF export support.
-* Backfill support for historical orders.
-
-== Upgrade Notice ==
-
-= 1.1.0 =
-Improves VerdantCart naming consistency, snapshot-based reporting, dashboard/export handling, and migration compatibility from earlier internal builds.
-
-= 1.0.2 =
-Branding consistency, language folder cleanup, and minor asset/reporting polish.
-
-= 1.0.1 =
-Branding, metadata, and readme update.
-
-= 1.0.0 =
-Initial public release of VerdantCart Carbon Reports.
+```text
+verdantcart-ai-reports.php
