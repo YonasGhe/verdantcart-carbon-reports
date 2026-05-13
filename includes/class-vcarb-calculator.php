@@ -830,6 +830,13 @@ class VCARB_Calculator
                 $now
             );
 
+            if (
+                class_exists('VCARB_Product_Insights') &&
+                method_exists('VCARB_Product_Insights', 'rebuild_period')
+            ) {
+                VCARB_Product_Insights::rebuild_period($view, $period);
+            }
+            
             if ($view === 'month' && preg_match('/^\d{4}-\d{2}$/', $period)) {
                 self::build_year_snapshot(substr($period, 0, 4));
             } elseif ($view === 'week' && preg_match('/^(\d{4})-W(\d{2})$/', $period, $m)) {
@@ -999,6 +1006,12 @@ class VCARB_Calculator
             if (strpos($cache_key, '|year|') !== false) {
                 unset(self::$series_cache[$cache_key]);
             }
+        }
+        if (
+            class_exists('VCARB_Product_Insights') &&
+            method_exists('VCARB_Product_Insights', 'rebuild_period')
+        ) {
+            VCARB_Product_Insights::rebuild_period('year', $year);
         }
     }
 

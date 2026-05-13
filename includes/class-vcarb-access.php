@@ -173,6 +173,7 @@ final class VCARB_Access
             'href="#"',
             'aria-label="' . esc_attr($aria) . '"',
             'aria-disabled="true"',
+            'tabindex="-1"',
             'role="link"',
         ];
 

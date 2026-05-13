@@ -230,9 +230,9 @@ final class VCARB_Reports_Activator
         $content = (string) $post->post_content;
 
         /*
-     * Do not append the new shortcode if any supported dashboard shortcode
-     * already exists. This prevents duplicate dashboard output on migrated pages.
-     */
+         * Do not append the new shortcode if any supported dashboard shortcode
+         * already exists. This prevents duplicate dashboard output on migrated pages.
+         */
         $dashboard_shortcodes = [
             'vcarb_dashboard',
             'verdantcart_dashboard',

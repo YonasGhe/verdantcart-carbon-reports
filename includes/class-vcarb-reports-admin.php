@@ -689,13 +689,30 @@ class VCARB_Reports_Admin
       }
     }
 
-    $page_id = (int) get_option('vcarb_dashboard_page_id', 0);
+    $page_ids = [
+      (int) get_option('vcarb_dashboard_page_id', 0),
+      (int) get_option('amatorcarbon_dashboard_page_id', 0),
+      (int) get_option('acr_dashboard_page_id', 0),
+      (int) get_option('ai_carbon_dashboard_page_id', 0),
+    ];
 
-    if ($page_id <= 0) {
-      $page_id = (int) get_option('amatorcarbon_dashboard_page_id', 0);
+    if (class_exists('VCARB_Reports_Activator')) {
+      $page_ids[] = (int) get_option(VCARB_Reports_Activator::OPT_DASHBOARD_ID, 0);
     }
 
-    if ($page_id > 0) {
+    foreach (array_unique(array_filter($page_ids)) as $page_id) {
+      $page_id = absint($page_id);
+
+      if ($page_id <= 0) {
+        continue;
+      }
+
+      $post = get_post($page_id);
+
+      if (!($post instanceof WP_Post) || $post->post_type !== 'page' || $post->post_status === 'trash') {
+        continue;
+      }
+
       $permalink = get_permalink($page_id);
 
       if (is_string($permalink) && $permalink !== '') {
@@ -703,7 +720,19 @@ class VCARB_Reports_Admin
       }
     }
 
-    foreach (['verdantcart-dashboard', 'verdantcart-carbon-dashboard', 'amator-carbon-dashboard'] as $dashboard_slug) {
+    $dashboard_slugs = [
+      'verdantcart-dashboard',
+      'verdantcart-carbon-dashboard',
+      'vcarb-dashboard',
+      'vcarb-carbon-dashboard',
+      'amator-carbon-dashboard',
+    ];
+
+    if (class_exists('VCARB_Reports_Activator')) {
+      $dashboard_slugs[] = VCARB_Reports_Activator::SLUG_DASHBOARD;
+    }
+
+    foreach (array_unique(array_filter(array_map('sanitize_title', $dashboard_slugs))) as $dashboard_slug) {
       $page = get_page_by_path($dashboard_slug, OBJECT, 'page');
 
       if ($page instanceof WP_Post && $page->post_status !== 'trash') {
@@ -717,7 +746,7 @@ class VCARB_Reports_Admin
 
     return '';
   }
-
+  
   private static function get_public_home_url(): string
   {
     $front_page_id = (int) get_option('page_on_front', 0);
@@ -1183,60 +1212,64 @@ class VCARB_Reports_Admin
               </div>
             </div>
 
-            <h3 class="nav-tab-wrapper gc-tabs gc-tabs--saas">
-              <a class="nav-tab gc-tab <?php echo esc_attr($view === 'month' ? 'nav-tab-active is-active' : ''); ?>" href="<?php echo esc_url($month_url); ?>" data-view="month">
-                <?php echo esc_html__('Month', 'verdantcart-ai-reports'); ?>
-              </a>
-
-              <a class="nav-tab gc-tab <?php echo esc_attr($view === 'week' ? 'nav-tab-active is-active' : ''); ?>" href="<?php echo esc_url($week_url); ?>" data-view="week">
-                <?php echo esc_html__('Week', 'verdantcart-ai-reports'); ?>
-              </a>
-
-              <a class="nav-tab gc-tab <?php echo esc_attr($view === 'year' ? 'nav-tab-active is-active' : ''); ?>" href="<?php echo esc_url($year_url); ?>" data-view="year">
-                <?php echo esc_html__('Year', 'verdantcart-ai-reports'); ?>
-              </a>
-            </h3>
-
-            <div class="gc-period-browser">
-              <?php if ($browser['has_prev']) : ?>
-                <a class="button button-secondary gc-period-browser__btn" href="<?php echo esc_url($prev_url); ?>" data-gc-period-nav="prev">
-                  ← <?php echo esc_html__('Previous', 'verdantcart-ai-reports'); ?>
+            <div class="gc-period-toolbar">
+              <h3 class="nav-tab-wrapper gc-tabs gc-tabs--saas">
+                <a
+                  class="nav-tab gc-tab <?php echo esc_attr($view === 'month' ? 'nav-tab-active is-active' : ''); ?>"
+                  href="<?php echo esc_url($month_url); ?>"
+                  data-view="month">
+                  <?php echo esc_html__('Month', 'verdantcart-ai-reports'); ?>
                 </a>
-              <?php else : ?>
-                <span class="button button-secondary gc-period-browser__btn disabled" aria-disabled="true">
-                  ← <?php echo esc_html__('Previous', 'verdantcart-ai-reports'); ?>
-                </span>
-              <?php endif; ?>
 
-              <div class="gc-period-browser__current">
-                <strong>
-                  <?php
-                  echo esc_html(
-                    $date !== ''
-                      ? sprintf(
-                        /* translators: %s: selected report period. */
-                        __('Selected: %s', 'verdantcart-ai-reports'),
-                        $date
-                      )
-                      : __('No snapshot selected', 'verdantcart-ai-reports')
-                  );
-                  ?>
-                </strong>
+                <a
+                  class="nav-tab gc-tab <?php echo esc_attr($view === 'week' ? 'nav-tab-active is-active' : ''); ?>"
+                  href="<?php echo esc_url($week_url); ?>"
+                  data-view="week">
+                  <?php echo esc_html__('Week', 'verdantcart-ai-reports'); ?>
+                </a>
 
-                <a class="button button-link" href="<?php echo esc_url($latest_url); ?>" data-gc-period-nav="current">
+                <a
+                  class="nav-tab gc-tab <?php echo esc_attr($view === 'year' ? 'nav-tab-active is-active' : ''); ?>"
+                  href="<?php echo esc_url($year_url); ?>"
+                  data-view="year">
+                  <?php echo esc_html__('Year', 'verdantcart-ai-reports'); ?>
+                </a>
+              </h3>
+
+              <div class="gc-period-browser gc-period-browser--compact">
+                <?php if ($browser['has_prev']) : ?>
+                  <a
+                    class="button button-secondary gc-period-browser__btn"
+                    href="<?php echo esc_url($prev_url); ?>"
+                    data-gc-period-nav="prev">
+                    ← <?php echo esc_html__('Previous', 'verdantcart-ai-reports'); ?>
+                  </a>
+                <?php else : ?>
+                  <span class="button button-secondary gc-period-browser__btn disabled" aria-disabled="true">
+                    ← <?php echo esc_html__('Previous', 'verdantcart-ai-reports'); ?>
+                  </span>
+                <?php endif; ?>
+
+                <a
+                  class="button button-secondary gc-period-browser__btn gc-period-browser__btn--current"
+                  href="<?php echo esc_url($latest_url); ?>"
+                  data-gc-period-nav="current">
                   <?php echo esc_html__('Current', 'verdantcart-ai-reports'); ?>
                 </a>
-              </div>
 
-              <?php if ($browser['has_next']) : ?>
-                <a class="button button-secondary gc-period-browser__btn" href="<?php echo esc_url($next_url); ?>" data-gc-period-nav="next">
-                  <?php echo esc_html__('Next', 'verdantcart-ai-reports'); ?> →
-                </a>
-              <?php else : ?>
-                <span class="button button-secondary gc-period-browser__btn disabled" aria-disabled="true">
-                  <?php echo esc_html__('Next', 'verdantcart-ai-reports'); ?> →
-                </span>
-              <?php endif; ?>
+                <?php if ($browser['has_next']) : ?>
+                  <a
+                    class="button button-secondary gc-period-browser__btn"
+                    href="<?php echo esc_url($next_url); ?>"
+                    data-gc-period-nav="next">
+                    <?php echo esc_html__('Next', 'verdantcart-ai-reports'); ?> →
+                  </a>
+                <?php else : ?>
+                  <span class="button button-secondary gc-period-browser__btn disabled" aria-disabled="true">
+                    <?php echo esc_html__('Next', 'verdantcart-ai-reports'); ?> →
+                  </span>
+                <?php endif; ?>
+              </div>
             </div>
           </div>
 

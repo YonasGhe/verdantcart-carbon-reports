@@ -14,19 +14,27 @@ final class VCARB_Insights_Renderer
 
     private static function css_url(): string
     {
-        return VCARB_PLUGIN_URL . self::CSS_REL;
+        if (!defined('VCARB_PLUGIN_URL')) {
+            return '';
+        }
+
+        return trailingslashit(VCARB_PLUGIN_URL) . self::CSS_REL;
     }
 
     private static function css_path(): string
     {
-        return VCARB_PLUGIN_DIR . self::CSS_REL;
+        if (!defined('VCARB_PLUGIN_DIR')) {
+            return '';
+        }
+
+        return trailingslashit(VCARB_PLUGIN_DIR) . self::CSS_REL;
     }
 
     private static function version(): string
     {
         $path = self::css_path();
 
-        if (file_exists($path)) {
+        if ($path !== '' && file_exists($path)) {
             return (string) filemtime($path);
         }
 
@@ -43,14 +51,17 @@ final class VCARB_Insights_Renderer
 
     public static function enqueue_assets(): void
     {
-        if (!file_exists(self::css_path())) {
+        $path = self::css_path();
+        $url  = self::css_url();
+
+        if ($path === '' || $url === '' || !file_exists($path)) {
             return;
         }
 
         if (!wp_style_is(self::STYLE_HANDLE, 'registered')) {
             wp_register_style(
                 self::STYLE_HANDLE,
-                self::css_url(),
+                $url,
                 [],
                 self::version()
             );

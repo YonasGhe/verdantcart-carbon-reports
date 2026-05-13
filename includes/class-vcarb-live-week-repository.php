@@ -114,7 +114,7 @@ class VCARB_Live_Week_Repository
             return self::$week_cache[$week_period];
         }
 
-        $meta_key       = $this->get_co2_meta_key();
+        $co2_meta_keys  = $this->get_co2_meta_keys();
         $statuses       = $this->get_final_statuses();
         $start_range    = $bounds['start']->format('Y-m-d H:i:s');
         $end_range      = $bounds['end']->format('Y-m-d H:i:s');
@@ -168,7 +168,7 @@ class VCARB_Live_Week_Repository
                 }
 
                 $user_id = absint($order->get_customer_id());
-                $co2     = max(0.0, (float) $order->get_meta($meta_key, true));
+                $co2     = $this->get_order_co2($order, $co2_meta_keys);
                 $stamp   = $dt->format('Y-m-d H:i:s');
 
                 if (!isset($rows[$user_id])) {
@@ -282,13 +282,40 @@ class VCARB_Live_Week_Repository
         return !empty($statuses) ? $statuses : $defaults;
     }
 
-    private function get_co2_meta_key(): string
+    /**
+     * @return array<int,string>
+     */
+    private function get_co2_meta_keys(): array
     {
-        return class_exists('VCARB_Order_Tracker')
-            ? VCARB_Order_Tracker::META_CO2_KG
-            : '_amatorcarbon_order_co2_kg';
+        $keys = [];
+
+        if (class_exists('VCARB_Order_Tracker')) {
+            $keys[] = VCARB_Order_Tracker::META_CO2_KG;
+        }
+
+        $keys[] = '_vcarb_order_co2_kg';
+        $keys[] = '_amatorcarbon_order_co2_kg';
+        $keys[] = '_gc_order_co2_kg';
+
+        return array_values(array_unique(array_filter($keys)));
     }
 
+    /**
+     * @param array<int,string> $meta_keys
+     */
+    private function get_order_co2(WC_Order $order, array $meta_keys): float
+    {
+        foreach ($meta_keys as $meta_key) {
+            $value = (float) $order->get_meta($meta_key, true);
+
+            if ($value > 0.0) {
+                return $value;
+            }
+        }
+
+        return 0.0;
+    }
+    
     private function should_exclude_order(WC_Order $order): bool
     {
         return class_exists('VCARB_Order_Tracker')

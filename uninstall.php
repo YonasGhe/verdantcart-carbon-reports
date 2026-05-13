@@ -221,6 +221,7 @@ if (isset($wpdb) && $wpdb instanceof wpdb) {
         $wpdb->prefix . 'gc_product_logs',
         $wpdb->prefix . 'ai_carbon_export_audit',
         $wpdb->prefix . 'acr_logs',
+        $wpdb->prefix . 'acr_product_logs',
     ];
 
     foreach ($vcarb_tables as $vcarb_table) {

@@ -41,18 +41,6 @@ final class VCARB_Scheduler
             return;
         }
 
-        /**
-         * In local development, run immediately so testing feels instant.
-         * Production/staging use async scheduling.
-         */
-        if (
-            function_exists('wp_get_environment_type') &&
-            wp_get_environment_type() === 'local'
-        ) {
-            self::run_aggregate($view, $period);
-            return;
-        }
-
         $delay = max(
             1,
             (int) apply_filters('vcarb_aggregate_delay_seconds', 30, $view, $period)

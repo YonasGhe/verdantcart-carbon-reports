@@ -110,16 +110,27 @@ class VCARB_Dashboard
             }
         }
 
-        if (class_exists('VCARB_Reports_Activator')) {
-            $dashboard_id = (int) get_option(VCARB_Reports_Activator::OPT_DASHBOARD_ID);
+        $dashboard_ids = [];
 
+        if (class_exists('VCARB_Reports_Activator')) {
+            $dashboard_ids[] = (int) get_option(VCARB_Reports_Activator::OPT_DASHBOARD_ID, 0);
+        }
+
+        $dashboard_ids[] = (int) get_option('vcarb_dashboard_page_id', 0);
+        $dashboard_ids[] = (int) get_option('amatorcarbon_dashboard_page_id', 0);
+        $dashboard_ids[] = (int) get_option('acr_dashboard_page_id', 0);
+        $dashboard_ids[] = (int) get_option('ai_carbon_dashboard_page_id', 0);
+
+        foreach (array_unique(array_filter($dashboard_ids)) as $dashboard_id) {
             if ($dashboard_id > 0 && is_page($dashboard_id)) {
                 return true;
             }
         }
 
-        return is_page('verdantcart-carbon-dashboard')
-            || is_page('verdantcart-dashboard')
+        return is_page('verdantcart-dashboard')
+            || is_page('verdantcart-carbon-dashboard')
+            || is_page('vcarb-dashboard')
+            || is_page('vcarb-carbon-dashboard')
             || is_page('amator-carbon-dashboard');
     }
 
@@ -382,8 +393,20 @@ class VCARB_Dashboard
     {
         $nonce = $this->get_post_string('nonce', '');
 
-        if ($nonce === '' || !wp_verify_nonce($nonce, self::NONCE_ACTION)) {
-            wp_send_json_error(['message' => __('Invalid nonce.', 'verdantcart-ai-reports')], 403);
+        $valid = $nonce !== '' && wp_verify_nonce($nonce, self::NONCE_ACTION);
+
+        /*
+     * Legacy nonce action kept for old cached frontend JS during migration.
+     */
+        if (!$valid) {
+            $valid = $nonce !== '' && wp_verify_nonce($nonce, 'amatorcarbon_dashboard');
+        }
+
+        if (!$valid) {
+            wp_send_json_error(
+                ['message' => __('Invalid nonce.', 'verdantcart-ai-reports')],
+                403
+            );
         }
     }
 

@@ -131,7 +131,7 @@ trait VCARB_Ajax_Helpers_Trait
             return $default;
         }
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSananitized,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Value is unslashed, type-checked, and sanitized immediately below.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Value is unslashed, type-checked, and sanitized immediately below.
         $value = wp_unslash($_POST[$key]);
 
         if (!is_scalar($value)) {
@@ -154,7 +154,7 @@ trait VCARB_Ajax_Helpers_Trait
             return $default;
         }
 
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSananitized,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Value is unslashed, type-checked, and sanitized immediately below.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Value is unslashed, type-checked, and sanitized immediately below.
         $value = wp_unslash($_POST[$key]);
 
         if (!is_scalar($value)) {

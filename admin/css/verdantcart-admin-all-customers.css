@@ -557,28 +557,52 @@
         box-shadow: none !important;
     }
 }
+/* =========================
+   Period toolbar: tabs + browser inline
+   ========================= */
+.wrap.gc-wrap .gc-period-toolbar {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
 
-/* =========================================================
-   Current period button — match front dashboard style
-   ========================================================= */
+.wrap.gc-wrap .gc-period-toolbar .gc-tabs.nav-tab-wrapper {
+    margin: 0;
+    flex: 0 0 auto;
+}
 
-.wrap.gc-wrap .gc-period-browser__current {
-    display: inline-flex;
+.wrap.gc-wrap .gc-period-toolbar .gc-period-browser {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+}
+
+.wrap.gc-wrap .gc-period-toolbar .gc-period-browser__btn {
+    min-height: 40px;
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    min-height: 38px;
     padding: 8px 14px !important;
-    border: 1px solid var(--gc-border) !important;
     border-radius: 12px !important;
-    background: #ffffff !important;
-    color: var(--gc-text) !important;
-    font-weight: 850 !important;
-    text-decoration: none !important;
+    font-weight: 750 !important;
     line-height: 1.2 !important;
+    text-decoration: none !important;
     box-shadow: var(--gc-shadow-sm);
 }
 
-.wrap.gc-wrap .gc-period-browser__current:hover {
+.wrap.gc-wrap .gc-period-toolbar .gc-period-browser__btn--current {
+    background: #ffffff !important;
+    border-color: var(--gc-border) !important;
+    color: var(--gc-text) !important;
+    font-weight: 850 !important;
+}
+
+.wrap.gc-wrap .gc-period-toolbar .gc-period-browser__btn--current:hover {
     background: #f8fafc !important;
     border-color: var(--gc-border-strong) !important;
     color: var(--gc-text) !important;
@@ -586,17 +610,61 @@
     box-shadow: var(--gc-shadow-lg);
 }
 
-.wrap.gc-wrap .gc-period-browser__current.is-current,
-.wrap.gc-wrap .gc-period-browser__current[aria-current="true"] {
-    background: #eef2f7 !important;
-    border-color: #cbd5e1 !important;
-    color: #0f172a !important;
-    box-shadow: inset 0 0 0 1px #e2e8f0;
+.wrap.gc-wrap .gc-period-toolbar .gc-period-browser__btn.disabled,
+.wrap.gc-wrap .gc-period-toolbar .gc-period-browser__btn[aria-disabled="true"] {
+    opacity: 0.55;
+    pointer-events: none;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
-.wrap.gc-wrap .gc-period-browser__current.is-current:hover,
-.wrap.gc-wrap .gc-period-browser__current[aria-current="true"]:hover {
-    background: #e2e8f0 !important;
-    border-color: #94a3b8 !important;
-    color: #0f172a !important;
+@media (max-width: 782px) {
+    .wrap.gc-wrap .gc-period-toolbar {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .wrap.gc-wrap .gc-period-toolbar .gc-tabs.nav-tab-wrapper,
+    .wrap.gc-wrap .gc-period-toolbar .gc-period-browser {
+        width: 100%;
+    }
+
+    .wrap.gc-wrap .gc-period-toolbar .gc-period-browser {
+        justify-content: flex-start;
+    }
+}
+
+body.vcarb-layout--app,
+body.vcarb-app-template,
+body.gc-layout--app,
+body.gc-app-template {
+    background: #f6f8fb;
+}
+
+.vcarb-app-template__main,
+.gc-app-template__main {
+    min-height: 100vh;
+    padding: 20px 20px 40px;
+}
+
+.vcarb-app-template__inner,
+.gc-app-template__inner {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+body.admin-bar .vcarb-app-template__main,
+body.admin-bar .gc-app-template__main {
+    padding-top: 32px;
+}
+
+body.vcarb-layout--app .gc-ui,
+body.gc-layout--app .gc-ui {
+    width: 100%;
+}
+
+body.vcarb-layout--app .gc-shell,
+body.gc-layout--app .gc-shell {
+    max-width: 100%;
 }

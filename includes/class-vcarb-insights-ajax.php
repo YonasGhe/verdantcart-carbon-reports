@@ -122,7 +122,15 @@ class VCARB_Insights_Ajax
 
     private function has_store_snapshot_for_period(string $view, string $date): bool
     {
-        return $date !== '' && $this->store_snapshot_exists($view, $date);
+        if ($date === '') {
+            return false;
+        }
+
+        if (!class_exists('VCARB_Calculator')) {
+            return false;
+        }
+
+        return is_object(VCARB_Calculator::get_row(0, $view, $date));
     }
 
     private function load_snapshot_rows(int $subject_user_id, string $view, string $date): array

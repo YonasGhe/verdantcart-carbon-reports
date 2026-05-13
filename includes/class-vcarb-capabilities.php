@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-class VCARB_Capabilities
+final class VCARB_Capabilities
 {
     public const VIEW_MONTH    = 'vcarb_view_month';
     public const VIEW_WEEK     = 'vcarb_view_week';

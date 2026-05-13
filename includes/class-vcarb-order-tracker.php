@@ -626,6 +626,7 @@ class VCARB_Order_Tracker
 
     private function period_for_order(string $view, WC_Order $order): string
     {
+        $view = sanitize_key($view);
         $view = in_array($view, ['month', 'week', 'year'], true) ? $view : 'month';
 
         $dt = $this->get_order_datetime($order);
@@ -685,7 +686,10 @@ class VCARB_Order_Tracker
             return;
         }
 
-        $table   = esc_sql($wpdb->prefix . 'vcarb_product_logs');
+        /*
+     * Keep legacy 1.0.2 table name until a safe table migration is added.
+     */
+        $table   = esc_sql($wpdb->prefix . 'amatorcarbon_product_logs');
         $now     = current_time('mysql');
         $co2_str = $this->decimal_2($co2_delta);
 
@@ -693,13 +697,13 @@ class VCARB_Order_Tracker
         $wpdb->query(
             $wpdb->prepare(
                 "
-                INSERT INTO `{$table}` (product_id, period, orders, total_co2, created_at)
-                VALUES (%d, %s, %d, %s, %s)
-                ON DUPLICATE KEY UPDATE
-                    orders = orders + VALUES(orders),
-                    total_co2 = total_co2 + VALUES(total_co2),
-                    created_at = VALUES(created_at)
-                ",
+            INSERT INTO `{$table}` (product_id, period, orders, total_co2, created_at)
+            VALUES (%d, %s, %d, %s, %s)
+            ON DUPLICATE KEY UPDATE
+                orders = orders + VALUES(orders),
+                total_co2 = total_co2 + VALUES(total_co2),
+                created_at = VALUES(created_at)
+            ",
                 $product_id,
                 $period,
                 $orders_delta,
@@ -724,7 +728,10 @@ class VCARB_Order_Tracker
             return;
         }
 
-        $table   = esc_sql($wpdb->prefix . 'vcarb_logs');
+        /*
+     * Keep legacy 1.0.2 table name until a safe table migration is added.
+     */
+        $table   = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
         $now     = current_time('mysql');
         $co2_str = $this->decimal_2($co2_delta);
 
@@ -732,15 +739,15 @@ class VCARB_Order_Tracker
         $wpdb->query(
             $wpdb->prepare(
                 "
-                INSERT INTO `{$table}`
-                    (user_id, view_type, period, orders, total_co2, created_at)
-                VALUES
-                    (%d, %s, %s, %d, %s, %s)
-                ON DUPLICATE KEY UPDATE
-                    orders = orders + VALUES(orders),
-                    total_co2 = total_co2 + VALUES(total_co2),
-                    created_at = VALUES(created_at)
-                ",
+            INSERT INTO `{$table}`
+                (user_id, view_type, period, orders, total_co2, created_at)
+            VALUES
+                (%d, %s, %s, %d, %s, %s)
+            ON DUPLICATE KEY UPDATE
+                orders = orders + VALUES(orders),
+                total_co2 = total_co2 + VALUES(total_co2),
+                created_at = VALUES(created_at)
+            ",
                 $user_id,
                 $view,
                 $period,

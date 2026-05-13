@@ -1066,7 +1066,7 @@ jQuery(function ($) {
           '<div class="gc-hotspot-meta">' +
           "<span><strong>" + co2.toFixed(2) + "</strong> kg CO₂</span>" +
           '<span class="gc-dot">•</span>' +
-          "<span>" + escHtml(orders) + " orders</span>" +
+          "<span>" + escHtml(orders) + " items</span>" +
           "</div>" +
           "</div>"
         );
@@ -1159,13 +1159,13 @@ jQuery(function ($) {
     }
 
     html +=
-      '<a class="button gc-period-browser__current ' +
+      '<a class="button button-secondary gc-period-browser__btn gc-period-browser__btn--current gc-period-browser__current ' +
       (isLatest ? "is-current" : "") +
       '" href="' +
       escHtml(currentUrl) +
-      '" data-gc-period-nav="current" aria-current="' +
-      (isLatest ? "true" : "false") +
-      '">Current</a>';
+      '" data-gc-period-nav="current"' +
+      (isLatest ? ' aria-current="true"' : "") +
+      ">Current</a>";
 
     if (hasNext) {
       html +=
@@ -1319,7 +1319,14 @@ jQuery(function ($) {
         persistCanonicalState(returnedView, returnedDate, ok);
         replaceUrlState(returnedView, returnedDate, ok);
         updateInsights(returnedView, returnedDate, ok);
-        fetchHotspots(returnedView, returnedDate);
+
+        if (ok) {
+          fetchHotspots(returnedView, returnedDate);
+        } else {
+          $("#gcHotspotsBody").html(
+            '<div class="gc-empty">No product hotspot data yet for this period.</div>'
+          );
+        }
       })
       .fail(function (xhr, status) {
         if (status === "abort") {
@@ -1394,10 +1401,12 @@ jQuery(function ($) {
     initExports();
 
     /*
-     * On first page load / browser refresh, load the latest snapshot.
-     * This prevents old URLs like &date=2026-03 from keeping the page
-     * stuck on an older period after refresh.
-     */
-    fetchReport(initialView, "");
+ * On first page load / browser refresh, respect the selected URL/date
+ * when valid. If no valid date exists, the PHP dataset resolver will
+ * fall back to the latest available snapshot for the selected view.
+ */
+    const initialDate = getCurrentSnap(initialView);
+
+    fetchReport(initialView, initialDate);
   })();
 });

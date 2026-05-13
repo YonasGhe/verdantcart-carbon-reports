@@ -246,7 +246,7 @@ trait VCARB_Snapshot_Trait
                 $period,
                 $orders,
                 number_format($co2, 2, '.', ''),
-                current_time('mysql')
+                current_time('mysql', true)
             )
         );
         // phpcs:enable

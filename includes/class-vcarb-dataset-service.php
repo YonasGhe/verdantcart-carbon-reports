@@ -685,9 +685,24 @@ class VCARB_Dataset_Service
             return [];
         }
 
+        /*
+     * Product hotspots are read from the product hotspot snapshot table.
+     * The period must match the selected dashboard period:
+     *
+     * month: 2026-05
+     * week:  2026-W20
+     * year:  2026
+     *
+     * If no rows exist for that exact period, the UI should show the empty
+     * hotspot state instead of inventing data from another period.
+     */
         $items = VCARB_Product_Insights::get_hotspots($date, 10);
 
-        return is_array($items) ? array_values($items) : [];
+        if (!is_array($items) || empty($items)) {
+            return [];
+        }
+
+        return array_values($items);
     }
 
     protected function build_user_insights_block(array $metrics, bool $has_snapshot): array

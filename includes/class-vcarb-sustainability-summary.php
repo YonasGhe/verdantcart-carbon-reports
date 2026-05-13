@@ -243,8 +243,33 @@ final class VCARB_Sustainability_Summary
             return $period;
         }
 
-        if ($view === 'week' && preg_match('/^\d{4}-W(0[1-9]|[1-4][0-9]|5[0-3])$/', $period)) {
-            return $period;
+        if ($view === 'week' && preg_match('/^(\d{4})-W(\d{2})$/', $period, $matches)) {
+            $year = (int) $matches[1];
+            $week = (int) $matches[2];
+
+            if ($year < 1970 || $year > 2100 || $week < 1 || $week > 53) {
+                return '';
+            }
+
+            try {
+                $tz = function_exists('wp_timezone') ? wp_timezone() : new DateTimeZone('UTC');
+
+                $dt = (new DateTimeImmutable('now', $tz))
+                    ->setISODate($year, $week, 1)
+                    ->setTime(0, 0, 0);
+
+                $normalized = sprintf(
+                    '%04d-W%02d',
+                    (int) $dt->format('o'),
+                    (int) $dt->format('W')
+                );
+
+                return ($normalized === sprintf('%04d-W%02d', $year, $week))
+                    ? $normalized
+                    : '';
+            } catch (Throwable $e) {
+                return '';
+            }
         }
 
         if ($view === 'year' && preg_match('/^\d{4}$/', $period)) {

@@ -151,7 +151,8 @@ class VCARB_Product_Insights
             return;
         }
 
-        $table = self::writable_table_name();
+        $table      = self::writable_table_name();
+        $safe_table = esc_sql($table);
 
         try {
             $tz       = function_exists('wp_timezone') ? wp_timezone() : new DateTimeZone('UTC');
@@ -171,36 +172,29 @@ class VCARB_Product_Insights
             ['%s']
         );
 
-        $co2_meta_keys = [];
-
-        if (class_exists('VCARB_Order_Tracker')) {
-            $co2_meta_keys[] = VCARB_Order_Tracker::META_CO2_KG;
-        }
-
-        if (class_exists('AmatorCarbon_Order_Tracker')) {
-            $co2_meta_keys[] = AmatorCarbon_Order_Tracker::META_CO2_KG;
-        }
-
-        $co2_meta_keys[] = '_vcarb_order_co2_kg';
-        $co2_meta_keys[] = '_amatorcarbon_order_co2_kg';
-        $co2_meta_keys[] = '_gc_order_co2_kg';
-
-        $co2_meta_keys = array_values(array_unique(array_filter($co2_meta_keys)));
+        $co2_meta_keys = self::co2_meta_keys();
 
         $page      = 1;
         $max_pages = 1;
 
         do {
-            $query = wc_get_orders([
-                'status'       => self::get_final_statuses(),
-                'limit'        => self::REBUILD_BATCH_SIZE,
-                'paged'        => $page,
-                'return'       => 'ids',
-                'paginate'     => true,
-                'orderby'      => 'date',
-                'order'        => 'ASC',
-                'date_created' => $start . '...' . $end,
-            ]);
+            $query_args = [
+                'status'   => self::get_final_statuses(),
+                'limit'    => self::REBUILD_BATCH_SIZE,
+                'paged'    => $page,
+                'return'   => 'ids',
+                'paginate' => true,
+                'orderby'  => 'date',
+                'order'    => 'ASC',
+            ];
+
+            try {
+                $query_args['date_created'] = $start_dt->getTimestamp() . '...' . $end_dt->getTimestamp();
+            } catch (Throwable $e) {
+                $query_args['date_created'] = $start . '...' . $end;
+            }
+
+            $query = wc_get_orders($query_args);
 
             $order_ids = (is_object($query) && isset($query->orders) && is_array($query->orders))
                 ? $query->orders
@@ -265,8 +259,6 @@ class VCARB_Product_Insights
                         continue;
                     }
 
-                    $safe_table = esc_sql($table);
-
                     // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Upserting plugin-owned analytics table; interpolated table name is plugin-controlled.
                     $wpdb->query(
                         $wpdb->prepare(
@@ -287,6 +279,181 @@ class VCARB_Product_Insights
                     );
                     // phpcs:enable
                 }
+            }
+
+            $page++;
+        } while ($page <= $max_pages);
+    }
+
+    public static function rebuild_period(string $view, string $period): void
+    {
+        global $wpdb;
+
+        $view   = sanitize_key($view);
+        $period = trim($period);
+
+        if (!in_array($view, ['week', 'month', 'year'], true)) {
+            return;
+        }
+
+        if (!self::is_valid_period($period) || self::infer_view_from_period($period) !== $view) {
+            return;
+        }
+
+        /*
+     * Keep month rebuild using the existing stable monthly method.
+     */
+        if ($view === 'month') {
+            self::rebuild_month($period);
+            return;
+        }
+
+        if (!function_exists('wc_get_orders') || !function_exists('wc_get_order')) {
+            return;
+        }
+
+        if (!self::table_exists()) {
+            return;
+        }
+
+        $range = self::period_date_range($view, $period);
+
+        if ($range['start'] === '' || $range['end'] === '') {
+            return;
+        }
+
+        $table      = self::writable_table_name();
+        $safe_table = esc_sql($table);
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Deleting plugin-owned hotspot snapshot rows for selected period.
+        $wpdb->delete(
+            $table,
+            ['period' => $period],
+            ['%s']
+        );
+
+        $co2_meta_keys = self::co2_meta_keys();
+
+        $page      = 1;
+        $max_pages = 1;
+
+        do {
+            $query_args = [
+                'status'   => self::get_final_statuses(),
+                'limit'    => self::REBUILD_BATCH_SIZE,
+                'paged'    => $page,
+                'return'   => 'ids',
+                'paginate' => true,
+                'orderby'  => 'date',
+                'order'    => 'ASC',
+            ];
+
+            /*
+             * Use timestamp-based WooCommerce date query.
+             * This is safer across classic orders and HPOS because WooCommerce
+             * handles the internal storage format.
+             */
+            try {
+                $tz       = function_exists('wp_timezone') ? wp_timezone() : new DateTimeZone('UTC');
+                $start_dt = new DateTimeImmutable($range['start'], $tz);
+                $end_dt   = new DateTimeImmutable($range['end'], $tz);
+
+                $query_args['date_created'] = $start_dt->getTimestamp() . '...' . $end_dt->getTimestamp();
+            } catch (Throwable $e) {
+                $query_args['date_created'] = $range['start'] . '...' . $range['end'];
+            }
+
+            $query = wc_get_orders($query_args);
+
+            $order_ids = (is_object($query) && isset($query->orders) && is_array($query->orders))
+                ? $query->orders
+                : [];
+
+            $max_pages = (is_object($query) && isset($query->max_num_pages))
+                ? max(1, (int) $query->max_num_pages)
+                : 1;
+
+            if (empty($order_ids)) {
+                break;
+            }
+
+            foreach ($order_ids as $order_id) {
+                $order = wc_get_order((int) $order_id);
+
+                if (!($order instanceof WC_Order)) {
+                    continue;
+                }
+
+                if (
+                    class_exists('VCARB_Order_Tracker') &&
+                    method_exists('VCARB_Order_Tracker', 'should_exclude_order_from_analytics') &&
+                    VCARB_Order_Tracker::should_exclude_order_from_analytics($order)
+                ) {
+                    continue;
+                }
+
+                $dt = self::get_order_period_date($order);
+
+                if (!$dt || self::period_from_datetime($view, $dt) !== $period) {
+                    continue;
+                }
+
+                $order_co2 = 0.0;
+
+                foreach ($co2_meta_keys as $meta_key) {
+                    $candidate = (float) $order->get_meta($meta_key, true);
+
+                    if ($candidate > 0.0) {
+                        $order_co2 = $candidate;
+                        break;
+                    }
+                }
+
+                if ($order_co2 <= 0.0) {
+                    continue;
+                }
+
+                $alloc = self::allocate_order_co2_by_weight($order, $order_co2);
+
+                if (empty($alloc)) {
+                    continue;
+                }
+
+                foreach ($alloc as $product_id => $row) {
+                    $product_id = (int) $product_id;
+                    $orders     = (int) ($row['orders'] ?? 0);
+                    $co2        = (float) ($row['total_co2'] ?? 0.0);
+
+                    if ($product_id <= 0 || $orders <= 0 || $co2 <= 0.0) {
+                        continue;
+                    }
+
+                    // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Upserting plugin-owned analytics table; interpolated table name is plugin-controlled.
+                    $wpdb->query(
+                        $wpdb->prepare(
+                            "
+                        INSERT INTO `{$safe_table}` (product_id, period, orders, total_co2, created_at)
+                        VALUES (%d, %s, %d, %s, %s)
+                        ON DUPLICATE KEY UPDATE
+                            orders = orders + VALUES(orders),
+                            total_co2 = total_co2 + VALUES(total_co2),
+                            created_at = VALUES(created_at)
+                        ",
+                            $product_id,
+                            $period,
+                            $orders,
+                            number_format($co2, 2, '.', ''),
+                            current_time('mysql', true)
+                        )
+                    );
+                    // phpcs:enable
+                }
+            }
+
+            unset($query, $order_ids);
+
+            if (function_exists('gc_collect_cycles')) {
+                gc_collect_cycles();
             }
 
             $page++;
@@ -660,12 +827,16 @@ class VCARB_Product_Insights
 
         $tables = [];
 
-        if (self::db_table_exists(self::logs_table_name())) {
-            $tables[] = self::logs_table_name();
-        }
-
-        if (self::db_table_exists(self::legacy_logs_table_name())) {
-            $tables[] = self::legacy_logs_table_name();
+        foreach (
+            [
+                self::legacy_logs_table_name(), // wp_amatorcarbon_logs
+                self::acr_logs_table_name(),    // wp_acr_logs
+                self::logs_table_name(),        // wp_vcarb_logs
+            ] as $candidate_table
+        ){
+            if (self::db_table_exists($candidate_table)) {
+                $tables[] = $candidate_table;
+            }
         }
 
         foreach ($tables as $raw_table) {
@@ -877,7 +1048,7 @@ class VCARB_Product_Insights
 
     private static function table_exists(): bool
     {
-        return self::db_table_exists(self::table_name()) || self::db_table_exists(self::legacy_table_name());
+        return !empty(self::readable_product_tables());
     }
 
     private static function db_table_exists(string $table): bool
@@ -913,12 +1084,16 @@ class VCARB_Product_Insights
     {
         $tables = [];
 
-        if (self::db_table_exists(self::table_name())) {
-            $tables[] = self::table_name();
-        }
-
-        if (self::db_table_exists(self::legacy_table_name())) {
-            $tables[] = self::legacy_table_name();
+        foreach (
+            [
+                self::legacy_table_name(), // wp_amatorcarbon_product_logs
+                self::acr_table_name(),    // wp_acr_product_logs
+                self::table_name(),        // wp_vcarb_product_logs
+            ] as $table
+        ) {
+            if (self::db_table_exists($table)) {
+                $tables[] = $table;
+            }
         }
 
         return array_values(array_unique($tables));
@@ -926,8 +1101,16 @@ class VCARB_Product_Insights
 
     private static function writable_table_name(): string
     {
-        if (self::db_table_exists(self::table_name())) {
-            return self::table_name();
+        foreach (
+            [
+                self::legacy_table_name(), // wp_amatorcarbon_product_logs
+                self::acr_table_name(),
+                self::table_name(),
+            ] as $table
+        ) {
+            if (self::db_table_exists($table)) {
+                return $table;
+            }
         }
 
         return self::legacy_table_name();
@@ -1005,6 +1188,20 @@ class VCARB_Product_Insights
         return $wpdb->prefix . 'vcarb_product_logs';
     }
 
+    private static function acr_table_name(): string
+    {
+        global $wpdb;
+
+        return $wpdb->prefix . 'acr_product_logs';
+    }
+
+    private static function acr_logs_table_name(): string
+    {
+        global $wpdb;
+
+        return $wpdb->prefix . 'acr_logs';
+    }
+
     private static function legacy_table_name(): string
     {
         global $wpdb;
@@ -1065,5 +1262,95 @@ class VCARB_Product_Insights
         $value = apply_filters('vcarb_' . $suffix, $value, ...$args);
 
         return apply_filters('amatorcarbon_' . $suffix, $value, ...$args);
+    }
+
+    private static function period_date_range(string $view, string $period): array
+    {
+        $view = sanitize_key($view);
+
+        try {
+            $tz = function_exists('wp_timezone') ? wp_timezone() : new DateTimeZone('UTC');
+
+            if ($view === 'month' && self::is_valid_month_period($period)) {
+                $start = new DateTimeImmutable($period . '-01 00:00:00', $tz);
+                $end   = $start->modify('+1 month');
+
+                return [
+                    'start' => $start->format('Y-m-d H:i:s'),
+                    'end'   => $end->format('Y-m-d H:i:s'),
+                ];
+            }
+
+            if ($view === 'year' && preg_match('/^\d{4}$/', $period)) {
+                $start = new DateTimeImmutable($period . '-01-01 00:00:00', $tz);
+                $end   = $start->modify('+1 year');
+
+                return [
+                    'start' => $start->format('Y-m-d H:i:s'),
+                    'end'   => $end->format('Y-m-d H:i:s'),
+                ];
+            }
+
+            if ($view === 'week' && preg_match('/^(\d{4})-W(\d{2})$/', $period, $matches)) {
+                $start = (new DateTimeImmutable('now', $tz))
+                    ->setISODate((int) $matches[1], (int) $matches[2], 1)
+                    ->setTime(0, 0, 0);
+
+                $end = $start->modify('+7 days');
+
+                return [
+                    'start' => $start->format('Y-m-d H:i:s'),
+                    'end'   => $end->format('Y-m-d H:i:s'),
+                ];
+            }
+        } catch (Throwable $e) {
+            return [
+                'start' => '',
+                'end'   => '',
+            ];
+        }
+
+        return [
+            'start' => '',
+            'end'   => '',
+        ];
+    }
+
+    private static function period_from_datetime(string $view, DateTimeImmutable $dt): string
+    {
+        $view = sanitize_key($view);
+
+        if ($view === 'month') {
+            return $dt->format('Y-m');
+        }
+
+        if ($view === 'year') {
+            return $dt->format('Y');
+        }
+
+        return sprintf(
+            '%04d-W%02d',
+            (int) $dt->format('o'),
+            (int) $dt->format('W')
+        );
+    }
+
+    private static function co2_meta_keys(): array
+    {
+        $keys = [];
+
+        if (class_exists('VCARB_Order_Tracker')) {
+            $keys[] = VCARB_Order_Tracker::META_CO2_KG;
+        }
+
+        if (class_exists('AmatorCarbon_Order_Tracker')) {
+            $keys[] = AmatorCarbon_Order_Tracker::META_CO2_KG;
+        }
+
+        $keys[] = '_vcarb_order_co2_kg';
+        $keys[] = '_amatorcarbon_order_co2_kg';
+        $keys[] = '_gc_order_co2_kg';
+
+        return array_values(array_unique(array_filter($keys)));
     }
 }

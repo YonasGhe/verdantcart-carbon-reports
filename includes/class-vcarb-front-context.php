@@ -1,6 +1,19 @@
 <?php
 defined('ABSPATH') || exit;
 
+/**
+ * Front-end context detector for VerdantCart Carbon Reports.
+ *
+ * Responsibilities:
+ * - Detect the plugin dashboard page.
+ * - Add dashboard-specific body classes.
+ * - Load the isolated app template for the dashboard page.
+ *
+ * Migration note:
+ * - New internal prefix is VCARB_/vcarb_.
+ * - Legacy shortcodes, slugs, options, and classes are kept so older pages
+ *   continue to work after the rename.
+ */
 class VCARB_Front_Context
 {
     /** @var array<int,bool> */
@@ -12,9 +25,7 @@ class VCARB_Front_Context
         'verdantcart_dashboard',
         'verdantcart_carbon_dashboard',
 
-        /*
-     * Legacy shortcodes kept so existing pages do not break.
-     */
+        // Legacy shortcodes kept so existing pages do not break.
         'amatorcarbon_dashboard',
         'amator_carbon_dashboard',
         'acr_dashboard',
@@ -26,9 +37,7 @@ class VCARB_Front_Context
         'vcarb-dashboard',
         'vcarb-carbon-dashboard',
 
-        /*
-     * Legacy page slug kept so older dashboard pages still use app layout.
-     */
+        // Legacy page slug kept so older dashboard pages still use app layout.
         'amator-carbon-dashboard',
     ];
 
@@ -114,9 +123,7 @@ class VCARB_Front_Context
         $classes[] = 'verdantcart-page--dashboard';
         $classes[] = 'verdantcart-layout--app';
 
-        /*
-         * New internal prefix classes.
-         */
+        // New internal prefix classes.
         $classes[] = 'vcarb-page';
         $classes[] = 'vcarb-page--dashboard';
         $classes[] = 'vcarb-layout--app';
@@ -153,8 +160,16 @@ class VCARB_Front_Context
 
     private static function get_dashboard_page_id(): int
     {
+        $page_id = 0;
+
         if (class_exists('VCARB_Reports_Activator')) {
-            return (int) get_option(VCARB_Reports_Activator::OPT_DASHBOARD_ID, 0);
+            $page_id = (int) get_option(VCARB_Reports_Activator::OPT_DASHBOARD_ID, 0);
+        } else {
+            $page_id = (int) get_option('vcarb_dashboard_page_id', 0);
+        }
+
+        if ($page_id > 0) {
+            return $page_id;
         }
 
         /*

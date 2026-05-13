@@ -243,11 +243,11 @@ class VCARB_Admin_Report_Ajax
         }
 
         /*
-     * Important:
-     * Do not block hotspot loading only because a snapshot check fails.
-     * The main report already validates the selected snapshot.
-     * Hotspot rows can exist independently, especially after migrations/backfills.
-     */
+         * Important:
+         * Do not block hotspot loading only because a snapshot check fails.
+         * The main report already validates the selected snapshot.
+         * Hotspot rows can exist independently, especially after migrations/backfills.
+         */
         if (
             !class_exists('VCARB_Product_Insights') ||
             !method_exists('VCARB_Product_Insights', 'get_hotspots')
@@ -324,10 +324,21 @@ class VCARB_Admin_Report_Ajax
 
         VCARB_Scheduler::schedule_aggregate_debounced($view, $period);
 
+        $hotspots_rebuilt = false;
+
+        if (
+            class_exists('VCARB_Product_Insights') &&
+            method_exists('VCARB_Product_Insights', 'rebuild_period')
+        ) {
+            VCARB_Product_Insights::rebuild_period($view, $period);
+            $hotspots_rebuilt = true;
+        }
+
         wp_send_json_success([
-            'scheduled' => true,
-            'rebuilt'   => $view,
-            'period'    => $period,
+            'scheduled'        => true,
+            'rebuilt'          => $view,
+            'period'           => $period,
+            'hotspots_rebuilt' => $hotspots_rebuilt,
         ]);
     }
 }

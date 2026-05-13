@@ -6,6 +6,7 @@ defined('ABSPATH') || exit;
  *
  * Responsibilities:
  * - Clear plugin cron events.
+ * - Clear plugin Action Scheduler events when available.
  * - Flush rewrite rules.
  *
  * Important:
@@ -20,7 +21,7 @@ defined('ABSPATH') || exit;
 final class VCARB_Reports_Deactivator
 {
     /**
-     * Plugin cron hooks that should be cleared on deactivation.
+     * Plugin cron/action hooks that should be cleared on deactivation.
      *
      * Keep these hook names in sync with the scheduler and main plugin file.
      *
@@ -64,12 +65,47 @@ final class VCARB_Reports_Deactivator
      */
     public static function deactivate(): void
     {
-        if (function_exists('wp_clear_scheduled_hook')) {
-            foreach (self::cron_hooks() as $vcarb_cron_hook) {
+        self::clear_wp_cron_hooks();
+        self::clear_action_scheduler_hooks();
+
+        flush_rewrite_rules(false);
+    }
+
+    /**
+     * Clear WP-Cron events.
+     */
+    private static function clear_wp_cron_hooks(): void
+    {
+        foreach (self::cron_hooks() as $vcarb_cron_hook) {
+            /*
+             * wp_unschedule_hook() clears all scheduled events for the hook,
+             * including events scheduled with arguments.
+             */
+            if (function_exists('wp_unschedule_hook')) {
+                wp_unschedule_hook($vcarb_cron_hook);
+                continue;
+            }
+
+            /*
+             * Fallback for older WordPress versions.
+             */
+            if (function_exists('wp_clear_scheduled_hook')) {
                 wp_clear_scheduled_hook($vcarb_cron_hook);
             }
         }
+    }
 
-        flush_rewrite_rules(false);
+    /**
+     * Clear Action Scheduler events when WooCommerce/Action Scheduler is available.
+     */
+    private static function clear_action_scheduler_hooks(): void
+    {
+        if (!function_exists('as_unschedule_all_actions')) {
+            return;
+        }
+
+        foreach (self::cron_hooks() as $vcarb_action_hook) {
+            as_unschedule_all_actions($vcarb_action_hook);
+        }
     }
 }

@@ -830,15 +830,19 @@ final class VCARB_Insights
 
     private static function pct_change($now, $prev): ?float
     {
-        if (!is_numeric($now) || $prev === null || !is_numeric($prev)) {
+        if (!is_numeric($now) || $prev === null || $prev === '' || !is_numeric($prev)) {
             return null;
         }
 
         $now  = (float) $now;
         $prev = (float) $prev;
 
-        if ($prev == 0.0) {
-            return ($now == 0.0) ? 0.0 : null;
+        /*
+     * No meaningful comparison when the previous value is zero.
+     * This prevents first-period insights from treating 0 → 0 as a real trend.
+     */
+        if ($prev <= 0.0) {
+            return null;
         }
 
         return (($now - $prev) / abs($prev)) * 100.0;

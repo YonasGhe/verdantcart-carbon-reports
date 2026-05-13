@@ -209,9 +209,29 @@ class VCARB_Backfill_Ajax
             return;
         }
 
-        $order->delete_meta_data(VCARB_Order_Tracker::META_COUNTED);
-        $order->delete_meta_data(VCARB_Order_Tracker::META_HOTSPOTS_COUNTED);
-        $order->delete_meta_data(VCARB_Order_Tracker::META_CO2_KG);
+        $meta_keys = [
+            // Current VCARB meta.
+            VCARB_Order_Tracker::META_COUNTED,
+            VCARB_Order_Tracker::META_HOTSPOTS_COUNTED,
+            VCARB_Order_Tracker::META_CO2_KG,
+
+            // Legacy AmatorCarbon meta.
+            '_amatorcarbon_order_co2_counted',
+            '_amatorcarbon_order_hotspots_counted',
+            '_amatorcarbon_order_co2_kg',
+            '_amatorcarbon_order_co2_lock',
+
+            // Older GreenCart / AI Carbon meta.
+            '_gc_order_co2_counted',
+            '_gc_order_hotspots_counted',
+            '_gc_order_co2_kg',
+            '_gc_order_co2_lock',
+        ];
+
+        foreach ($meta_keys as $meta_key) {
+            $order->delete_meta_data($meta_key);
+        }
+
         $order->save();
     }
 
@@ -231,6 +251,23 @@ class VCARB_Backfill_Ajax
         return false;
     }
 
+    private function order_has_any_counted_flag(WC_Order $order): bool
+    {
+        $keys = [
+            VCARB_Order_Tracker::META_COUNTED,
+            '_amatorcarbon_order_co2_counted',
+            '_gc_order_co2_counted',
+        ];
+
+        foreach ($keys as $key) {
+            if ((string) $order->get_meta($key, true) !== '') {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
     private function stop_response(array $state): void
     {
         $this->delete_stop_flag();
@@ -415,7 +452,7 @@ class VCARB_Backfill_Ajax
                     continue;
                 }
 
-                $counted = ($order->get_meta(VCARB_Order_Tracker::META_COUNTED, true) === 'yes');
+                $counted = $this->order_has_any_counted_flag($order);
 
                 if ($counted && !$include_counted) {
                     $skipped_this_batch++;

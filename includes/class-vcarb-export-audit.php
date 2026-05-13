@@ -35,8 +35,6 @@ class VCARB_Export_Audit
             result VARCHAR(20) NOT NULL DEFAULT 'ok',
             http_status SMALLINT UNSIGNED NOT NULL DEFAULT 200,
             message TEXT NULL,
-            ip VARCHAR(64) NOT NULL DEFAULT '',
-            user_agent VARCHAR(255) NOT NULL DEFAULT '',
             PRIMARY KEY (id),
             KEY created_at (created_at),
             KEY actor_user_id (actor_user_id),
@@ -71,8 +69,6 @@ class VCARB_Export_Audit
             'result'          => 'ok',
             'http_status'     => 200,
             'message'         => '',
-            'ip'              => self::ip(),
-            'user_agent'      => self::ua(),
         ];
 
         $data = array_merge($defaults, $row);
@@ -90,8 +86,6 @@ class VCARB_Export_Audit
             'result'          => substr(sanitize_key((string) $data['result']), 0, 20),
             'http_status'     => max(100, min(599, (int) $data['http_status'])),
             'message'         => sanitize_textarea_field((string) $data['message']),
-            'ip'              => substr(sanitize_text_field((string) $data['ip']), 0, 64),
-            'user_agent'      => substr(sanitize_text_field((string) $data['user_agent']), 0, 255),
         ];
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Writing to plugin-owned custom audit table.
@@ -111,8 +105,6 @@ class VCARB_Export_Audit
                 '%s', // result
                 '%d', // http_status
                 '%s', // message
-                '%s', // ip
-                '%s', // user_agent
             ]
         );
     }
@@ -134,27 +126,5 @@ class VCARB_Export_Audit
         return is_string($role) && $role !== ''
             ? sanitize_key($role)
             : 'user';
-    }
-
-    private static function ua(): string
-    {
-        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- User agent is unslashed and sanitized immediately below.
-        if (empty($_SERVER['HTTP_USER_AGENT'])) {
-            return '';
-        }
-
-        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- User agent is unslashed and sanitized immediately.
-        return sanitize_text_field(wp_unslash($_SERVER['HTTP_USER_AGENT']));
-    }
-
-    private static function ip(): string
-    {
-        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Remote address is unslashed and sanitized immediately below.
-        if (empty($_SERVER['REMOTE_ADDR'])) {
-            return '';
-        }
-
-        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Remote address is unslashed and sanitized immediately.
-        return sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR']));
     }
 }
