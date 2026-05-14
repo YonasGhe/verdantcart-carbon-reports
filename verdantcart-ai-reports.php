@@ -3,7 +3,7 @@
 /**
  * Plugin Name: VerdantCart Carbon Reports
  * Description: Carbon analytics and reporting for WooCommerce stores.
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: Yonas
  * Text Domain: verdantcart-ai-reports
  * Domain Path: /languages
@@ -39,12 +39,71 @@ add_action('before_woocommerce_init', 'vcarb_declare_wc_compatibility');
  * Constants
  * ------------------------------------------------------------
  */
-defined('VCARB_VERSION') || define('VCARB_VERSION', '1.1.0');
-defined('VCARB_DB_VERSION') || define('VCARB_DB_VERSION', '1.0.2');
+defined('VCARB_VERSION') || define('VCARB_VERSION', '1.2.0');
+defined('VCARB_DB_VERSION') || define('VCARB_DB_VERSION', '1.2.0');
 defined('VCARB_PLUGIN_FILE') || define('VCARB_PLUGIN_FILE', __FILE__);
 defined('VCARB_PLUGIN_DIR') || define('VCARB_PLUGIN_DIR', plugin_dir_path(__FILE__));
 defined('VCARB_PLUGIN_URL') || define('VCARB_PLUGIN_URL', plugin_dir_url(__FILE__));
 defined('VCARB_TEXT_DOMAIN') || define('VCARB_TEXT_DOMAIN', 'verdantcart-ai-reports');
+
+/**
+ * ------------------------------------------------------------
+ * Central table helpers
+ * ------------------------------------------------------------
+ */
+if (!function_exists('vcarb_logs_table')) {
+    function vcarb_logs_table(): string
+    {
+        global $wpdb;
+
+        return $wpdb->prefix . 'vcarb_logs';
+    }
+}
+
+if (!function_exists('vcarb_product_logs_table')) {
+    function vcarb_product_logs_table(): string
+    {
+        global $wpdb;
+
+        return $wpdb->prefix . 'vcarb_product_logs';
+    }
+}
+
+if (!function_exists('vcarb_export_audit_table')) {
+    function vcarb_export_audit_table(): string
+    {
+        global $wpdb;
+
+        return $wpdb->prefix . 'vcarb_export_audit';
+    }
+}
+
+if (!function_exists('vcarb_legacy_logs_table')) {
+    function vcarb_legacy_logs_table(): string
+    {
+        global $wpdb;
+
+        return $wpdb->prefix . 'amatorcarbon_logs';
+    }
+}
+
+if (!function_exists('vcarb_legacy_product_logs_table')) {
+    function vcarb_legacy_product_logs_table(): string
+    {
+        global $wpdb;
+
+        return $wpdb->prefix . 'amatorcarbon_product_logs';
+    }
+}
+
+if (!function_exists('vcarb_legacy_export_audit_table')) {
+    function vcarb_legacy_export_audit_table(): string
+    {
+        global $wpdb;
+
+        return $wpdb->prefix . 'amatorcarbon_export_audit';
+    }
+}
 
 /**
  * ------------------------------------------------------------
@@ -81,7 +140,6 @@ function vcarb_require_files(): void
         'includes/class-vcarb-admin-report-ajax.php',
         'includes/class-vcarb-insights-ajax.php',
         'includes/class-vcarb-backfill-ajax.php',
-        'includes/class-vcarb-ajax.php',
 
         'includes/vcarb-admin-guard.php',
         'includes/vcarb-access-guards.php',
@@ -115,12 +173,8 @@ if (class_exists('VCARB_Reports_Activator')) {
     VCARB_Reports_Activator::register_hooks(VCARB_PLUGIN_FILE);
 }
 
-if (class_exists('VCARB_Reports_Deactivator')) {
-    register_deactivation_hook(
-        VCARB_PLUGIN_FILE,
-        ['VCARB_Reports_Deactivator', 'deactivate']
-    );
-}
+register_activation_hook(VCARB_PLUGIN_FILE, 'vcarb_migrate_db');
+register_activation_hook(VCARB_PLUGIN_FILE, 'vcarb_schedule_cron_events');
 
 /**
  * ------------------------------------------------------------
@@ -147,27 +201,41 @@ function vcarb_admin_notice_wc_missing(): void
 
 /**
  * ------------------------------------------------------------
- * DB migration
- *
- * Important:
- * Keep the existing 1.0.2 table names for now.
- * Do not rename these tables yet, otherwise old user data can be lost.
+ * DB helpers
  * ------------------------------------------------------------
  */
-function vcarb_migrate_db(): void
+function vcarb_table_exists(string $table): bool
+{
+    global $wpdb;
+
+    $table = trim($table);
+
+    if ($table === '') {
+        return false;
+    }
+
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Checking plugin-owned table existence.
+    $found = $wpdb->get_var(
+        $wpdb->prepare(
+            'SHOW TABLES LIKE %s',
+            $wpdb->esc_like($table)
+        )
+    );
+
+    return is_string($found) && $found === $table;
+}
+
+function vcarb_install_logs_table(): void
 {
     global $wpdb;
 
     require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
-    $charset_collate    = $wpdb->get_charset_collate();
-    $logs_table         = $wpdb->prefix . 'amatorcarbon_logs';
-    $products_table     = $wpdb->prefix . 'amatorcarbon_product_logs';
-    $logs_table_sql     = esc_sql($logs_table);
-    $products_table_sql = esc_sql($products_table);
+    $table           = esc_sql(vcarb_logs_table());
+    $charset_collate = $wpdb->get_charset_collate();
 
     dbDelta("
-        CREATE TABLE {$logs_table_sql} (
+        CREATE TABLE {$table} (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
             user_id BIGINT UNSIGNED NOT NULL DEFAULT 0,
             view_type VARCHAR(10) NOT NULL DEFAULT 'month',
@@ -182,9 +250,19 @@ function vcarb_migrate_db(): void
             KEY created_at (created_at)
         ) {$charset_collate};
     ");
+}
+
+function vcarb_install_product_logs_table(): void
+{
+    global $wpdb;
+
+    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+    $table           = esc_sql(vcarb_product_logs_table());
+    $charset_collate = $wpdb->get_charset_collate();
 
     dbDelta("
-        CREATE TABLE {$products_table_sql} (
+        CREATE TABLE {$table} (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
             period VARCHAR(20) NOT NULL,
             product_id BIGINT UNSIGNED NOT NULL,
@@ -197,57 +275,198 @@ function vcarb_migrate_db(): void
             KEY product_id (product_id)
         ) {$charset_collate};
     ");
+}
 
-    // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-    $has_view_type = $wpdb->get_var(
-        $wpdb->prepare(
-            "SHOW COLUMNS FROM {$logs_table_sql} LIKE %s",
-            'view_type'
-        )
-    );
-    // phpcs:enable
+function vcarb_install_export_audit_table(): void
+{
+    global $wpdb;
 
-    if (!$has_view_type) {
-        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-        $wpdb->query(
-            "ALTER TABLE {$logs_table_sql} ADD COLUMN view_type VARCHAR(10) NOT NULL DEFAULT 'month' AFTER user_id"
-        );
+    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+    $table           = esc_sql(vcarb_export_audit_table());
+    $charset_collate = $wpdb->get_charset_collate();
+
+    dbDelta("
+        CREATE TABLE {$table} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            created_at DATETIME NOT NULL,
+            actor_user_id BIGINT UNSIGNED NOT NULL DEFAULT 0,
+            actor_role VARCHAR(50) NOT NULL DEFAULT '',
+            scope VARCHAR(20) NOT NULL DEFAULT 'user',
+            format VARCHAR(10) NOT NULL DEFAULT 'csv',
+            view VARCHAR(10) NOT NULL DEFAULT 'month',
+            requested_date VARCHAR(20) NOT NULL DEFAULT '',
+            resolved_anchor VARCHAR(20) NOT NULL DEFAULT '',
+            action VARCHAR(60) NOT NULL DEFAULT '',
+            result VARCHAR(20) NOT NULL DEFAULT 'ok',
+            http_status SMALLINT UNSIGNED NOT NULL DEFAULT 200,
+            message TEXT NULL,
+            ip VARCHAR(64) NOT NULL DEFAULT '',
+            user_agent VARCHAR(255) NOT NULL DEFAULT '',
+            PRIMARY KEY (id),
+            KEY created_at (created_at),
+            KEY actor_user_id (actor_user_id),
+            KEY view (view),
+            KEY result (result),
+            KEY action (action),
+            KEY scope (scope)
+        ) {$charset_collate};
+    ");
+}
+
+/**
+ * ------------------------------------------------------------
+ * Legacy to VCARB data migration
+ *
+ * Safe behavior:
+ * - Creates new vcarb_* tables.
+ * - Copies from old amatorcarbon_* tables if they exist.
+ * - Does not delete old tables.
+ * - Uses INSERT IGNORE so re-running migration does not duplicate rows.
+ * ------------------------------------------------------------
+ */
+function vcarb_migrate_legacy_tables_to_vcarb(): void
+{
+    global $wpdb;
+
+    $new_logs     = esc_sql(vcarb_logs_table());
+    $old_logs     = esc_sql(vcarb_legacy_logs_table());
+    $new_products = esc_sql(vcarb_product_logs_table());
+    $old_products = esc_sql(vcarb_legacy_product_logs_table());
+    $new_audit    = esc_sql(vcarb_export_audit_table());
+    $old_audit    = esc_sql(vcarb_legacy_export_audit_table());
+
+    if (vcarb_table_exists(vcarb_legacy_logs_table()) && vcarb_table_exists(vcarb_logs_table())) {
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Copying between plugin-owned tables.
+        $wpdb->query("
+            INSERT IGNORE INTO `{$new_logs}`
+                (id, user_id, view_type, period, orders, total_co2, created_at)
+            SELECT
+                id,
+                user_id,
+                COALESCE(NULLIF(view_type, ''), 'month') AS view_type,
+                period,
+                orders,
+                total_co2,
+                created_at
+            FROM `{$old_logs}`
+        ");
         // phpcs:enable
     }
 
+    if (vcarb_table_exists(vcarb_legacy_product_logs_table()) && vcarb_table_exists(vcarb_product_logs_table())) {
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Copying between plugin-owned tables.
+        $wpdb->query("
+            INSERT IGNORE INTO `{$new_products}`
+                (id, period, product_id, orders, total_co2, created_at)
+            SELECT
+                id,
+                period,
+                product_id,
+                orders,
+                total_co2,
+                created_at
+            FROM `{$old_products}`
+        ");
+        // phpcs:enable
+    }
+
+    if (vcarb_table_exists(vcarb_legacy_export_audit_table()) && vcarb_table_exists(vcarb_export_audit_table())) {
+        /*
+         * Old audit tables may not have ip/user_agent columns.
+         * Use empty values for those new 1.2.0 columns during migration.
+         */
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Copying between plugin-owned audit tables.
+        $wpdb->query("
+            INSERT IGNORE INTO `{$new_audit}`
+                (
+                    id,
+                    created_at,
+                    actor_user_id,
+                    actor_role,
+                    scope,
+                    format,
+                    view,
+                    requested_date,
+                    resolved_anchor,
+                    action,
+                    result,
+                    http_status,
+                    message,
+                    ip,
+                    user_agent
+                )
+            SELECT
+                id,
+                created_at,
+                actor_user_id,
+                actor_role,
+                scope,
+                format,
+                view,
+                requested_date,
+                resolved_anchor,
+                action,
+                result,
+                http_status,
+                message,
+                '' AS ip,
+                '' AS user_agent
+            FROM `{$old_audit}`
+        ");
+        // phpcs:enable
+    }
+}
+
+/**
+ * ------------------------------------------------------------
+ * DB migration
+ * ------------------------------------------------------------
+ */
+function vcarb_migrate_db(): void
+{
+    global $wpdb;
+
+    vcarb_install_logs_table();
+    vcarb_install_product_logs_table();
+    vcarb_install_export_audit_table();
+
+    vcarb_migrate_legacy_tables_to_vcarb();
+
+    /*
+     * Repair old imported rows that may not have view_type set.
+     */
+    $logs_table = esc_sql(vcarb_logs_table());
+
     // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
     $wpdb->query(
-        "UPDATE {$logs_table_sql}
+        "UPDATE `{$logs_table}`
          SET view_type = 'week'
          WHERE (view_type = '' OR view_type IS NULL)
            AND period REGEXP '^[0-9]{4}-W[0-9]{2}$'"
     );
 
     $wpdb->query(
-        "UPDATE {$logs_table_sql}
+        "UPDATE `{$logs_table}`
          SET view_type = 'year'
          WHERE (view_type = '' OR view_type IS NULL)
            AND period REGEXP '^[0-9]{4}$'"
     );
 
     $wpdb->query(
-        "UPDATE {$logs_table_sql}
+        "UPDATE `{$logs_table}`
          SET view_type = 'month'
          WHERE (view_type = '' OR view_type IS NULL)
            AND period REGEXP '^[0-9]{4}-[0-9]{2}$'"
     );
     // phpcs:enable
 
-    if (
-        class_exists('VCARB_Export_Audit') &&
-        method_exists('VCARB_Export_Audit', 'install_table')
-    ) {
-        VCARB_Export_Audit::install_table();
-    }
-
     update_option('vcarb_db_version', VCARB_DB_VERSION, false);
 
-    // Legacy marker kept so older transitional code sees the current DB version too.
+    /*
+     * Legacy marker kept so transitional installs do not repeatedly
+     * think the database is outdated.
+     */
     update_option('amatorcarbon_db_version', VCARB_DB_VERSION, false);
 }
 
@@ -286,10 +505,24 @@ function vcarb_schedule_cron_events(): void
 {
     $now = time();
 
-    // Clear old 1.0.x cron hooks to prevent duplicate scheduled events.
+    /*
+     * Clear old cron hooks to prevent duplicate scheduled events.
+     */
     wp_clear_scheduled_hook('amatorcarbon_weekly_event');
     wp_clear_scheduled_hook('amatorcarbon_monthly_event');
     wp_clear_scheduled_hook('amatorcarbon_yearly_event');
+
+    wp_clear_scheduled_hook('acr_weekly_event');
+    wp_clear_scheduled_hook('acr_monthly_event');
+    wp_clear_scheduled_hook('acr_yearly_event');
+
+    wp_clear_scheduled_hook('ai_carbon_weekly_event');
+    wp_clear_scheduled_hook('ai_carbon_monthly_event');
+    wp_clear_scheduled_hook('ai_carbon_yearly_event');
+
+    wp_clear_scheduled_hook('gc_ai_weekly_event');
+    wp_clear_scheduled_hook('gc_ai_monthly_event');
+    wp_clear_scheduled_hook('gc_ai_yearly_event');
 
     if (!wp_next_scheduled('vcarb_weekly_event')) {
         wp_schedule_event($now + HOUR_IN_SECONDS, 'weekly', 'vcarb_weekly_event');
@@ -344,7 +577,6 @@ function vcarb_maybe_upgrade_db(): void
 {
     $installed = (string) get_option('vcarb_db_version', '');
 
-    // Support upgrade from 1.0.2 where the option name was amatorcarbon_db_version.
     if ($installed === '') {
         $installed = (string) get_option('amatorcarbon_db_version', '');
     }
@@ -365,9 +597,6 @@ function vcarb_register_default_filters(): void
     /*
      * No forced defaults here.
      * Calculation classes already pass safe default values to apply_filters().
-     * Merchants/developers can override:
-     * - vcarb_skip_items_without_weight
-     * - vcarb_default_product_weight
      */
 }
 
@@ -409,10 +638,6 @@ function vcarb_bootstrap(): void
 
     if (class_exists('VCARB_Backfill_Ajax') && method_exists('VCARB_Backfill_Ajax', 'register')) {
         VCARB_Backfill_Ajax::register();
-    }
-
-    if (class_exists('VCARB_Ajax') && method_exists('VCARB_Ajax', 'register')) {
-        VCARB_Ajax::register();
     }
 
     if (class_exists('VCARB_Front_Context') && method_exists('VCARB_Front_Context', 'register_hooks')) {

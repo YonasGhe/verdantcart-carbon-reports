@@ -22,8 +22,8 @@ defined('ABSPATH') || exit;
  * - Heavy recalculation belongs only in cron/backfill/rebuild flows
  *
  * Database note:
- * - This version keeps the existing 1.0.2 table name `amatorcarbon_logs`.
- * - Do not rename DB tables to `vcarb_*` until you add a safe migration.
+ * - Uses the current VerdantCart table helper.
+ * - Existing 1.0.2 data should be copied into the new vcarb_* tables by the DB migration.
  */
 class VCARB_Dataset_Service
 {
@@ -34,23 +34,6 @@ class VCARB_Dataset_Service
     private const DATASET_ALLOWED_VIEWS = ['month', 'week', 'year'];
 
     private const ADMIN_ROWS_LIMIT = 200;
-
-    /**
-     * Kept only for backwards compatibility with existing construction call sites.
-     *
-     * This service no longer uses live-week repositories during normal requests.
-     *
-     * @var mixed
-     */
-    protected $live_week_repo = null;
-
-    /**
-     * @param mixed $live_week_repo Backward-compatible unused dependency.
-     */
-    public function __construct($live_week_repo = null)
-    {
-        $this->live_week_repo = $live_week_repo;
-    }
 
     public function build_user_dataset(int $user_id, string $view, string $raw_date = ''): array
     {
@@ -99,6 +82,10 @@ class VCARB_Dataset_Service
         $chart = $this->build_chart_block_snapshot_only($user_id, $view, $date);
         $chart = $this->align_chart_current_point_with_metrics($chart, $view, $date, $metrics);
 
+        /*
+     * Product hotspots are stored as store-level period snapshots.
+     * Show them on the front dashboard so the Carbon Hotspot panel can display data.
+     */
         $hotspots = $this->build_hotspots_block($view, $date, $has);
 
         $metrics['hotspots'] = $hotspots;
@@ -191,6 +178,17 @@ class VCARB_Dataset_Service
         $view = sanitize_key($view);
 
         return in_array($view, self::DATASET_ALLOWED_VIEWS, true) ? $view : 'month';
+    }
+
+    protected function logs_table(): string
+    {
+        if (function_exists('vcarb_logs_table')) {
+            return vcarb_logs_table();
+        }
+
+        global $wpdb;
+
+        return $wpdb->prefix . 'vcarb_logs';
     }
 
     protected function safe_sanitize_period_for_view(string $view, string $raw_date): string
@@ -299,6 +297,27 @@ class VCARB_Dataset_Service
         ];
     }
 
+    protected function logs_table_exists(): bool
+    {
+        if (function_exists('vcarb_table_exists')) {
+            return vcarb_table_exists($this->logs_table());
+        }
+
+        global $wpdb;
+
+        $table = $this->logs_table();
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Checking plugin-owned table existence.
+        $found = $wpdb->get_var(
+            $wpdb->prepare(
+                'SHOW TABLES LIKE %s',
+                $wpdb->esc_like($table)
+            )
+        );
+
+        return is_string($found) && $found === $table;
+    }
+
     protected function build_chart_block_snapshot_only(int $user_id, string $view, string $date): array
     {
         $chart = [
@@ -382,11 +401,15 @@ class VCARB_Dataset_Service
     {
         global $wpdb;
 
+        if (!$this->logs_table_exists()) {
+            return $this->empty_snapshot_chart_series();
+        }
+
         if (!preg_match('/^\d{4}$/', $anchor)) {
             return $this->empty_snapshot_chart_series();
         }
 
-        $table = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        $table = esc_sql($this->logs_table());
         $year  = (int) $anchor;
         $like  = $anchor . '-%';
 
@@ -470,7 +493,11 @@ class VCARB_Dataset_Service
     ): array {
         global $wpdb;
 
-        $table  = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        if (!$this->logs_table_exists()) {
+            return $this->empty_snapshot_chart_series();
+        }
+
+        $table  = esc_sql($this->logs_table());
         $view   = $this->normalize_view($view);
         $anchor = $this->safe_sanitize_period_for_view($view, $anchor);
 
@@ -518,6 +545,10 @@ class VCARB_Dataset_Service
     {
         global $wpdb;
 
+        if (!$this->logs_table_exists()) {
+            return [];
+        }
+
         $view = $this->normalize_view($view);
         $date = $this->safe_sanitize_period_for_view($view, $date);
 
@@ -525,7 +556,7 @@ class VCARB_Dataset_Service
             return [];
         }
 
-        $table = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        $table = esc_sql($this->logs_table());
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reading plugin-owned snapshot table; table name is derived from $wpdb->prefix and escaped.
         $current_rows = $wpdb->get_results(
@@ -812,9 +843,22 @@ class VCARB_Dataset_Service
                 return [
                     'score'       => $value,
                     'value'       => $value,
-                    'label'       => isset($score['label']) ? (string) $score['label'] : $this->score_label_from_value($value),
-                    'summary'     => isset($score['summary']) ? (string) $score['summary'] : '',
-                    'components'  => isset($score['components']) && is_array($score['components']) ? $score['components'] : [],
+                    'label'       => isset($score['label']) && (string) $score['label'] !== ''
+                        ? (string) $score['label']
+                        : $this->score_label_from_value($value),
+
+                    /*
+                 * Important:
+                 * Do not trust a static insight summary here.
+                 * The dashboard changes period by AJAX, so this summary must always
+                 * be rebuilt from the selected snapshot metrics.
+                 */
+                    'summary'     => $this->score_summary_from_metrics($fallback_metrics),
+
+                    'components'  => isset($score['components']) && is_array($score['components'])
+                        ? $score['components']
+                        : [],
+
                     'delta_text'  => $this->score_delta_text_from_metrics($fallback_metrics),
                     'delta_class' => $this->score_delta_class_from_metrics($fallback_metrics),
                 ];
@@ -858,7 +902,47 @@ class VCARB_Dataset_Service
 
     protected function score_delta_class_from_metrics(array $metrics): string
     {
-        unset($metrics);
+        return $this->score_metric_delta_class_from_metrics($metrics);
+    }
+
+    protected function score_summary_from_metrics(array $metrics): string
+    {
+        $delta = $metrics['delta'] ?? null;
+
+        if ($delta === null || $delta === '' || !is_numeric($delta)) {
+            return __('Your sustainability score is based on CO₂ per order, emissions trend, reporting history, and hotspot concentration.', 'verdantcart-ai-reports');
+        }
+
+        $delta = (float) $delta;
+
+        if ($delta < -0.01) {
+            return __('Your estimated emissions decreased compared with the previous snapshot period.', 'verdantcart-ai-reports');
+        }
+
+        if ($delta > 0.01) {
+            return __('Your estimated emissions increased compared with the previous snapshot period.', 'verdantcart-ai-reports');
+        }
+
+        return __('Your estimated emissions stayed nearly unchanged compared with the previous snapshot period.', 'verdantcart-ai-reports');
+    }
+
+    protected function score_metric_delta_class_from_metrics(array $metrics): string
+    {
+        $delta = $metrics['delta'] ?? null;
+
+        if ($delta === null || $delta === '' || !is_numeric($delta)) {
+            return 'gc-neutral';
+        }
+
+        $delta = (float) $delta;
+
+        if ($delta < -0.01) {
+            return 'gc-carbon-good';
+        }
+
+        if ($delta > 0.01) {
+            return 'gc-carbon-bad';
+        }
 
         return 'gc-neutral';
     }
@@ -874,6 +958,9 @@ class VCARB_Dataset_Service
         if ($orders <= 0) {
             return [
                 'score'       => null,
+                'value'       => null,
+                'label'       => __('—', 'verdantcart-ai-reports'),
+                'summary'     => __('No orders are available for this selected snapshot period yet.', 'verdantcart-ai-reports'),
                 'delta_text'  => __('No orders yet for this period.', 'verdantcart-ai-reports'),
                 'delta_class' => 'gc-neutral',
             ];
@@ -914,8 +1001,11 @@ class VCARB_Dataset_Service
 
         return [
             'score'       => $score,
-            'delta_text'  => $delta_text,
-            'delta_class' => $delta_class,
+            'value'       => $score,
+            'label'       => $this->score_label_from_value($score),
+            'summary'     => $this->score_summary_from_metrics($metrics),
+            'delta_text'  => $this->score_delta_text_from_metrics($metrics),
+            'delta_class' => $this->score_delta_class_from_metrics($metrics),
         ];
     }
 

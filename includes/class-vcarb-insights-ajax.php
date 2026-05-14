@@ -17,8 +17,7 @@ class VCARB_Insights_Ajax
             return;
         }
 
-        $did = true;
-
+        $did  = true;
         $self = new self();
 
         add_action('wp_ajax_vcarb_admin_insights', [$self, 'ajax_admin_insights']);
@@ -39,14 +38,20 @@ class VCARB_Insights_Ajax
         return in_array($view, self::ALLOWED_VIEWS, true) ? $view : 'month';
     }
 
-    private function missing_classes_error(): void
+    private function ensure_dependencies(): void
     {
-        wp_send_json_error(
-            [
-                'message' => __('Missing required classes.', 'verdantcart-ai-reports'),
-            ],
-            500
-        );
+        if (
+            !class_exists('VCARB_Calculator') ||
+            !class_exists('VCARB_Insights') ||
+            !class_exists('VCARB_Insights_Renderer')
+        ) {
+            wp_send_json_error(
+                [
+                    'message' => __('Missing required classes.', 'verdantcart-ai-reports'),
+                ],
+                500
+            );
+        }
     }
 
     private function empty_insights_html(): string
@@ -78,17 +83,6 @@ class VCARB_Insights_Ajax
         ]);
     }
 
-    private function ensure_dependencies(): void
-    {
-        if (
-            !class_exists('VCARB_Calculator') ||
-            !class_exists('VCARB_Insights') ||
-            !class_exists('VCARB_Insights_Renderer')
-        ) {
-            $this->missing_classes_error();
-        }
-    }
-
     private function verify_insights_nonce(string $new_action, string $legacy_action): void
     {
         $nonce = $this->get_post_string('nonce', '');
@@ -117,24 +111,47 @@ class VCARB_Insights_Ajax
 
     private function resolve_requested_period(string $view, string $raw_date): string
     {
-        return $this->sanitize_period_for_view_safe($view, $raw_date);
+        $view = $this->normalize_view($view);
+
+        $date = $this->sanitize_period_for_view_safe($view, $raw_date);
+
+        if ($date !== '') {
+            return $date;
+        }
+
+        /*
+         * If AJAX sends no date, fall back to current/latest available snapshot.
+         */
+        $latest = $this->latest_store_snapshot_period($view);
+
+        return $this->sanitize_period_for_view_safe($view, (string) $latest);
     }
 
     private function has_store_snapshot_for_period(string $view, string $date): bool
     {
+        $view = $this->normalize_view($view);
+        $date = $this->sanitize_period_for_view_safe($view, $date);
+
         if ($date === '') {
             return false;
         }
 
-        if (!class_exists('VCARB_Calculator')) {
-            return false;
-        }
-
-        return is_object(VCARB_Calculator::get_row(0, $view, $date));
+        return $this->store_snapshot_exists($view, $date);
     }
 
     private function load_snapshot_rows(int $subject_user_id, string $view, string $date): array
     {
+        $view = $this->normalize_view($view);
+        $date = $this->sanitize_period_for_view_safe($view, $date);
+
+        if ($date === '' || !class_exists('VCARB_Calculator')) {
+            return [
+                'current'  => null,
+                'previous' => null,
+                'has'      => false,
+            ];
+        }
+
         $current_row = VCARB_Calculator::get_row($subject_user_id, $view, $date);
 
         if (!is_object($current_row)) {
@@ -145,7 +162,7 @@ class VCARB_Insights_Ajax
             ];
         }
 
-        $prev_period = $this->get_previous_available_snapshot_period($view, $date);
+        $prev_period  = $this->get_previous_available_snapshot_period($view, $date);
         $previous_row = ($prev_period !== '')
             ? VCARB_Calculator::get_row($subject_user_id, $view, $prev_period)
             : null;

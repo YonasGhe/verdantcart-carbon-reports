@@ -9,11 +9,9 @@ defined('ABSPATH') || exit;
  * - Does not use trait constants, so it remains safe for PHP 8.0/8.1.
  *
  * Important:
- * - For now, this keeps the existing 1.0.2 database table names:
- *   amatorcarbon_logs
- *   amatorcarbon_product_logs
- *
- * Do not rename the tables to vcarb_* until you add a safe data migration.
+ * - Uses the current VerdantCart analytics table helper.
+ * - Legacy amatorcarbon_* tables are migrated by vcarb_migrate_db().
+ * - Do not hardcode table names in this trait.
  */
 trait VCARB_Snapshot_Trait
 {
@@ -28,6 +26,44 @@ trait VCARB_Snapshot_Trait
 
     /** @var array<string,array<string,mixed>> */
     protected static array $vcarb_snapshot_anchor_cache = [];
+
+    protected static function vcarb_snapshot_logs_table(): string
+    {
+        if (function_exists('vcarb_logs_table')) {
+            return vcarb_logs_table();
+        }
+
+        global $wpdb;
+
+        return $wpdb->prefix . 'vcarb_logs';
+    }
+
+    protected static function vcarb_snapshot_table_exists(): bool
+    {
+        global $wpdb;
+
+        $table = self::vcarb_snapshot_logs_table();
+
+        if (function_exists('vcarb_table_exists')) {
+            return vcarb_table_exists($table);
+        }
+
+        $table = trim($table);
+
+        if ($table === '') {
+            return false;
+        }
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Checking plugin-owned table existence.
+        $found = $wpdb->get_var(
+            $wpdb->prepare(
+                'SHOW TABLES LIKE %s',
+                $wpdb->esc_like($table)
+            )
+        );
+
+        return is_string($found) && $found === $table;
+    }
 
     /**
      * Keep allowed views in a method instead of a trait constant.
@@ -205,10 +241,11 @@ trait VCARB_Snapshot_Trait
             return;
         }
 
-        /*
-         * Keep legacy table name for now to preserve existing 1.0.2 user data.
-         */
-        $table = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        if (!self::vcarb_snapshot_table_exists()) {
+            return;
+        }
+
+        $table = esc_sql(self::vcarb_snapshot_logs_table());
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reading/upserting plugin-owned snapshot table; query is prepared and table name is derived from $wpdb->prefix.
         $sum = $wpdb->get_row(
@@ -246,7 +283,7 @@ trait VCARB_Snapshot_Trait
                 $period,
                 $orders,
                 number_format($co2, 2, '.', ''),
-                current_time('mysql', true)
+                current_time('mysql')
             )
         );
         // phpcs:enable
@@ -294,7 +331,12 @@ trait VCARB_Snapshot_Trait
 
         global $wpdb;
 
-        $table = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        if (!self::vcarb_snapshot_table_exists()) {
+            self::$vcarb_snapshot_exists_cache[$cache_key] = false;
+            return false;
+        }
+
+        $table = esc_sql(self::vcarb_snapshot_logs_table());
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reading plugin-owned snapshot table; query is prepared and table name is derived from $wpdb->prefix.
         $exists = (bool) $wpdb->get_var(
@@ -339,7 +381,12 @@ trait VCARB_Snapshot_Trait
             return self::$vcarb_snapshot_latest_cache[$view];
         }
 
-        $table = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        if (!self::vcarb_snapshot_table_exists()) {
+            self::$vcarb_snapshot_latest_cache[$view] = '';
+            return '';
+        }
+
+        $table = esc_sql(self::vcarb_snapshot_logs_table());
         $regex = $this->period_regex_safe($view);
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reading plugin-owned snapshot table; query is prepared and table name is derived from $wpdb->prefix.
@@ -394,7 +441,12 @@ trait VCARB_Snapshot_Trait
             return self::$vcarb_snapshot_updated_cache[$cache_key];
         }
 
-        $table = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        if (!self::vcarb_snapshot_table_exists()) {
+            self::$vcarb_snapshot_updated_cache[$cache_key] = '';
+            return '';
+        }
+
+        $table = esc_sql(self::vcarb_snapshot_logs_table());
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reading plugin-owned snapshot table; query is prepared and table name is derived from $wpdb->prefix.
         $value = $wpdb->get_var(
@@ -544,7 +596,11 @@ trait VCARB_Snapshot_Trait
         $limit = max(1, min(120, (int) $limit));
         $order = ('ASC' === strtoupper((string) $order)) ? 'ASC' : 'DESC';
 
-        $table = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        if (!self::vcarb_snapshot_table_exists()) {
+            return [];
+        }
+
+        $table = esc_sql(self::vcarb_snapshot_logs_table());
         $regex = $this->period_regex_safe($view);
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reading plugin-owned snapshot table; query is prepared and table name is derived from $wpdb->prefix.
@@ -611,8 +667,11 @@ trait VCARB_Snapshot_Trait
         if ($anchor === '') {
             return '';
         }
+        if (!self::vcarb_snapshot_table_exists()) {
+            return '';
+        }
 
-        $table = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        $table = esc_sql(self::vcarb_snapshot_logs_table());
         $regex = $this->period_regex_safe($view);
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reading plugin-owned snapshot table; query is prepared and table name is derived from $wpdb->prefix.
@@ -652,7 +711,11 @@ trait VCARB_Snapshot_Trait
             return '';
         }
 
-        $table = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        if (!self::vcarb_snapshot_table_exists()) {
+            return '';
+        }
+
+        $table = esc_sql(self::vcarb_snapshot_logs_table());
         $regex = $this->period_regex_safe($view);
 
         // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reading plugin-owned snapshot table; query is prepared and table name is derived from $wpdb->prefix.

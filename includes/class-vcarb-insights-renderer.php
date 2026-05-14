@@ -3,13 +3,13 @@ defined('ABSPATH') || exit;
 
 final class VCARB_Insights_Renderer
 {
-    public const STYLE_HANDLE = 'verdantcart-insights';
+    public const STYLE_HANDLE = 'vcarb-insights';
 
     private const CSS_REL = 'public/css/verdantcart-insights.css';
 
     public static function init(): void
     {
-        // Intentionally empty.
+        // Reserved for future hooks.
     }
 
     private static function css_url(): string
@@ -40,10 +40,6 @@ final class VCARB_Insights_Renderer
 
         if (defined('VCARB_VERSION')) {
             return (string) VCARB_VERSION;
-        }
-
-        if (defined('VCARB_DB_VERSION')) {
-            return (string) VCARB_DB_VERSION;
         }
 
         return '1.0.0';
@@ -104,10 +100,10 @@ final class VCARB_Insights_Renderer
 
     private static function normalize_insights_input($insights): array
     {
-        $empty = self::empty_groups();
+        $groups = self::empty_groups();
 
         if (!is_array($insights) || empty($insights)) {
-            return $empty;
+            return $groups;
         }
 
         if (
@@ -125,7 +121,7 @@ final class VCARB_Insights_Renderer
         }
 
         if (!isset($insights[0]) || !is_array($insights[0])) {
-            return $empty;
+            return $groups;
         }
 
         foreach ($insights as $card) {
@@ -137,17 +133,17 @@ final class VCARB_Insights_Renderer
             $item = self::normalize_card($card);
 
             if ($type === 'positive' || $type === 'success') {
-                $empty['positives'][] = $item;
+                $groups['positives'][] = $item;
             } elseif ($type === 'risk') {
-                $empty['risks'][] = $item;
+                $groups['risks'][] = $item;
             } elseif ($type === 'recommendation') {
-                $empty['recommendations'][] = $item;
+                $groups['recommendations'][] = $item;
             } else {
-                $empty['warnings'][] = $item;
+                $groups['warnings'][] = $item;
             }
         }
 
-        return $empty;
+        return $groups;
     }
 
     private static function normalize_cards_group($cards): array
@@ -171,10 +167,13 @@ final class VCARB_Insights_Renderer
     {
         self::enqueue_assets();
 
-        $args = wp_parse_args($args, [
-            'title'   => __('AI Insights', 'verdantcart-ai-reports'),
-            'context' => is_admin() ? 'admin' : 'front',
-        ]);
+        $args = wp_parse_args(
+            $args,
+            [
+                'title'   => __('Sustainability Insights', 'verdantcart-ai-reports'),
+                'context' => is_admin() ? 'admin' : 'front',
+            ]
+        );
 
         $title   = (string) $args['title'];
         $context = sanitize_key((string) $args['context']);
@@ -263,7 +262,7 @@ final class VCARB_Insights_Renderer
                     <div class="gc-insights__badge gc-insights__badge--<?php echo esc_attr($type); ?>">
                         <?php echo esc_html($label); ?>
                     </div>
-                    <div class="gc-insights__count"><?php echo (int) $count_total; ?></div>
+                    <div class="gc-insights__count"><?php echo esc_html((string) $count_total); ?></div>
                 </div>
 
                 <?php
@@ -279,6 +278,7 @@ final class VCARB_Insights_Renderer
             </div>
         </div>
 <?php
+
         return (string) ob_get_clean();
     }
 
@@ -300,12 +300,11 @@ final class VCARB_Insights_Renderer
             }
 
             $rows[] = [
-                'title'    => trim((string) ($item['title'] ?? '')),
-                'message'  => trim((string) ($item['message'] ?? '')),
-                'metric'   => trim((string) ($item['metric'] ?? '')),
-                'severity' => trim((string) ($item['severity'] ?? '')),
-                'why'      => $why,
-                'actions'  => is_array($item['actions'] ?? null) ? $item['actions'] : [],
+                'title'   => trim((string) ($item['title'] ?? '')),
+                'message' => trim((string) ($item['message'] ?? '')),
+                'metric'  => trim((string) ($item['metric'] ?? '')),
+                'why'     => $why,
+                'actions' => is_array($item['actions'] ?? null) ? $item['actions'] : [],
             ];
         }
 

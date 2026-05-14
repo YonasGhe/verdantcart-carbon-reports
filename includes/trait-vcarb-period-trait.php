@@ -2,7 +2,7 @@
 defined('ABSPATH') || exit;
 
 /**
- * Period parsing + formatting utilities shared by Dashboard / Reports / AJAX / Exports.
+ * Period parsing and formatting utilities shared by Dashboard / Reports / AJAX / Exports.
  *
  * Views:
  * - month: YYYY-MM

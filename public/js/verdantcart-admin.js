@@ -33,14 +33,6 @@ jQuery(function ($) {
       return window.vcarbChartAjax;
     }
 
-    /*
-     * Temporary fallback only, so the screen does not fully break if an old
-     * localized object is still cached while renaming files.
-     */
-    if (typeof window.amatorcarbonChartAjax !== "undefined") {
-      return window.amatorcarbonChartAjax;
-    }
-
     return {};
   }
 

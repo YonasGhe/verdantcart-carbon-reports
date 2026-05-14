@@ -1,25 +1,27 @@
 <?php
 defined('ABSPATH') || exit;
 
-class VCARB_Export_Audit
+final class VCARB_Export_Audit
 {
     public static function table(): string
     {
+        if (function_exists('vcarb_export_audit_table')) {
+            return vcarb_export_audit_table();
+        }
+
         global $wpdb;
 
-        /*
-         * Keep legacy table name for existing 1.0.2 installations.
-         * Do not rename this to vcarb_export_audit until you add a safe migration.
-         */
-        return $wpdb->prefix . 'amatorcarbon_export_audit';
+        return $wpdb->prefix . 'vcarb_export_audit';
     }
 
     public static function install_table(): void
     {
         global $wpdb;
 
-        $table   = esc_sql(self::table());
-        $charset = $wpdb->get_charset_collate();
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+        $table           = esc_sql(self::table());
+        $charset_collate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE {$table} (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -35,6 +37,8 @@ class VCARB_Export_Audit
             result VARCHAR(20) NOT NULL DEFAULT 'ok',
             http_status SMALLINT UNSIGNED NOT NULL DEFAULT 200,
             message TEXT NULL,
+            ip VARCHAR(64) NOT NULL DEFAULT '',
+            user_agent VARCHAR(255) NOT NULL DEFAULT '',
             PRIMARY KEY (id),
             KEY created_at (created_at),
             KEY actor_user_id (actor_user_id),
@@ -42,9 +46,8 @@ class VCARB_Export_Audit
             KEY result (result),
             KEY action (action),
             KEY scope (scope)
-        ) {$charset};";
+        ) {$charset_collate};";
 
-        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         dbDelta($sql);
     }
 
@@ -69,6 +72,8 @@ class VCARB_Export_Audit
             'result'          => 'ok',
             'http_status'     => 200,
             'message'         => '',
+            'ip'              => self::request_ip(),
+            'user_agent'      => self::request_user_agent(),
         ];
 
         $data = array_merge($defaults, $row);
@@ -86,6 +91,8 @@ class VCARB_Export_Audit
             'result'          => substr(sanitize_key((string) $data['result']), 0, 20),
             'http_status'     => max(100, min(599, (int) $data['http_status'])),
             'message'         => sanitize_textarea_field((string) $data['message']),
+            'ip'              => substr(sanitize_text_field((string) $data['ip']), 0, 64),
+            'user_agent'      => substr(sanitize_text_field((string) $data['user_agent']), 0, 255),
         ];
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Writing to plugin-owned custom audit table.
@@ -105,6 +112,8 @@ class VCARB_Export_Audit
                 '%s', // result
                 '%d', // http_status
                 '%s', // message
+                '%s', // ip
+                '%s', // user_agent
             ]
         );
     }
@@ -126,5 +135,29 @@ class VCARB_Export_Audit
         return is_string($role) && $role !== ''
             ? sanitize_key($role)
             : 'user';
+    }
+
+    private static function request_ip(): string
+    {
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized immediately below.
+        $ip = isset($_SERVER['REMOTE_ADDR']) ? wp_unslash($_SERVER['REMOTE_ADDR']) : '';
+
+        if (!is_scalar($ip)) {
+            return '';
+        }
+
+        return substr(sanitize_text_field((string) $ip), 0, 64);
+    }
+
+    private static function request_user_agent(): string
+    {
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized immediately below.
+        $ua = isset($_SERVER['HTTP_USER_AGENT']) ? wp_unslash($_SERVER['HTTP_USER_AGENT']) : '';
+
+        if (!is_scalar($ua)) {
+            return '';
+        }
+
+        return substr(sanitize_text_field((string) $ua), 0, 255);
     }
 }

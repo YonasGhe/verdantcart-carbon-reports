@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-class VCARB_Exports
+final class VCARB_Exports
 {
     use VCARB_Snapshot_Trait;
     use VCARB_Period_Trait;
@@ -279,7 +279,7 @@ class VCARB_Exports
             $year = (int) $matches[1];
             $week = (int) $matches[2];
 
-            if ($week < 1 || $week > 53) {
+            if ($year < 1970 || $year > 2100 || $week < 1 || $week > 53) {
                 return false;
             }
 
@@ -325,6 +325,10 @@ class VCARB_Exports
 
     private function send_csv_headers(string $filename): void
     {
+        if (headers_sent()) {
+            return;
+        }
+
         header('X-Frame-Options: DENY');
         header('Referrer-Policy: no-referrer');
 
@@ -334,8 +338,31 @@ class VCARB_Exports
         header('Content-Disposition: attachment; filename="' . sanitize_file_name($filename) . '"');
     }
 
+    private function start_csv_output($out): void
+    {
+        /*
+     * UTF-8 BOM helps Excel/WPS read CO₂ and special characters correctly.
+     * Do not write "sep=," because WPS may display it as normal content.
+     *
+     * phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- Output stream php://output is not a filesystem write and cannot be handled by WP_Filesystem.
+     */
+        fwrite($out, "\xEF\xBB\xBF");
+    }
+
+    private function put_csv($out, array $row): void
+    {
+        /*
+     * Semicolon delimiter opens better in WPS/Excel for many European locales.
+     */
+        fputcsv($out, array_map([$this, 'csv_cell'], $row), ';');
+    }
+
     private function send_html_headers(string $filename): void
     {
+        if (headers_sent()) {
+            return;
+        }
+
         header('X-Frame-Options: DENY');
         header('Referrer-Policy: no-referrer');
         header('X-Robots-Tag: noindex, nofollow', true);
@@ -350,12 +377,16 @@ class VCARB_Exports
     private function csv_cell($value): string
     {
         $value = (string) $value;
+        $value = str_replace(["\r", "\n"], ' ', $value);
 
+        /*
+     * Prevent CSV formula injection for user-facing values.
+     */
         if ($value !== '' && preg_match('/^[=\+\-@]/', $value)) {
             $value = "'" . $value;
         }
 
-        return str_replace(["\r", "\n"], ' ', $value);
+        return $value;
     }
 
     private function percent_text($value): string
@@ -423,10 +454,10 @@ class VCARB_Exports
     private function write_csv_meta($out, array $meta_rows): void
     {
         foreach ($meta_rows as $row) {
-            fputcsv($out, $row);
+            $this->put_csv($out, $row);
         }
 
-        fputcsv($out, []);
+        $this->put_csv($out, []);
     }
 
     // ------------------------------------------------------------
@@ -591,7 +622,7 @@ class VCARB_Exports
             return;
         }
 
-        fputcsv($out, [
+        $this->put_csv($out, [
             __('Section', 'verdantcart-ai-reports'),
             __('Period Label', 'verdantcart-ai-reports'),
             __('Orders', 'verdantcart-ai-reports'),
@@ -599,15 +630,15 @@ class VCARB_Exports
         ]);
 
         foreach ($labels as $index => $label) {
-            fputcsv($out, [
+            $this->put_csv($out, [
                 'Series',
-                $this->csv_cell((string) $label),
+                (string) $label,
                 isset($orders_series[$index]) ? (int) $orders_series[$index] : 0,
                 isset($co2_series[$index]) ? $this->format_decimal($co2_series[$index]) : '0.00',
             ]);
         }
 
-        fputcsv($out, []);
+        $this->put_csv($out, []);
     }
 
     private function write_user_kpis_csv($out, array $data): void
@@ -619,12 +650,18 @@ class VCARB_Exports
             ? round((float) $data['delta'], 1)
             : '';
 
-        fputcsv($out, [__('Section', 'verdantcart-ai-reports'), __('Metric', 'verdantcart-ai-reports'), __('Value', 'verdantcart-ai-reports')]);
-        fputcsv($out, ['KPI', __('Total CO₂ (kg)', 'verdantcart-ai-reports'), $this->format_decimal($total_co2)]);
-        fputcsv($out, ['KPI', __('Orders Included', 'verdantcart-ai-reports'), $orders]);
-        fputcsv($out, ['KPI', __('CO₂ per Order (kg)', 'verdantcart-ai-reports'), $this->format_decimal($co2_per_order)]);
-        fputcsv($out, ['KPI', __('Total CO₂ vs Previous', 'verdantcart-ai-reports'), $delta_numeric]);
-        fputcsv($out, []);
+        $this->put_csv($out, [
+            __('Section', 'verdantcart-ai-reports'),
+            __('Metric', 'verdantcart-ai-reports'),
+            __('Value', 'verdantcart-ai-reports'),
+        ]);
+
+        $this->put_csv($out, ['KPI', __('Total CO₂ (kg)', 'verdantcart-ai-reports'), $this->format_decimal($total_co2)]);
+        $this->put_csv($out, ['KPI', __('Orders Included', 'verdantcart-ai-reports'), $orders]);
+        $this->put_csv($out, ['KPI', __('CO₂ per Order (kg)', 'verdantcart-ai-reports'), $this->format_decimal($co2_per_order)]);
+        $this->put_csv($out, ['KPI', __('Total CO₂ vs Previous', 'verdantcart-ai-reports'), $delta_numeric]);
+
+        $this->put_csv($out, []);
     }
 
     private function write_admin_kpis_csv($out, array $data, int $admin_id): void
@@ -638,22 +675,34 @@ class VCARB_Exports
             ? round((float) $data['delta'], 1)
             : '';
 
-        fputcsv($out, [__('Section', 'verdantcart-ai-reports'), __('Field', 'verdantcart-ai-reports'), __('Value', 'verdantcart-ai-reports')]);
-        fputcsv($out, ['Meta', __('Report Type', 'verdantcart-ai-reports'), __('All Customers Carbon Report', 'verdantcart-ai-reports')]);
-        fputcsv($out, ['Meta', __('Exported By Admin ID', 'verdantcart-ai-reports'), $admin_id]);
-        fputcsv($out, []);
+        $this->put_csv($out, [
+            __('Section', 'verdantcart-ai-reports'),
+            __('Field', 'verdantcart-ai-reports'),
+            __('Value', 'verdantcart-ai-reports'),
+        ]);
 
-        fputcsv($out, [__('Section', 'verdantcart-ai-reports'), __('Metric', 'verdantcart-ai-reports'), __('Value', 'verdantcart-ai-reports')]);
-        fputcsv($out, ['KPI', __('Total CO₂ (kg)', 'verdantcart-ai-reports'), $this->format_decimal($total_co2)]);
-        fputcsv($out, ['KPI', __('Orders Included', 'verdantcart-ai-reports'), $orders]);
-        fputcsv($out, ['KPI', __('CO₂ per Order (kg)', 'verdantcart-ai-reports'), $this->format_decimal($co2_per_order)]);
-        fputcsv($out, ['KPI', __('Total CO₂ vs Previous', 'verdantcart-ai-reports'), $delta_numeric]);
-        fputcsv($out, []);
+        $this->put_csv($out, ['Meta', __('Report Type', 'verdantcart-ai-reports'), __('All Customers Carbon Report', 'verdantcart-ai-reports')]);
+        $this->put_csv($out, ['Meta', __('Exported By Admin ID', 'verdantcart-ai-reports'), $admin_id]);
+
+        $this->put_csv($out, []);
+
+        $this->put_csv($out, [
+            __('Section', 'verdantcart-ai-reports'),
+            __('Metric', 'verdantcart-ai-reports'),
+            __('Value', 'verdantcart-ai-reports'),
+        ]);
+
+        $this->put_csv($out, ['KPI', __('Total CO₂ (kg)', 'verdantcart-ai-reports'), $this->format_decimal($total_co2)]);
+        $this->put_csv($out, ['KPI', __('Orders Included', 'verdantcart-ai-reports'), $orders]);
+        $this->put_csv($out, ['KPI', __('CO₂ per Order (kg)', 'verdantcart-ai-reports'), $this->format_decimal($co2_per_order)]);
+        $this->put_csv($out, ['KPI', __('Total CO₂ vs Previous', 'verdantcart-ai-reports'), $delta_numeric]);
+
+        $this->put_csv($out, []);
     }
 
     private function write_admin_rows_csv($out, array $rows_out): void
     {
-        fputcsv($out, [
+        $this->put_csv($out, [
             __('Section', 'verdantcart-ai-reports'),
             __('User', 'verdantcart-ai-reports'),
             __('Orders', 'verdantcart-ai-reports'),
@@ -667,22 +716,23 @@ class VCARB_Exports
             $orders_pct = isset($row['orders_pct_value']) && $row['orders_pct_value'] !== null
                 ? round((float) $row['orders_pct_value'], 1)
                 : '';
+
             $co2_pct = isset($row['co2_pct_value']) && $row['co2_pct_value'] !== null
                 ? round((float) $row['co2_pct_value'], 1)
                 : '';
 
-            fputcsv($out, [
+            $this->put_csv($out, [
                 'Customer',
-                $this->csv_cell($row['user'] ?? ''),
+                (string) ($row['user'] ?? ''),
                 (int) ($row['orders'] ?? 0),
                 $orders_pct,
                 $this->format_decimal((float) ($row['co2'] ?? 0)),
                 $co2_pct,
-                $this->csv_cell($row['updated'] ?? ''),
+                (string) ($row['updated'] ?? ''),
             ]);
         }
 
-        fputcsv($out, []);
+        $this->put_csv($out, []);
     }
 
     // ------------------------------------------------------------
@@ -719,15 +769,26 @@ class VCARB_Exports
             );
         }
 
-        fputcsv($out, [__('VerdantCart — User Report', 'verdantcart-ai-reports')]);
-        fputcsv($out, []);
+        $this->start_csv_output($out);
+
+        $this->put_csv($out, [__('VerdantCart — User Report', 'verdantcart-ai-reports')]);
+        $this->put_csv($out, []);
 
         $this->write_csv_meta($out, $this->user_export_meta_rows($data));
         $this->write_user_kpis_csv($out, $data);
         $this->write_chart_series_csv($out, (array) ($data['chart'] ?? []));
 
-        fputcsv($out, [__('Section', 'verdantcart-ai-reports'), __('Note', 'verdantcart-ai-reports'), __('Value', 'verdantcart-ai-reports')]);
-        fputcsv($out, ['Note', __('Snapshot', 'verdantcart-ai-reports'), __('This export reflects the selected snapshot period only.', 'verdantcart-ai-reports')]);
+        $this->put_csv($out, [
+            __('Section', 'verdantcart-ai-reports'),
+            __('Note', 'verdantcart-ai-reports'),
+            __('Value', 'verdantcart-ai-reports'),
+        ]);
+
+        $this->put_csv($out, [
+            'Note',
+            __('Snapshot', 'verdantcart-ai-reports'),
+            __('This export reflects the selected snapshot period only.', 'verdantcart-ai-reports'),
+        ]);
 
         // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Closing php://output stream after direct CSV streaming.
         fclose($out);
@@ -902,8 +963,10 @@ class VCARB_Exports
             );
         }
 
-        fputcsv($out, [__('VerdantCart — All Customers Report', 'verdantcart-ai-reports')]);
-        fputcsv($out, []);
+        $this->start_csv_output($out);
+
+        $this->put_csv($out, [__('VerdantCart — All Customers Report', 'verdantcart-ai-reports')]);
+        $this->put_csv($out, []);
 
         $this->write_csv_meta(
             $out,
@@ -918,13 +981,13 @@ class VCARB_Exports
         $this->write_chart_series_csv($out, (array) ($data['chart'] ?? []));
         $this->write_admin_rows_csv($out, $rows_out);
 
-        fputcsv($out, [
+        $this->put_csv($out, [
             __('Section', 'verdantcart-ai-reports'),
             __('Note', 'verdantcart-ai-reports'),
             __('Value', 'verdantcart-ai-reports'),
         ]);
 
-        fputcsv($out, [
+        $this->put_csv($out, [
             'Note',
             __('Snapshot', 'verdantcart-ai-reports'),
             __('This export reflects the selected snapshot period only.', 'verdantcart-ai-reports'),

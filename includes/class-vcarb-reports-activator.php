@@ -56,7 +56,7 @@ final class VCARB_Reports_Activator
      *
      * @param mixed $network_wide Whether plugin was network activated.
      */
-    public static function on_activation($network_wide): void
+    public static function on_activation($network_wide = false): void
     {
         if (is_multisite() && !empty($network_wide)) {
             $site_ids = get_sites([
@@ -148,7 +148,7 @@ final class VCARB_Reports_Activator
         string $content,
         string $role
     ): int {
-        $stored_id = self::get_dashboard_page_id_option();
+        $stored_id = self::get_page_id_option($option_key);
 
         if (self::is_valid_managed_page_id($stored_id, $role)) {
             self::mark_page_as_managed($stored_id, $role);
@@ -397,20 +397,29 @@ final class VCARB_Reports_Activator
         return self::LOCK_KEY_BASE . '_' . (int) get_current_blog_id();
     }
 
-    private static function get_dashboard_page_id_option(): int
+    private static function get_page_id_option(string $option_key): int
     {
-        $page_id = (int) get_option(self::OPT_DASHBOARD_ID, 0);
+        $option_key = sanitize_key($option_key);
+
+        if ($option_key === '') {
+            return 0;
+        }
+
+        $page_id = (int) get_option($option_key, 0);
 
         if ($page_id > 0) {
             return $page_id;
         }
 
-        $legacy_page_id = (int) get_option(self::LEGACY_OPT_DASHBOARD_ID, 0);
-
-        if ($legacy_page_id > 0) {
-            return $legacy_page_id;
+        if ($option_key === self::OPT_DASHBOARD_ID) {
+            return (int) get_option(self::LEGACY_OPT_DASHBOARD_ID, 0);
         }
 
         return 0;
+    }
+
+    private static function get_dashboard_page_id_option(): int
+    {
+        return self::get_page_id_option(self::OPT_DASHBOARD_ID);
     }
 }

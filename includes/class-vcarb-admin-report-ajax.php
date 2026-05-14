@@ -24,13 +24,6 @@ class VCARB_Admin_Report_Ajax
         add_action('wp_ajax_vcarb_rebuild_aggregate', [$self, 'rebuild_aggregate']);
         add_action('wp_ajax_vcarb_get_hotspots', [$self, 'get_hotspots']);
 
-        /*
-         * Temporary legacy AJAX action support.
-         * This protects old cached admin JS during the 1.0.x → 1.1.0 transition.
-         */
-        add_action('wp_ajax_amatorcarbon_get_report', [$self, 'get_report']);
-        add_action('wp_ajax_amatorcarbon_rebuild_aggregate', [$self, 'rebuild_aggregate']);
-        add_action('wp_ajax_amatorcarbon_get_hotspots', [$self, 'get_hotspots']);
     }
 
     private function normalize_view(string $view): string
@@ -40,28 +33,27 @@ class VCARB_Admin_Report_Ajax
         return in_array($view, self::ALLOWED_VIEWS, true) ? $view : 'month';
     }
 
+    private function fail(string $message, int $status = 400): void
+    {
+        wp_send_json_error(
+            [
+                'message' => $message,
+            ],
+            max(400, min(599, $status))
+        );
+    }
+
     private function require_calculator(): void
     {
         if (!class_exists('VCARB_Calculator')) {
-            wp_send_json_error(
-                ['message' => __('Calculator missing.', 'verdantcart-ai-reports')],
-                500
-            );
+            $this->fail(__('Calculator missing.', 'verdantcart-ai-reports'), 500);
         }
     }
 
-    private function has_dataset_dependencies(): bool
+    private function require_dataset_service(): void
     {
-        return class_exists('VCARB_Dataset_Service');
-    }
-
-    private function require_dataset_dependencies(): void
-    {
-        if (!$this->has_dataset_dependencies()) {
-            wp_send_json_error(
-                ['message' => __('Missing required classes.', 'verdantcart-ai-reports')],
-                500
-            );
+        if (!class_exists('VCARB_Dataset_Service')) {
+            $this->fail(__('Dataset service missing.', 'verdantcart-ai-reports'), 500);
         }
     }
 
@@ -139,7 +131,7 @@ class VCARB_Admin_Report_Ajax
         $this->verify_nonce('vcarb_get_report');
         $this->rate_limit('admin_report', 25, 10);
         $this->require_calculator();
-        $this->require_dataset_dependencies();
+        $this->require_dataset_service();
 
         $admin_id = get_current_user_id();
         $view     = $this->normalize_view($this->get_post_key('view', 'month'));
@@ -152,10 +144,7 @@ class VCARB_Admin_Report_Ajax
         );
 
         if (!is_array($dataset)) {
-            wp_send_json_error(
-                ['message' => __('Invalid admin dataset.', 'verdantcart-ai-reports')],
-                500
-            );
+            $this->fail(__('Invalid admin dataset.', 'verdantcart-ai-reports'), 500);
         }
 
         $data     = $this->normalize_report_dataset($dataset, $view);
@@ -163,8 +152,14 @@ class VCARB_Admin_Report_Ajax
         $metrics  = $data['metrics'];
         $chart    = $data['chart'];
 
-        $total_co2     = isset($metrics['total_co2']) ? (float) $metrics['total_co2'] : 0.0;
-        $orders        = isset($metrics['orders']) ? (int) $metrics['orders'] : 0;
+        $total_co2 = isset($metrics['total_co2']) && is_numeric($metrics['total_co2'])
+            ? (float) $metrics['total_co2']
+            : 0.0;
+
+        $orders = isset($metrics['orders']) && is_numeric($metrics['orders'])
+            ? (int) $metrics['orders']
+            : 0;
+
         $co2_per_order = isset($metrics['co2_per_order']) && is_numeric($metrics['co2_per_order'])
             ? (float) $metrics['co2_per_order']
             : (($orders > 0) ? ($total_co2 / $orders) : null);
@@ -172,7 +167,11 @@ class VCARB_Admin_Report_Ajax
         $delta      = $metrics['delta'] ?? null;
         $delta_html = isset($metrics['delta_html']) ? (string) $metrics['delta_html'] : '';
 
-        if ($delta_html === '' && class_exists('VCARB_Calculator') && method_exists('VCARB_Calculator', 'format_percent')) {
+        if (
+            $delta_html === '' &&
+            class_exists('VCARB_Calculator') &&
+            method_exists('VCARB_Calculator', 'format_percent')
+        ) {
             $delta_html = wp_kses_post(VCARB_Calculator::format_percent($delta));
         }
 
@@ -229,6 +228,7 @@ class VCARB_Admin_Report_Ajax
         $view = $this->normalize_view($this->get_post_key('view', 'month'));
 
         $raw_period = $this->get_post_string('period', '');
+
         if ($raw_period === '') {
             $raw_period = $this->get_post_string('date', '');
         }
@@ -236,26 +236,14 @@ class VCARB_Admin_Report_Ajax
         $period = $this->sanitize_period_for_view_safe($view, $raw_period);
 
         if ($period === '') {
-            wp_send_json_error(
-                ['message' => __('Invalid hotspot period.', 'verdantcart-ai-reports')],
-                400
-            );
+            $this->fail(__('Invalid hotspot period.', 'verdantcart-ai-reports'), 400);
         }
 
-        /*
-         * Important:
-         * Do not block hotspot loading only because a snapshot check fails.
-         * The main report already validates the selected snapshot.
-         * Hotspot rows can exist independently, especially after migrations/backfills.
-         */
         if (
             !class_exists('VCARB_Product_Insights') ||
             !method_exists('VCARB_Product_Insights', 'get_hotspots')
         ) {
-            wp_send_json_error(
-                ['message' => __('Product hotspot service is missing.', 'verdantcart-ai-reports')],
-                500
-            );
+            $this->fail(__('Product hotspot service is missing.', 'verdantcart-ai-reports'), 500);
         }
 
         $items = VCARB_Product_Insights::get_hotspots($period, 10);
@@ -279,20 +267,15 @@ class VCARB_Admin_Report_Ajax
             !class_exists('VCARB_Scheduler') ||
             !method_exists('VCARB_Scheduler', 'schedule_aggregate_debounced')
         ) {
-            wp_send_json_error(
-                ['message' => __('Scheduler missing.', 'verdantcart-ai-reports')],
-                500
-            );
+            $this->fail(__('Scheduler missing.', 'verdantcart-ai-reports'), 500);
         }
 
         if (!method_exists('VCARB_Calculator', 'get_period_keys')) {
-            wp_send_json_error(
-                ['message' => __('Calculator period helper missing.', 'verdantcart-ai-reports')],
-                500
-            );
+            $this->fail(__('Calculator period helper missing.', 'verdantcart-ai-reports'), 500);
         }
 
         $view = $this->get_post_key('type', '');
+
         if ($view === '') {
             $view = $this->get_post_key('view', 'month');
         }
@@ -309,36 +292,23 @@ class VCARB_Admin_Report_Ajax
 
         if ($period === '') {
             $periods = VCARB_Calculator::get_period_keys($view);
-            $period  = $this->sanitize_period_for_view_safe(
+
+            $period = $this->sanitize_period_for_view_safe(
                 $view,
                 isset($periods['current']) ? (string) $periods['current'] : ''
             );
         }
 
         if ($period === '') {
-            wp_send_json_error(
-                ['message' => __('Invalid resolved period.', 'verdantcart-ai-reports')],
-                500
-            );
+            $this->fail(__('Invalid resolved period.', 'verdantcart-ai-reports'), 500);
         }
 
         VCARB_Scheduler::schedule_aggregate_debounced($view, $period);
 
-        $hotspots_rebuilt = false;
-
-        if (
-            class_exists('VCARB_Product_Insights') &&
-            method_exists('VCARB_Product_Insights', 'rebuild_period')
-        ) {
-            VCARB_Product_Insights::rebuild_period($view, $period);
-            $hotspots_rebuilt = true;
-        }
-
         wp_send_json_success([
-            'scheduled'        => true,
-            'rebuilt'          => $view,
-            'period'           => $period,
-            'hotspots_rebuilt' => $hotspots_rebuilt,
+            'scheduled' => true,
+            'rebuilt'   => $view,
+            'period'    => $period,
         ]);
     }
 }

@@ -12,10 +12,6 @@ jQuery(function ($) {
             return window.vcarbBackfillAjax;
         }
 
-        if (typeof window.amatorcarbonBackfillAjax !== "undefined") {
-            return window.amatorcarbonBackfillAjax;
-        }
-
         return {};
     }
 

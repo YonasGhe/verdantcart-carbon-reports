@@ -6,12 +6,9 @@ class VCARB_Dashboard
     use VCARB_Snapshot_Trait;
     use VCARB_Period_Trait;
 
-    public const SHORTCODE_SHORT      = 'vcarb_dashboard';
-    public const SHORTCODE            = 'verdantcart_dashboard';
-    public const ALT_SHORTCODE        = 'verdantcart_carbon_dashboard';
-    public const LEGACY_SHORTCODE     = 'amatorcarbon_dashboard';
-    public const LEGACY_SHORTCODE_OLD = 'amator_carbon_dashboard';
-    public const LEGACY_SHORTCODE_ACR = 'acr_dashboard';
+    public const SHORTCODE_SHORT = 'vcarb_dashboard';
+    public const SHORTCODE       = 'verdantcart_dashboard';
+    public const ALT_SHORTCODE   = 'verdantcart_carbon_dashboard';
 
     public const AJAX_ACTION  = 'vcarb_dashboard_report';
     public const NONCE_ACTION = 'vcarb_dashboard';
@@ -27,26 +24,14 @@ class VCARB_Dashboard
         add_shortcode(self::SHORTCODE_SHORT, [$this, 'render']);
 
         /*
-     * Longer VerdantCart aliases kept for clarity/backward compatibility.
+     * VerdantCart aliases.
      */
         add_shortcode(self::SHORTCODE, [$this, 'render']);
         add_shortcode(self::ALT_SHORTCODE, [$this, 'render']);
 
-        /*
-     * Legacy shortcodes kept so older pages do not break.
-     */
-        add_shortcode(self::LEGACY_SHORTCODE, [$this, 'render']);
-        add_shortcode(self::LEGACY_SHORTCODE_OLD, [$this, 'render']);
-        add_shortcode(self::LEGACY_SHORTCODE_ACR, [$this, 'render']);
-
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
 
         add_action('wp_ajax_' . self::AJAX_ACTION, [$this, 'ajax_dashboard_report']);
-
-        /*
-     * Temporary legacy AJAX action support for old cached frontend JS.
-     */
-        add_action('wp_ajax_amatorcarbon_dashboard_report', [$this, 'ajax_dashboard_report']);
     }
 
     /* -------------------------------------------------------------------------
@@ -55,8 +40,6 @@ class VCARB_Dashboard
 
     public function enqueue_assets(): void
     {
-        $this->enqueue_checkout_styles();
-
         if (!$this->should_enqueue_assets()) {
             return;
         }
@@ -66,26 +49,6 @@ class VCARB_Dashboard
         $this->localize_dashboard_script();
     }
 
-    private function enqueue_checkout_styles(): void
-    {
-        if (!function_exists('is_checkout') || !is_checkout()) {
-            return;
-        }
-
-        $rel  = 'public/css/verdantcart-checkout.css';
-        $path = VCARB_PLUGIN_DIR . $rel;
-
-        if (!file_exists($path)) {
-            return;
-        }
-
-        wp_enqueue_style(
-            'vcarb-checkout',
-            VCARB_PLUGIN_URL . $rel,
-            [],
-            (string) filemtime($path)
-        );
-    }
 
     private function should_enqueue_assets(): bool
     {
@@ -101,10 +64,7 @@ class VCARB_Dashboard
             if (
                 has_shortcode($content, self::SHORTCODE_SHORT) ||
                 has_shortcode($content, self::SHORTCODE) ||
-                has_shortcode($content, self::ALT_SHORTCODE) ||
-                has_shortcode($content, self::LEGACY_SHORTCODE) ||
-                has_shortcode($content, self::LEGACY_SHORTCODE_OLD) ||
-                has_shortcode($content, self::LEGACY_SHORTCODE_ACR)
+                has_shortcode($content, self::ALT_SHORTCODE)
             ) {
                 return true;
             }
@@ -117,9 +77,6 @@ class VCARB_Dashboard
         }
 
         $dashboard_ids[] = (int) get_option('vcarb_dashboard_page_id', 0);
-        $dashboard_ids[] = (int) get_option('amatorcarbon_dashboard_page_id', 0);
-        $dashboard_ids[] = (int) get_option('acr_dashboard_page_id', 0);
-        $dashboard_ids[] = (int) get_option('ai_carbon_dashboard_page_id', 0);
 
         foreach (array_unique(array_filter($dashboard_ids)) as $dashboard_id) {
             if ($dashboard_id > 0 && is_page($dashboard_id)) {
@@ -130,8 +87,7 @@ class VCARB_Dashboard
         return is_page('verdantcart-dashboard')
             || is_page('verdantcart-carbon-dashboard')
             || is_page('vcarb-dashboard')
-            || is_page('vcarb-carbon-dashboard')
-            || is_page('amator-carbon-dashboard');
+            || is_page('vcarb-carbon-dashboard');
     }
 
     private function enqueue_dashboard_styles(): void
@@ -395,13 +351,6 @@ class VCARB_Dashboard
 
         $valid = $nonce !== '' && wp_verify_nonce($nonce, self::NONCE_ACTION);
 
-        /*
-     * Legacy nonce action kept for old cached frontend JS during migration.
-     */
-        if (!$valid) {
-            $valid = $nonce !== '' && wp_verify_nonce($nonce, 'amatorcarbon_dashboard');
-        }
-
         if (!$valid) {
             wp_send_json_error(
                 ['message' => __('Invalid nonce.', 'verdantcart-ai-reports')],
@@ -573,15 +522,54 @@ class VCARB_Dashboard
 
     private function icon_svg(string $name): string
     {
-        $attrs = 'class="gc-ico" aria-hidden="true" focusable="false" viewBox="0 0 24 24"';
+        $attrs = 'class="gc-ico" aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"';
 
         return match ($name) {
-            'leaf'  => "<svg {$attrs}><path d='M20 4c-7 0-12 4-14 10-1 3 0 6 3 6 6 0 10-5 10-14Z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M6 20c2-4 6-7 10-9' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
-            'cart'  => "<svg {$attrs}><path d='M6 6h15l-2 8H7L6 6Z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M6 6 5 3H2' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/><circle cx='8' cy='19' r='1.6' fill='currentColor'/><circle cx='18' cy='19' r='1.6' fill='currentColor'/></svg>",
-            'trend' => "<svg {$attrs}><path d='M4 16l6-6 4 4 6-8' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M18 6h2v2' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
-            'clock' => "<svg {$attrs}><circle cx='12' cy='12' r='9' fill='none' stroke='currentColor' stroke-width='2'/><path d='M12 7v6l4 2' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
-            default => '',
+            'leaf'    => "<svg {$attrs}><path d='M20 4c-7 0-12 4-14 10-1 3 0 6 3 6 6 0 10-5 10-14Z' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M6 20c2-4 6-7 10-9' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg>",
+            'cart'    => "<svg {$attrs}><path d='M6 6h15l-2 8H7L6 6Z' fill='none' stroke='currentColor' stroke-width='2' stroke-linejoin='round'/><path d='M6 6 5 3H2' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/><circle cx='8' cy='19' r='1.6' fill='currentColor'/><circle cx='18' cy='19' r='1.6' fill='currentColor'/></svg>",
+            'trend'   => "<svg {$attrs}><path d='M4 16l6-6 4 4 6-8' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M18 6h2v2' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+            'compare' => "<svg {$attrs}><path d='M7 7h10M7 12h10M7 17h10' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'/><path d='M5 7h.01M5 12h.01M5 17h.01' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round'/></svg>",
+            'clock'   => "<svg {$attrs}><circle cx='12' cy='12' r='9' fill='none' stroke='currentColor' stroke-width='2'/><path d='M12 7v6l4 2' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+            default   => '',
         };
+    }
+
+    private function svg_allowed_html(): array
+    {
+        return [
+            'svg' => [
+                'class'       => true,
+                'aria-hidden' => true,
+                'focusable'   => true,
+                'width'       => true,
+                'height'      => true,
+                'viewBox'     => true,
+                'viewbox'     => true,
+                'fill'        => true,
+            ],
+            'path' => [
+                'd'               => true,
+                'fill'            => true,
+                'stroke'          => true,
+                'stroke-width'    => true,
+                'stroke-linecap'  => true,
+                'stroke-linejoin' => true,
+            ],
+            'circle' => [
+                'cx'   => true,
+                'cy'   => true,
+                'r'    => true,
+                'fill' => true,
+            ],
+        ];
+    }
+
+    private function dashboard_allowed_html(): array
+    {
+        return array_merge(
+            wp_kses_allowed_html('post'),
+            $this->svg_allowed_html()
+        );
     }
 
     private function normalize_dashboard_dataset(array $dataset, string $fallback_view): array
@@ -919,55 +907,68 @@ class VCARB_Dashboard
 
     private function render_empty_snapshot_state(): string
     {
+        $can_manage = current_user_can('manage_options');
+
         ob_start();
     ?>
         <section class="gc-emptySnap" aria-label="<?php echo esc_attr__('No snapshot available', 'verdantcart-ai-reports'); ?>">
             <div class="gc-emptySnap__inner">
                 <div class="gc-emptySnap__left">
                     <div class="gc-emptySnap__kicker"><?php echo esc_html__('SETUP', 'verdantcart-ai-reports'); ?></div>
-                    <h3 class="gc-emptySnap__title"><?php echo esc_html__('No snapshot available for this period yet', 'verdantcart-ai-reports'); ?></h3>
+
+                    <h3 class="gc-emptySnap__title">
+                        <?php echo esc_html__('No reporting snapshot available yet', 'verdantcart-ai-reports'); ?>
+                    </h3>
+
                     <p class="gc-emptySnap__sub">
-                        <?php echo esc_html__('We only show dashboard insights after a store snapshot exists. Create a completed order or run Backfill to generate historical data.', 'verdantcart-ai-reports'); ?>
+                        <?php echo esc_html__('New completed WooCommerce orders will be tracked automatically after the plugin is active. If this store already has older completed orders, run Backfill once to build historical carbon reports.', 'verdantcart-ai-reports'); ?>
                     </p>
 
                     <ul class="gc-emptySnap__list">
-                        <li><?php echo esc_html__('Create a test order and mark it Completed', 'verdantcart-ai-reports'); ?></li>
-                        <li><?php echo esc_html__('Or run Backfill to process past orders', 'verdantcart-ai-reports'); ?></li>
-                        <li><?php echo esc_html__('Then refresh this page', 'verdantcart-ai-reports'); ?></li>
+                        <li><?php echo esc_html__('New completed orders are tracked automatically.', 'verdantcart-ai-reports'); ?></li>
+                        <li><?php echo esc_html__('Existing old orders need Backfill one time.', 'verdantcart-ai-reports'); ?></li>
+                        <li><?php echo esc_html__('Products need weight data, or a fallback weight filter, before emissions can be estimated.', 'verdantcart-ai-reports'); ?></li>
                     </ul>
 
                     <div class="gc-emptySnap__actions">
-                        <?php if (current_user_can('manage_options')) : ?>
-                            <button type="button"
-                                class="gc-btn gc-btn--primary"
-                                data-gc-backfill-open>
+                        <?php if ($can_manage) : ?>
+                            <a class="gc-btn gc-btn--primary"
+                                href="<?php echo esc_url(admin_url('admin.php?page=vcarb-backfill')); ?>">
                                 <?php echo esc_html__('Run Backfill', 'verdantcart-ai-reports'); ?>
-                            </button>
+                            </a>
 
                             <a class="gc-btn gc-btn--ghost"
                                 href="<?php echo esc_url(admin_url('edit.php?post_type=shop_order')); ?>">
                                 <?php echo esc_html__('View Orders', 'verdantcart-ai-reports'); ?>
                             </a>
+                        <?php else : ?>
+                            <span class="gc-btn gc-btn--ghost is-disabled" aria-disabled="true">
+                                <?php echo esc_html__('Ask the store admin to run Backfill', 'verdantcart-ai-reports'); ?>
+                            </span>
                         <?php endif; ?>
                     </div>
 
                     <div class="gc-emptySnap__note">
-                        <?php echo esc_html__('Tip: If you already ran aggregation, make sure a store row exists (user_id=0) for this period.', 'verdantcart-ai-reports'); ?>
+                        <?php echo esc_html__('A snapshot is created when completed order emissions are saved for a period. Store snapshots use user_id=0 and power charts, exports, hotspots, and insights.', 'verdantcart-ai-reports'); ?>
                     </div>
                 </div>
 
                 <div class="gc-emptySnap__right" aria-hidden="true">
                     <div class="gc-emptySnap__card">
-                        <div class="gc-emptySnap__cardTitle"><?php echo esc_html__('What is a snapshot?', 'verdantcart-ai-reports'); ?></div>
+                        <div class="gc-emptySnap__cardTitle">
+                            <?php echo esc_html__('For new stores', 'verdantcart-ai-reports'); ?>
+                        </div>
                         <div class="gc-emptySnap__cardText">
-                            <?php echo esc_html__('A snapshot is the store total (user_id=0) saved for a specific period. It powers exports, charts, hotspots, and insights.', 'verdantcart-ai-reports'); ?>
+                            <?php echo esc_html__('Create or receive a WooCommerce order, then move it to Processing or Completed. VerdantCart will calculate and store the reporting snapshot automatically.', 'verdantcart-ai-reports'); ?>
                         </div>
                     </div>
 
                     <div class="gc-emptySnap__card">
-                        <div class="gc-emptySnap__cardTitle"><?php echo esc_html__('Why you see this', 'verdantcart-ai-reports'); ?></div>
+                        <div class="gc-emptySnap__cardTitle">
+                            <?php echo esc_html__('For stores with old orders', 'verdantcart-ai-reports'); ?>
+                        </div>
                         <div class="gc-emptySnap__cardText">
-                            <?php echo esc_html__('No completed orders were found, or the snapshot has not been generated yet, for the selected period.', 'verdantcart-ai-reports'); ?>
+                            <?php echo esc_html__('Run Backfill once to process existing completed orders and create historical month, week, year, and product hotspot data.', 'verdantcart-ai-reports'); ?>
                         </div>
                     </div>
                 </div>
@@ -1056,11 +1057,13 @@ class VCARB_Dashboard
             <div class="gc-metric gc-metric--primary">
                 <div class="gc-metric__top">
                     <div class="gc-metric__label">
-                        <?php echo wp_kses_post($this->icon_svg('leaf')); ?>
-                        <?php echo esc_html__('Total emissions', 'verdantcart-ai-reports'); ?>
+                        <?php echo wp_kses($this->icon_svg('leaf'), $this->svg_allowed_html()); ?>
+                        <span><?php echo esc_html__('Total emissions', 'verdantcart-ai-reports'); ?></span>
                     </div>
+
                     <div class="gc-metric__chip"><?php echo esc_html(ucfirst($view)); ?></div>
                 </div>
+
                 <div class="gc-metric__value" id="<?php echo esc_attr($uid . 'MetricTotal'); ?>">
                     <?php echo esc_html(number_format_i18n($total_co2, 2)); ?>
                     <span class="gc-metric__unit"><?php echo esc_html__('kg CO₂', 'verdantcart-ai-reports'); ?></span>
@@ -1070,10 +1073,11 @@ class VCARB_Dashboard
             <div class="gc-metric">
                 <div class="gc-metric__top">
                     <div class="gc-metric__label">
-                        <?php echo wp_kses_post($this->icon_svg('cart')); ?>
-                        <?php echo esc_html__('Orders included', 'verdantcart-ai-reports'); ?>
+                        <?php echo wp_kses($this->icon_svg('cart'), $this->svg_allowed_html()); ?>
+                        <span><?php echo esc_html__('Orders included', 'verdantcart-ai-reports'); ?></span>
                     </div>
                 </div>
+
                 <div class="gc-metric__value" id="<?php echo esc_attr($uid . 'MetricOrders'); ?>">
                     <?php echo esc_html(number_format_i18n($orders)); ?>
                 </div>
@@ -1082,15 +1086,21 @@ class VCARB_Dashboard
             <div class="gc-metric">
                 <div class="gc-metric__top">
                     <div class="gc-metric__label">
-                        <?php echo wp_kses_post($this->icon_svg('trend')); ?>
-                        <?php echo esc_html__('Change vs previous', 'verdantcart-ai-reports'); ?>
+                        <?php echo wp_kses($this->icon_svg('trend'), $this->svg_allowed_html()); ?>
+                        <?php echo esc_html__('CO₂ change', 'verdantcart-ai-reports'); ?>
                     </div>
                 </div>
+
                 <div class="gc-metric__value gc-metric__delta" id="<?php echo esc_attr($uid . 'MetricDelta'); ?>">
                     <?php
-                    echo class_exists('VCARB_Calculator') && method_exists('VCARB_Calculator', 'format_percent')
-                        ? wp_kses_post(VCARB_Calculator::format_percent($delta))
-                        : esc_html__('—', 'verdantcart-ai-reports');
+                    echo wp_kses(
+                        $this->format_carbon_delta_html($delta),
+                        [
+                            'span' => [
+                                'class' => true,
+                            ],
+                        ]
+                    );
                     ?>
                 </div>
             </div>
@@ -1098,10 +1108,11 @@ class VCARB_Dashboard
             <div class="gc-metric">
                 <div class="gc-metric__top">
                     <div class="gc-metric__label">
-                        <?php echo wp_kses_post($this->icon_svg('clock')); ?>
-                        <?php echo esc_html__('Last updated', 'verdantcart-ai-reports'); ?>
+                        <?php echo wp_kses($this->icon_svg('clock'), $this->svg_allowed_html()); ?>
+                        <span><?php echo esc_html__('Last updated', 'verdantcart-ai-reports'); ?></span>
                     </div>
                 </div>
+
                 <div class="gc-metric__value gc-metric__value--small" id="<?php echo esc_attr($uid . 'MetricUpdated'); ?>">
                     <?php echo esc_html($updated !== '' ? $updated : __('—', 'verdantcart-ai-reports')); ?>
                 </div>
@@ -1110,6 +1121,35 @@ class VCARB_Dashboard
     <?php
 
         return (string) ob_get_clean();
+    }
+
+    private function format_carbon_delta_html($delta): string
+    {
+        if ($delta === null || $delta === '' || !is_numeric($delta)) {
+            return '<span class="gc-neutral">—</span>';
+        }
+
+        $delta = (float) $delta;
+
+        if (abs($delta) < 0.01) {
+            return '<span class="gc-neutral">—</span>';
+        }
+
+        $value = esc_html(number_format_i18n(abs($delta), 1));
+
+        if ($delta < 0) {
+            return sprintf(
+                '<span class="gc-carbon-good"><span class="gc-change-main">%s%%</span><span class="gc-change-word">%s</span></span>',
+                $value,
+                esc_html__('Lower', 'verdantcart-ai-reports')
+            );
+        }
+
+        return sprintf(
+            '<span class="gc-carbon-bad"><span class="gc-change-main">%s%%</span><span class="gc-change-word">%s</span></span>',
+            $value,
+            esc_html__('Higher', 'verdantcart-ai-reports')
+        );
     }
 
     private function render_insights_panel(
@@ -1213,7 +1253,7 @@ class VCARB_Dashboard
 
                     <div class="gc-score__row">
                         <span class="gc-score__status"><?php echo esc_html($score_status); ?></span>
-                        <span class="gc-score__delta <?php echo esc_attr($delta_class); ?>">
+                        <span class="gc-score__delta gc-score__delta--value">
                             <?php
                             echo wp_kses(
                                 $delta_text,
@@ -1299,7 +1339,7 @@ class VCARB_Dashboard
 
             <div class="gc-shell">
                 <?php
-                echo wp_kses_post(
+                echo wp_kses(
                     $this->render_dashboard_header(
                         $uid,
                         $view,
@@ -1309,7 +1349,8 @@ class VCARB_Dashboard
                         (string) $export_urls['pdf'],
                         $date,
                         $has_snapshot
-                    )
+                    ),
+                    $this->dashboard_allowed_html()
                 );
                 ?>
 
@@ -1324,7 +1365,7 @@ class VCARB_Dashboard
                 <?php echo wp_kses_post($this->render_score_panel($score)); ?>
 
                 <?php
-                echo wp_kses_post(
+                echo wp_kses(
                     $this->render_metrics_row(
                         $uid,
                         $view,
@@ -1332,7 +1373,8 @@ class VCARB_Dashboard
                         $orders,
                         $delta,
                         $updated
-                    )
+                    ),
+                    $this->dashboard_allowed_html()
                 );
                 ?>
 

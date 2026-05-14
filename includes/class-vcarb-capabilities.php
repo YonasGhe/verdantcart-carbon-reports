@@ -32,6 +32,10 @@ final class VCARB_Capabilities
             return false;
         }
 
+        if (!user_can($user_id, 'read')) {
+            return false;
+        }
+
         return in_array($cap, self::view_capabilities(), true);
     }
 
@@ -47,6 +51,11 @@ final class VCARB_Capabilities
             self::VIEW_WEEK,
             self::VIEW_YEAR,
         ];
+    }
+
+    public static function can_view_reports(int $user_id): bool
+    {
+        return self::can_use($user_id, self::VIEW_MONTH);
     }
 
     /**

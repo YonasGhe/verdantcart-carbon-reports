@@ -1,3 +1,9 @@
+/* =========================================================
+   VerdantCart Carbon Reports — Admin Base Styles
+   File: admin/css/vcarb-admin-base.css
+   Scope: ONLY inside .wrap.gc-wrap
+   ========================================================= */
+
 /* =========================
    1) Tokens / Base
    ========================= */
@@ -5,23 +11,34 @@
     --gc-bg: #f6f7fb;
     --gc-card: #ffffff;
     --gc-text: #0f172a;
+    --gc-heading: #071126;
     --gc-muted: #64748b;
+    --gc-muted-dark: #475569;
 
     --gc-border: #e5e7eb;
     --gc-border-strong: #d1d5db;
 
     --gc-green: #16a34a;
     --gc-green-dark: #15803d;
+    --gc-green-soft: #f0fdf4;
+    --gc-green-border: #bbf7d0;
+
     --gc-blue: #3b82f6;
+    --gc-blue-soft: #eef2ff;
+    --gc-blue-border: #c7d2fe;
+
     --gc-amber: #f59e0b;
     --gc-amber-bg: #fffbeb;
     --gc-amber-border: #fde68a;
+
     --gc-red: #dc2626;
 
     --gc-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
-    --gc-shadow-lg: 0 10px 28px rgba(15, 23, 42, 0.10);
+    --gc-shadow-md: 0 8px 22px rgba(15, 23, 42, 0.08);
+    --gc-shadow-lg: 0 12px 30px rgba(15, 23, 42, 0.10);
 
-    --gc-radius: 16px;
+    --gc-radius: 18px;
+    --gc-radius-lg: 22px;
     --gc-radius-sm: 12px;
     --gc-gap: 16px;
 
@@ -34,19 +51,20 @@
     box-sizing: border-box;
 }
 
-.wrap.gc-wrap .gc-title {
-    margin: 0 0 10px;
-    font-size: 24px;
-    line-height: 1.15;
-    font-weight: 850;
-    letter-spacing: -0.02em;
-    color: var(--gc-text);
+.wrap.gc-wrap a {
+    text-decoration: none;
+}
+
+.wrap.gc-wrap a:focus-visible,
+.wrap.gc-wrap button:focus-visible {
+    outline: 3px solid rgba(59, 130, 246, 0.28);
+    outline-offset: 2px;
 }
 
 .wrap.gc-wrap .gc-muted {
     color: var(--gc-muted);
     font-size: 13px;
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
 .wrap.gc-wrap .gc-empty {
@@ -54,34 +72,80 @@
     text-align: center;
     color: var(--gc-muted);
     font-size: 14px;
+    line-height: 1.5;
 }
 
 /* =========================
-   2) Shared cards / layout
+   2) Shared headings
+   ========================= */
+.wrap.gc-wrap .gc-title {
+    margin: 0 0 10px;
+    color: var(--gc-heading);
+    font-size: 30px;
+    line-height: 1.08;
+    font-weight: 950;
+    letter-spacing: -0.04em;
+}
+
+.wrap.gc-wrap .gc-section__title {
+    margin: 0 0 6px;
+    color: var(--gc-heading);
+    font-size: 22px;
+    line-height: 1.15;
+    font-weight: 950;
+    letter-spacing: -0.03em;
+}
+
+.wrap.gc-wrap .gc-section__sub {
+    margin: 0;
+    color: var(--gc-muted);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+/* =========================
+   3) Shared cards / layout
    ========================= */
 .wrap.gc-wrap .gc-panel,
 .wrap.gc-wrap .gc-card,
-.wrap.gc-wrap .gc-settings-card {
+.wrap.gc-wrap .gc-settings-card,
+.wrap.gc-wrap .gc-card-saas {
     background: var(--gc-card);
     border: 1px solid var(--gc-border);
-    border-radius: var(--gc-radius);
+    border-radius: var(--gc-radius-lg);
     box-shadow: var(--gc-shadow-sm);
 }
 
 .wrap.gc-wrap .gc-panel {
     margin: 16px 0;
-    padding: 16px 18px;
+    padding: 18px;
 }
 
 .wrap.gc-wrap .gc-card {
     margin: 14px 0;
-    padding: 16px 18px;
+    padding: 18px;
 }
 
 .wrap.gc-wrap .gc-settings-card {
-    padding: 20px 22px;
+    padding: 22px;
 }
 
+.wrap.gc-wrap .gc-card-saas,
+.wrap.gc-wrap .gc-panel.gc-card-saas {
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+}
+
+.wrap.gc-wrap .gc-section {
+    margin-top: 22px;
+}
+
+.wrap.gc-wrap .gc-section__head {
+    margin-bottom: 12px;
+}
+
+/* =========================
+   4) Header / SaaS topbar
+   ========================= */
 .wrap.gc-wrap .gc-header {
     display: flex;
     align-items: flex-start;
@@ -104,33 +168,57 @@
 }
 
 .wrap.gc-wrap .gc-topbar-saas {
-    background: var(--gc-card);
+    background: #ffffff;
     border: 1px solid var(--gc-border);
-    border-radius: var(--gc-radius);
-    padding: 18px 18px 10px;
-    box-shadow: var(--gc-shadow-sm);
+    border-radius: var(--gc-radius-lg);
+    padding: 22px 24px 18px;
+    box-shadow: var(--gc-shadow-lg);
 }
 
-.wrap.gc-wrap .gc-section {
-    margin-top: 18px;
+/* =========================
+   5) Shared page brand/header
+   ========================= */
+.wrap.gc-wrap .gc-page-brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 22px 0 28px;
 }
 
-.wrap.gc-wrap .gc-section__head {
-    margin-bottom: 12px;
+.wrap.gc-wrap .gc-page-brand__logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    flex: 0 0 64px;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
 }
 
-.wrap.gc-wrap .gc-section__title {
-    margin: 0 0 6px;
-    font-size: 18px;
-    line-height: 1.2;
-    font-weight: 850;
-    color: var(--gc-text);
+.wrap.gc-wrap .gc-page-brand__content {
+    min-width: 0;
 }
 
-.wrap.gc-wrap .gc-section__sub {
+.wrap.gc-wrap .gc-page-brand__title {
     margin: 0;
+    color: #061735;
+    font-size: 36px;
+    line-height: 1.12;
+    font-weight: 950;
+    letter-spacing: -0.045em;
 }
 
+.wrap.gc-wrap .gc-page-brand__subtitle {
+    margin: 8px 0 0;
+    max-width: 780px;
+    color: var(--gc-muted);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* =========================
+   6) Chart wrapper
+   ========================= */
 .wrap.gc-wrap .gc-chart-wrap {
     position: relative;
     width: 100%;
@@ -138,7 +226,7 @@
     height: 340px;
     padding: 18px;
     border-radius: 16px;
-    background: #fff;
+    background: #ffffff;
 }
 
 .wrap.gc-wrap #gcCarbonChart,
@@ -148,7 +236,7 @@
 }
 
 /* =========================
-   3) Pills / badges
+   7) Pills / badges
    ========================= */
 .wrap.gc-wrap .gc-pill {
     display: inline-flex;
@@ -166,8 +254,8 @@
 }
 
 .wrap.gc-wrap .gc-pill--ok {
-    background: #f0fdf4;
-    border-color: #bbf7d0;
+    background: var(--gc-green-soft);
+    border-color: var(--gc-green-border);
     color: #065f46;
 }
 
@@ -178,8 +266,8 @@
 }
 
 .wrap.gc-wrap .gc-pill--info {
-    background: #eef2ff;
-    border-color: #c7d2fe;
+    background: var(--gc-blue-soft);
+    border-color: var(--gc-blue-border);
     color: #3730a3;
 }
 
@@ -197,28 +285,33 @@
 
 .wrap.gc-wrap .gc-badge--green {
     background: var(--gc-green);
-    color: #fff;
+    color: #ffffff;
 }
 
 .wrap.gc-wrap .gc-badge--red {
     background: var(--gc-red);
-    color: #fff;
+    color: #ffffff;
 }
 
 /* =========================
-   4) Buttons
+   8) Buttons
    ========================= */
 .wrap.gc-wrap .gc-btn {
+    appearance: none;
+    -webkit-appearance: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    min-height: 40px;
     padding: 10px 14px;
     border: 1px solid var(--gc-border);
     border-radius: 12px;
-    background: #fff;
+    background: #ffffff;
     color: var(--gc-text);
-    font-weight: 800;
+    font: inherit;
+    font-weight: 850;
+    line-height: 1.2;
     text-decoration: none;
     cursor: pointer;
     transition:
@@ -238,12 +331,13 @@
 .wrap.gc-wrap .gc-btn--primary {
     background: var(--gc-green);
     border-color: var(--gc-green);
-    color: #fff;
+    color: #ffffff;
 }
 
 .wrap.gc-wrap .gc-btn--primary:hover {
     background: var(--gc-green-dark);
     border-color: var(--gc-green-dark);
+    color: #ffffff;
 }
 
 .wrap.gc-wrap .gc-btn--secondary {
@@ -260,10 +354,11 @@
 .wrap.gc-wrap .gc-btn--ghost {
     background: #f8fafc;
     border-color: #cbd5e1;
+    color: var(--gc-text);
 }
 
 .wrap.gc-wrap .gc-btn--ghost:hover {
-    background: #fff;
+    background: #ffffff;
     border-color: #94a3b8;
 }
 
@@ -275,80 +370,140 @@
 }
 
 .wrap.gc-wrap .gc-btn:disabled,
-.wrap.gc-wrap .gc-btn--disabled {
+.wrap.gc-wrap .gc-btn--disabled,
+.wrap.gc-wrap .gc-btn.is-disabled,
+.wrap.gc-wrap .gc-btn[aria-disabled="true"] {
     opacity: 0.55;
     cursor: not-allowed;
+    pointer-events: none;
     transform: none !important;
     box-shadow: none !important;
 }
 
 /* =========================
-   5) Shared page brand/header
+   9) Responsive
    ========================= */
-.wrap.gc-wrap .gc-page-brand {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    margin: 4px 0 22px;
+@media (max-width: 782px) {
+    .wrap.gc-wrap {
+        margin-right: 12px;
+        margin-left: 0;
+    }
+
+    .wrap.gc-wrap .gc-page-brand {
+        align-items: flex-start;
+        gap: 14px;
+        margin: 18px 0 22px;
+    }
+
+    .wrap.gc-wrap .gc-page-brand__logo {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+        border-radius: 14px;
+    }
+
+    .wrap.gc-wrap .gc-page-brand__title {
+        font-size: 28px;
+        line-height: 1.08;
+    }
+
+    .wrap.gc-wrap .gc-page-brand__subtitle {
+        font-size: 14px;
+    }
+
+    .wrap.gc-wrap .gc-title {
+        font-size: 28px;
+    }
+
+    .wrap.gc-wrap .gc-section__title {
+        font-size: 22px;
+    }
+
+    .wrap.gc-wrap .gc-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .wrap.gc-wrap .gc-header__right {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .wrap.gc-wrap .gc-topbar-saas {
+        padding: 20px;
+        border-radius: 22px;
+    }
+
+    .wrap.gc-wrap .gc-panel {
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    .wrap.gc-wrap .gc-card {
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    .wrap.gc-wrap .gc-settings-card {
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    .wrap.gc-wrap .gc-chart-wrap {
+        min-height: 280px;
+        height: 280px;
+        padding: 12px;
+    }
 }
 
-.wrap.gc-wrap .gc-page-brand__content {
-    min-width: 0;
-}
+@media (max-width: 480px) {
+    .wrap.gc-wrap {
+        margin-right: 8px;
+    }
 
-.wrap.gc-wrap .gc-page-brand__title {
-    margin: 0;
-    color: #071126;
-    font-size: 34px;
-    line-height: 1.05;
-    font-weight: 950;
-    letter-spacing: -0.04em;
-}
+    .wrap.gc-wrap .gc-page-brand__title {
+        font-size: 26px;
+    }
 
-.wrap.gc-wrap .gc-page-brand__subtitle {
-    margin: 10px 0 0;
-    max-width: 780px;
-    color: #475569;
-    font-size: 15px;
-    line-height: 1.55;
+    .wrap.gc-wrap .gc-title {
+        font-size: 26px;
+    }
+
+    .wrap.gc-wrap .gc-section__title {
+        font-size: 20px;
+    }
+
+    .wrap.gc-wrap .gc-topbar-saas {
+        padding: 18px;
+    }
+
+    .wrap.gc-wrap .gc-btn {
+        min-height: 38px;
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .wrap.gc-wrap .gc-chart-wrap {
+        min-height: 250px;
+        height: 250px;
+    }
 }
 
 /* =========================
-   6) Strong shared admin headings
+   10) Print
    ========================= */
-.wrap.gc-wrap .gc-title {
-    margin: 0 0 10px;
-    color: #071126;
-    font-size: 30px;
-    line-height: 1.08;
-    font-weight: 950;
-    letter-spacing: -0.04em;
-}
+@media print {
+    .wrap.gc-wrap {
+        margin: 0;
+        color: #000000;
+    }
 
-.wrap.gc-wrap .gc-section__title {
-    margin: 0 0 6px;
-    color: #071126;
-    font-size: 22px;
-    line-height: 1.15;
-    font-weight: 950;
-    letter-spacing: -0.03em;
-}
-
-/* =========================
-   7) Strong shared SaaS card
-   ========================= */
-.wrap.gc-wrap .gc-topbar-saas {
-    background: #ffffff;
-    border: 1px solid var(--gc-border);
-    border-radius: 22px;
-    padding: 22px 24px 14px;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-}
-
-.wrap.gc-wrap .gc-card-saas,
-.wrap.gc-wrap .gc-panel {
-    background: #ffffff;
-    border: 1px solid var(--gc-border);
-    border-radius: 22px;
-    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+    .wrap.gc-wrap .gc-panel,
+    .wrap.gc-wrap .gc-card,
+    .wrap.gc-wrap .gc-settings-card,
+    .wrap.gc-wrap .gc-card-saas,
+    .wrap.gc-wrap .gc-topbar-saas {
+        box-shadow: none !important;
+    }
 }

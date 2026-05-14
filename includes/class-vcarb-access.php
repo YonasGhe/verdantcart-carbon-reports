@@ -8,55 +8,40 @@ defined('ABSPATH') || exit;
  * - no paid local feature gating
  * - no subscription lookup
  * - no checkout routing
- * - all built-in local reporting views/features are available
+ * - all built-in local reporting views/features are available to logged-in users
  *
- * This class intentionally keeps old method names so older templates,
- * AJAX handlers, dashboard files, and export files do not fatal.
+ * This class keeps older method names so older templates, AJAX handlers,
+ * dashboard files, and export files do not fatal during migration.
  */
 final class VCARB_Access
 {
     private const PLAN_FREE = 'free';
 
     /** @var array<int,string> */
-    private static array $plan_cache = [];
-
-    /** @var array<int,string> */
     private const VIEWS_ALL = ['month', 'week', 'year'];
 
     /**
-     * Clear cached resolved plans.
+     * Backward-compatible cache clearer.
      *
-     * @param int|null $user_id Optional user ID. Null clears the full cache.
+     * The WordPress.org build has no remote/subscription plan cache.
+     *
+     * @param int|null $user_id Optional user ID.
      */
     public static function clear_plan_cache(?int $user_id = null): void
     {
-        if ($user_id === null) {
-            self::$plan_cache = [];
-            return;
-        }
-
-        unset(self::$plan_cache[absint($user_id)]);
+        unset($user_id);
     }
 
     /**
      * Resolve the local plugin plan.
      *
-     * WordPress.org build always uses the free local build,
-     * while keeping all built-in reporting views/features available.
+     * WordPress.org build always uses the free local build.
      */
     public static function plan(int $user_id): string
     {
-        $user_id = absint($user_id);
+        unset($user_id);
 
-        if ($user_id <= 0) {
-            return self::PLAN_FREE;
-        }
-
-        if (!isset(self::$plan_cache[$user_id])) {
-            self::$plan_cache[$user_id] = self::PLAN_FREE;
-        }
-
-        return self::$plan_cache[$user_id];
+        return self::PLAN_FREE;
     }
 
     /**
@@ -84,13 +69,23 @@ final class VCARB_Access
     }
 
     /**
-     * Built-in local features remain available in the WordPress.org build.
+     * Built-in local reporting features are available to logged-in users.
      */
     public static function can_use(string $feature_key, int $user_id): bool
     {
-        unset($feature_key, $user_id);
+        unset($feature_key);
 
-        return true;
+        $user_id = absint($user_id);
+
+        if ($user_id <= 0) {
+            $user_id = get_current_user_id();
+        }
+
+        if ($user_id <= 0) {
+            return false;
+        }
+
+        return user_can($user_id, 'read') || user_can($user_id, 'manage_options');
     }
 
     /**
@@ -122,16 +117,13 @@ final class VCARB_Access
      */
     public static function feature_allowed(string $feature, int $user_id, string $view = 'month'): bool
     {
-        unset($feature, $user_id, $view);
+        unset($view);
 
-        return true;
+        return self::can_use($feature, $user_id);
     }
 
     /**
-     * Backward-compatible safe fallback.
-     *
-     * The WordPress.org build should not route built-in local functionality
-     * to upgrade URLs from inside the plugin.
+     * Upgrade URLs are intentionally unavailable in the WordPress.org build.
      */
     public static function upgrade_url(array $utm = []): string
     {
@@ -141,10 +133,7 @@ final class VCARB_Access
     }
 
     /**
-     * Backward-compatible safe fallback.
-     *
-     * The WordPress.org build should not generate checkout links for
-     * built-in local functionality from inside the plugin UI.
+     * Checkout URLs are intentionally unavailable in the WordPress.org build.
      */
     public static function checkout_url(string $plan_key = '', array $utm = []): string
     {
@@ -154,8 +143,7 @@ final class VCARB_Access
     }
 
     /**
-     * Return safe generic anchor attributes for old templates that still
-     * expect link attributes from this method.
+     * Return disabled anchor attributes for old templates that still expect them.
      */
     public static function upgrade_link_attrs(
         string $feature_label = '',
@@ -164,10 +152,17 @@ final class VCARB_Access
     ): string {
         unset($feature_label, $required_plan);
 
-        $class = !empty($opts['class']) ? (string) $opts['class'] : '';
-        $aria  = !empty($opts['aria_label'])
-            ? (string) $opts['aria_label']
-            : __('Feature link is unavailable.', 'verdantcart-ai-reports');
+        $class = isset($opts['class']) && is_scalar($opts['class'])
+            ? trim((string) $opts['class'])
+            : '';
+
+        $aria = isset($opts['aria_label']) && is_scalar($opts['aria_label'])
+            ? trim((string) $opts['aria_label'])
+            : '';
+
+        if ($aria === '') {
+            $aria = __('Feature link is unavailable in this build.', 'verdantcart-ai-reports');
+        }
 
         $attr_parts = [
             'href="#"',
@@ -197,7 +192,7 @@ final class VCARB_Access
     /**
      * Retained for backward compatibility with older templates.
      */
-    public static function upgrade_box(string $feature_label = 'Week & Year views', string $required_plan = 'pro'): string
+    public static function upgrade_box(string $feature_label = '', string $required_plan = ''): string
     {
         unset($feature_label, $required_plan);
 

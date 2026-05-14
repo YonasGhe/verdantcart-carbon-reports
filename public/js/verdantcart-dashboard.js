@@ -7,7 +7,7 @@
  * - AJAX dashboard switching
  * - historical period browser
  * - chart rendering for week / month / year
- * - front score / hotspots / AI insights refresh
+ * - front score / hotspots / sustainability insights refresh
  */
 
 (function () {
@@ -23,14 +23,6 @@
     function dashCfg() {
       if (typeof window.vcarbDashAjax !== "undefined") {
         return window.vcarbDashAjax;
-      }
-
-      /*
-       * Temporary backward-compatible fallback.
-       * Safe while browser/admin caches still contain the old localized object.
-       */
-      if (typeof window.amatorcarbonDashAjax !== "undefined") {
-        return window.amatorcarbonDashAjax;
       }
 
       return {};

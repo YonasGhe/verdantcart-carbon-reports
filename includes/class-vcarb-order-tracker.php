@@ -189,46 +189,23 @@ class VCARB_Order_Tracker
         }
 
         $check_product = static function (WC_Product $candidate): bool {
-            $plan_flag = (string) $candidate->get_meta('_vcarb_plan', true);
+            /*
+         * Generic exclusion flags only.
+         * No checkout/subscription/pro SKU logic in the WordPress.org build.
+         */
+            $exclude = (string) $candidate->get_meta('_vcarb_exclude_from_carbon_reports', true);
 
-            if ($plan_flag === 'pro') {
+            if ($exclude === '1' || strtolower($exclude) === 'yes') {
                 return true;
             }
 
-            $legacy_plan_flag = (string) $candidate->get_meta('_amatorcarbon_plan', true);
-
-            if ($legacy_plan_flag === 'pro') {
-                return true;
-            }
-
-            $managed_flag = (string) $candidate->get_meta('_vcarb_managed_product', true);
-
-            if ($managed_flag === '1') {
-                return true;
-            }
-
+            /*
+         * Legacy managed-product flag kept only so old internal test products
+         * are not counted after migration.
+         */
             $legacy_managed_flag = (string) $candidate->get_meta('_amatorcarbon_managed_product', true);
 
-            if ($legacy_managed_flag === '1') {
-                return true;
-            }
-
-            $sku = method_exists($candidate, 'get_sku')
-                ? (string) $candidate->get_sku()
-                : '';
-
-            return in_array(
-                $sku,
-                [
-                    'vcarb-pro-monthly',
-                    'vcarb-pro-yearly',
-                    'verdantcart-pro-monthly',
-                    'verdantcart-pro-yearly',
-                    'amatorcarbon-pro-monthly',
-                    'amatorcarbon-pro-yearly',
-                ],
-                true
-            );
+            return $legacy_managed_flag === '1';
         };
 
         if ($check_product($product)) {
@@ -291,11 +268,13 @@ class VCARB_Order_Tracker
         /*
          * Legacy fallback keeps old counted orders readable after the rename.
          */
-        $legacy_co2_kg = (float) $order->get_meta('_amatorcarbon_order_co2_kg', true);
+        foreach ($this->legacy_meta_keys_for(self::META_CO2_KG) as $legacy_meta_key) {
+            $legacy_co2_kg = (float) $order->get_meta($legacy_meta_key, true);
 
-        if ($legacy_co2_kg > 0.0) {
-            $order->update_meta_data(self::META_CO2_KG, $this->decimal_2($legacy_co2_kg));
-            return $legacy_co2_kg;
+            if ($legacy_co2_kg > 0.0) {
+                $order->update_meta_data(self::META_CO2_KG, $this->decimal_2($legacy_co2_kg));
+                return $legacy_co2_kg;
+            }
         }
 
         $co2_kg = $this->calculate_order_co2_kg($order);
@@ -315,13 +294,13 @@ class VCARB_Order_Tracker
             return false;
         }
 
-        $legacy_key = $this->legacy_meta_key_for($meta_key);
+        foreach ($this->legacy_meta_keys_for($meta_key) as $legacy_key) {
+            if ((string) $order->get_meta($legacy_key, true) !== '') {
+                $order->update_meta_data($meta_key, 'yes');
+                $order->save();
 
-        if ($legacy_key !== '' && (string) $order->get_meta($legacy_key, true) !== '') {
-            $order->update_meta_data($meta_key, 'yes');
-            $order->save();
-
-            return false;
+                return false;
+            }
         }
 
         $order->update_meta_data($meta_key, 'yes');
@@ -330,33 +309,52 @@ class VCARB_Order_Tracker
         return true;
     }
 
-    private function legacy_meta_key_for(string $meta_key): string
+    private function legacy_meta_keys_for(string $meta_key): array
     {
         if ($meta_key === self::META_COUNTED) {
-            return '_amatorcarbon_order_co2_counted';
+            return [
+                '_amatorcarbon_order_co2_counted',
+                '_gc_order_co2_counted',
+            ];
         }
 
         if ($meta_key === self::META_HOTSPOTS_COUNTED) {
-            return '_amatorcarbon_order_hotspots_counted';
+            return [
+                '_amatorcarbon_order_hotspots_counted',
+                '_gc_order_hotspots_counted',
+            ];
         }
 
         if ($meta_key === self::META_CO2_KG) {
-            return '_amatorcarbon_order_co2_kg';
+            return [
+                '_amatorcarbon_order_co2_kg',
+                '_gc_order_co2_kg',
+            ];
         }
 
         if ($meta_key === self::META_LOCK) {
-            return '_amatorcarbon_order_co2_lock';
+            return [
+                '_amatorcarbon_order_co2_lock',
+                '_gc_order_co2_lock',
+            ];
         }
 
-        return '';
+        return [];
     }
 
     private function maybe_increment_hotspot_rows(WC_Order $order, float $co2_kg): void
     {
-        $legacy_hotspots_counted = (string) $order->get_meta('_amatorcarbon_order_hotspots_counted', true);
+        $legacy_hotspots_counted = false;
 
-        if ((string) $order->get_meta(self::META_HOTSPOTS_COUNTED, true) !== '' || $legacy_hotspots_counted !== '') {
-            if ($legacy_hotspots_counted !== '' && (string) $order->get_meta(self::META_HOTSPOTS_COUNTED, true) === '') {
+        foreach ($this->legacy_meta_keys_for(self::META_HOTSPOTS_COUNTED) as $legacy_meta_key) {
+            if ((string) $order->get_meta($legacy_meta_key, true) !== '') {
+                $legacy_hotspots_counted = true;
+                break;
+            }
+        }
+
+        if ((string) $order->get_meta(self::META_HOTSPOTS_COUNTED, true) !== '' || $legacy_hotspots_counted) {
+            if ($legacy_hotspots_counted && (string) $order->get_meta(self::META_HOTSPOTS_COUNTED, true) === '') {
                 $order->update_meta_data(self::META_HOTSPOTS_COUNTED, 'yes');
                 $order->save();
             }
@@ -686,10 +684,7 @@ class VCARB_Order_Tracker
             return;
         }
 
-        /*
-     * Keep legacy 1.0.2 table name until a safe table migration is added.
-     */
-        $table   = esc_sql($wpdb->prefix . 'amatorcarbon_product_logs');
+        $table   = esc_sql(self::product_logs_table());
         $now     = current_time('mysql');
         $co2_str = $this->decimal_2($co2_delta);
 
@@ -728,10 +723,7 @@ class VCARB_Order_Tracker
             return;
         }
 
-        /*
-     * Keep legacy 1.0.2 table name until a safe table migration is added.
-     */
-        $table   = esc_sql($wpdb->prefix . 'amatorcarbon_logs');
+        $table   = esc_sql(self::logs_table());
         $now     = current_time('mysql');
         $co2_str = $this->decimal_2($co2_delta);
 
@@ -788,7 +780,10 @@ class VCARB_Order_Tracker
 
     private function schedule_period_aggregates(WC_Order $order): void
     {
-        if (!class_exists('VCARB_Scheduler')) {
+        if (
+            !class_exists('VCARB_Scheduler') ||
+            !method_exists('VCARB_Scheduler', 'schedule_aggregate_debounced')
+        ) {
             return;
         }
 
@@ -799,10 +794,34 @@ class VCARB_Order_Tracker
         ];
 
         foreach ($periods as $view => $period) {
-            if ($period !== '') {
-                VCARB_Scheduler::schedule_aggregate_debounced($view, $period);
+            if ($period === '') {
+                continue;
             }
+
+            VCARB_Scheduler::schedule_aggregate_debounced($view, $period);
         }
+    }
+
+    private static function logs_table(): string
+    {
+        if (function_exists('vcarb_logs_table')) {
+            return vcarb_logs_table();
+        }
+
+        global $wpdb;
+
+        return $wpdb->prefix . 'vcarb_logs';
+    }
+
+    private static function product_logs_table(): string
+    {
+        if (function_exists('vcarb_product_logs_table')) {
+            return vcarb_product_logs_table();
+        }
+
+        global $wpdb;
+
+        return $wpdb->prefix . 'vcarb_product_logs';
     }
 
     private function decimal_2(float $number): string

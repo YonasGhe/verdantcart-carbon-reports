@@ -350,13 +350,21 @@ class VCARB_Calculator
             return null;
         }
 
+        /*
+     * No meaningful trend when the selected/current period has no emissions.
+     * This avoids showing misleading "-100%" for empty weeks/months/years.
+     */
+        if ($current <= 0.0) {
+            return null;
+        }
+
         return (($current - $previous) / abs($previous)) * 100.0;
     }
 
     public static function format_percent($percent): string
     {
         if ($percent === null || $percent === '' || !is_numeric($percent)) {
-            return '<span class="gc-neutral">—</span>';
+            return '<span class="gc-no-change">—</span>';
         }
 
         $percent = (float) $percent;
@@ -365,26 +373,26 @@ class VCARB_Calculator
             return '<span class="gc-neutral">0%</span>';
         }
 
-        if ($percent > 999.9) {
-            return '<span class="gc-up">' . esc_html__('Up sharply', 'verdantcart-ai-reports') . '</span>';
-        }
-
-        if ($percent < -999.9) {
-            return '<span class="gc-down">' . esc_html__('Down sharply', 'verdantcart-ai-reports') . '</span>';
-        }
-
-        if ($percent > 0) {
+        /*
+     * For emissions:
+     * Negative = emissions are lower than previous = good = green.
+     * Positive = emissions are higher than previous = bad = red.
+     */
+        if ($percent < 0) {
             return sprintf(
-                '<span class="gc-up">%s%%</span>',
-                esc_html(number_format_i18n(abs($percent), 1))
+                '<span class="gc-carbon-good"><span class="gc-change-main">%s%%</span><span class="gc-change-word">%s</span></span>',
+                esc_html(number_format_i18n(abs($percent), 1)),
+                esc_html__('lower', 'verdantcart-ai-reports')
             );
         }
 
         return sprintf(
-            '<span class="gc-down">%s%%</span>',
-            esc_html(number_format_i18n(abs($percent), 1))
+            '<span class="gc-carbon-bad"><span class="gc-change-main">%s%%</span><span class="gc-change-word">%s</span></span>',
+            esc_html(number_format_i18n(abs($percent), 1)),
+            esc_html__('higher', 'verdantcart-ai-reports')
         );
     }
+    
     public static function compare(int $user_id, string $view = 'month', string $anchor = ''): array
     {
         $view   = self::normalize_view($view);
@@ -421,13 +429,13 @@ class VCARB_Calculator
 
     private static function logs_table(): string
     {
+        if (function_exists('vcarb_logs_table')) {
+            return vcarb_logs_table();
+        }
+
         global $wpdb;
 
-        /*
-         * Keep legacy table name for now to preserve existing 1.0.2 user data.
-         * Do not rename this to vcarb_logs until you add a safe migration.
-         */
-        return $wpdb->prefix . 'amatorcarbon_logs';
+        return $wpdb->prefix . 'vcarb_logs';
     }
 
     private static function co2_meta_key(): string
@@ -435,6 +443,18 @@ class VCARB_Calculator
         return class_exists('VCARB_Order_Tracker')
             ? VCARB_Order_Tracker::META_CO2_KG
             : '_vcarb_order_co2_kg';
+    }
+
+    private static function co2_meta_keys(): array
+    {
+        $keys = [
+            self::co2_meta_key(),
+            '_vcarb_order_co2_kg',
+            '_amatorcarbon_order_co2_kg',
+            '_gc_order_co2_kg',
+        ];
+
+        return array_values(array_unique(array_filter($keys)));
     }
 
     private static function resolve_target_period(string $view, string $period): string
@@ -494,27 +514,6 @@ class VCARB_Calculator
         } catch (Throwable $e) {
             return null;
         }
-    }
-
-    private static function delete_period_rows(string $view, string $period): void
-    {
-        global $wpdb;
-
-        $table = esc_sql(self::logs_table());
-
-        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
-        $wpdb->query(
-            $wpdb->prepare(
-                "
-                DELETE FROM `{$table}`
-                WHERE view_type = %s
-                  AND period = %s
-                ",
-                $view,
-                $period
-            )
-        );
-        // phpcs:enable
     }
 
     private static function upsert_user_snapshot_row(
@@ -619,7 +618,7 @@ class VCARB_Calculator
         $page           = 1;
         $limit          = 50;
         $max_pages      = 1;
-        $co2_meta_key   = self::co2_meta_key();
+        $co2_meta_keys  = self::co2_meta_keys();
         $final_statuses = self::get_final_statuses();
 
         if (empty($final_statuses)) {
@@ -674,8 +673,16 @@ class VCARB_Calculator
                     continue;
                 }
 
-                $co2_raw = $order->get_meta($co2_meta_key, true);
-                $co2     = ($co2_raw === '' || $co2_raw === null) ? 0.0 : (float) $co2_raw;
+                $co2 = 0.0;
+
+                foreach ($co2_meta_keys as $meta_key) {
+                    $co2_raw = $order->get_meta($meta_key, true);
+
+                    if ($co2_raw !== '' && $co2_raw !== null && is_numeric($co2_raw) && (float) $co2_raw > 0.0) {
+                        $co2 = (float) $co2_raw;
+                        break;
+                    }
+                }
 
                 $store_orders++;
                 $store_co2 += $co2;
@@ -836,11 +843,9 @@ class VCARB_Calculator
             ) {
                 VCARB_Product_Insights::rebuild_period($view, $period);
             }
-            
+
             if ($view === 'month' && preg_match('/^\d{4}-\d{2}$/', $period)) {
                 self::build_year_snapshot(substr($period, 0, 4));
-            } elseif ($view === 'week' && preg_match('/^(\d{4})-W(\d{2})$/', $period, $m)) {
-                self::build_year_snapshot($m[1]);
             }
 
             foreach (array_keys(self::$series_cache) as $cache_key) {

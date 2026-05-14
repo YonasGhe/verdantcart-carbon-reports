@@ -8,7 +8,8 @@ defined('ABSPATH') || exit;
  * - Front dashboard page from guests
  * - Plugin wp-admin pages from non-admin users
  *
- * Legacy AmatorCarbon slugs/options are kept so existing installed sites do not break.
+ * Legacy AmatorCarbon slugs/options/shortcodes are kept so existing installed
+ * sites do not break after the VerdantCart/VCARB rename.
  */
 final class VCARB_Admin_Guard
 {
@@ -22,14 +23,20 @@ final class VCARB_Admin_Guard
     private static function protected_admin_pages(): array
     {
         return [
-            'vcarb-carbon-reports',
+            /*
+             * Current VerdantCart / VCARB admin pages.
+             */
+            'verdantcart-carbon-reports',
             'vcarb-settings',
             'vcarb-all-customers',
             'vcarb-backfill',
             'vcarb-front-dashboard',
-            'vcarb-open-home-page',
-            'vcarb-open-plans-page',
             'vcarb-sustainability-summary',
+
+            /*
+             * Older transitional slug kept if any local install/bookmark used it.
+             */
+            'vcarb-carbon-reports',
 
             /*
              * Legacy admin page slugs kept for existing installs/bookmarks.
@@ -39,8 +46,6 @@ final class VCARB_Admin_Guard
             'amatorcarbon-all-customers',
             'amatorcarbon-backfill',
             'amatorcarbon-front-dashboard',
-            'amatorcarbon-open-home-page',
-            'amatorcarbon-open-plans-page',
             'amatorcarbon-sustainability-summary',
         ];
     }
@@ -147,6 +152,10 @@ final class VCARB_Admin_Guard
         $content = (string) $post->post_content;
 
         return (
+            /*
+             * Current dashboard shortcodes.
+             */
+            has_shortcode($content, 'vcarb_dashboard') ||
             has_shortcode($content, 'verdantcart_dashboard') ||
             has_shortcode($content, 'verdantcart_carbon_dashboard') ||
 
@@ -192,14 +201,14 @@ final class VCARB_Admin_Guard
             $dashboard_id = (int) get_option(VCARB_Reports_Activator::OPT_DASHBOARD_ID);
         }
 
-        /*
-         * Legacy fallback for sites that already stored the dashboard page ID
-         * before the internal prefix was renamed.
-         */
         if ($dashboard_id <= 0) {
             $dashboard_id = (int) get_option('vcarb_dashboard_page_id');
         }
 
+        /*
+         * Legacy fallback for sites that already stored the dashboard page ID
+         * before the internal prefix was renamed.
+         */
         if ($dashboard_id <= 0) {
             $dashboard_id = (int) get_option('amatorcarbon_dashboard_page_id');
         }
@@ -214,15 +223,23 @@ final class VCARB_Admin_Guard
             $slugs[] = VCARB_Reports_Activator::SLUG_DASHBOARD;
         }
 
-        $slugs[] = 'verdantcart-carbon-dashboard';
         $slugs[] = 'verdantcart-dashboard';
+        $slugs[] = 'verdantcart-carbon-dashboard';
+        $slugs[] = 'vcarb-dashboard';
+        $slugs[] = 'vcarb-carbon-dashboard';
 
         /*
          * Legacy slug kept so old pages remain protected after update.
          */
         $slugs[] = 'amator-carbon-dashboard';
 
-        $slugs = array_values(array_unique(array_filter(array_map('sanitize_title', $slugs))));
+        $slugs = array_values(
+            array_unique(
+                array_filter(
+                    array_map('sanitize_title', $slugs)
+                )
+            )
+        );
 
         foreach ($slugs as $slug) {
             $page = get_page_by_path($slug, OBJECT, 'page');

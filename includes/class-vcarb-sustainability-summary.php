@@ -38,7 +38,12 @@ final class VCARB_Sustainability_Summary
             $context = 'front';
         }
 
-        $scope    = sanitize_key((string) ($dataset['scope'] ?? 'user'));
+        $scope = sanitize_key((string) ($dataset['scope'] ?? 'user'));
+
+        if (!in_array($scope, ['user', 'admin', 'store'], true)) {
+            $scope = 'user';
+        }
+
         $view     = self::normalize_view((string) ($dataset['view'] ?? 'month'));
         $date     = self::sanitize_period_for_view($view, (string) ($dataset['date'] ?? ''));
         $snapshot = self::array_value($dataset, 'snapshot');
@@ -273,7 +278,9 @@ final class VCARB_Sustainability_Summary
         }
 
         if ($view === 'year' && preg_match('/^\d{4}$/', $period)) {
-            return $period;
+            $year = (int) $period;
+
+            return ($year >= 1970 && $year <= 2100) ? (string) $year : '';
         }
 
         return '';

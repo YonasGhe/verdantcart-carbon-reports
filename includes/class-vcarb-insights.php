@@ -821,11 +821,15 @@ final class VCARB_Insights
         $thresholds = apply_filters('vcarb_insights_thresholds', $defaults);
 
         /*
-         * Legacy filter kept for existing custom snippets/extensions.
-         */
+     * Legacy filter kept for existing custom snippets/extensions.
+     */
         $thresholds = apply_filters('amatorcarbon_insights_thresholds', $thresholds);
 
-        return is_array($thresholds) ? $thresholds : [];
+        if (!is_array($thresholds)) {
+            return $defaults;
+        }
+
+        return wp_parse_args($thresholds, $defaults);
     }
 
     private static function pct_change($now, $prev): ?float

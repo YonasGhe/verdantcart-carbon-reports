@@ -134,29 +134,19 @@ if (!function_exists('vcarb_get_pricing_url')) {
 if (!function_exists('vcarb_get_dashboard_url')) {
     function vcarb_get_dashboard_url(): string
     {
-        if (class_exists('VCARB_Reports_Activator')) {
-            $option_key = VCARB_Reports_Activator::OPT_DASHBOARD_ID;
-        } elseif (class_exists('AmatorCarbon_Reports_Activator')) {
-            $option_key = AmatorCarbon_Reports_Activator::OPT_DASHBOARD_ID;
-        } else {
-            $option_key = 'vcarb_dashboard_page_id';
-        }
+        $option_key = class_exists('VCARB_Reports_Activator')
+            ? VCARB_Reports_Activator::OPT_DASHBOARD_ID
+            : 'vcarb_dashboard_page_id';
 
         $slugs = [
             'verdantcart-dashboard',
             'verdantcart-carbon-dashboard',
+            'amator-carbon-dashboard',
         ];
 
         if (class_exists('VCARB_Reports_Activator')) {
             array_unshift($slugs, VCARB_Reports_Activator::SLUG_DASHBOARD);
-        } elseif (class_exists('AmatorCarbon_Reports_Activator')) {
-            array_unshift($slugs, AmatorCarbon_Reports_Activator::SLUG_DASHBOARD);
         }
-
-        /*
-         * Legacy slug kept so old dashboard pages still resolve.
-         */
-        $slugs[] = 'amator-carbon-dashboard';
 
         $slugs = array_values(
             array_unique(

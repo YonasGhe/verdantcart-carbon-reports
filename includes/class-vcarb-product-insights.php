@@ -825,52 +825,43 @@ class VCARB_Product_Insights
             ];
         }
 
-        $tables = [];
-
-        foreach (
-            [
-                self::legacy_logs_table_name(), // wp_amatorcarbon_logs
-                self::acr_logs_table_name(),    // wp_acr_logs
-                self::logs_table_name(),        // wp_vcarb_logs
-            ] as $candidate_table
-        ){
-            if (self::db_table_exists($candidate_table)) {
-                $tables[] = $candidate_table;
-            }
+        if (!self::db_table_exists(self::logs_table_name())) {
+            return [
+                'orders'    => 0,
+                'total_co2' => 0.0,
+            ];
         }
 
-        foreach ($tables as $raw_table) {
-            $table = esc_sql($raw_table);
+        $table = esc_sql(self::logs_table_name());
 
-            // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reading plugin-owned snapshot tables; table names are plugin-controlled.
-            $row = $wpdb->get_row(
-                $wpdb->prepare(
-                    "
-                    SELECT orders, total_co2
-                    FROM `{$table}`
-                    WHERE user_id = 0
-                      AND view_type = %s
-                      AND period = %s
-                    LIMIT 1
-                    ",
-                    $view,
-                    $period
-                ),
-                ARRAY_A
-            );
-            // phpcs:enable
+        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Reading plugin-owned snapshot table; table name is plugin-controlled.
+        $row = $wpdb->get_row(
+            $wpdb->prepare(
+                "
+            SELECT orders, total_co2
+            FROM `{$table}`
+            WHERE user_id = 0
+              AND view_type = %s
+              AND period = %s
+            LIMIT 1
+            ",
+                $view,
+                $period
+            ),
+            ARRAY_A
+        );
+        // phpcs:enable
 
-            if (is_array($row) && !empty($row)) {
-                return [
-                    'orders'    => isset($row['orders']) ? (int) $row['orders'] : 0,
-                    'total_co2' => isset($row['total_co2']) ? (float) $row['total_co2'] : 0.0,
-                ];
-            }
+        if (!is_array($row) || empty($row)) {
+            return [
+                'orders'    => 0,
+                'total_co2' => 0.0,
+            ];
         }
 
         return [
-            'orders'    => 0,
-            'total_co2' => 0.0,
+            'orders'    => isset($row['orders']) ? (int) $row['orders'] : 0,
+            'total_co2' => isset($row['total_co2']) ? (float) $row['total_co2'] : 0.0,
         ];
     }
 
@@ -881,18 +872,26 @@ class VCARB_Product_Insights
         }
 
         $check_product = static function (WC_Product $candidate): bool {
-            $plan_flag = (string) $candidate->get_meta('_vcarb_plan', true);
+            /*
+         * WordPress.org-safe exclusion.
+         *
+         * This does not create Pro logic, checkout logic, subscription logic,
+         * or SKU-based paid-product logic.
+         *
+         * It only lets merchants/developers exclude products from carbon
+         * reporting and prevents old plugin-managed/internal products from
+         * being counted after migration.
+         */
+            $exclude = strtolower(trim((string) $candidate->get_meta('_vcarb_exclude_from_carbon_reports', true)));
 
-            if ($plan_flag === 'pro') {
+            if ($exclude === '1' || $exclude === 'yes' || $exclude === 'true') {
                 return true;
             }
 
-            $legacy_plan_flag = (string) $candidate->get_meta('_amatorcarbon_plan', true);
-
-            if ($legacy_plan_flag === 'pro') {
-                return true;
-            }
-
+            /*
+         * Current/legacy managed-product flags kept only as analytics exclusions.
+         * These are not entitlement checks.
+         */
             $managed_flag = (string) $candidate->get_meta('_vcarb_managed_product', true);
 
             if ($managed_flag === '1') {
@@ -901,26 +900,7 @@ class VCARB_Product_Insights
 
             $legacy_managed_flag = (string) $candidate->get_meta('_amatorcarbon_managed_product', true);
 
-            if ($legacy_managed_flag === '1') {
-                return true;
-            }
-
-            $sku = method_exists($candidate, 'get_sku')
-                ? (string) $candidate->get_sku()
-                : '';
-
-            return in_array(
-                $sku,
-                [
-                    'vcarb-pro-monthly',
-                    'vcarb-pro-yearly',
-                    'verdantcart-pro-monthly',
-                    'verdantcart-pro-yearly',
-                    'amatorcarbon-pro-monthly',
-                    'amatorcarbon-pro-yearly',
-                ],
-                true
-            );
+            return $legacy_managed_flag === '1';
         };
 
         if ($check_product($product)) {
@@ -928,7 +908,7 @@ class VCARB_Product_Insights
         }
 
         if ($product instanceof WC_Product_Variation) {
-            $parent_id = (int) $product->get_parent_id();
+            $parent_id = absint($product->get_parent_id());
 
             if ($parent_id > 0) {
                 $parent = wc_get_product($parent_id);
@@ -1048,7 +1028,7 @@ class VCARB_Product_Insights
 
     private static function table_exists(): bool
     {
-        return !empty(self::readable_product_tables());
+        return self::db_table_exists(self::table_name());
     }
 
     private static function db_table_exists(string $table): bool
@@ -1082,38 +1062,18 @@ class VCARB_Product_Insights
 
     private static function readable_product_tables(): array
     {
-        $tables = [];
-
-        foreach (
-            [
-                self::legacy_table_name(), // wp_amatorcarbon_product_logs
-                self::acr_table_name(),    // wp_acr_product_logs
-                self::table_name(),        // wp_vcarb_product_logs
-            ] as $table
-        ) {
-            if (self::db_table_exists($table)) {
-                $tables[] = $table;
-            }
-        }
-
-        return array_values(array_unique($tables));
+        /*
+     * After the safe DB migration, read only from the new VCARB table.
+     * Do not read legacy tables too, otherwise migrated rows can be double-counted.
+     */
+        return self::db_table_exists(self::table_name())
+            ? [self::table_name()]
+            : [];
     }
 
     private static function writable_table_name(): string
     {
-        foreach (
-            [
-                self::legacy_table_name(), // wp_amatorcarbon_product_logs
-                self::acr_table_name(),
-                self::table_name(),
-            ] as $table
-        ) {
-            if (self::db_table_exists($table)) {
-                return $table;
-            }
-        }
-
-        return self::legacy_table_name();
+        return self::table_name();
     }
 
     private static function infer_view_from_period(string $period): string
@@ -1188,39 +1148,11 @@ class VCARB_Product_Insights
         return $wpdb->prefix . 'vcarb_product_logs';
     }
 
-    private static function acr_table_name(): string
-    {
-        global $wpdb;
-
-        return $wpdb->prefix . 'acr_product_logs';
-    }
-
-    private static function acr_logs_table_name(): string
-    {
-        global $wpdb;
-
-        return $wpdb->prefix . 'acr_logs';
-    }
-
-    private static function legacy_table_name(): string
-    {
-        global $wpdb;
-
-        return $wpdb->prefix . 'amatorcarbon_product_logs';
-    }
-
     private static function logs_table_name(): string
     {
         global $wpdb;
 
         return $wpdb->prefix . 'vcarb_logs';
-    }
-
-    private static function legacy_logs_table_name(): string
-    {
-        global $wpdb;
-
-        return $wpdb->prefix . 'amatorcarbon_logs';
     }
 
     private static function get_final_statuses(): array
@@ -1343,10 +1275,10 @@ class VCARB_Product_Insights
             $keys[] = VCARB_Order_Tracker::META_CO2_KG;
         }
 
-        if (class_exists('AmatorCarbon_Order_Tracker')) {
-            $keys[] = AmatorCarbon_Order_Tracker::META_CO2_KG;
-        }
-
+        /*
+     * Keep old raw meta keys as read fallbacks only.
+     * This helps older counted orders remain readable after migration.
+     */
         $keys[] = '_vcarb_order_co2_kg';
         $keys[] = '_amatorcarbon_order_co2_kg';
         $keys[] = '_gc_order_co2_kg';

@@ -27,18 +27,6 @@ class VCARB_Backfill_Ajax
         add_action('wp_ajax_vcarb_backfill_batch', [$self, 'backfill_batch']);
         add_action('wp_ajax_vcarb_backfill_stop', [$self, 'backfill_stop']);
 
-        // Temporary legacy AJAX action support during 1.0.x → 1.1.0 transition.
-        add_action('wp_ajax_amatorcarbon_backfill_start', [$self, 'backfill_start']);
-        add_action('wp_ajax_amatorcarbon_backfill_batch', [$self, 'backfill_batch']);
-        add_action('wp_ajax_amatorcarbon_backfill_stop', [$self, 'backfill_stop']);
-
-        if (function_exists('vcarb_backfill_run')) {
-            add_action('wp_ajax_vcarb_backfill_run', 'vcarb_backfill_run');
-        }
-
-        if (function_exists('amatorcarbon_backfill_run')) {
-            add_action('wp_ajax_amatorcarbon_backfill_run', 'amatorcarbon_backfill_run');
-        }
     }
 
     private function require_backfill_dependencies(): void

@@ -19,7 +19,9 @@ final class VCARB_Plugin_Pages_Admin
 {
     public const META_PLUGIN_PAGE = 'vcarb_plugin_page';
 
+    private const META_MANAGED_PAGE = '_vcarb_managed_page';
     private const LEGACY_META_PLUGIN_PAGE = 'amatorcarbon_plugin_page';
+    private const LEGACY_META_MANAGED_PAGE = '_amatorcarbon_managed_page';
 
     private const FILTER_KEY = 'vcarb_pages';
     private const LEGACY_FILTER_KEY = 'amatorcarbon_pages';
@@ -53,12 +55,14 @@ final class VCARB_Plugin_Pages_Admin
         }
 
         update_post_meta($page_id, self::META_PLUGIN_PAGE, '1');
+        update_post_meta($page_id, self::META_MANAGED_PAGE, '1');
 
         /*
-         * Keep legacy marker too so older installs and existing admin filters
-         * do not lose the page relationship during the rename.
-         */
+     * Keep legacy marker too so older installs and existing admin filters
+     * do not lose the page relationship during the rename.
+     */
         update_post_meta($page_id, self::LEGACY_META_PLUGIN_PAGE, '1');
+        update_post_meta($page_id, self::LEGACY_META_MANAGED_PAGE, '1');
     }
 
     public static function is_plugin_page(int $page_id): bool
@@ -67,11 +71,20 @@ final class VCARB_Plugin_Pages_Admin
             return false;
         }
 
-        if ((string) get_post_meta($page_id, self::META_PLUGIN_PAGE, true) === '1') {
-            return true;
+        $keys = [
+            self::META_PLUGIN_PAGE,
+            self::META_MANAGED_PAGE,
+            self::LEGACY_META_PLUGIN_PAGE,
+            self::LEGACY_META_MANAGED_PAGE,
+        ];
+
+        foreach ($keys as $key) {
+            if ((string) get_post_meta($page_id, $key, true) === '1') {
+                return true;
+            }
         }
 
-        return (string) get_post_meta($page_id, self::LEGACY_META_PLUGIN_PAGE, true) === '1';
+        return false;
     }
 
     public static function add_pages_column(array $columns): array

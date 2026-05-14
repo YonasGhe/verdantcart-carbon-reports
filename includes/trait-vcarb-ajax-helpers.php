@@ -16,8 +16,6 @@ trait VCARB_Ajax_Helpers_Trait
             ),
             $status
         );
-
-        exit;
     }
 
     protected function require_logged_in(): int

@@ -7,12 +7,6 @@
 
     window.__vcarbInsightsFiltersLoaded = true;
 
-    /*
-     * Backward-compatible flag.
-     * Some cached/older scripts may still check this.
-     */
-    window.__gcInsightsFiltersLoaded = true;
-
     function init(root) {
         root = root || document;
 
@@ -69,14 +63,10 @@
         });
     }
 
-    /*
-     * New VerdantCart alias.
-     */
     window.vcarbInsightsInitFilters = init;
 
     /*
-     * Keep this because your admin/dashboard JS calls:
-     * window.gcInsightsInitFilters(...)
+     * Shared alias used by the admin and dashboard scripts.
      */
     window.gcInsightsInitFilters = init;
 

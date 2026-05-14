@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
  * - Legacy shortcodes, slugs, options, and classes are kept so older pages
  *   continue to work after the rename.
  */
-class VCARB_Front_Context
+final class VCARB_Front_Context
 {
     /** @var array<int,bool> */
     private static array $dashboard_page_cache = [];
@@ -34,6 +34,7 @@ class VCARB_Front_Context
     /** @var array<int,string> */
     private const DASHBOARD_SLUGS = [
         'verdantcart-dashboard',
+        'verdantcart-carbon-dashboard',
         'vcarb-dashboard',
         'vcarb-carbon-dashboard',
 
@@ -57,7 +58,7 @@ class VCARB_Front_Context
 
     public static function is_dashboard_page(): bool
     {
-        if (is_admin() || !is_singular()) {
+        if (is_admin() || !is_singular('page')) {
             return false;
         }
 
@@ -67,7 +68,7 @@ class VCARB_Front_Context
             return false;
         }
 
-        $post_id = (int) $post->ID;
+        $post_id = absint($post->ID);
 
         if ($post_id <= 0) {
             return false;
@@ -123,7 +124,6 @@ class VCARB_Front_Context
         $classes[] = 'verdantcart-page--dashboard';
         $classes[] = 'verdantcart-layout--app';
 
-        // New internal prefix classes.
         $classes[] = 'vcarb-page';
         $classes[] = 'vcarb-page--dashboard';
         $classes[] = 'vcarb-layout--app';
@@ -168,14 +168,25 @@ class VCARB_Front_Context
             $page_id = (int) get_option('vcarb_dashboard_page_id', 0);
         }
 
-        if ($page_id > 0) {
-            return $page_id;
+        if ($page_id <= 0) {
+            $page_id = (int) get_option('amatorcarbon_dashboard_page_id', 0);
         }
 
-        /*
-         * Legacy option fallback for existing 1.0.x installs.
-         */
-        return (int) get_option('amatorcarbon_dashboard_page_id', 0);
+        if ($page_id <= 0) {
+            return 0;
+        }
+
+        $post = get_post($page_id);
+
+        if (
+            !($post instanceof WP_Post) ||
+            $post->post_type !== 'page' ||
+            $post->post_status === 'trash'
+        ) {
+            return 0;
+        }
+
+        return $page_id;
     }
 
     /**

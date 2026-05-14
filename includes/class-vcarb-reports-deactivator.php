@@ -30,29 +30,38 @@ final class VCARB_Reports_Deactivator
     private static function cron_hooks(): array
     {
         return [
-            // Current VCARB cron hooks.
+            /*
+             * Current VCARB cron/action hooks.
+             */
             'vcarb_weekly_event',
             'vcarb_monthly_event',
             'vcarb_yearly_event',
             'vcarb_run_aggregate',
 
-            // Legacy AmatorCarbon cron hooks kept for cleanup compatibility.
+            /*
+             * Legacy AmatorCarbon hooks kept for cleanup compatibility.
+             */
             'amatorcarbon_weekly_event',
             'amatorcarbon_monthly_event',
             'amatorcarbon_yearly_event',
             'amatorcarbon_run_aggregate',
 
-            // Older ACR hooks, safe to clear if they exist.
+            /*
+             * Older ACR hooks, safe to clear if they exist.
+             */
             'acr_weekly_event',
             'acr_monthly_event',
             'acr_yearly_event',
             'acr_run_aggregate',
 
-            // Old GreenCart / AI Carbon hooks, safe to clear if they exist.
+            /*
+             * Old GreenCart / AI Carbon hooks, safe to clear if they exist.
+             */
             'ai_carbon_weekly_event',
             'ai_carbon_monthly_event',
             'ai_carbon_yearly_event',
             'ai_carbon_run_aggregate',
+
             'gc_ai_weekly_event',
             'gc_ai_monthly_event',
             'gc_ai_yearly_event',
@@ -76,13 +85,13 @@ final class VCARB_Reports_Deactivator
      */
     private static function clear_wp_cron_hooks(): void
     {
-        foreach (self::cron_hooks() as $vcarb_cron_hook) {
+        foreach (self::cron_hooks() as $hook) {
             /*
              * wp_unschedule_hook() clears all scheduled events for the hook,
              * including events scheduled with arguments.
              */
             if (function_exists('wp_unschedule_hook')) {
-                wp_unschedule_hook($vcarb_cron_hook);
+                wp_unschedule_hook($hook);
                 continue;
             }
 
@@ -90,7 +99,7 @@ final class VCARB_Reports_Deactivator
              * Fallback for older WordPress versions.
              */
             if (function_exists('wp_clear_scheduled_hook')) {
-                wp_clear_scheduled_hook($vcarb_cron_hook);
+                wp_clear_scheduled_hook($hook);
             }
         }
     }
@@ -104,8 +113,8 @@ final class VCARB_Reports_Deactivator
             return;
         }
 
-        foreach (self::cron_hooks() as $vcarb_action_hook) {
-            as_unschedule_all_actions($vcarb_action_hook);
+        foreach (self::cron_hooks() as $hook) {
+            as_unschedule_all_actions($hook);
         }
     }
 }

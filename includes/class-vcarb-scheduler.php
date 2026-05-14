@@ -26,6 +26,14 @@ final class VCARB_Scheduler
      */
     public static function register_hooks(): void
     {
+        static $did = false;
+
+        if ($did) {
+            return;
+        }
+
+        $did = true;
+
         add_action(self::HOOK_RUN_AGGREGATE, [__CLASS__, 'run_aggregate'], 10, 2);
     }
 
@@ -48,6 +56,9 @@ final class VCARB_Scheduler
 
         $args = [$view, $period];
 
+        /*
+         * Prefer Action Scheduler when WooCommerce provides it.
+         */
         if (function_exists('as_has_scheduled_action') && function_exists('as_schedule_single_action')) {
             if (!as_has_scheduled_action(self::HOOK_RUN_AGGREGATE, $args, self::ACTION_GROUP)) {
                 as_schedule_single_action(
@@ -61,8 +72,15 @@ final class VCARB_Scheduler
             return;
         }
 
+        /*
+         * Fallback to WP-Cron.
+         */
         if (!wp_next_scheduled(self::HOOK_RUN_AGGREGATE, $args)) {
-            wp_schedule_single_event(time() + $delay, self::HOOK_RUN_AGGREGATE, $args);
+            wp_schedule_single_event(
+                time() + $delay,
+                self::HOOK_RUN_AGGREGATE,
+                $args
+            );
         }
     }
 
@@ -134,9 +152,7 @@ final class VCARB_Scheduler
             }
 
             try {
-                $tz = function_exists('wp_timezone')
-                    ? wp_timezone()
-                    : new DateTimeZone(wp_timezone_string() ?: 'UTC');
+                $tz = self::wp_timezone_safe();
 
                 $dt = (new DateTimeImmutable('now', $tz))
                     ->setISODate($year, $week, 1)
@@ -155,5 +171,22 @@ final class VCARB_Scheduler
         }
 
         return '';
+    }
+
+    private static function wp_timezone_safe(): DateTimeZone
+    {
+        if (function_exists('wp_timezone')) {
+            return wp_timezone();
+        }
+
+        $timezone_string = function_exists('wp_timezone_string')
+            ? wp_timezone_string()
+            : '';
+
+        try {
+            return new DateTimeZone($timezone_string ?: 'UTC');
+        } catch (Throwable $e) {
+            return new DateTimeZone('UTC');
+        }
     }
 }
