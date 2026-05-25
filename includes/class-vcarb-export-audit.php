@@ -1,0 +1,186 @@
+<?php
+defined('ABSPATH') || exit;
+
+final class VCARB_Export_Audit
+{
+
+    /**
+     * Fully-qualified audit table name.
+     *
+     * Centralises the table name so the schema installer (install_table) and
+     * the writer (log) both read from the same source. Honors any custom
+     * $wpdb->prefix without forcing us to repeat the literal in each call
+     * site.
+     */
+    public static function table(): string
+    {
+        global $wpdb;
+
+        return $wpdb->prefix . 'vcarb_export_audit';
+    }
+
+    public static function install_table(): void
+    {
+        global $wpdb;
+
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+        $table           = esc_sql(self::table());
+        $charset_collate = $wpdb->get_charset_collate();
+
+        $sql = "CREATE TABLE {$table} (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            created_at DATETIME NOT NULL,
+            actor_user_id BIGINT UNSIGNED NOT NULL DEFAULT 0,
+            actor_role VARCHAR(50) NOT NULL DEFAULT '',
+            scope VARCHAR(20) NOT NULL DEFAULT 'user',
+            format VARCHAR(10) NOT NULL DEFAULT 'csv',
+            view VARCHAR(10) NOT NULL DEFAULT 'month',
+            requested_date VARCHAR(20) NOT NULL DEFAULT '',
+            resolved_anchor VARCHAR(20) NOT NULL DEFAULT '',
+            action VARCHAR(60) NOT NULL DEFAULT '',
+            result VARCHAR(20) NOT NULL DEFAULT 'ok',
+            http_status SMALLINT UNSIGNED NOT NULL DEFAULT 200,
+            message TEXT NULL,
+            ip VARCHAR(64) NOT NULL DEFAULT '',
+            user_agent VARCHAR(255) NOT NULL DEFAULT '',
+            PRIMARY KEY (id),
+            KEY created_at (created_at),
+            KEY actor_user_id (actor_user_id),
+            KEY view (view),
+            KEY result (result),
+            KEY action (action),
+            KEY scope (scope)
+        ) {$charset_collate};";
+
+        dbDelta($sql);
+    }
+
+    public static function log(array $row): void
+    {
+        global $wpdb;
+
+        $table = self::table();
+
+        $current_user_id = get_current_user_id();
+
+        $defaults = [
+            'created_at'      => current_time('mysql', true),
+            'actor_user_id'   => $current_user_id,
+            'actor_role'      => self::role_label($current_user_id),
+            'scope'           => 'user',
+            'format'          => 'csv',
+            'view'            => 'month',
+            'requested_date'  => '',
+            'resolved_anchor' => '',
+            'action'          => '',
+            'result'          => 'ok',
+            'http_status'     => 200,
+            'message'         => '',
+            'ip'              => self::request_ip(),
+            'user_agent'      => self::request_user_agent(),
+        ];
+
+        $data = array_merge($defaults, $row);
+
+        $insert_data = [
+            'created_at'      => sanitize_text_field((string) $data['created_at']),
+            'actor_user_id'   => absint($data['actor_user_id']),
+            'actor_role'      => substr(sanitize_key((string) $data['actor_role']), 0, 50),
+            'scope'           => substr(sanitize_key((string) $data['scope']), 0, 20),
+            'format'          => substr(sanitize_key((string) $data['format']), 0, 10),
+            'view'            => substr(sanitize_key((string) $data['view']), 0, 10),
+            'requested_date'  => substr(sanitize_text_field((string) $data['requested_date']), 0, 20),
+            'resolved_anchor' => substr(sanitize_text_field((string) $data['resolved_anchor']), 0, 20),
+            'action'          => substr(sanitize_key((string) $data['action']), 0, 60),
+            'result'          => substr(sanitize_key((string) $data['result']), 0, 20),
+            'http_status'     => max(100, min(599, (int) $data['http_status'])),
+            'message'         => sanitize_textarea_field((string) $data['message']),
+            'ip'              => substr(sanitize_text_field((string) $data['ip']), 0, 64),
+            'user_agent'      => substr(sanitize_text_field((string) $data['user_agent']), 0, 255),
+        ];
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- Writing to plugin-owned audit table.
+        $wpdb->insert(
+            $table,
+            $insert_data,
+            [
+                '%s',
+                '%d',
+                '%s',
+                '%s',
+                '%s',
+                '%s',
+                '%s',
+                '%s',
+                '%s',
+                '%s',
+                '%d',
+                '%s',
+                '%s',
+                '%s',
+            ]
+        );
+    }
+
+    private static function role_label(int $user_id): string
+    {
+        if ($user_id <= 0) {
+            return 'guest';
+        }
+
+        $user = get_userdata($user_id);
+
+        if (
+            !($user instanceof WP_User) ||
+            empty($user->roles) ||
+            !is_array($user->roles)
+        ) {
+            return 'user';
+        }
+
+        $role = reset($user->roles);
+
+        $role = (string) reset($user->roles);
+
+        return $role !== ''
+            ? sanitize_key($role)
+            : 'user';
+    }
+
+    private static function request_ip(): string
+    {
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Read once.
+        $raw = filter_input(INPUT_SERVER, 'REMOTE_ADDR');
+
+        if (!is_scalar($raw)) {
+            return '';
+        }
+
+        return substr(
+            sanitize_text_field(
+                wp_unslash((string) $raw)
+            ),
+            0,
+            64
+        );
+    }
+
+    private static function request_user_agent(): string
+    {
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Read once.
+        $raw = filter_input(INPUT_SERVER, 'HTTP_USER_AGENT');
+
+        if (!is_scalar($raw)) {
+            return '';
+        }
+
+        return substr(
+            sanitize_text_field(
+                wp_unslash((string) $raw)
+            ),
+            0,
+            255
+        );
+    }
+}

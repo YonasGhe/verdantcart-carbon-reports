@@ -1,0 +1,16 @@
+.git
+.DS_Store
+Thumbs.db
+
+node_modules/
+vendor/
+
+*.zip
+
+VerdantCart-ai-reports-backup/
+verdantcart-ai-pro/
+
+.vscode/
+.idea/
+
+wp-content/debug.log
