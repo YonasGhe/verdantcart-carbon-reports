@@ -442,10 +442,13 @@ class VCARB_Calculator
 
     private static function co2_meta_keys(): array
     {
+        /*
+     * Historical order meta keys retained for upgrade compatibility.
+     * Older plugin versions stored CO₂ values under different keys.
+     */
         $keys = [
             self::co2_meta_key(),
             '_vcarb_order_co2_kg',
-            '_amatorcarbon_order_co2_kg',
             '_gc_order_co2_kg',
         ];
 
@@ -473,22 +476,17 @@ class VCARB_Calculator
             null
         );
 
-        /*
- * Legacy compatibility for pre-rename installs.
- * Remove in a future major version.
- */
-        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy compatibility hook.
-        if (apply_filters('vcarb_enable_legacy_hooks', true)) {
-            $statuses = (array) apply_filters(
-                'vcarb_final_statuses',
-                $statuses,
-                null
-            );
-        }
+        $statuses = array_values(
+            array_unique(
+                array_filter(
+                    array_map('sanitize_key', $statuses)
+                )
+            )
+        );
 
-        $statuses = array_values(array_unique(array_filter(array_map('sanitize_key', $statuses))));
-
-        return empty($statuses) ? ['processing', 'completed'] : $statuses;
+        return empty($statuses)
+            ? ['processing', 'completed']
+            : $statuses;
     }
 
     private static function get_order_datetime(WC_Order $order): ?DateTimeImmutable

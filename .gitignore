@@ -8,6 +8,8 @@ node_modules/
 
 VerdantCart-ai-reports-backup/
 verdantcart-ai-pro/
+# Temporary exports
+e VCARB_*
 
 .vscode/
 .idea/

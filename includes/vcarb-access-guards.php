@@ -75,8 +75,7 @@ class VCARB_Dashboard_Guard
              */
             has_shortcode($content, 'vcarb_dashboard') ||
             has_shortcode($content, 'verdantcart_dashboard') ||
-            has_shortcode($content, 'verdantcart_carbon_dashboard') ||
-            has_shortcode($content, 'acr_dashboard')
+            has_shortcode($content, 'verdantcart_carbon_dashboard')
         );
     }
 

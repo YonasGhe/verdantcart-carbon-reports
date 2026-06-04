@@ -4,7 +4,8 @@
  * Plugin Name: VerdantCart Carbon Reports
  * Description: Carbon analytics and reporting for WooCommerce stores.
  * Version: 1.2.1
- * Author: Yonas
+ * Author: VerdantCart
+ * Author URI: https://verdantcart.ai
  * Text Domain: verdantcart-ai-reports
  * Domain Path: /languages
  * Requires at least: 6.4
@@ -107,7 +108,6 @@ function vcarb_require_files(): void
         'includes/class-vcarb-product-insights.php',
         'includes/class-vcarb-order-tracker.php',
 
-        'includes/class-vcarb-live-week-repository.php',
         'includes/class-vcarb-dataset-service.php',
         'includes/class-vcarb-sustainability-summary.php',
         'includes/class-vcarb-admin-report-ajax.php',
@@ -120,6 +120,8 @@ function vcarb_require_files(): void
         'includes/class-vcarb-exports.php',
         'includes/class-vcarb-reports-admin.php',
         'includes/class-vcarb-front-context.php',
+
+        'includes/class-vcarb-pro-upsell.php',
 
         'public/class-vcarb-dashboard.php',
     ];
@@ -473,6 +475,13 @@ function vcarb_bootstrap(): void
     if (class_exists('VCARB_Exports')) {
         $GLOBALS['vcarb_reports_exports'] = $GLOBALS['vcarb_reports_exports'] ?? new VCARB_Exports();
     }
+
+    // Pro upsell — promotes the paid Pro add-on inside the free plugin's
+    // admin UI. Silent when Pro is active+licensed; renders an upsell
+    // card on the overview page otherwise. Per-user dismissable.
+    if (class_exists('VCARB_Pro_Upsell')) {
+        VCARB_Pro_Upsell::instance()->init();
+    }
 }
 add_action('plugins_loaded', 'vcarb_bootstrap', 20);
 
@@ -549,6 +558,15 @@ function vcarb_register_admin_menu(): void
         'manage_options',
         'vcarb-backfill',
         [$admin, 'render_backfill_page']
+    );
+
+    add_submenu_page(
+        'verdantcart-carbon-reports',
+        __('Advanced', 'verdantcart-ai-reports'),
+        __('Advanced 🚀', 'verdantcart-ai-reports'),
+        'manage_options',
+        'vcarb-advanced',
+        [$admin, 'render_advanced_page']
     );
 }
 

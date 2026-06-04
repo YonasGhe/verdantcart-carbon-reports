@@ -14,6 +14,7 @@ class VCARB_Reports_Admin
   private const PAGE_ALL_CUSTOMERS          = 'vcarb-all-customers';
   private const PAGE_BACKFILL               = 'vcarb-backfill';
   private const PAGE_SUSTAINABILITY_SUMMARY = 'vcarb-sustainability-summary';
+  private const PAGE_ADVANCED = 'vcarb-advanced';
 
   /** @var array<int,string> */
   private const ALLOWED_VIEWS = ['month', 'week', 'year'];
@@ -161,39 +162,24 @@ class VCARB_Reports_Admin
 
   private function is_settings_page(string $page): bool
   {
-    return in_array(
-      $page,
-      [
-        self::PAGE_SETTINGS,
-        self::PAGE_SETTINGS_ALT,
-        'acr-settings',
-      ],
-      true
-    );
+    return self::PAGE_SETTINGS === $page
+      || self::PAGE_SETTINGS_ALT === $page;
+  }
+
+  private function is_pro_active(): bool
+  {
+    return defined('VCARB_PRO_VERSION')
+      || class_exists('VCARB_Pro');
   }
 
   private function is_all_customers_page(string $page): bool
   {
-    return in_array(
-      $page,
-      [
-        self::PAGE_ALL_CUSTOMERS,
-        'acr-all-customers',
-      ],
-      true
-    );
+    return self::PAGE_ALL_CUSTOMERS === $page;
   }
 
   private function is_backfill_page(string $page): bool
   {
-    return in_array(
-      $page,
-      [
-        self::PAGE_BACKFILL,
-        'acr-backfill',
-      ],
-      true
-    );
+    return self::PAGE_BACKFILL === $page;
   }
 
   private function is_sustainability_summary_page(string $page): bool
@@ -433,7 +419,6 @@ class VCARB_Reports_Admin
 
     $filters_rel = $this->first_existing_asset(
       [
-        'public/js/vcarb-insights-filters.js',
         'public/js/verdantcart-insights-filters.js',
       ]
     );
@@ -452,7 +437,6 @@ class VCARB_Reports_Admin
 
     $admin_rel = $this->first_existing_asset(
       [
-        'public/js/vcarb-admin.js',
         'public/js/verdantcart-admin.js',
       ]
     );
@@ -654,8 +638,6 @@ class VCARB_Reports_Admin
 
     $page_ids = [
       (int) get_option('vcarb_dashboard_page_id', 0),
-      (int) get_option('acr_dashboard_page_id', 0),
-      (int) get_option('ai_carbon_dashboard_page_id', 0),
     ];
 
     if (class_exists('VCARB_Reports_Activator')) {
@@ -873,6 +855,19 @@ class VCARB_Reports_Admin
         </div>
       <?php endif; ?>
 
+      <?php
+      // VerdantCart AI Pro upsell — renders nothing when Pro is already
+      // active+licensed, or when the user has dismissed the card. Picks
+      // the right copy automatically (not installed / installed but
+      // inactive / active but unlicensed).
+      if (class_exists('VCARB_Pro_Upsell')) {
+        $upsell = VCARB_Pro_Upsell::instance();
+        if ($upsell->should_render_card()) {
+          $upsell->render_upsell_card();
+        }
+      }
+      ?>
+
       <div class="gc-overview-grid">
         <section class="gc-overview-card gc-overview-card--wide">
           <div class="gc-overview-card__head">
@@ -1063,6 +1058,190 @@ class VCARB_Reports_Admin
           </div>
         </div>
       </div>
+    </div>
+  <?php
+  }
+
+  public function render_advanced_page(): void
+  {
+    $upsell = VCARB_Pro_Upsell::instance();
+
+    $pricing_url    = $upsell->build_upgrade_url('advanced_page');
+    $learn_more_url = home_url('/');
+
+    /*
+     * Save license.
+     */
+    if (
+      isset($_POST['vcarb_activate_license']) &&
+      check_admin_referer('vcarb_activate_license')
+    ) { 
+
+      $license = isset($_POST['vcarb_license_key'])
+        ? sanitize_text_field(wp_unslash($_POST['vcarb_license_key']))
+        : '';
+
+      update_option('vcarb_license_key', $license);
+
+      echo '<div class="notice notice-success is-dismissible"><p>';
+      esc_html_e('License key saved.', 'verdantcart-ai-reports');
+      echo '</p></div>';
+    }
+
+    /*
+     * Deactivate license.
+     */
+    if (
+      isset($_POST['vcarb_deactivate_license']) &&
+      check_admin_referer('vcarb_activate_license')
+    ) {
+
+      delete_option('vcarb_license_key');
+
+      echo '<div class="notice notice-warning is-dismissible"><p>';
+      esc_html_e('License deactivated.', 'verdantcart-ai-reports');
+      echo '</p></div>';
+    }
+
+    $license_key = get_option('vcarb_license_key', '');
+
+    $masked_key = '';
+
+    if (!empty($license_key)) {
+      $masked_key =
+        str_repeat('•', max(0, strlen($license_key) - 4))
+        . substr($license_key, -4);
+    }
+
+  ?>
+    <div class="wrap">
+
+      <h1><?php esc_html_e('VerdantCart AI Pro', 'verdantcart-ai-reports'); ?></h1>
+
+      <p>
+        <?php
+        esc_html_e(
+          'Unlock advanced sustainability reporting and AI-powered insights for your WooCommerce store.',
+          'verdantcart-ai-reports'
+        );
+        ?>
+      </p>
+
+      <ul style="margin:20px 0 20px 20px; line-height:1.8;">
+        <li>✓ <?php esc_html_e('Executive Summary', 'verdantcart-ai-reports'); ?></li>
+        <li>✓ <?php esc_html_e('Scheduled Reports', 'verdantcart-ai-reports'); ?></li>
+        <li>✓ <?php esc_html_e('Goal Tracking', 'verdantcart-ai-reports'); ?></li>
+        <li>✓ <?php esc_html_e('Advanced Analytics', 'verdantcart-ai-reports'); ?></li>
+        <li>✓ <?php esc_html_e('AI Recommendations', 'verdantcart-ai-reports'); ?></li>
+      </ul>
+
+      <p>
+        <strong><?php esc_html_e('$9/month', 'verdantcart-ai-reports'); ?></strong><br>
+        <strong><?php esc_html_e('$89/year', 'verdantcart-ai-reports'); ?></strong><br>
+        <em><?php esc_html_e('Save 18% with annual billing.', 'verdantcart-ai-reports'); ?></em>
+      </p>
+
+      <p>
+        <a
+          class="button button-secondary"
+          href="<?php echo esc_url($learn_more_url); ?>"
+          target="_blank"
+          rel="noopener noreferrer">
+          <?php esc_html_e('Learn More', 'verdantcart-ai-reports'); ?>
+        </a>
+
+        <a
+          class="button button-primary"
+          href="<?php echo esc_url($pricing_url); ?>"
+          target="_blank"
+          rel="noopener noreferrer">
+          <?php esc_html_e('Upgrade to Pro', 'verdantcart-ai-reports'); ?>
+        </a>
+      </p>
+
+      <hr>
+
+      <h2><?php esc_html_e('License Key', 'verdantcart-ai-reports'); ?></h2>
+
+      <p>
+        <?php
+        esc_html_e(
+          'Enter your Pro license key after purchasing a subscription.',
+          'verdantcart-ai-reports'
+        );
+        ?>
+      </p>
+
+      <form method="post">
+
+        <?php wp_nonce_field('vcarb_activate_license'); ?>
+
+        <?php if (!empty($license_key)) : ?>
+
+          <div style="margin:15px 0;">
+
+            <span
+              style="
+                            display:inline-block;
+                            padding:4px 10px;
+                            background:#dcfce7;
+                            color:#166534;
+                            border-radius:20px;
+                            font-weight:600;">
+              <?php esc_html_e('ACTIVE', 'verdantcart-ai-reports'); ?>
+            </span>
+
+            <span style="margin-left:10px;">
+              <?php esc_html_e('License active.', 'verdantcart-ai-reports'); ?>
+            </span>
+
+          </div>
+
+          <p>
+            <strong><?php esc_html_e('Active key:', 'verdantcart-ai-reports'); ?></strong>
+            <code><?php echo esc_html($masked_key); ?></code>
+          </p>
+
+          <p>
+            <button
+              type="submit"
+              name="vcarb_deactivate_license"
+              class="button">
+              <?php esc_html_e('Deactivate', 'verdantcart-ai-reports'); ?>
+            </button>
+
+            <button
+              type="button"
+              class="button">
+              <?php esc_html_e('Re-validate', 'verdantcart-ai-reports'); ?>
+            </button>
+          </p>
+
+        <?php else : ?>
+
+          <p style="color:#dc2626;">
+            <?php esc_html_e('No license activated.', 'verdantcart-ai-reports'); ?>
+          </p>
+
+          <input
+            type="text"
+            name="vcarb_license_key"
+            class="regular-text"
+            placeholder="<?php echo esc_attr__('XXXX-XXXX-XXXX-XXXX', 'verdantcart-ai-reports'); ?>" />
+
+          <p>
+            <button
+              type="submit"
+              name="vcarb_activate_license"
+              class="button button-primary">
+              <?php esc_html_e('Activate License', 'verdantcart-ai-reports'); ?>
+            </button>
+          </p>
+
+        <?php endif; ?>
+
+      </form>
+
     </div>
   <?php
   }
