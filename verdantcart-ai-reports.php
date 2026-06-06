@@ -2,13 +2,15 @@
 
 /**
  * Plugin Name: VerdantCart Carbon Reports
- * Description: Carbon analytics and reporting for WooCommerce stores.
- * Version: 1.2.1
- * Author: VerdantCart
- * Author URI: https://verdantcart.ai
+ * Plugin URI: https://verdantcart.ai/
+ * Description: Estimate WooCommerce order emissions and review carbon reports with dashboards, trends, exports, and product insights — all inside WordPress.
+ * Version: 1.2.2
+ * Author: VerdantCart AI
+ * Author URI: https://verdantcart.ai/
  * Text Domain: verdantcart-ai-reports
  * Domain Path: /languages
  * Requires at least: 6.4
+ * Tested up to:7.0
  * Requires PHP: 8.0
  * WC requires at least: 8.0
  * WC tested up to: 9.7
@@ -40,7 +42,7 @@ add_action('before_woocommerce_init', 'vcarb_declare_wc_compatibility');
  * Constants
  * ------------------------------------------------------------
  */
-defined('VCARB_VERSION') || define('VCARB_VERSION', '1.2.1');
+defined('VCARB_VERSION') || define('VCARB_VERSION', '1.2.2');
 defined('VCARB_DB_VERSION') || define('VCARB_DB_VERSION', '1.2.1');
 defined('VCARB_PLUGIN_FILE') || define('VCARB_PLUGIN_FILE', __FILE__);
 defined('VCARB_PLUGIN_DIR') || define('VCARB_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -569,6 +571,36 @@ function vcarb_register_admin_menu(): void
         [$admin, 'render_advanced_page']
     );
 }
+
+/**
+ * ------------------------------------------------------------
+ * Plugin row action links (Plugins screen)
+ * ------------------------------------------------------------
+ *
+ * Adds "Settings" + "Get Pro" links next to the "Deactivate" link on
+ * the WordPress Plugins admin page. Small UX win: helps new users find
+ * the dashboard immediately after activation, and exposes the Pro
+ * upgrade path right where curious users browse plugins.
+ */
+function vcarb_plugin_action_links(array $links): array
+{
+    $settings_link = sprintf(
+        '<a href="%s">%s</a>',
+        esc_url(admin_url('admin.php?page=verdantcart-carbon-reports')),
+        esc_html__('Settings', 'verdantcart-ai-reports')
+    );
+
+    $pro_link = sprintf(
+        '<a href="%s" target="_blank" rel="noopener noreferrer" style="color:#15803d;font-weight:600;">%s</a>',
+        esc_url('https://verdantcart.ai/pricing/'),
+        esc_html__('Get Pro', 'verdantcart-ai-reports')
+    );
+
+    array_unshift($links, $settings_link, $pro_link);
+
+    return $links;
+}
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'vcarb_plugin_action_links');
 
 /**
  * ------------------------------------------------------------
