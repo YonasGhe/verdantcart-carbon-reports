@@ -4,10 +4,10 @@ msgstr ""
 "Project-Id-Version: VerdantCart Carbon Reports\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-15 12:50+0000\n"
-"PO-Revision-Date: 2026-06-07 11:34+0200\n"
+"PO-Revision-Date: 2026-06-07 11:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: sv_SE\n"
+"Language: el_GR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,41 +20,45 @@ msgstr ""
 #: includes/class-vcarb-insights.php:354
 #, php-format
 msgid "%1$s accounts for about %2$s of emissions this period."
-msgstr "%1$s står för ungefär %2$s av utsläppen under denna period."
+msgstr "%1$s αντιπροσωπεύει περίπου το %2$s των εκπομπών αυτή την περίοδο."
 
 #. 1: emissions driver label, 2: percentage share of emissions.
 #: includes/class-vcarb-insights.php:380
 #, php-format
 msgid "%1$s accounts for about %2$s of emissions."
-msgstr "%1$s står för ungefär %2$s utsläpp."
+msgstr "%1$s αντιπροσωπεύει περίπου το %2$s των εκπομπών."
 
 #. %s: kilogram amount.
 #: includes/class-vcarb-sustainability-summary.php:338
 #, php-format
 msgid "%s kg"
-msgstr "%s kg"
+msgstr "%s κιλά"
 
 #. %s: CO2 per order value in kg.
 #: includes/class-vcarb-dataset-service.php:895
 #, php-format
 msgid "%s kg CO₂ / order"
-msgstr "%s kg CO₂ / beställning"
+msgstr "%s kg CO₂ / παραγγελία"
 
 #. %s: order count.
 #: includes/class-vcarb-sustainability-summary.php:520
 #, php-format
 msgid "%s order"
 msgid_plural "%s orders"
-msgstr[0] "%s ordning"
-msgstr[1] "%s beställningar"
+msgstr[0] "%s παραγγελία"
+msgstr[1] "%s παραγγελίες"
 
 #: includes/class-vcarb-reports-admin.php:1007
 msgid "A quick summary of how data flows through VerdantCart."
-msgstr "En snabb sammanfattning av hur data flödar genom VerdantCart."
+msgstr ""
+"Μια γρήγορη περίληψη του τρόπου με τον οποίο τα δεδομένα ρέουν μέσω του "
+"VerdantCart."
 
 #: includes/class-vcarb-reports-admin.php:977
 msgid "A quick view of the plugin environment and setup state."
-msgstr "En snabb översikt över plugin-miljön och installationsstatus."
+msgstr ""
+"Μια γρήγορη προβολή του περιβάλλοντος της προσθήκης και της κατάστασης "
+"εγκατάστασης."
 
 #: public/class-vcarb-dashboard.php:952
 msgid ""
@@ -62,155 +66,156 @@ msgid ""
 "Store snapshots use user_id=0 and power charts, exports, hotspots, and "
 "insights."
 msgstr ""
-"En ögonblicksbild skapas när slutförda orderutsläpp sparas under en period. "
-"Butiksögonblicksbilder använder user_id=0 och kraftdiagram, export, hotspots "
-"och insikter."
+"Ένα στιγμιότυπο δημιουργείται όταν οι εκπομπές ολοκληρωμένων παραγγελιών "
+"αποθηκεύονται για μια περίοδο. Τα στιγμιότυπα αποθήκευσης χρησιμοποιούν "
+"user_id=0 και γραφήματα ισχύος, εξαγωγές, ενεργά σημεία και πληροφορίες."
 
 #: includes/class-vcarb-insights.php:325
 msgid "Abnormal CO₂ spike"
-msgstr "Onormal CO₂-topp"
+msgstr "Μη φυσιολογική αύξηση του CO₂"
 
 #: includes/class-vcarb-insights-renderer.php:210
 #: public/class-vcarb-dashboard.php:210
 msgid "All"
-msgstr "Alla"
+msgstr "Όλα"
 
 #: verdantcart-ai-reports.php:710 verdantcart-ai-reports.php:711
 #: includes/class-vcarb-reports-admin.php:921
 msgid "All Customers"
-msgstr "Alla kunder"
+msgstr "Όλοι οι πελάτες"
 
 #: includes/class-vcarb-exports.php:686
 msgid "All Customers Carbon Report"
-msgstr "Alla kunders koldioxidrapport"
+msgstr "Έκθεση άνθρακα για όλους τους πελάτες"
 
 #: includes/class-vcarb-plugin-pages-admin.php:136
 msgid "All pages"
-msgstr "Alla sidor"
+msgstr "Ολες οι σελίδες"
 
 #: includes/class-vcarb-sustainability-summary.php:85
 msgid ""
 "An operational sustainability summary generated from saved VerdantCart "
 "Carbon Reports snapshot data."
 msgstr ""
-"En sammanfattning av operativ hållbarhet genererad från sparade "
-"ögonblicksbilder från VerdantCart Carbon Reports."
+"Μια σύνοψη λειτουργικής βιωσιμότητας που δημιουργήθηκε από αποθηκευμένα "
+"δεδομένα στιγμιότυπου VerdantCart Carbon Reports."
 
 #: includes/class-vcarb-exports.php:473 includes/class-vcarb-exports.php:489
 msgid "Anchor (snapshot)"
-msgstr "Ankare (ögonblicksbild)"
+msgstr "Άγκυρα (στιγμιότυπο)"
 
 #: includes/class-vcarb-exports.php:883 includes/class-vcarb-exports.php:1112
 msgid "Anchor Snapshot"
-msgstr "Ankaröversikt"
+msgstr "Στιγμιότυπο άγκυρας"
 
 #: public/class-vcarb-dashboard.php:946
 msgid "Ask the store admin to run Backfill"
-msgstr "Be butiksadministratören att köra utfyllning"
+msgstr "Ζητήστε από τον διαχειριστή του καταστήματος να εκτελέσει το Backfill"
 
 #: includes/class-vcarb-sustainability-summary.php:102
 msgid "Available"
-msgstr "Tillgänglig"
+msgstr "Διαθέσιμο"
 
 #: includes/class-vcarb-exports.php:1063
 msgid "Average emissions intensity could not be calculated for this snapshot."
 msgstr ""
-"Genomsnittlig emissionsintensitet kunde inte beräknas för denna "
-"ögonblicksbild."
+"Η μέση ένταση εκπομπών δεν ήταν δυνατό να υπολογιστεί για αυτό το "
+"στιγμιότυπο."
 
 #. %s: average emissions per order in kg CO2.
 #: includes/class-vcarb-exports.php:540 includes/class-vcarb-exports.php:1060
 #, php-format
 msgid "Average emissions intensity was %s kg CO₂ per order."
-msgstr "Genomsnittlig utsläppsintensitet var %s kg CO₂ per ordning."
+msgstr "Η μέση ένταση εκπομπών ήταν %s kg CO₂ ανά παραγγελία."
 
 #: includes/class-vcarb-reports-admin.php:1323
 #: includes/class-vcarb-sustainability-summary.php:120
 msgid "Average intensity"
-msgstr "Genomsnittlig intensitet"
+msgstr "Μέση ένταση"
 
 #: verdantcart-ai-reports.php:737 verdantcart-ai-reports.php:738
 msgid "Backfill"
-msgstr "Fyllnadsutfyllning"
+msgstr "Επίχωση"
 
 #: includes/class-vcarb-backfill-ajax.php:409
 #: includes/class-vcarb-backfill-ajax.php:511
 msgid "Backfill completed."
-msgstr "Fyllning slutförd."
+msgstr "Η επίχωση ολοκληρώθηκε."
 
 #. %s: error message.
 #: includes/class-vcarb-backfill-ajax.php:519
 #, php-format
 msgid "Backfill failed: %s"
-msgstr "Fyllnadsstopp misslyckades: %s"
+msgstr "Η επίχωση απέτυχε: %s"
 
 #: includes/class-vcarb-backfill-ajax.php:343
 msgid ""
 "Backfill is already running. Please wait a few seconds, then click Stop or "
 "refresh and start again."
 msgstr ""
-"Fyllnad är redan igång. Vänta några sekunder, klicka sedan på Stopp eller "
-"uppdatera och börja om."
+"Η επίχωση λειτουργεί ήδη. Περιμένετε μερικά δευτερόλεπτα και, στη συνέχεια, "
+"κάντε κλικ στην επιλογή Διακοπή ή ανανέωση και ξεκινήστε ξανά."
 
 #: includes/class-vcarb-backfill-ajax.php:359
 msgid "Backfill not started."
-msgstr "Fyllnadsmaterial har inte startats."
+msgstr "Η επίχωση δεν ξεκίνησε."
 
 #: includes/class-vcarb-backfill-ajax.php:307
 msgid "Backfill started."
-msgstr "Fyllning har börjat."
+msgstr "Ξεκίνησε η επίχωση."
 
 #: includes/class-vcarb-backfill-ajax.php:273
 msgid "Backfill stopped."
-msgstr "Fyllnad stoppades."
+msgstr "Η επίχωση σταμάτησε."
 
 #: includes/class-vcarb-exports.php:135 includes/class-vcarb-exports.php:159
 #: includes/class-vcarb-exports.php:232 includes/class-vcarb-exports.php:240
 msgid "Bad Request"
-msgstr "Felaktig begäran"
+msgstr "Εσφαλμένο αίτημα"
 
 #: includes/class-vcarb-dataset-service.php:900
 msgid "Based on snapshot metrics"
-msgstr "Baserat på ögonblicksmätvärden"
+msgstr "Με βάση τις μετρήσεις στιγμιότυπου"
 
 #: includes/class-vcarb-backfill-ajax.php:512
 msgid "Batch processed."
-msgstr "Batchbearbetat."
+msgstr "Η παρτίδα υποβλήθηκε σε επεξεργασία."
 
 #: public/class-vcarb-dashboard.php:221 public/class-vcarb-dashboard.php:1035
 msgid "Biggest driver:"
-msgstr "Största drivkraften:"
+msgstr "Μεγαλύτερος οδηγός:"
 
 #: includes/class-vcarb-insights.php:95
 msgid "Build more reporting history"
-msgstr "Bygg mer rapporteringshistorik"
+msgstr "Δημιουργήστε περισσότερο ιστορικό αναφορών"
 
 #: includes/class-vcarb-insights.php:478
 msgid "Bundle shipments to reduce delivery trips."
-msgstr "Paketera leveranser för att minska leveransresor."
+msgstr "Ομαδοποιήστε τις αποστολές για να μειώσετε τα ταξίδια παράδοσης."
 
 #: public/class-vcarb-dashboard.php:873
 msgid "Calculations are based on completed orders during the selected period."
 msgstr ""
-"Beräkningarna baseras på slutförda beställningar under den valda perioden."
+"Οι υπολογισμοί βασίζονται σε ολοκληρωμένες παραγγελίες κατά τη διάρκεια της "
+"επιλεγμένης περιόδου."
 
 #: includes/class-vcarb-admin-report-ajax.php:49
 #: includes/class-vcarb-dataset-service.php:56
 #: includes/class-vcarb-dataset-service.php:123
 msgid "Calculator missing."
-msgstr "Kalkylatorn saknas."
+msgstr "Λείπει η αριθμομηχανή."
 
 #: includes/class-vcarb-admin-report-ajax.php:274
 msgid "Calculator period helper missing."
-msgstr "Kalkylatorn för periodhjälp saknas."
+msgstr "Λείπει ο βοηθός περιόδου αριθμομηχανής."
 
 #. Description of the plugin
 msgid "Carbon analytics and reporting for WooCommerce stores."
-msgstr "Koldioxidanalys och rapportering för WooCommerce-butiker."
+msgstr "Αναλύσεις άνθρακα και αναφορές για καταστήματα WooCommerce."
 
 #: public/class-vcarb-dashboard.php:1424
 msgid "Carbon Dashboard"
-msgstr "Kolfiberinstrumentpanel"
+msgstr "Ταμπλό Carbon"
 
 #: includes/class-vcarb-exports.php:914
 msgid ""
@@ -218,9 +223,10 @@ msgid ""
 "the selected reporting period. Results are intended for operational "
 "sustainability analysis rather than certified carbon accounting."
 msgstr ""
-"Koldioxidutsläppen uppskattas baserat på slutförda WooCommerce-beställningar "
-"under den valda rapporteringsperioden. Resultaten är avsedda för analys av "
-"operativ hållbarhet snarare än certifierad koldioxidredovisning."
+"Οι εκπομπές άνθρακα υπολογίζονται με βάση τις ολοκληρωμένες παραγγελίες "
+"WooCommerce κατά την επιλεγμένη περίοδο αναφοράς. Τα αποτελέσματα "
+"προορίζονται για ανάλυση λειτουργικής βιωσιμότητας και όχι για πιστοποιημένη "
+"λογιστική άνθρακα."
 
 #: includes/class-vcarb-exports.php:1187
 msgid ""
@@ -230,97 +236,108 @@ msgid ""
 "same reporting window. Results are intended for operational sustainability "
 "analysis rather than certified carbon accounting."
 msgstr ""
-"Koldioxidutsläppen uppskattas baserat på berättigade WooCommerce-"
-"beställningar under den valda rapporteringsperioden. Butikssummor beräknas "
-"från det valda ögonblicksankaret, och kundnivårader speglar värdena som "
-"lagrats för samma rapporteringsfönster. Resultaten är avsedda för analys av "
-"operativ hållbarhet snarare än certifierad koldioxidredovisning."
+"Οι εκπομπές άνθρακα υπολογίζονται με βάση τις επιλέξιμες παραγγελίες "
+"WooCommerce κατά την επιλεγμένη περίοδο αναφοράς. Τα σύνολα καταστημάτων "
+"υπολογίζονται από την επιλεγμένη άγκυρα στιγμιότυπου και οι γραμμές σε "
+"επίπεδο πελάτη αντικατοπτρίζουν τις τιμές που είναι αποθηκευμένες για το "
+"ίδιο παράθυρο αναφοράς. Τα αποτελέσματα προορίζονται για ανάλυση "
+"λειτουργικής βιωσιμότητας και όχι για πιστοποιημένη λογιστική άνθρακα."
 
 #: includes/class-vcarb-reports-admin.php:1341
 msgid "Carbon emissions over time"
-msgstr "Koldioxidutsläpp över tid"
+msgstr "Εκπομπές άνθρακα με την πάροδο του χρόνου"
 
 #: public/class-vcarb-dashboard.php:218 public/class-vcarb-dashboard.php:994
 msgid "Carbon Hotspot"
-msgstr "Kol-hotspot"
+msgstr "Hotspot άνθρακα"
 
 #: public/class-vcarb-dashboard.php:990
 msgid "Carbon hotspot"
-msgstr "Kol-hotspot"
+msgstr "Hotspot άνθρακα"
 
 #: includes/class-vcarb-reports-admin.php:865
 msgid "Carbon reporting and emissions insights for WooCommerce stores."
-msgstr "Koldioxidrapportering och utsläppsinsikter för WooCommerce-butiker."
+msgstr "Αναφορές άνθρακα και πληροφορίες εκπομπών για καταστήματα WooCommerce."
 
 #: includes/class-vcarb-reports-admin.php:1331
 msgid "Change vs Previous"
-msgstr "Förändring vs Tidigare"
+msgstr "Αλλαγή έναντι Προηγούμενου"
 
 #: includes/class-vcarb-insights.php:453
 msgid "Check checkout and payment gateway logs."
-msgstr "Kolla loggar över utcheckning och betalningsgateway."
+msgstr "Ελέγξτε τα αρχεία καταγραφής ολοκλήρωσης αγοράς και πύλης πληρωμής."
 
 #: includes/class-vcarb-insights.php:289
 msgid "Check if a few heavy shipments dominated this period."
-msgstr "Kolla om några tunga leveranser dominerade denna period."
+msgstr "Ελέγξτε αν μερικές βαριές αποστολές κυριάρχησαν αυτή την περίοδο."
 
 #: includes/class-vcarb-insights.php:167
 msgid "Check shipping methods, packaging weight, and product mix changes."
 msgstr ""
-"Kontrollera fraktsätt, förpackningsvikt och förändringar i produktmixen."
+"Ελέγξτε τις μεθόδους αποστολής, το βάρος συσκευασίας και τις αλλαγές στο "
+"μείγμα προϊόντων."
 
 #: includes/class-vcarb-insights.php:121
 msgid "Check whether a few large orders caused the spike."
-msgstr "Kontrollera om några stora beställningar orsakade toppen."
+msgstr "Ελέγξτε αν μερικές μεγάλες παραγγελίες προκάλεσαν την άνοδο."
 
 #: includes/class-vcarb-insights.php:196
 msgid "Check whether basket size or long-distance orders increased."
-msgstr "Kolla om korgstorleken eller långdistansbeställningarna har ökat."
+msgstr ""
+"Ελέγξτε εάν το μέγεθος του καλαθιού ή οι παραγγελίες μεγάλων αποστάσεων "
+"αυξήθηκαν."
 
 #: includes/class-vcarb-insights.php:333
 msgid ""
 "Check whether refunds, returns, or unusual order patterns affected the "
 "snapshot."
 msgstr ""
-"Kontrollera om återbetalningar, returer eller ovanliga ordermönster "
-"påverkade ögonblicksbildet."
+"Ελέγξτε εάν οι επιστροφές χρημάτων, οι επιστροφές ή τα ασυνήθιστα μοτίβα "
+"παραγγελιών επηρέασαν το στιγμιότυπο."
 
 #: includes/class-vcarb-insights.php:79
 msgid "Check WooCommerce order statuses."
-msgstr "Kolla WooCommerce-orderstatus."
+msgstr "Ελέγξτε τις καταστάσεις παραγγελιών WooCommerce."
 
 #: includes/class-vcarb-insights.php:496
 msgid "Compare the same drivers and top orders next period."
-msgstr "Jämför samma drivrutiner och toppbeställningar nästa period."
+msgstr ""
+"Συγκρίνετε τα ίδια προγράμματα οδήγησης και τις ίδιες κορυφαίες παραγγελίες "
+"την επόμενη περίοδο."
 
 #: includes/class-vcarb-reports-admin.php:1312
 msgid "Completed orders"
-msgstr "Slutförda order"
+msgstr "Ολοκληρωμένες παραγγελίες"
 
 #: includes/class-vcarb-insights.php:452
 msgid "Confirm the WooCommerce order status filter."
-msgstr "Bekräfta WooCommerce-orderstatusfiltret."
+msgstr "Επιβεβαιώστε το φίλτρο κατάστασης παραγγελίας WooCommerce."
 
 #: includes/class-vcarb-reports-admin.php:986
 msgid "Connected"
-msgstr "Ansluten"
+msgstr "Συνδέθηκε"
 
 #: includes/class-vcarb-insights.php:219
 msgid "Consider optimizing shipping zones or carrier selection."
-msgstr "Överväg att optimera fraktzoner eller val av transportör."
+msgstr ""
+"Εξετάστε το ενδεχόμενο βελτιστοποίησης των ζωνών αποστολής ή της επιλογής "
+"μεταφορέα."
 
 #: includes/class-vcarb-insights.php:98
 msgid "Continue generating snapshots so trends become more meaningful."
 msgstr ""
-"Fortsätt generera ögonblicksbilder så att trender blir mer meningsfulla."
+"Συνεχίστε να δημιουργείτε στιγμιότυπα, ώστε οι τάσεις να αποκτήσουν πιο "
+"νόημα."
 
 #: public/class-vcarb-dashboard.php:204
 msgid "Could not load dashboard data. Please try again."
-msgstr "Kunde inte ladda dashboard-data. Försök igen, tack."
+msgstr ""
+"Δεν ήταν δυνατή η φόρτωση δεδομένων πίνακα εργαλείων. Παρακαλώ προσπαθήστε "
+"ξανά."
 
 #: includes/class-vcarb-exports.php:768 includes/class-vcarb-exports.php:962
 msgid "Could not open export stream."
-msgstr "Kunde inte öppna exportströmmen."
+msgstr "Δεν ήταν δυνατό το άνοιγμα της ροής εξαγωγής."
 
 #: includes/class-vcarb-exports.php:631
 msgid "CO₂ (kg)"
@@ -328,11 +345,11 @@ msgstr "CO₂ (kg)"
 
 #: includes/class-vcarb-reports-admin.php:1343
 msgid "CO₂ (kg) and completed orders for the selected period."
-msgstr "CO₂ (kg) och slutförda beställningar för den valda perioden."
+msgstr "CO₂ (kg) και ολοκληρωμένες παραγγελίες για την επιλεγμένη περίοδο."
 
 #: public/class-vcarb-dashboard.php:1090
 msgid "CO₂ change"
-msgstr "CO₂-förändring"
+msgstr "Μεταβολή CO₂"
 
 #. %s: percentage increase in CO2 versus previous period.
 #: includes/class-vcarb-insights.php:328
@@ -341,44 +358,44 @@ msgid ""
 "CO₂ increased %s versus the previous period. This may indicate an outlier "
 "event."
 msgstr ""
-"CO₂ ökade %s jämfört med föregående period. Detta kan tyda på en avvikande "
-"händelse."
+"Το CO₂ αυξήθηκε %s σε σχέση με την προηγούμενη περίοδο. Αυτό μπορεί να "
+"υποδηλώνει ένα ακραίο γεγονός."
 
 #: includes/class-vcarb-insights.php:113
 msgid "CO₂ increased sharply"
-msgstr "CO₂ ökade kraftigt"
+msgstr "Το CO₂ αυξήθηκε απότομα"
 
 #: includes/class-vcarb-product-insights.php:656
 msgid ""
 "CO₂ increased sharply vs previous month. Check promotions, pricing changes, "
 "or shipping method changes."
 msgstr ""
-"CO₂ ökade kraftigt jämfört med föregående månad. Kolla kampanjer, "
-"prisändringar eller ändringar i fraktmetod."
+"Το CO₂ αυξήθηκε απότομα σε σχέση με τον προηγούμενο μήνα. Ελέγξτε τις "
+"προσφορές, τις αλλαγές τιμών ή τις αλλαγές στη μέθοδο αποστολής."
 
 #: includes/class-vcarb-exports.php:895
 #: includes/class-vcarb-reports-admin.php:1320
 msgid "CO₂ per Order"
-msgstr "CO₂ per Order"
+msgstr "CO₂ ανά παραγγελία"
 
 #: includes/class-vcarb-sustainability-summary.php:120
 msgid "CO₂ per order"
-msgstr "CO₂ per ordning"
+msgstr "CO₂ ανά παραγγελία"
 
 #: includes/class-vcarb-exports.php:663 includes/class-vcarb-exports.php:699
 #: includes/class-vcarb-exports.php:1124
 msgid "CO₂ per Order (kg)"
-msgstr "CO₂ per ordning (kg)"
+msgstr "CO₂ ανά παραγγελία (kg)"
 
 #. %s: percentage increase in CO2 per order.
 #: includes/class-vcarb-insights.php:163
 #, php-format
 msgid "CO₂ per order increased %s versus the previous period."
-msgstr "CO₂ per order ökade %s jämfört med föregående period."
+msgstr "Το CO₂ ανά παραγγελία αυξήθηκε %s σε σχέση με την προηγούμενη περίοδο."
 
 #: includes/class-vcarb-exports.php:713
 msgid "CO₂ vs Previous %"
-msgstr "CO₂ vs Tidigare %"
+msgstr "CO₂ έναντι προηγούμενου %"
 
 #: public/class-vcarb-dashboard.php:962
 msgid ""
@@ -386,72 +403,72 @@ msgid ""
 "Completed. VerdantCart will calculate and store the reporting snapshot "
 "automatically."
 msgstr ""
-"Skapa eller ta emot en WooCommerce-beställning, flytta den sedan till "
-"Bearbetning eller Slutfört. VerdantCart kommer automatiskt att beräkna och "
-"lagra rapporteringsögonblicksbild."
+"Δημιουργήστε ή λάβετε μια παραγγελία WooCommerce και, στη συνέχεια, "
+"μετακινήστε την στην επιλογή Επεξεργασία ή Ολοκληρώθηκε. Το VerdantCart θα "
+"υπολογίσει και θα αποθηκεύσει αυτόματα το στιγμιότυπο αναφοράς."
 
 #: includes/class-vcarb-reports-admin.php:941
 msgid "Create or reconnect the public dashboard page to enable this shortcut."
 msgstr ""
-"Skapa eller återkoppla den publika dashboard-sidan för att aktivera denna "
-"genväg."
+"Δημιουργήστε ή επανασυνδέστε τη σελίδα του δημόσιου πίνακα εργαλείων για να "
+"ενεργοποιήσετε αυτήν τη συντόμευση."
 
 #: includes/class-vcarb-reports-admin.php:1268
 #: public/class-vcarb-dashboard.php:1547
 msgid "Current"
-msgstr "Nuvarande"
+msgstr "Τρέχων"
 
 #. %s: current CO2 per order in kg.
 #: includes/class-vcarb-insights.php:472
 #, php-format
 msgid "Current CO₂ per order is about %s kg."
-msgstr "Nuvarande CO₂ per order är cirka %s kg."
+msgstr "Το τρέχον CO₂ ανά παραγγελία είναι περίπου %s kg."
 
 #: includes/class-vcarb-exports.php:1146
 msgid "Customer Breakdown"
-msgstr "Kundfördelning"
+msgstr "Ανάλυση πελατών"
 
 #: includes/class-vcarb-reports-admin.php:1392
 msgid "Customer breakdown"
-msgstr "Kundfördelning"
+msgstr "Ανάλυση πελατών"
 
 #: includes/class-vcarb-exports.php:552
 msgid ""
 "Customer breakdown excludes the store-total row because it is already "
 "summarized above."
 msgstr ""
-"Kunduppdelning utesluter butikstotalraden eftersom den redan sammanfattas "
-"ovan."
+"Η ανάλυση πελατών εξαιρεί τη σειρά συνόλου καταστήματος επειδή έχει ήδη "
+"συνοψιστεί παραπάνω."
 
 #. %d: number of customer rows in the report.
 #: includes/class-vcarb-exports.php:1066
 msgid "Customer breakdown includes %d row(s)."
-msgstr "Kunduppdelning inkluderar %d rad(er)."
+msgstr "Η ανάλυση πελατών περιλαμβάνει %d σειρά."
 
 #: includes/class-vcarb-sustainability-summary.php:218
 msgid "Customer Sustainability Summary"
-msgstr "Sammanfattning av kundhållbarhet"
+msgstr "Περίληψη Βιωσιμότητας Πελατών"
 
 #: includes/class-vcarb-reports-admin.php:933
 #: includes/class-vcarb-reports-admin.php:939
 msgid "Customer view"
-msgstr "Kundvy"
+msgstr "Προβολή πελάτη"
 
 #: verdantcart-ai-reports.php:719 verdantcart-ai-reports.php:720
 msgid "Dashboard"
-msgstr "Instrumentpanel"
+msgstr "Πίνακας Ελέγχου"
 
 #: includes/class-vcarb-reports-admin.php:883
 msgid "Dashboard page missing"
-msgstr "Dashboard-sida saknas"
+msgstr "Λείπει η σελίδα του πίνακα ελέγχου"
 
 #: includes/class-vcarb-reports-admin.php:883
 msgid "Dashboard ready"
-msgstr "Instrumentbrädan redo"
+msgstr "Έτοιμο ταμπλό"
 
 #: includes/class-vcarb-admin-report-ajax.php:56
 msgid "Dataset service missing."
-msgstr "Dataset-tjänst saknas."
+msgstr "Λείπει η υπηρεσία συνόλου δεδομένων."
 
 #: includes/class-vcarb-sustainability-summary.php:169
 msgid ""
@@ -459,165 +476,175 @@ msgid ""
 "certified ESG report, GHG Protocol report, legal compliance document, or "
 "verified carbon audit."
 msgstr ""
-"Ansvarsfriskrivning: Detta är en sammanfattning av operativ hållbarhet. Det "
-"är inte en certifierad ESG-rapport, GHG-protokollrapport, juridiskt "
-"efterlevnadsdokument eller verifierad koldioxidkontroll."
+"Αποποίηση ευθύνης: Αυτή είναι μια περίληψη λειτουργικής βιωσιμότητας. Δεν "
+"πρόκειται για πιστοποιημένη έκθεση ESG, έκθεση πρωτοκόλλου GHG, έγγραφο "
+"νομικής συμμόρφωσης ή επαληθευμένο έλεγχο άνθρακα."
 
 #: includes/class-vcarb-insights.php:286
 msgid "Efficiency dropped sharply"
-msgstr "Effektiviteten sjönk kraftigt"
+msgstr "Η αποτελεσματικότητα μειώθηκε απότομα"
 
 #: includes/class-vcarb-insights.php:136
 msgid "Efficiency improved"
-msgstr "Förbättrad effektivitet"
+msgstr "Βελτίωση της αποτελεσματικότητας"
 
 #: includes/class-vcarb-insights.php:160
 msgid "Efficiency regression detected"
-msgstr "Effektivitetsregression upptäckt"
+msgstr "Εντοπίστηκε παλινδρόμηση απόδοσης"
 
 #: includes/class-vcarb-sustainability-summary.php:119
 msgid "Eligible orders included"
-msgstr "Behöriga ordnar inkluderade"
+msgstr "Περιλαμβάνονται επιλέξιμες παραγγελίες"
 
 #: includes/class-vcarb-reports-admin.php:1375
 msgid "Emission hotspots"
-msgstr "Utsläppshotspots"
+msgstr "Κομβικά σημεία εκπομπών"
 
 #: includes/class-vcarb-insights.php:234
 msgid "Emissions decreased"
-msgstr "Utsläppen minskade"
+msgstr "Μειωμένες εκπομπές"
 
 #. %s: percentage change text.
 #: includes/class-vcarb-exports.php:523
 #, php-format
 msgid "Emissions decreased %s versus the previous period."
-msgstr "Utsläppen minskade %s jämfört med föregående period."
+msgstr "Οι εκπομπές μειώθηκαν %s σε σχέση με την προηγούμενη περίοδο."
 
 #: includes/class-vcarb-insights.php:260
 msgid "Emissions increased"
-msgstr "Utsläppen ökade"
+msgstr "Αυξημένες εκπομπές"
 
 #. %s: percentage change text.
 #: includes/class-vcarb-exports.php:517
 #, php-format
 msgid "Emissions increased %s versus the previous period."
-msgstr "Utsläppen ökade %s jämfört med föregående period."
+msgstr "Οι εκπομπές αυξήθηκαν %s σε σχέση με την προηγούμενη περίοδο."
 
 #: includes/class-vcarb-insights.php:188
 msgid "Emissions increased without growth"
-msgstr "Utsläppen ökade utan tillväxt"
+msgstr "Οι εκπομπές αυξήθηκαν χωρίς αύξηση"
 
 #: includes/class-vcarb-exports.php:527
 msgid "Emissions were unchanged compared with the previous period."
-msgstr "Utsläppen var oförändrade jämfört med föregående period."
+msgstr ""
+"Οι εκπομπές παρέμειναν αμετάβλητες σε σύγκριση με την προηγούμενη περίοδο."
 
 #: includes/class-vcarb-insights.php:809
 msgid "Energy"
-msgstr "Energi"
+msgstr "Ενέργεια"
 
 #: includes/class-vcarb-reports-admin.php:1013
 msgid ""
 "Estimated emissions are calculated from eligible WooCommerce order data."
-msgstr "Uppskattade utsläpp beräknas från godkänd WooCommerce-orderdata."
+msgstr ""
+"Οι εκτιμώμενες εκπομπές υπολογίζονται από τα κατάλληλα δεδομένα παραγγελιών "
+"WooCommerce."
 
 #: public/class-vcarb-dashboard.php:1233
 msgid ""
 "Estimated score based on emissions trend, emissions per order, reporting "
 "history, and hotspot concentration."
 msgstr ""
-"Uppskattad poäng baserad på utsläppstrend, utsläpp per order, "
-"rapporteringshistorik och hotspot-koncentration."
+"Εκτιμώμενη βαθμολογία με βάση την τάση των εκπομπών, τις εκπομπές ανά "
+"παραγγελία, το ιστορικό αναφορών και τη συγκέντρωση hotspot."
 
 #: includes/class-vcarb-dataset-service.php:874
 #: includes/class-vcarb-insights.php:640
 #: includes/class-vcarb-sustainability-summary.php:379
 #: public/class-vcarb-dashboard.php:1196
 msgid "Excellent"
-msgstr "Utmärkt"
+msgstr "Εξαιρετικό"
 
 #: includes/class-vcarb-sustainability-summary.php:125
 msgid "Executive summary"
-msgstr "Sammanfattning"
+msgstr "Συνοπτική παρουσίαση"
 
 #: public/class-vcarb-dashboard.php:929
 msgid "Existing old orders need Backfill one time."
-msgstr "Befintliga gamla beställningar behöver fylla ut en gång."
+msgstr "Οι υπάρχουσες παλιές παραγγελίες χρειάζονται συμπλήρωση μία φορά."
 
 #: public/class-vcarb-dashboard.php:793
 msgid "Export"
-msgstr "Exportera"
+msgstr "Εξαγωγή"
 
 #: public/class-vcarb-dashboard.php:208 public/class-vcarb-dashboard.php:809
 #: public/class-vcarb-dashboard.php:837
 msgid "Export CSV"
-msgstr "Exportera CSV"
+msgstr "Εξαγωγή CSV"
 
 #: includes/class-vcarb-reports-admin.php:627
 msgid "Export is unavailable until a snapshot exists for this period."
 msgstr ""
-"Export är inte tillgänglig förrän en ögonblicksbild finns för denna period."
+"Η εξαγωγή δεν είναι διαθέσιμη μέχρι να υπάρξει ένα στιγμιότυπο για αυτήν την "
+"περίοδο."
 
 #: public/class-vcarb-dashboard.php:776
 msgid "Export is unavailable until a store snapshot exists for this period."
 msgstr ""
-"Export är inte tillgängligt förrän en butikssnapshot finns för denna period."
+"Η εξαγωγή δεν είναι διαθέσιμη μέχρι να υπάρξει ένα στιγμιότυπο χώρου "
+"αποθήκευσης για αυτήν την περίοδο."
 
 #: public/class-vcarb-dashboard.php:202
 msgid "Export is unavailable until data exists for this period."
-msgstr "Export är inte tillgänglig förrän data finns för denna period."
+msgstr ""
+"Η εξαγωγή δεν είναι διαθέσιμη μέχρι να υπάρξουν δεδομένα για αυτήν την "
+"περίοδο."
 
 #: public/class-vcarb-dashboard.php:826
 msgid "Export options"
-msgstr "Exportalternativ"
+msgstr "Εξαγωγή ρυθμίσεων"
 
 #: public/class-vcarb-dashboard.php:209 public/class-vcarb-dashboard.php:850
 msgid "Export PDF"
-msgstr "Exportera PDF"
+msgstr "Εξαγωγή PDF"
 
 #: includes/class-vcarb-exports.php:687
 msgid "Exported By Admin ID"
-msgstr "Exporterad av administratörs-ID"
+msgstr "Εξαγωγή από αναγνωριστικό διαχειριστή"
 
 #: includes/class-vcarb-dataset-service.php:882
 #: includes/class-vcarb-insights.php:648
 #: includes/class-vcarb-sustainability-summary.php:387
 #: public/class-vcarb-dashboard.php:1204
 msgid "Fair"
-msgstr "Uppehåll"
+msgstr "Δίκαιος  αίθριος"
 
 #: includes/class-vcarb-access.php:164
 msgid "Feature link is unavailable in this build."
-msgstr "Funktionslänken är inte tillgänglig i denna version."
+msgstr "Ο σύνδεσμος χαρακτηριστικών δεν είναι διαθέσιμος σε αυτήν την έκδοση."
 
 #: includes/class-vcarb-exports.php:682
 msgid "Field"
-msgstr "Fält"
+msgstr "Πεδίο"
 
 #: includes/class-vcarb-reports-admin.php:1068
 msgid "Fill missing store total and hotspots for already-counted orders"
-msgstr "Fyll i saknade butiker och hotspots för redan räknade beställningar"
+msgstr ""
+"Συμπληρώστε το σύνολο του καταστήματος που λείπει και τα hotspot για "
+"παραγγελίες που έχουν ήδη καταμετρηθεί"
 
 #: includes/class-vcarb-insights-renderer.php:208
 msgid "Filter insights"
-msgstr "Filterinsikter"
+msgstr "Φιλτράρισμα πληροφοριών"
 
 #. %s: emissions driver label.
 #: includes/class-vcarb-insights.php:361
 #, php-format
 msgid "Focus improvements on %s first because it has the biggest leverage."
-msgstr "Fokusera förbättringar på %s först eftersom det har störst hävstvidd."
+msgstr ""
+"Εστιάστε πρώτα τις βελτιώσεις στην %s γιατί έχει τη μεγαλύτερη μόχλευση."
 
 #: includes/class-vcarb-insights.php:511
 msgid "Focus on the top drivers first"
-msgstr "Fokusera först på de bästa förarna"
+msgstr "Εστιάστε πρώτα στους κορυφαίους οδηγούς"
 
 #: public/class-vcarb-dashboard.php:959
 msgid "For new stores"
-msgstr "För nya butiker"
+msgstr "Για νέα καταστήματα"
 
 #: public/class-vcarb-dashboard.php:968
 msgid "For stores with old orders"
-msgstr "För butiker med gamla beställningar"
+msgstr "Για καταστήματα με παλιές παραγγελίες"
 
 #: includes/class-vcarb-exports.php:90 includes/class-vcarb-exports.php:124
 #: includes/class-vcarb-reports-admin.php:269
@@ -628,163 +655,165 @@ msgstr "För butiker med gamla beställningar"
 #: includes/gc-vcarb-admin-guard.php:129
 #: includes/trait-vcarb-ajax-helpers.php:48
 msgid "Forbidden"
-msgstr "Förbjuden"
+msgstr "Απαγορευμένος"
 
 #: includes/class-vcarb-reports-admin.php:991
 msgid "Front dashboard page"
-msgstr "Frontpanel-sidan"
+msgstr "Μπροστινή σελίδα πίνακα εργαλείων"
 
 #: includes/class-vcarb-reports-admin.php:651
 msgid "Front dashboard page not found."
-msgstr "Frontpanelsidan hittas inte."
+msgstr "Η σελίδα του μπροστινού πίνακα εργαλείων δεν βρέθηκε."
 
 #: includes/class-vcarb-reports-admin.php:940
 msgid "Front Dashboard Unavailable"
-msgstr "Framinstrumentbrädan ej tillgänglig"
+msgstr "Το μπροστινό ταμπλό δεν είναι διαθέσιμο"
 
 #: includes/class-vcarb-exports.php:475 includes/class-vcarb-exports.php:491
 msgid "Generated (UTC)"
-msgstr "Genererad (UTC)"
+msgstr "Δημιουργήθηκε (UTC)"
 
 #: includes/class-vcarb-dataset-service.php:878
 #: includes/class-vcarb-insights.php:644
 #: includes/class-vcarb-sustainability-summary.php:383
 #: public/class-vcarb-dashboard.php:1200
 msgid "Good"
-msgstr "Bra"
+msgstr "Καλό"
 
 #: includes/class-vcarb-product-insights.php:652
 msgid ""
 "High CO₂ per order vs store average. Check weight/dimensions, shipping "
 "zones, or fulfillment methods."
 msgstr ""
-"Hög CO₂ per beställning jämfört med butikens genomsnitt. Kontrollera vikt/"
-"mått, fraktzoner eller leveransmetoder."
+"Υψηλό CO₂ ανά παραγγελία σε σχέση με τον μέσο όρο του καταστήματος. Ελέγξτε "
+"το βάρος/διαστάσεις, τις ζώνες αποστολής ή τις μεθόδους εκπλήρωσης."
 
 #: includes/class-vcarb-product-insights.php:646
 msgid ""
 "High impact product (large share of emissions). Review packaging and "
 "shipping settings."
 msgstr ""
-"Högpåverkande produkt (stor andel utsläpp). Granska förpacknings- och "
-"fraktinställningar."
+"Προϊόν υψηλού αντίκτυπου (μεγάλο μερίδιο εκπομπών). Ελέγξτε τις ρυθμίσεις "
+"συσκευασίας και αποστολής."
 
 #: public/class-vcarb-dashboard.php:1151
 msgid "Higher"
-msgstr "Högre"
+msgstr "Υψηλότερο"
 
 #: includes/class-vcarb-calculator.php:392
 msgid "higher"
-msgstr "högre"
+msgstr "υψηλότερα"
 
 #: public/class-vcarb-dashboard.php:1529
 msgid "Historical period browsing"
-msgstr "Historisk period"
+msgstr "Περιήγηση ιστορικής περιόδου"
 
 #: includes/class-vcarb-insights.php:377
 msgid "Hotspot concentration detected"
-msgstr "Hotspot-koncentration upptäckt"
+msgstr "Εντοπίστηκε συγκέντρωση hotspot"
 
 #: includes/class-vcarb-reports-admin.php:1003
 msgid "How reporting works"
-msgstr "Hur rapportering fungerar"
+msgstr "Πώς λειτουργεί η αναφορά"
 
 #: includes/class-vcarb-insights.php:514
 msgid ""
 "Identify the top products, shipping zones, or order types contributing to "
 "emissions."
 msgstr ""
-"Identifiera de viktigaste produkterna, fraktzonerna eller ordertyperna som "
-"bidrar till utsläppen."
+"Προσδιορίστε τα κορυφαία προϊόντα, τις ζώνες αποστολής ή τους τύπους "
+"παραγγελιών που συμβάλλουν στις εκπομπές."
 
 #: includes/class-vcarb-reports-admin.php:1016
 msgid "If historical data is missing, use Backfill to rebuild it safely."
 msgstr ""
-"Om historisk data saknas, använd Backfill för att återställa den säkert."
+"Εάν λείπουν ιστορικά δεδομένα, χρησιμοποιήστε το Backfill για να το "
+"δημιουργήσετε ξανά με ασφάλεια."
 
 #: includes/class-vcarb-insights.php:76
 msgid "Inactive store"
-msgstr "Inaktiv butik"
+msgstr "Ανενεργό κατάστημα"
 
 #: public/class-vcarb-dashboard.php:993
 msgid "INSIGHTS"
-msgstr "INSIKTER"
+msgstr "ΠΛΗΡΟΦΟΡΊΕΣ"
 
 #: includes/class-vcarb-sustainability-summary.php:143
 msgid "Insights overview"
-msgstr "Översikt av insikter"
+msgstr "Επισκόπηση στατιστικών στοιχείων"
 
 #: public/class-vcarb-dashboard.php:1180
 msgid ""
 "Insights will appear after snapshot or backfill is available for this week."
 msgstr ""
-"Insikter kommer att visas efter att snapshot eller backfill är tillgängligt "
-"för denna vecka."
+"Οι πληροφορίες θα εμφανιστούν μετά τη διαθεσιμότητα στιγμιότυπου ή "
+"συμπλήρωσης για αυτήν την εβδομάδα."
 
 #: includes/class-vcarb-dataset-service.php:789
 #: includes/class-vcarb-insights-ajax.php:60
 msgid "Insights will appear once a snapshot is available for this period."
 msgstr ""
-"Insikter kommer att visas när en ögonblicksbild finns tillgänglig för denna "
-"period."
+"Οι πληροφορίες θα εμφανιστούν μόλις είναι διαθέσιμο ένα στιγμιότυπο για "
+"αυτήν την περίοδο."
 
 #: includes/class-vcarb-insights.php:332
 msgid "Inspect orders with long-distance shipping or unusually large baskets."
 msgstr ""
-"Inspektera beställningar med långväga frakt eller ovanligt stora korgar."
+"Επιθεωρήστε τις παραγγελίες με αποστολή μεγάλων αποστάσεων ή ασυνήθιστα "
+"μεγάλα καλάθια."
 
 #: includes/class-vcarb-admin-report-ajax.php:147
 msgid "Invalid admin dataset."
-msgstr "Ogiltig administratörsdataset."
+msgstr "Μη έγκυρο σύνολο δεδομένων διαχειριστή."
 
 #: public/class-vcarb-dashboard.php:393 public/class-vcarb-dashboard.php:1308
 msgid "Invalid dashboard dataset."
-msgstr "Ogiltig dashboard-datamängd."
+msgstr "Μη έγκυρο σύνολο δεδομένων πίνακα εργαλείων."
 
 #: includes/class-vcarb-admin-report-ajax.php:239
 msgid "Invalid hotspot period."
-msgstr "Ogiltig hotspot punkt."
+msgstr "Μη έγκυρη περίοδος hotspot."
 
 #: includes/class-vcarb-insights-ajax.php:106
 #: includes/trait-vcarb-ajax-helpers.php:77
 msgid "Invalid nonce"
-msgstr "Ogiltig engångskod"
+msgstr "Μη έγκυρο"
 
 #: includes/trait-vcarb-ajax-helpers.php:60
 msgid "Invalid nonce action"
-msgstr "Ogiltig nonce-åtgärd"
+msgstr "Μη έγκυρη ενέργεια nonce"
 
 #: includes/class-vcarb-exports.php:123 public/class-vcarb-dashboard.php:356
 msgid "Invalid nonce."
-msgstr "Ogiltigt nonce-värde."
+msgstr "Μη έγκυρο nonce."
 
 #: includes/class-vcarb-admin-report-ajax.php:303
 msgid "Invalid resolved period."
-msgstr "Ogiltig löst punkt."
+msgstr "Μη έγκυρη περίοδος επίλυσης."
 
 #: includes/trait-vcarb-ajax-helpers.php:34
 #: includes/trait-vcarb-ajax-helpers.php:89
 msgid "Invalid user"
-msgstr "Ogiltig användare"
+msgstr "Μη έγκυρος χρήστης"
 
 #: includes/class-vcarb-dataset-service.php:45
 #: includes/class-vcarb-exports.php:134 includes/class-vcarb-exports.php:158
 #: includes/class-vcarb-sustainability-summary.php:209
 #: public/class-vcarb-dashboard.php:342
 msgid "Invalid user."
-msgstr "Ogiltig användare."
+msgstr "Μη έγκυρος χρήστης."
 
 #: includes/class-vcarb-insights.php:241
 msgid ""
 "Keep the changes that drove this drop and monitor whether it holds next "
 "period."
 msgstr ""
-"Behåll de förändringar som drev detta fall och följ om det håller nästa "
-"period."
+"Διατηρήστε τις αλλαγές που οδήγησαν σε αυτήν την πτώση και παρακολουθήστε "
+"εάν ισχύει την επόμενη περίοδο."
 
 #: includes/class-vcarb-insights.php:144
 msgid "Keep the changes that improved efficiency."
-msgstr "Behåll de förändringar som förbättrade effektiviteten."
+msgstr "Διατηρήστε τις αλλαγές που βελτίωσαν την αποτελεσματικότητα."
 
 #: public/class-vcarb-dashboard.php:1069
 msgid "kg CO₂"
@@ -792,137 +821,143 @@ msgstr "kg CO₂"
 
 #: public/class-vcarb-dashboard.php:1112
 msgid "Last updated"
-msgstr "Senast uppdaterad"
+msgstr "Τελευταία ενημέρωση"
 
 #: includes/class-vcarb-reports-admin.php:1088
 msgid "Live progress will appear here."
-msgstr "Live-framsteg visas här."
+msgstr "Η ζωντανή πρόοδος θα εμφανιστεί εδώ."
 
 #: public/class-vcarb-dashboard.php:866
 msgid "Loading emissions data..."
-msgstr "Laddar utsläppsdata..."
+msgstr "Φόρτωση δεδομένων εκπομπών..."
 
 #: public/class-vcarb-dashboard.php:206
 msgid "Loading emissions data…"
-msgstr "Laddar utsläppsdata..."
+msgstr "Φόρτωση δεδομένων εκπομπών..."
 
 #: public/class-vcarb-dashboard.php:207
 msgid "Loading insights…"
-msgstr "Laddar insikter..."
+msgstr "Φόρτωση πληροφοριών..."
 
 #: includes/class-vcarb-reports-admin.php:625
 #: includes/class-vcarb-reports-admin.php:1367
 #: includes/class-vcarb-reports-admin.php:1384
 #: includes/class-vcarb-reports-admin.php:1415
 msgid "Loading…"
-msgstr "Laddar…"
+msgstr "Φόρτωση…"
 
 #: public/class-vcarb-dashboard.php:471
 msgid "log in"
-msgstr "logga in"
+msgstr "σύνδεση"
 
 #: includes/class-vcarb-insights.php:168
 msgid "Look for high-CO₂ orders driving the average."
-msgstr "Titta efter hög-CO₂-order som driver genomsnittet."
+msgstr ""
+"Αναζητήστε παραγγελίες με υψηλή περιεκτικότητα σε CO₂ που οδηγούν τον μέσο "
+"όρο."
 
 #: public/class-vcarb-dashboard.php:1144
 msgid "Lower"
-msgstr "Lägre"
+msgstr "Χαμηλότερος"
 
 #: includes/class-vcarb-calculator.php:385
 msgid "lower"
-msgstr "Nedre"
+msgstr "χαμηλότερα"
 
 #: includes/class-vcarb-reports-admin.php:926
 msgid "Maintenance"
-msgstr "Underhåll"
+msgstr "Συντήρηση"
 
 #: includes/class-vcarb-reports-admin.php:1050
 msgid "Manual only"
-msgstr "Endast manuellt"
+msgstr "Μόνο χειροκίνητα"
 
 #: includes/class-vcarb-reports-admin.php:1060
 msgid "Manual only:"
-msgstr "Endast manuellt:"
+msgstr "Μόνο εγχειρίδιο:"
 
 #: includes/class-vcarb-product-insights.php:648
 msgid ""
 "Meaningful emissions contributor. Consider optimizing shipping methods or "
 "packaging."
 msgstr ""
-"Betydande utsläppsbidragsgivare. Överväg att optimera fraktmetoder eller "
-"förpackningar."
+"Σημαντικός συντελεστής εκπομπών. Εξετάστε το ενδεχόμενο βελτιστοποίησης των "
+"μεθόδων αποστολής ή συσκευασίας."
 
 #: public/class-vcarb-dashboard.php:1428
 msgid "Measure emissions per period, compare trends, and share progress."
-msgstr "Mät utsläpp per period, jämför trender och dela framsteg."
+msgstr ""
+"Μετρήστε τις εκπομπές ανά περίοδο, συγκρίνετε τις τάσεις και μοιραστείτε την "
+"πρόοδο."
 
 #: includes/class-vcarb-exports.php:912 includes/class-vcarb-exports.php:1185
 msgid "Methodology"
-msgstr "Metodik"
+msgstr "Μεθοδολογία"
 
 #: includes/class-vcarb-sustainability-summary.php:153
 msgid "Methodology note"
-msgstr "Metodologinot"
+msgstr "Μεθοδολογικό σημείωμα"
 
 #: includes/class-vcarb-exports.php:657 includes/class-vcarb-exports.php:693
 msgid "Metric"
-msgstr "Metriska"
+msgstr "Μετρικό σύστημα"
 
 #: includes/class-vcarb-reports-admin.php:986
 #: includes/class-vcarb-sustainability-summary.php:102
 msgid "Missing"
-msgstr "Saknas"
+msgstr "Λείπει"
 
 #: includes/class-vcarb-exports.php:145
 msgid "Missing dataset classes."
-msgstr "Saknade datasetklasser."
+msgstr "Λείπουν κλάσεις συνόλου δεδομένων."
 
 #: includes/class-vcarb-exports.php:231
 msgid "Missing or invalid snapshot date."
-msgstr "Saknad eller ogiltig snapshot-datum."
+msgstr "Λείπει ή δεν είναι έγκυρη η ημερομηνία στιγμιότυπου."
 
 #: includes/class-vcarb-insights-ajax.php:50
 #: public/class-vcarb-dashboard.php:249 public/class-vcarb-dashboard.php:485
 msgid "Missing required classes."
-msgstr "Missade obligatoriska lektioner."
+msgstr "Λείπουν τα απαιτούμενα μαθήματα."
 
 #: includes/class-vcarb-insights.php:493
 msgid "Monitor the next snapshot"
-msgstr "Övervaka nästa snapshot"
+msgstr "Παρακολούθηση του επόμενου στιγμιότυπου"
 
 #: includes/class-vcarb-insights.php:145
 msgid "Monitor the next snapshot to confirm the improvement holds."
-msgstr "Följ nästa ögonblicksbild för att bekräfta att förbättringen håller."
+msgstr ""
+"Παρακολουθήστε το επόμενο στιγμιότυπο για να επιβεβαιώσετε ότι η βελτίωση "
+"ισχύει."
 
 #: includes/class-vcarb-reports-admin.php:806
 #: includes/class-vcarb-reports-admin.php:1232
 #: public/class-vcarb-dashboard.php:1577
 msgid "Month"
-msgstr "Månad"
+msgstr "Μήνας"
 
 #: includes/class-vcarb-dataset-service.php:885
 #: includes/class-vcarb-insights.php:651
 #: includes/class-vcarb-sustainability-summary.php:390
 #: public/class-vcarb-dashboard.php:1207
 msgid "Needs work"
-msgstr "Behöver arbete"
+msgstr "Χρειάζεται δουλειά"
 
 #: public/class-vcarb-dashboard.php:205
 msgid "Network error. Please try again."
-msgstr "Nätverksfel. Försök igen, tack."
+msgstr "Σφάλμα δικτύου. Παρακαλώ προσπαθήστε ξανά."
 
 #: includes/class-vcarb-reports-admin.php:1054
 msgid "Never changes stored historical CO₂ values."
-msgstr "Ändrar aldrig lagrade historiska CO₂-värden."
+msgstr "Δεν αλλάζει ποτέ τις αποθηκευμένες ιστορικές τιμές CO₂."
 
 #: includes/class-vcarb-dataset-service.php:1136
 msgid "New"
-msgstr "Ny"
+msgstr "Νέο"
 
 #: public/class-vcarb-dashboard.php:928
 msgid "New completed orders are tracked automatically."
-msgstr "Nya slutförda beställningar spåras automatiskt."
+msgstr "Οι νέες ολοκληρωμένες παραγγελίες παρακολουθούνται αυτόματα."
 
 #: public/class-vcarb-dashboard.php:924
 msgid ""
@@ -930,136 +965,140 @@ msgid ""
 "plugin is active. If this store already has older completed orders, run "
 "Backfill once to build historical carbon reports."
 msgstr ""
-"Nya färdigställda WooCommerce-beställningar kommer att spåras automatiskt "
-"efter att pluginet är aktivt. Om butiken redan har äldre färdigställda "
-"beställningar, kör Backfill en gång för att skapa historiska "
-"koldioxidrapporter."
+"Οι νέες ολοκληρωμένες παραγγελίες WooCommerce θα παρακολουθούνται αυτόματα "
+"μετά την ενεργοποίηση της προσθήκης. Εάν αυτό το κατάστημα έχει ήδη "
+"παλαιότερες ολοκληρωμένες παραγγελίες, εκτελέστε το Backfill μία φορά για να "
+"δημιουργήσετε ιστορικές αναφορές άνθρακα."
 
 #: includes/class-vcarb-reports-admin.php:1276
 #: includes/class-vcarb-reports-admin.php:1280
 #: public/class-vcarb-dashboard.php:1554 public/class-vcarb-dashboard.php:1558
 msgid "Next"
-msgstr "Nästa"
+msgstr "Επόμενο"
 
 #: includes/class-vcarb-dataset-service.php:284
 msgid "No activity in this period yet."
-msgstr "Ingen aktivitet under denna period än."
+msgstr "Καμία δραστηριότητα αυτή την περίοδο ακόμη."
 
 #: includes/class-vcarb-reports-admin.php:1093
 msgid "No backfill started yet."
-msgstr "Ingen påfyllning har påbörjats än."
+msgstr "Δεν έχει ξεκινήσει ακόμη η επίχωση."
 
 #: includes/class-vcarb-dataset-service.php:996
 msgid "No change vs previous."
-msgstr "Ingen förändring jämfört med tidigare."
+msgstr "Καμία αλλαγή σε σχέση με το προηγούμενο."
 
 #: includes/class-vcarb-insights.php:77
 msgid "No completed or processing orders were detected for this period."
-msgstr "Inga slutförda eller bearbetningsorder upptäcktes under denna period."
+msgstr ""
+"Δεν εντοπίστηκαν ολοκληρωμένες ή επεξεργασμένες παραγγελίες για αυτήν την "
+"περίοδο."
 
 #: includes/class-vcarb-insights.php:546
 msgid ""
 "No completed order emissions are available for this selected snapshot period "
 "yet."
 msgstr ""
-"Inga slutförda beställningsutsläpp finns tillgängliga för denna valda "
-"ögonblicksperiod än."
+"Δεν υπάρχουν ακόμη διαθέσιμες εκπομπές ολοκληρωμένων παραγγελιών για αυτήν "
+"την επιλεγμένη περίοδο στιγμιότυπου."
 
 #: public/class-vcarb-dashboard.php:220 public/class-vcarb-dashboard.php:1001
 msgid "No data"
-msgstr "Ingen data"
+msgstr "Χωρίς δεδομένα"
 
 #: includes/class-vcarb-dataset-service.php:1057
 msgid "No data available."
-msgstr "Uppgifter saknas."
+msgstr "Δεν υπάρχουν διαθέσιμα δεδομένα."
 
 #: includes/class-vcarb-exports.php:1161
 msgid "No data found for this snapshot period."
-msgstr "Inga data hittades för denna ögonblicksperiod."
+msgstr "Δεν βρέθηκαν δεδομένα για αυτήν την περίοδο στιγμιότυπου."
 
 #: public/class-vcarb-dashboard.php:203
 msgid "No emissions data for this period yet."
-msgstr "Inga utsläppsdata för denna period än."
+msgstr "Δεν υπάρχουν ακόμη δεδομένα εκπομπών για αυτήν την περίοδο."
 
 #: includes/class-vcarb-dataset-service.php:788
 msgid "No insights available yet"
-msgstr "Inga insikter finns än"
+msgstr "Δεν υπάρχουν ακόμη διαθέσιμες πληροφορίες"
 
 #: includes/class-vcarb-insights-renderer.php:205
 #: public/class-vcarb-dashboard.php:215 public/class-vcarb-dashboard.php:1181
 msgid "No insights available yet."
-msgstr "Inga insikter finns tillgängliga än."
+msgstr "Δεν υπάρχουν ακόμη διαθέσιμες πληροφορίες."
 
 #: includes/class-vcarb-product-insights.php:664
 msgid ""
 "No major anomalies detected. Monitor over time as more snapshot periods "
 "accumulate."
 msgstr ""
-"Inga större avvikelser upptäckta. Övervaka över tid när fler "
-"ögonblicksperioder samlas på hög."
+"Δεν εντοπίστηκαν σημαντικές ανωμαλίες. Παρακολουθήστε με την πάροδο του "
+"χρόνου καθώς συσσωρεύονται περισσότερες περίοδοι στιγμιότυπου."
 
 #: includes/class-vcarb-sustainability-summary.php:147
 msgid "No major risks detected for this period."
-msgstr "Inga större risker upptäcktes under denna period."
+msgstr "Δεν εντοπίστηκαν σημαντικοί κίνδυνοι για αυτήν την περίοδο."
 
 #: includes/class-vcarb-dataset-service.php:963
 msgid "No orders are available for this selected snapshot period yet."
 msgstr ""
-"Inga beställningar finns tillgängliga för denna valda snapshot-period än."
+"Δεν υπάρχουν ακόμη διαθέσιμες παραγγελίες για αυτήν την επιλεγμένη περίοδο "
+"στιγμιότυπου."
 
 #: includes/class-vcarb-insights.php:450
 msgid "No orders were detected in this period."
-msgstr "Inga order upptäcktes under denna period."
+msgstr "Δεν εντοπίστηκαν παραγγελίες κατά την περίοδο αυτή."
 
 #: includes/class-vcarb-dataset-service.php:964
 msgid "No orders yet for this period."
-msgstr "Inga order än för denna period."
+msgstr "Δεν υπάρχουν ακόμη παραγγελίες για αυτήν την περίοδο."
 
 #: includes/class-vcarb-sustainability-summary.php:92
 msgid "No period selected"
-msgstr "Ingen period vald"
+msgstr "Δεν επιλέχθηκε περίοδος"
 
 #: includes/class-vcarb-dataset-service.php:253
 msgid "No personal activity in this period yet."
-msgstr "Ingen personlig aktivitet under denna period än."
+msgstr "Καμία προσωπική δραστηριότητα αυτή την περίοδο ακόμα."
 
 #: includes/class-vcarb-sustainability-summary.php:146
 msgid "No positive signals detected for this period."
-msgstr "Inga positiva signaler upptäcktes under denna period."
+msgstr "Δεν εντοπίστηκαν θετικά σήματα για αυτήν την περίοδο."
 
 #: includes/class-vcarb-exports.php:513
 msgid "No previous snapshot exists yet, so trend comparison is not available."
 msgstr ""
-"Ingen tidigare snapshot finns än, så trendjämförelse är inte tillgänglig."
+"Δεν υπάρχει ακόμη προηγούμενο στιγμιότυπο, επομένως η σύγκριση τάσεων δεν "
+"είναι διαθέσιμη."
 
 #: includes/class-vcarb-insights.php:96
 msgid "No previous snapshot was available for comparison."
-msgstr "Ingen tidigare snapshot fanns tillgänglig för jämförelse."
+msgstr "Δεν υπήρχε προηγούμενο στιγμιότυπο για σύγκριση."
 
 #: includes/class-vcarb-sustainability-summary.php:459
 msgid "No product hotspots are available for this period."
-msgstr "Inga produkthotspots finns tillgängliga för denna period."
+msgstr "Δεν υπάρχουν διαθέσιμα hotspot προϊόντων για αυτήν την περίοδο."
 
 #: public/class-vcarb-dashboard.php:1007
 msgid ""
 "No product hotspots yet for this period. Add completed orders or run "
 "Backfill."
 msgstr ""
-"Inga produkthotspots än för denna period. Lägg till slutför beställningar "
-"eller kör Backfill."
+"Δεν υπάρχουν ακόμη hotspot προϊόντων για αυτήν την περίοδο. Προσθέστε "
+"ολοκληρωμένες παραγγελίες ή εκτελέστε το Backfill."
 
 #: includes/class-vcarb-sustainability-summary.php:148
 msgid "No recommendations available yet."
-msgstr "Inga rekommendationer finns än."
+msgstr "Δεν υπάρχουν ακόμη διαθέσιμες συστάσεις."
 
 #: includes/class-vcarb-insights-renderer.php:239
 #: public/class-vcarb-dashboard.php:216
 msgid "No recommendations yet for this period."
-msgstr "Inga rekommendationer än för denna period."
+msgstr "Δεν υπάρχουν ακόμη συστάσεις για αυτήν την περίοδο."
 
 #: public/class-vcarb-dashboard.php:920
 msgid "No reporting snapshot available yet"
-msgstr "Ingen rapporteringsöversikt finns än"
+msgstr "Δεν υπάρχει ακόμη διαθέσιμη σύνοψη αναφορών"
 
 #: includes/class-vcarb-reports-admin.php:892
 msgid ""
@@ -1067,612 +1106,630 @@ msgid ""
 "be tracked automatically after activation. If this store already has "
 "completed orders, run Backfill once to build historical carbon reports."
 msgstr ""
-"Inga rapporteringsögonblick har hittats än. Nya slutförda WooCommerce-"
-"beställningar kommer att spåras automatiskt efter aktivering. Om denna butik "
-"redan har slutfört beställningar, kör Backfill en gång för att skapa "
-"historiska koldioxidrapporter."
+"Δεν βρέθηκαν ακόμη στιγμιότυπα αναφοράς. Οι νέες ολοκληρωμένες παραγγελίες "
+"WooCommerce θα παρακολουθούνται αυτόματα μετά την ενεργοποίηση. Εάν αυτό το "
+"κατάστημα έχει ήδη ολοκληρώσει παραγγελίες, εκτελέστε το Backfill μία φορά "
+"για να δημιουργήσετε ιστορικές αναφορές άνθρακα."
 
 #: includes/class-vcarb-sustainability-summary.php:375
 msgid "No score available"
-msgstr "Ingen poäng tillgänglig"
+msgstr "Δεν υπάρχει διαθέσιμη βαθμολογία"
 
 #: public/class-vcarb-dashboard.php:914
 msgid "No snapshot available"
-msgstr "Ingen snapshot tillgänglig"
+msgstr "Δεν υπάρχει διαθέσιμο στιγμιότυπο"
 
 #: includes/class-vcarb-dataset-service.php:72
 #: includes/class-vcarb-dataset-service.php:139
 msgid "No snapshot available for this period yet."
-msgstr "Ingen snapshot finns tillgänglig för denna period än."
+msgstr "Δεν υπάρχει ακόμη διαθέσιμο στιγμιότυπο για αυτήν την περίοδο."
 
 #: includes/class-vcarb-sustainability-summary.php:109
 msgid ""
 "No snapshot is available for this period yet. Run Backfill or wait until "
 "eligible WooCommerce orders are processed."
 msgstr ""
-"Ingen snapshot finns ännu tillgänglig för denna period. Kör Backfill eller "
-"vänta tills berättigade WooCommerce-beställningar är behandlade."
+"Δεν υπάρχει ακόμη διαθέσιμο στιγμιότυπο για αυτήν την περίοδο. Εκτελέστε το "
+"Backfill ή περιμένετε μέχρι να διεκπεραιωθούν οι κατάλληλες παραγγελίες "
+"WooCommerce."
 
 #: includes/class-vcarb-sustainability-summary.php:410
 msgid ""
 "No snapshot is available yet, so a complete sustainability summary cannot be "
 "generated for this period."
 msgstr ""
-"Ingen ögonblicksbild finns än, så en fullständig hållbarhetssammanfattning "
-"kan inte genereras för denna period."
+"Δεν υπάρχει ακόμη διαθέσιμο στιγμιότυπο, επομένως δεν είναι δυνατή η "
+"δημιουργία πλήρους σύνοψης βιωσιμότητας για αυτήν την περίοδο."
 
 #: includes/class-vcarb-sustainability-summary.php:414
 msgid "not available"
-msgstr "inte tillgänglig"
+msgstr "μη διαθέσιμο"
 
 #: includes/trait-vcarb-snapshot.php:368
 msgid "Not Found"
-msgstr "Hittades inte"
+msgstr "Δεν βρέθηκε"
 
 #: includes/class-vcarb-reports-admin.php:652
 #: includes/class-vcarb-reports-admin.php:993
 msgid "Not found"
-msgstr "Hittades inte"
+msgstr "Δεν βρέθηκε"
 
 #: includes/class-vcarb-exports.php:785 includes/class-vcarb-exports.php:988
 msgid "Note"
-msgstr "Anteckning"
+msgstr "Σημείωση"
 
 #: includes/class-vcarb-insights-renderer.php:273
 #: public/class-vcarb-dashboard.php:217
 msgid "Nothing detected for this period."
-msgstr "Inget upptäcktes under denna period."
+msgstr "Δεν εντοπίστηκε τίποτα για αυτήν την περίοδο."
 
 #: includes/class-vcarb-reports-admin.php:1061
 msgid "Nothing runs automatically. Click Start when you are ready."
-msgstr "Inget körs automatiskt. Klicka på Start när du är redo."
+msgstr ""
+"Τίποτα δεν εκτελείται αυτόματα. Κάντε κλικ στο κουμπί Έναρξη όταν είστε "
+"έτοιμοι."
 
 #: includes/class-vcarb-exports.php:479
 msgid "Notice"
-msgstr "Notis"
+msgstr "Σημείωση"
 
 #: public/class-vcarb-dashboard.php:222 public/class-vcarb-dashboard.php:1037
 msgid "of product emissions."
-msgstr "av produktutsläpp."
+msgstr "των εκπομπών προϊόντων."
 
 #: includes/class-vcarb-insights.php:477
 msgid "Offer local pickup or greener shipping options where possible."
 msgstr ""
-"Erbjud lokal upphämtning eller grönare fraktalternativ där det är möjligt."
+"Προσφέρετε τοπικές επιλογές παραλαβής ή πιο πράσινης αποστολής όπου είναι "
+"δυνατόν."
 
 #: verdantcart-ai-reports.php:502
 msgid "Once Monthly"
-msgstr "En gång per månad"
+msgstr "Μηνιαία, μια φορά"
 
 #: verdantcart-ai-reports.php:495
 msgid "Once Weekly"
-msgstr "En gång i veckan"
+msgstr "Μία φορά την εβδομάδα"
 
 #: verdantcart-ai-reports.php:509
 msgid "Once Yearly"
-msgstr "En gång per år"
+msgstr "Μία φορά το χρόνο"
 
 #: includes/class-vcarb-insights.php:351
 msgid "One hotspot dominates emissions"
-msgstr "En hotspot dominerar utsläppen"
+msgstr "Ένα hotspot κυριαρχεί στις εκπομπές"
 
 #: public/class-vcarb-dashboard.php:816
 msgid "Open export menu"
-msgstr "Öppna exportmeny"
+msgstr "Άνοιγμα μενού εξαγωγής"
 
 #: includes/class-vcarb-reports-admin.php:934
 msgid "Open Front Dashboard"
-msgstr "Öppen frontinstrumentpanel"
+msgstr "Ανοίξτε το μπροστινό ταμπλό"
 
 #: includes/class-vcarb-reports-admin.php:901
 msgid "Open Reports"
-msgstr "Öppna rapporter"
+msgstr "Άνοιγμα αναφορών"
 
 #: includes/class-vcarb-reports-admin.php:913
 msgid "Open the core tools you use most often."
-msgstr "Öppna de grundläggande verktyg du använder oftast."
+msgstr "Ανοίξτε τα βασικά εργαλεία που χρησιμοποιείτε πιο συχνά."
 
 #: includes/class-vcarb-reports-admin.php:935
 msgid "Open the customer-facing carbon dashboard in a new tab."
-msgstr "Öppna kundriktad koldioxiddashboard i en ny flik."
+msgstr ""
+"Ανοίξτε τον πίνακα εργαλείων άνθρακα που απευθύνεται στον πελάτη σε μια νέα "
+"καρτέλα."
 
 #: includes/class-vcarb-reports-admin.php:952
 msgid ""
 "Open the public homepage of the WooCommerce store where this plugin is "
 "installed."
 msgstr ""
-"Öppna den publika startsidan för WooCommerce-butiken där detta plugin är "
-"installerat."
+"Ανοίξτε τη δημόσια αρχική σελίδα του καταστήματος WooCommerce όπου είναι "
+"εγκατεστημένη αυτή η προσθήκη."
 
 #: includes/class-vcarb-insights.php:515
 msgid "Optimize the largest driver before spending time on smaller ones."
-msgstr "Optimera den största drivrutinen innan du lägger tid på mindre."
+msgstr ""
+"Βελτιστοποιήστε το μεγαλύτερο πρόγραμμα οδήγησης πριν αφιερώσετε χρόνο σε "
+"μικρότερα."
 
 #: includes/class-vcarb-backfill-ajax.php:43
 msgid "Order tracker missing."
-msgstr "Orderspåraren saknas."
+msgstr "Λείπει το πρόγραμμα παρακολούθησης παραγγελιών."
 
 #: includes/class-vcarb-exports.php:630 includes/class-vcarb-exports.php:710
 #: includes/class-vcarb-exports.php:1151
 #: includes/class-vcarb-reports-admin.php:1404
 #: includes/class-vcarb-sustainability-summary.php:119
 msgid "Orders"
-msgstr "Beställningar"
+msgstr "Παραγγελίες"
 
 #: includes/class-vcarb-insights.php:287
 msgid ""
 "Orders fell while total CO₂ increased, so emissions per order likely "
 "worsened."
 msgstr ""
-"Beställningarna minskade medan den totala CO₂ ökade, så utsläppen per order "
-"blev troligen sämre."
+"Οι παραγγελίες μειώθηκαν ενώ το συνολικό CO₂ αυξήθηκε, επομένως οι εκπομπές "
+"ανά παραγγελία πιθανότατα επιδεινώθηκαν."
 
 #: includes/class-vcarb-exports.php:662 includes/class-vcarb-exports.php:698
 #: includes/class-vcarb-exports.php:891 includes/class-vcarb-exports.php:1120
 #: includes/class-vcarb-reports-admin.php:1309
 msgid "Orders Included"
-msgstr "Beställningar inkluderade"
+msgstr "Περιλαμβάνονται παραγγελίες"
 
 #: public/class-vcarb-dashboard.php:1077
 msgid "Orders included"
-msgstr "Beställningar inkluderade"
+msgstr "Περιλαμβάνονται παραγγελίες"
 
 #: includes/class-vcarb-product-insights.php:660
 msgid ""
 "Orders increased sharply vs previous month. Ensure the product setup and "
 "shipping settings are optimized."
 msgstr ""
-"Beställningarna ökade kraftigt jämfört med föregående månad. Se till att "
-"produktuppsättningen och leveransinställningarna är optimerade."
+"Οι παραγγελίες αυξήθηκαν απότομα σε σχέση με τον προηγούμενο μήνα. "
+"Βεβαιωθείτε ότι η ρύθμιση του προϊόντος και οι ρυθμίσεις αποστολής είναι "
+"βελτιστοποιημένες."
 
 #. 1: CO2 percentage change, 2: orders percentage change.
 #: includes/class-vcarb-insights.php:139
 #, php-format
 msgid "Orders increased while total CO₂ decreased (%1$s CO₂, %2$s orders)."
 msgstr ""
-"Beställningarna ökade medan den totala CO₂ minskade (%1$s CO₂, %2$s "
-"beställningar)."
+"Οι παραγγελίες αυξήθηκαν ενώ το συνολικό CO₂ μειώθηκε (%1$s CO₂, %2$s "
+"παραγγελίες)."
 
 #: includes/class-vcarb-insights.php:308
 msgid "Orders increased without increasing total CO₂ significantly."
-msgstr "Beställningarna ökade utan att den totala CO₂ ökade nämnvärt."
+msgstr "Οι παραγγελίες αυξήθηκαν χωρίς να αυξηθεί σημαντικά το συνολικό CO₂."
 
 #: includes/class-vcarb-exports.php:711
 msgid "Orders vs Previous %"
-msgstr "Beställningar vs Tidigare %"
+msgstr "Παραγγελίες έναντι προηγούμενου %"
 
 #: verdantcart-ai-reports.php:701 verdantcart-ai-reports.php:702
 #: public/class-vcarb-dashboard.php:752
 msgid "Overview"
-msgstr "Översikt"
+msgstr "Επισκόπηση"
 
 #: includes/class-vcarb-insights.php:805
 msgid "Packaging"
-msgstr "Emballage"
+msgstr "Συσκευασία"
 
 #: includes/class-vcarb-exports.php:879 includes/class-vcarb-exports.php:1108
 #: includes/class-vcarb-sustainability-summary.php:91
 #: public/class-vcarb-dashboard.php:1452
 msgid "Period"
-msgstr "Period"
+msgstr "Περίοδος"
 
 #: includes/class-vcarb-exports.php:629
 msgid "Period Label"
-msgstr "Periodetikett"
+msgstr "Ετικέτα περιόδου"
 
 #: includes/class-vcarb-reports-admin.php:1334
 msgid "Period trend"
-msgstr "Periodisk trend"
+msgstr "Τάση περιόδου"
 
 #. %s: login link HTML.
 #: public/class-vcarb-dashboard.php:470
 #, php-format
 msgid "Please %s to view your carbon dashboard."
-msgstr "Vänligen %s för att se din kolfiberinstrumentpanel."
+msgstr "Παρακαλούμε %s να δείτε τον πίνακα ελέγχου άνθρακα."
 
 #: includes/class-vcarb-insights-renderer.php:213
 #: includes/class-vcarb-insights-renderer.php:224
 #: public/class-vcarb-dashboard.php:211
 msgid "Positive"
-msgstr "Positiv"
+msgstr "Θετικός"
 
 #: includes/class-vcarb-reports-admin.php:1256
 #: includes/class-vcarb-reports-admin.php:1260
 #: public/class-vcarb-dashboard.php:1536 public/class-vcarb-dashboard.php:1540
 msgid "Previous"
-msgstr "Föregående"
+msgstr "Προηγούμενο"
 
 #: includes/class-vcarb-exports.php:850 includes/class-vcarb-exports.php:1081
 msgid "Print / Save as PDF"
-msgstr "Skriv ut / Spara som PDF"
+msgstr "Εκτύπωση / Αποθήκευση ως PDF"
 
 #: includes/class-vcarb-reports-admin.php:819
 msgid "Print / Save PDF"
-msgstr "Skriv ut / Spara PDF"
+msgstr "Εκτύπωση / Αποθήκευση PDF"
 
 #: includes/class-vcarb-insights.php:807
 msgid "Product"
-msgstr "Produkt"
+msgstr "Προϊόν"
 
 #: includes/class-vcarb-admin-report-ajax.php:246
 msgid "Product hotspot service is missing."
-msgstr "Produkt-hotspot-tjänsten saknas."
+msgstr "Λείπει η υπηρεσία hotspot προϊόντος."
 
 #: includes/class-vcarb-insights.php:806
 msgid "Products"
-msgstr "Produkter"
+msgstr "Προϊόντα"
 
 #: public/class-vcarb-dashboard.php:930
 msgid ""
 "Products need weight data, or a fallback weight filter, before emissions can "
 "be estimated."
 msgstr ""
-"Produkter behöver viktdata, eller ett reservviktfilter, innan utsläpp kan "
-"uppskattas."
+"Τα προϊόντα χρειάζονται δεδομένα βάρους ή εφεδρικό φίλτρο βάρους, πριν από "
+"την εκτίμηση των εκπομπών."
 
 #: includes/class-vcarb-reports-admin.php:911
 msgid "Quick actions"
-msgstr "Snabbåtgärder"
+msgstr "Στα γρήγορα"
 
 #: includes/class-vcarb-reports-admin.php:993
 msgid "Ready"
-msgstr "Klar"
+msgstr "Έτοιμο"
 
 #: includes/class-vcarb-reports-admin.php:1043
 msgid "Rebuild historical carbon data for existing WooCommerce orders."
 msgstr ""
-"Återskapa historisk koldioxiddata för befintliga WooCommerce-beställningar."
+"Αναδημιουργήστε ιστορικά δεδομένα άνθρακα για υπάρχουσες παραγγελίες "
+"WooCommerce."
 
 #: includes/class-vcarb-reports-admin.php:928
 msgid "Rebuild historical reporting data for existing WooCommerce orders."
 msgstr ""
-"Bygg om historisk rapporteringsdata för befintliga WooCommerce-beställningar."
+"Δημιουργήστε εκ νέου δεδομένα ιστορικού αναφορών για υπάρχουσες παραγγελίες "
+"WooCommerce."
 
 #: includes/class-vcarb-insights-renderer.php:231
 #: includes/class-vcarb-sustainability-summary.php:148
 #: public/class-vcarb-dashboard.php:214
 msgid "Recommendations"
-msgstr "Rekommenderat"
+msgstr "Έξυπνες προτάσεις"
 
 #: includes/class-vcarb-insights.php:469
 msgid "Reduce CO₂ per order"
-msgstr "Minska CO₂ per order"
+msgstr "Μειώστε το CO₂ ανά παραγγελία"
 
 #: includes/class-vcarb-insights.php:512
 msgid ""
 "Reducing the biggest emissions drivers first gives the fastest improvement "
 "opportunity."
 msgstr ""
-"Att först minska de största utsläppsförarna ger den snabbaste "
-"förbättringsmöjligheten."
+"Η μείωση των μεγαλύτερων οδηγών εκπομπών δίνει πρώτα την ταχύτερη ευκαιρία "
+"βελτίωσης."
 
 #: includes/class-vcarb-plugin-pages-admin.php:138
 msgid "Regular pages only"
-msgstr "Endast vanliga sidor"
+msgstr "Μόνο κανονικές σελίδες"
 
 #: verdantcart-ai-reports.php:729
 msgid "Report"
-msgstr "Rapportera"
+msgstr "Αναφορά"
 
 #: includes/class-vcarb-exports.php:905 includes/class-vcarb-exports.php:1178
 msgid "Report Notes"
-msgstr "Rapportnoteringar"
+msgstr "Σημειώσεις αναφοράς"
 
 #: includes/class-vcarb-reports-admin.php:804
 msgid "Report period"
-msgstr "Rapportperiod"
+msgstr "Περίοδος αναφοράς"
 
 #: includes/class-vcarb-exports.php:686
 msgid "Report Type"
-msgstr "Rapporttyp"
+msgstr "Είδος Αναφοράς"
 
 #: includes/class-vcarb-reports-admin.php:1014
 msgid "Reporting data is grouped into monthly, weekly, and yearly periods."
-msgstr "Rapporteringsdata är grupperade i månads-, vecko- och årsperioder."
+msgstr ""
+"Τα δεδομένα αναφοράς ομαδοποιούνται σε μηνιαίες, εβδομαδιαίες και ετήσιες "
+"περιόδους."
 
 #: includes/class-vcarb-reports-admin.php:891
 msgid "Reporting setup reminder:"
-msgstr "Påminnelse om rapporteringsinställningar:"
+msgstr "Υπενθύμιση ρύθμισης αναφοράς:"
 
 #: includes/class-vcarb-reports-admin.php:920
 msgid "Reports"
-msgstr "Rapporter"
+msgstr "Αναφορές"
 
 #: includes/class-vcarb-insights.php:808
 msgid "Returns"
-msgstr "Returer"
+msgstr "Επιστροφές"
 
 #: includes/class-vcarb-insights.php:364
 msgid ""
 "Review carrier, packaging, product weight, or routing choices for this "
 "driver."
 msgstr ""
-"Granska transportör, förpackning, produktvikt eller ruttval för denna förare."
+"Ελέγξτε τις επιλογές φορέα, συσκευασίας, βάρους προϊόντος ή δρομολόγησης για "
+"αυτό το πρόγραμμα οδήγησης."
 
 #: includes/class-vcarb-insights.php:476
 msgid "Review packaging weight and materials."
-msgstr "Granska förpackningens vikt och material."
+msgstr "Ελέγξτε το βάρος και τα υλικά συσκευασίας."
 
 #: includes/class-vcarb-insights.php:267
 msgid ""
 "Review product mix, shipping zones, and packaging changes in this period."
 msgstr ""
-"Granska produktmix, fraktzoner och förpackningsförändringar under denna "
-"period."
+"Ελέγξτε το μείγμα προϊόντων, τις ζώνες αποστολής και τις αλλαγές συσκευασίας "
+"σε αυτήν την περίοδο."
 
 #: includes/class-vcarb-insights.php:290
 msgid "Review shipping method changes and packaging weight."
-msgstr "Gå igenom ändringar i fraktmetod och förpackningsvikt."
+msgstr "Ελέγξτε τις αλλαγές στη μέθοδο αποστολής και το βάρος της συσκευασίας."
 
 #: includes/class-vcarb-insights.php:195
 msgid "Review shipping zones and carrier changes in this period."
-msgstr "Granska fraktzoner och ändringar i transportörer under denna period."
+msgstr ""
+"Ελέγξτε τις ζώνες αποστολής και τις αλλαγές μεταφορέα σε αυτήν την περίοδο."
 
 #: includes/class-vcarb-insights.php:120
 msgid "Review shipping zones and carrier changes."
-msgstr "Gå igenom fraktzoner och ändringar i transportörer."
+msgstr "Ελέγξτε τις ζώνες αποστολής και τις αλλαγές μεταφορέα."
 
 #: includes/class-vcarb-insights.php:497
 msgid "Review spikes weekly or monthly depending on your reporting view."
 msgstr ""
-"Granskningen toppar veckovis eller månadsvis beroende på hur du rapporterar "
-"om du tittar."
+"Αυξήσεις αναθεώρησης σε εβδομαδιαία ή μηνιαία βάση, ανάλογα με την προβολή "
+"αναφορών."
 
 #: includes/class-vcarb-insights-renderer.php:219
 #: includes/class-vcarb-insights-renderer.php:226
 #: public/class-vcarb-dashboard.php:213
 msgid "Risks"
-msgstr "Risker"
+msgstr "Κίνδυνοι"
 
 #: includes/class-vcarb-insights.php:494
 msgid ""
 "Risks were detected this period. Validate whether they persist next period."
 msgstr ""
-"Risker upptäcktes under denna period. Bekräfta om de fortsätter nästa "
-"lektion."
+"Αυτή την περίοδο εντοπίστηκαν κίνδυνοι. Επικυρώστε εάν επιμένουν την επόμενη "
+"περίοδο."
 
 #: includes/class-vcarb-reports-admin.php:897
 #: includes/class-vcarb-reports-admin.php:927
 #: public/class-vcarb-dashboard.php:937
 msgid "Run Backfill"
-msgstr "Run Backfill"
+msgstr "Εκτέλεση συμπλήρωσης"
 
 #: public/class-vcarb-dashboard.php:971
 msgid ""
 "Run Backfill once to process existing completed orders and create historical "
 "month, week, year, and product hotspot data."
 msgstr ""
-"Kör Backfill en gång för att behandla befintliga avslutade beställningar och "
-"skapa historisk data för månad, vecka, år och produkthotspot."
+"Εκτελέστε το Backfill μία φορά για να επεξεργαστείτε υπάρχουσες "
+"ολοκληρωμένες παραγγελίες και να δημιουργήσετε ιστορικά δεδομένα μήνα, "
+"εβδομάδας, έτους και hotspot προϊόντος."
 
 #: includes/class-vcarb-reports-admin.php:1056
 msgid "Runs in batches to avoid timeouts."
-msgstr "Körs i omgångar för att undvika timeouts."
+msgstr "Εκτελείται σε παρτίδες για την αποφυγή χρονικών ορίων."
 
 #: includes/class-vcarb-reports-admin.php:1069
 msgid "safe"
-msgstr "Säkert"
+msgstr "Ασφαλής"
 
 #: includes/class-vcarb-insights.php:307
 msgid "Scale without higher emissions"
-msgstr "Skala utan högre utsläpp"
+msgstr "Κλίμακα χωρίς υψηλότερες εκπομπές"
 
 #: includes/class-vcarb-admin-report-ajax.php:270
 msgid "Scheduler missing."
-msgstr "Schemaläggare saknas."
+msgstr "Λείπει ο προγραμματιστής."
 
 #: includes/class-vcarb-sustainability-summary.php:121
 #: public/class-vcarb-dashboard.php:1245
 msgid "Score"
-msgstr "Poäng"
+msgstr "Σκορ"
 
 #: includes/class-vcarb-reports-admin.php:1360
 msgid ""
 "Score, risks, positives, and recommendations based on the selected carbon "
 "snapshot."
 msgstr ""
-"Poäng, risker, positiva och rekommendationer baserat på den valda "
-"koldioxidögonblicket."
+"Βαθμολογία, κίνδυνοι, θετικά και συστάσεις με βάση το επιλεγμένο στιγμιότυπο "
+"άνθρακα."
 
 #: includes/class-vcarb-exports.php:628 includes/class-vcarb-exports.php:656
 #: includes/class-vcarb-exports.php:681 includes/class-vcarb-exports.php:692
 #: includes/class-vcarb-exports.php:708 includes/class-vcarb-exports.php:784
 #: includes/class-vcarb-exports.php:987
 msgid "Section"
-msgstr "Sektion"
+msgstr "Ενότητα"
 
 #: includes/class-vcarb-sustainability-summary.php:118
 msgid "Selected period emissions"
-msgstr "Utvalda periodutsläpp"
+msgstr "Εκπομπές επιλεγμένης περιόδου"
 
 #: includes/class-vcarb-reports-admin.php:1301
 msgid "Selected period total"
-msgstr "Utvald period totalt"
+msgstr "Σύνολο επιλεγμένης περιόδου"
 
 #: includes/class-vcarb-exports.php:146 includes/class-vcarb-exports.php:769
 #: includes/class-vcarb-exports.php:963
 msgid "Server error"
-msgstr "Serverfel"
+msgstr "Σφάλμα διακομιστή"
 
 #: public/class-vcarb-dashboard.php:917
 msgid "SETUP"
-msgstr "UPPLÄGG"
+msgstr "ΡΥΘΜΙΣΗ"
 
 #: includes/class-vcarb-insights.php:803 includes/class-vcarb-insights.php:804
 msgid "Shipping"
-msgstr "Frakt"
+msgstr "Αποστολή"
 
 #. %s: shipping share percentage of total CO2.
 #: includes/class-vcarb-insights.php:214
 #, php-format
 msgid "Shipping accounts for about %s of total CO₂ in this period."
-msgstr "Sjöfarten står för cirka %s av den totala CO₂ under denna period."
+msgstr ""
+"Η ναυτιλία αντιπροσωπεύει περίπου το %s του συνολικού CO₂ αυτή την περίοδο."
 
 #: includes/class-vcarb-insights.php:211
 msgid "Shipping is the main driver"
-msgstr "Frakten är den främsta drivkraften"
+msgstr "Η ναυτιλία είναι ο κύριος μοχλός"
 
 #: includes/class-vcarb-exports.php:791 includes/class-vcarb-exports.php:994
 #: includes/class-vcarb-sustainability-summary.php:101
 msgid "Snapshot"
-msgstr "Snapshot"
+msgstr "Στιγμιότυπο"
 
 #: includes/class-vcarb-exports.php:239
 msgid "Snapshot does not exist for this period."
-msgstr "Snapshot existerar inte för denna period."
+msgstr "Το στιγμιότυπο δεν υπάρχει για αυτήν την περίοδο."
 
 #: includes/class-vcarb-reports-admin.php:626
 #: includes/class-vcarb-reports-admin.php:1219
 msgid "Snapshot missing"
-msgstr "Ögonblicksbild saknas"
+msgstr "Λείπει το στιγμιότυπο"
 
 #: includes/trait-vcarb-snapshot.php:367
 msgid "Snapshot period not found (store total row missing)."
-msgstr "Snapshot-period ej hittad (lagra total rad saknas)."
+msgstr ""
+"Η περίοδος στιγμιότυπου δεν βρέθηκε (λείπει η συνολική σειρά αποθήκευσης)."
 
 #: includes/class-vcarb-exports.php:1140
 msgid "Snapshot Updated"
-msgstr "Snapshot uppdaterad"
+msgstr "Το στιγμιότυπο ενημερώθηκε"
 
 #: includes/class-vcarb-exports.php:474 includes/class-vcarb-exports.php:490
 msgid "Snapshot updated"
-msgstr "Snapshot uppdaterad"
+msgstr "Το στιγμιότυπο ενημερώθηκε"
 
 #: includes/class-vcarb-sustainability-summary.php:161
 msgid "Snapshot updated:"
-msgstr "Uppdaterad ögonblicksbild:"
+msgstr "Το στιγμιότυπο ενημερώθηκε:"
 
 #: includes/class-vcarb-sustainability-summary.php:77
 msgid "Snapshot-based report"
-msgstr "Snapshot-baserad rapport"
+msgstr "Αναφορά βάσει στιγμιότυπου"
 
 #: includes/class-vcarb-reports-admin.php:798
 msgid "Snapshot-based sustainability reporting summary for the current store."
 msgstr ""
-"Sammanfattning av hållbarhetsrapportering baserad på ögonblicksbilder för "
-"den aktuella butiken."
+"Σύνοψη αναφορών βιωσιμότητας βάσει στιγμιότυπων για το τρέχον κατάστημα."
 
 #. %s: selected snapshot period.
 #: includes/class-vcarb-reports-admin.php:1216
 #, php-format
 msgid "Snapshot: %s"
-msgstr "Ögonblicksbild: %s"
+msgstr "Στιγμιότυπο: %s"
 
 #: includes/class-vcarb-reports-admin.php:1015
 msgid ""
 "Snapshots and aggregates are used for dashboards, trends, hotspots, and "
 "exports."
 msgstr ""
-"Snapshots och aggregat används för instrumentpaneler, trender, hotspots och "
-"export."
+"Τα στιγμιότυπα και οι συγκεντρωτικές τιμές χρησιμοποιούνται για πίνακες "
+"εργαλείων, τάσεις, hotspot και εξαγωγές."
 
 #: includes/class-vcarb-reports-admin.php:1076
 msgid "Start backfill"
-msgstr "Starta återfyllning"
+msgstr "Έναρξη επίχωσης"
 
 #: includes/class-vcarb-reports-admin.php:1087
 msgid "Status"
-msgstr "Status"
+msgstr "Κατάσταση"
 
 #: includes/class-vcarb-reports-admin.php:1080
 msgid "Stop"
-msgstr "Stoppa"
+msgstr "Διακοπή"
 
 #: includes/class-vcarb-backfill-ajax.php:325
 msgid "Stop request accepted."
-msgstr "Stopp-begäran accepterad."
+msgstr "Το αίτημα διακοπής έγινε δεκτό."
 
 #: includes/class-vcarb-exports.php:860 includes/class-vcarb-exports.php:1092
 msgid "Store"
-msgstr "Butik"
+msgstr "Κατάστημα"
 
 #: includes/class-vcarb-reports-admin.php:1202
 msgid "Store Overview"
-msgstr "Butiksöversikt"
+msgstr "Επισκόπηση καταστήματος"
 
 #: includes/class-vcarb-reports-admin.php:950
 msgid "Store site"
-msgstr "Butikens webbplats"
+msgstr "Ιστότοπος καταστήματος"
 
 #: includes/class-vcarb-exports.php:1100
 msgid "Store Summary"
-msgstr "Butiksöversikt"
+msgstr "Περίληψη καταστήματος"
 
 #: includes/class-vcarb-insights-ajax.php:263
 msgid "Store Sustainability Insights"
-msgstr "Insikter om butikens hållbarhet"
+msgstr "Πληροφορίες βιωσιμότητας καταστήματος"
 
 #: includes/class-vcarb-sustainability-summary.php:28
 #: includes/class-vcarb-sustainability-summary.php:193
 msgid "Store Sustainability Summary"
-msgstr "Sammanfattning av butikens hållbarhet"
+msgstr "Σύνοψη βιωσιμότητας καταστήματος"
 
 #: includes/class-vcarb-dataset-service.php:669
 msgid "Store Total"
-msgstr "Butikstotal"
+msgstr "Σύνολο καταστήματος"
 
 #: includes/class-vcarb-reports-admin.php:1394
 msgid "Store total and per-customer totals for the selected period."
-msgstr "Totalt antal butiker och per kund för den valda perioden."
+msgstr ""
+"Αποθηκεύστε τα σύνολα και τα σύνολα ανά πελάτη για την επιλεγμένη περίοδο."
 
 #: includes/class-vcarb-reports-admin.php:1194
 msgid "Store-wide carbon reporting, exports, and customer breakdown."
-msgstr "Butiksomfattande koldioxidrapportering, export och kundfördelning."
+msgstr "Αναφορές άνθρακα σε όλο το κατάστημα, εξαγωγές και ανάλυση πελατών."
 
 #. %s: store name.
 #: includes/class-vcarb-exports.php:859 includes/class-vcarb-exports.php:1091
 #, php-format
 msgid "Store: %s"
-msgstr "Butik: %s"
+msgstr "Κατάστημα: %s"
 
 #: includes/class-vcarb-exports.php:867
 msgid "Summary"
-msgstr "Sammanfattning"
+msgstr "Περίληψη"
 
 #: includes/class-vcarb-insights-renderer.php:173
 #: includes/class-vcarb-reports-admin.php:1358
 #: public/class-vcarb-dashboard.php:1173
 msgid "Sustainability Insights"
-msgstr "Hållbarhetsinsikter"
+msgstr "Πληροφορίες βιωσιμότητας"
 
 #: verdantcart-ai-reports.php:728
 msgid "Sustainability Report"
-msgstr "Hållbarshetsrapport"
+msgstr "Έκθεση Βιώσιμης Ανάπτυξης"
 
 #: public/class-vcarb-dashboard.php:1249
 msgid "Sustainability Score"
-msgstr "Hållbarhetspoäng"
+msgstr "Βαθμολογία Βιωσιμότητας"
 
 #: public/class-vcarb-dashboard.php:1241
 msgid "Sustainability score"
-msgstr "Hållbarhetspoäng"
+msgstr "Βαθμολογία βιωσιμότητας"
 
 #: includes/class-vcarb-reports-admin.php:831
 msgid "Sustainability Summary class is not available."
-msgstr "Hållbarhetssammanfattningskurs är inte tillgänglig."
+msgstr "Η κλάση Σύνοψη Βιωσιμότητας δεν είναι διαθέσιμη."
 
 #: includes/class-vcarb-sustainability-summary.php:227
 msgid ""
 "Sustainability summary is unavailable because the dataset service is missing."
 msgstr ""
-"Hållbarhetssammanfattningen är inte tillgänglig eftersom datasettjänsten "
-"saknas."
+"Η σύνοψη βιωσιμότητας δεν είναι διαθέσιμη επειδή λείπει η υπηρεσία συνόλου "
+"δεδομένων."
 
 #: includes/class-vcarb-reports-admin.php:975
 msgid "System status"
-msgstr "Systemstatus"
+msgstr "Κατάσταση συστήματος"
 
 #. %s: emissions driver label.
 #: includes/class-vcarb-insights.php:387
 #, php-format
 msgid "Target %s optimizations to reduce total footprint fastest."
 msgstr ""
-"Sikta %s optimeringar för att minska det totala fotavtrycket så snabbast som "
-"möjligt."
+"Στοχεύστε βελτιστοποιήσεις %s για να μειώσετε το συνολικό αποτύπωμα πιο "
+"γρήγορα."
 
 #: includes/class-vcarb-insights.php:218
 msgid "Test lighter packaging and fewer parcels per order."
-msgstr "Testa lättare förpackningar och färre paket per beställning."
+msgstr "Δοκιμάστε ελαφρύτερη συσκευασία και λιγότερα δέματα ανά παραγγελία."
 
 #. 1: number of completed orders, 2: total emissions in kg CO2.
 #: includes/class-vcarb-exports.php:1053
@@ -1680,121 +1737,130 @@ msgstr "Testa lättare förpackningar och färre paket per beställning."
 msgid ""
 "The report covers %1$d eligible orders with total emissions of %2$s kg CO₂."
 msgstr ""
-"Rapporten täcker %1$d berättigade beställningar med totala utsläpp på %2$s "
-"kg CO₂."
+"Η έκθεση καλύπτει %1$d επιλέξιμες παραγγελίες με συνολικές εκπομπές %2$s kg "
+"CO₂."
 
 #: includes/class-vcarb-insights.php:175
 msgid ""
 "This appears because average CO₂ per order increased above the efficiency "
 "threshold."
 msgstr ""
-"Detta beror på att genomsnittlig CO₂ per order ökade över "
-"effektivitetströskeln."
+"Αυτό φαίνεται επειδή ο μέσος όρος CO₂ ανά παραγγελία αυξήθηκε πάνω από το "
+"όριο απόδοσης."
 
 #: includes/class-vcarb-insights.php:203
 msgid ""
 "This appears because emissions increased while orders did not grow "
 "significantly."
 msgstr ""
-"Detta verkar bero på att utsläppen ökade medan beställningarna inte ökade "
-"nämnvärt."
+"Αυτό φαίνεται επειδή οι εκπομπές αυξήθηκαν ενώ οι παραγγελίες δεν αυξήθηκαν "
+"σημαντικά."
 
 #: includes/class-vcarb-insights.php:371
 msgid ""
 "This appears because one emissions driver is above the hotspot risk "
 "threshold."
-msgstr "Detta beror på att en utsläppsförare ligger över hotspot-risktröskeln."
+msgstr ""
+"Αυτό φαίνεται επειδή ένας παράγοντας εκπομπών υπερβαίνει το όριο κινδύνου "
+"κομβικών σημείων."
 
 #: includes/class-vcarb-insights.php:396
 msgid ""
 "This appears because one emissions driver is above the hotspot warning "
 "threshold."
-msgstr "Detta beror på att en utsläppsförare är över hot-varningströskeln."
+msgstr ""
+"Αυτό συμβαίνει επειδή ένας οδηγός εκπομπών είναι πάνω από το όριο "
+"προειδοποίησης hotspot."
 
 #: includes/class-vcarb-insights.php:316
 msgid "This appears because order growth was stronger than emissions growth."
 msgstr ""
-"Detta verkar bero på att ordningstillväxten var starkare än "
-"utsläppstillväxten."
+"Αυτό φαίνεται επειδή η αύξηση των παραγγελιών ήταν ισχυρότερη από την αύξηση "
+"των εκπομπών."
 
 #: includes/class-vcarb-insights.php:152
 msgid ""
 "This appears because order volume increased while estimated emissions "
 "decreased."
 msgstr ""
-"Detta verkar eftersom ordervolymen ökade medan uppskattade utsläpp minskade."
+"Αυτό συμβαίνει επειδή ο όγκος των παραγγελιών αυξήθηκε ενώ οι εκτιμώμενες "
+"εκπομπές μειώθηκαν."
 
 #: includes/class-vcarb-insights.php:296
 msgid ""
 "This appears because orders decreased while estimated emissions increased."
 msgstr ""
-"Detta verkar bero på att beställningarna minskade medan uppskattade utsläpp "
-"ökade."
+"Αυτό φαίνεται επειδή οι παραγγελίες μειώθηκαν ενώ οι εκτιμώμενες εκπομπές "
+"αυξήθηκαν."
 
 #: includes/class-vcarb-insights.php:226
 msgid ""
 "This appears because shipping represents more than half of the selected "
 "period’s estimated emissions."
 msgstr ""
-"Detta verkar eftersom sjöfarten står för mer än hälften av den valda "
-"periodens uppskattade utsläpp."
+"Αυτό φαίνεται επειδή η ναυτιλία αντιπροσωπεύει περισσότερο από το ήμισυ των "
+"εκτιμώμενων εκπομπών της επιλεγμένης περιόδου."
 
 #: includes/class-vcarb-insights.php:340
 msgid ""
 "This appears because the emissions increase crossed the abnormal spike "
 "threshold."
 msgstr ""
-"Detta verkar bero på att utsläppsökningen överskred den onormala "
-"topptröskeln."
+"Αυτό φαίνεται επειδή η αύξηση των εκπομπών ξεπέρασε το αφύσικο όριο αιχμής."
 
 #: includes/class-vcarb-insights.php:105
 msgid ""
 "This appears because the plugin could not compare the selected period with a "
 "previous snapshot."
 msgstr ""
-"Detta beror på att pluginet inte kunde jämföra den valda perioden med en "
-"tidigare snapshot."
+"Αυτό εμφανίζεται επειδή το πρόσθετο δεν μπόρεσε να συγκρίνει την επιλεγμένη "
+"περίοδο με ένα προηγούμενο στιγμιότυπο."
 
 #: includes/class-vcarb-insights.php:87
 msgid "This appears because the selected snapshot period has zero orders."
 msgstr ""
-"Detta uppstår eftersom den valda ögonblicksperioden har noll ordningar."
+"Αυτό εμφανίζεται επειδή η επιλεγμένη περίοδος στιγμιότυπου έχει μηδενικές "
+"παραγγελίες."
 
 #: includes/class-vcarb-insights.php:128
 msgid "This appears because total CO₂ increased above the high-risk threshold."
-msgstr "Detta beror på att total CO₂ ökade över högriskgränsen."
+msgstr ""
+"Αυτό φαίνεται επειδή το συνολικό CO₂ αυξήθηκε πάνω από το όριο υψηλού "
+"κινδύνου."
 
 #: includes/class-vcarb-insights.php:248
 msgid ""
 "This appears because total estimated CO₂ decreased beyond the positive "
 "threshold."
 msgstr ""
-"Detta beror på att den totala uppskattade CO₂ minskade bortom den positiva "
-"tröskeln."
+"Αυτό φαίνεται επειδή το συνολικό εκτιμώμενο CO₂ μειώθηκε πέρα από το θετικό "
+"όριο."
 
 #: includes/class-vcarb-insights.php:274
 msgid ""
 "This appears because total estimated CO₂ increased above the warning "
 "threshold."
 msgstr ""
-"Detta verkar eftersom den totala uppskattade CO₂ ökade över varningströskeln."
+"Αυτό φαίνεται επειδή το συνολικό εκτιμώμενο CO₂ αυξήθηκε πάνω από το όριο "
+"προειδοποίησης."
 
 #. %s: snapshot anchor period.
 #: includes/class-vcarb-exports.php:547 includes/class-vcarb-exports.php:1048
 #, php-format
 msgid "This export reflects snapshot period %s."
-msgstr "Denna export speglar ögonblicksperiod %s."
+msgstr "Αυτή η εξαγωγή αντικατοπτρίζει την περίοδο στιγμιότυπου %s."
 
 #: includes/class-vcarb-exports.php:792 includes/class-vcarb-exports.php:995
 msgid "This export reflects the selected snapshot period only."
-msgstr "Denna export speglar endast den valda ögonblicksbildsperioden."
+msgstr ""
+"Αυτή η εξαγωγή αντικατοπτρίζει μόνο την επιλεγμένη περίοδο στιγμιότυπου."
 
 #: includes/class-vcarb-insights.php:310
 msgid ""
 "This indicates improving efficiency. Keep optimizations and monitor hotspots."
 msgstr ""
-"Detta indikerar förbättrad effektivitet. Behåll optimeringar och övervaka "
-"hotspots."
+"Αυτό υποδηλώνει βελτίωση της αποτελεσματικότητας. Διατηρήστε "
+"βελτιστοποιήσεις και παρακολουθήστε τα hotspot."
 
 #: includes/class-vcarb-reports-admin.php:968
 msgid ""
@@ -1802,17 +1868,17 @@ msgid ""
 "in your theme or main product website, not inside the WordPress.org plugin "
 "package."
 msgstr ""
-"Detta öppnar den nuvarande butikens hemsida. Marknadsföringslandningssidor "
-"bör finnas i ditt tema eller din huvudproduktwebbplats, inte i WordPress.org "
-"plugin-paketet."
+"Αυτό ανοίγει την τρέχουσα αρχική σελίδα του καταστήματος. Οι σελίδες "
+"προορισμού μάρκετινγκ θα πρέπει να βρίσκονται στον ιστότοπο του θέματος ή "
+"του κύριου προϊόντος σας και όχι μέσα στο πακέτο προσθηκών WordPress.org."
 
 #: includes/class-vcarb-insights.php:676
 msgid ""
 "This period has improvement opportunities based on emissions trend, "
 "efficiency, or hotspot concentration."
 msgstr ""
-"Denna period erbjuder förbättringsmöjligheter baserat på utsläppstrend, "
-"effektivitet eller hotspot-koncentration."
+"Αυτή η περίοδος έχει ευκαιρίες βελτίωσης με βάση την τάση των εκπομπών, την "
+"απόδοση ή τη συγκέντρωση hotspot."
 
 #. 1: total CO2, 2: orders, 3: CO2 per order.
 #: includes/class-vcarb-sustainability-summary.php:420
@@ -1821,8 +1887,8 @@ msgid ""
 "This period includes %1$s of estimated CO₂ across %2$s eligible orders, with "
 "an average intensity of %3$s per order."
 msgstr ""
-"Denna period inkluderar %1$s av uppskattad CO₂ över %2$s berättigade order, "
-"med en genomsnittlig intensitet på %3$s per order."
+"Αυτή η περίοδος περιλαμβάνει %1$s εκτιμώμενου CO₂ σε %2$s επιλέξιμες "
+"παραγγελίες, με μέση ένταση %3$s ανά παραγγελία."
 
 #. 1: total CO2, 2: orders, 3: CO2 per order, 4: score, 5: score label.
 #: includes/class-vcarb-sustainability-summary.php:429
@@ -1832,38 +1898,39 @@ msgid ""
 "an average intensity of %3$s per order. The sustainability score is %4$s/"
 "100, rated %5$s."
 msgstr ""
-"Denna period inkluderar %1$s av uppskattad CO₂ över %2$s berättigade order, "
-"med en genomsnittlig intensitet på %3$s per order. Hållbarhetspoängen är "
-"%4$s/100, med betyg %5$s."
+"Αυτή η περίοδος περιλαμβάνει %1$s εκτιμώμενου CO₂ σε %2$s επιλέξιμες "
+"παραγγελίες, με μέση ένταση %3$s ανά παραγγελία. Η βαθμολογία βιωσιμότητας "
+"είναι %4$s/100, με βαθμολογία %5$s."
 
 #: includes/class-vcarb-insights.php:485
 msgid ""
 "This recommendation appears because CO₂ per order is above the configured "
 "threshold."
 msgstr ""
-"Denna rekommendation beror på att CO₂ per order ligger över den "
-"konfigurerade tröskeln."
+"Αυτή η σύσταση εμφανίζεται επειδή το CO₂ ανά παραγγελία είναι πάνω από το "
+"διαμορφωμένο όριο."
 
 #: includes/class-vcarb-insights.php:503
 msgid ""
 "This recommendation appears because one or more risk insights were detected."
 msgstr ""
-"Denna rekommendation uppstår eftersom en eller flera riskinsikter upptäcktes."
+"Αυτή η σύσταση εμφανίζεται επειδή εντοπίστηκαν μία ή περισσότερες "
+"πληροφορίες κινδύνου."
 
 #: includes/class-vcarb-insights.php:521
 msgid ""
 "This recommendation appears because the period has measurable estimated "
 "emissions."
 msgstr ""
-"Denna rekommendation kommer eftersom perioden har mätbara uppskattade "
-"utsläpp."
+"Αυτή η σύσταση εμφανίζεται επειδή η περίοδος έχει μετρήσιμες εκτιμώμενες "
+"εκπομπές."
 
 #: includes/class-vcarb-insights.php:459
 msgid ""
 "This recommendation appears because the selected snapshot has no orders."
 msgstr ""
-"Denna rekommendation uppstår eftersom den valda ögonblicksbild inte har "
-"några order."
+"Αυτή η σύσταση εμφανίζεται επειδή το επιλεγμένο στιγμιότυπο δεν έχει "
+"παραγγελίες."
 
 #. 1: number of completed orders, 2: total emissions in kg CO2.
 #: includes/class-vcarb-exports.php:532
@@ -1871,7 +1938,7 @@ msgstr ""
 msgid ""
 "This report covers %1$d eligible orders with total emissions of %2$s kg CO₂."
 msgstr ""
-"Denna rapport täcker %1$d berättigade beställningar med totala utsläpp på "
+"Αυτή η αναφορά καλύπτει %1$d επιλέξιμες παραγγελίες με συνολικές εκπομπές "
 "%2$s kg CO₂."
 
 #: includes/class-vcarb-insights.php:661
@@ -1879,8 +1946,8 @@ msgid ""
 "This score is based on the selected snapshot. Add more snapshot history for "
 "stronger trend analysis."
 msgstr ""
-"Denna poäng baseras på den valda ögonblicksbilden. Lägg till mer "
-"ögonblickshistorik för starkare trendanalys."
+"Αυτή η βαθμολογία βασίζεται στο επιλεγμένο στιγμιότυπο. Προσθέστε "
+"περισσότερο ιστορικό στιγμιότυπων για ισχυρότερη ανάλυση τάσεων."
 
 #: includes/class-vcarb-sustainability-summary.php:156
 msgid ""
@@ -1889,150 +1956,156 @@ msgid ""
 "hotspot data, and deterministic local insight rules. Historical snapshots "
 "are intended to keep reporting consistent over time."
 msgstr ""
-"Denna sammanfattning genereras från sparade VerdantCart Carbon Reports "
-"ögonblicksbildsdata. Den använder kvalificerade WooCommerce-orderposter, "
-"lagrade utsläppstotaler, hotspot-data och deterministiska lokala "
-"insiktsregler. Historiska ögonblicksbilder är avsedda att hålla "
-"rapporteringen konsekvent över tid."
+"Αυτή η σύνοψη δημιουργείται από αποθηκευμένα δεδομένα στιγμιότυπου "
+"VerdantCart Carbon Reports. Χρησιμοποιεί κατάλληλες εγγραφές παραγγελιών "
+"WooCommerce, αποθηκευμένα σύνολα εκπομπών, δεδομένα hotspot και "
+"ντετερμινιστικούς τοπικούς κανόνες πληροφοριών. Τα ιστορικά στιγμιότυπα "
+"έχουν σκοπό να διατηρήσουν τις αναφορές συνεπείς με την πάροδο του χρόνου."
 
 #: includes/class-vcarb-exports.php:169
 msgid "Too many export requests. Please try again shortly."
-msgstr "För många exportförfrågningar. Försök igen snart."
+msgstr "Πάρα πολλά αιτήματα εξαγωγής. Δοκιμάστε ξανά σύντομα."
 
 #: includes/class-vcarb-exports.php:170
 msgid "Too Many Requests"
-msgstr "För många förfrågningar"
+msgstr "Πάρα πολλά αιτήματα"
 
 #: includes/trait-vcarb-ajax-helpers.php:108
 msgid "Too many requests"
-msgstr "För många förfrågningar"
+msgstr "Πάρα πολλά αιτήματα"
 
 #: public/class-vcarb-dashboard.php:368
 msgid "Too many requests."
-msgstr "För många önskemål."
+msgstr "Πάρα πολλά αιτήματα."
 
 #: public/class-vcarb-dashboard.php:219 public/class-vcarb-dashboard.php:995
 msgid "Top emitting products for this period."
-msgstr "Produkter med de mest utsläppta produkterna under denna period."
+msgstr "Προϊόντα με κορυφαίες εκπομπές για αυτήν την περίοδο."
 
 #: includes/class-vcarb-sustainability-summary.php:137
 msgid "Top hotspots"
-msgstr "Topphotspots"
+msgstr "Κορυφαία hotspot"
 
 #: includes/class-vcarb-sustainability-summary.php:146
 msgid "Top positives"
-msgstr "Topppositiva punkter"
+msgstr "Κορυφαία θετικά"
 
 #: includes/class-vcarb-reports-admin.php:1377
 msgid "Top products contributing to emissions."
-msgstr "Toppprodukter som bidrar till utsläpp."
+msgstr "Κορυφαία προϊόντα που συμβάλλουν στις εκπομπές."
 
 #: includes/class-vcarb-sustainability-summary.php:147
 msgid "Top risks"
-msgstr "Topprisker"
+msgstr "Κορυφαίοι κίνδυνοι"
 
 #: includes/class-vcarb-reports-admin.php:1298
 #: includes/class-vcarb-reports-admin.php:1406
 #: includes/class-vcarb-sustainability-summary.php:118
 msgid "Total CO₂"
-msgstr "Total CO₂"
+msgstr "Σύνολο CO₂"
 
 #: includes/class-vcarb-exports.php:661 includes/class-vcarb-exports.php:697
 #: includes/class-vcarb-exports.php:712 includes/class-vcarb-exports.php:1116
 #: includes/class-vcarb-exports.php:1153
 msgid "Total CO₂ (kg)"
-msgstr "Total CO₂ (kg)"
+msgstr "Συνολικό CO₂ (kg)"
 
 #: includes/class-vcarb-exports.php:887
 msgid "Total CO₂ Emissions"
-msgstr "Totala CO₂-utsläpp"
+msgstr "Συνολικές εκπομπές CO₂"
 
 #. %s: percentage decrease in total CO2.
 #: includes/class-vcarb-insights.php:237
 #, php-format
 msgid "Total CO₂ is down %s versus the previous period."
-msgstr "Total CO₂ är lägre %s jämfört med föregående period."
+msgstr ""
+"Το συνολικό CO₂ μειώθηκε κατά %s σε σύγκριση με την προηγούμενη περίοδο."
 
 #. %s: percentage increase versus previous period.
 #. %s: percentage increase in total CO2.
 #: includes/class-vcarb-insights.php:116 includes/class-vcarb-insights.php:263
 #, php-format
 msgid "Total CO₂ is up %s versus the previous period."
-msgstr "Total CO₂ har ökat %s jämfört med föregående period."
+msgstr ""
+"Το συνολικό CO₂ αυξήθηκε κατά %s σε σύγκριση με την προηγούμενη περίοδο."
 
 #. %s: percentage increase in total CO2.
 #: includes/class-vcarb-insights.php:191
 #, php-format
 msgid "Total CO₂ rose %s while order volume stayed roughly flat."
-msgstr "Total CO₂ steg %s medan ordervolymen förblev ungefär oförändrad."
+msgstr ""
+"Το συνολικό CO₂ αυξήθηκε %s ενώ ο όγκος παραγγελιών παρέμεινε περίπου "
+"σταθερός."
 
 #: includes/class-vcarb-exports.php:664 includes/class-vcarb-exports.php:700
 #: includes/class-vcarb-exports.php:899 includes/class-vcarb-exports.php:1136
 msgid "Total CO₂ vs Previous"
-msgstr "Total CO₂ jämfört med tidigare"
+msgstr "Συνολικό CO₂ σε σύγκριση με το προηγούμενο"
 
 #: public/class-vcarb-dashboard.php:1061
 msgid "Total emissions"
-msgstr "Totala utsläpp"
+msgstr "Συνολικές εκπομπές"
 
 #: includes/class-vcarb-exports.php:79 includes/trait-vcarb-ajax-helpers.php:25
 #: public/class-vcarb-dashboard.php:336
 msgid "Unauthorized"
-msgstr "Obehörig"
+msgstr "Μη εξουσιοδοτημένος"
 
 #: includes/class-vcarb-exports.php:89
 msgid "Unauthorized."
-msgstr "Obehörig."
+msgstr "Μη εξουσιοδοτημένο."
 
 #: includes/class-vcarb-insights.php:818
 msgid "Unknown driver"
-msgstr "Okänd förare"
+msgstr "Άγνωστος οδηγός"
 
 #: includes/class-vcarb-sustainability-summary.php:479
 msgid "Unknown product"
-msgstr "Okänd produkt"
+msgstr "Άγνωστο προϊόν"
 
 #: includes/class-vcarb-exports.php:714 includes/class-vcarb-exports.php:1155
 #: includes/class-vcarb-reports-admin.php:1408
 msgid "Updated"
-msgstr "Uppdaterad"
+msgstr "Ενημερώθηκε"
 
 #: includes/class-vcarb-insights.php:99
 msgid "Use historical browsing once more periods are available."
-msgstr "Använd historisk bläddring när fler perioder finns tillgängliga."
+msgstr ""
+"Χρησιμοποιήστε την ιστορική περιήγηση μόλις είναι διαθέσιμες περισσότερες "
+"περίοδοι."
 
 #: includes/class-vcarb-reports-admin.php:873
 msgid ""
 "Use this page as your control center for reporting, backfill, customer "
 "insights, and public store pages."
 msgstr ""
-"Använd denna sida som ditt kontrollcenter för rapportering, backfill, "
-"kundinsikter och publika butikssidor."
+"Χρησιμοποιήστε αυτήν τη σελίδα ως κέντρο ελέγχου για αναφορές, συμπλήρωση, "
+"πληροφορίες πελατών και σελίδες δημόσιου καταστήματος."
 
 #: includes/class-vcarb-exports.php:709 includes/class-vcarb-exports.php:1150
 #: includes/class-vcarb-reports-admin.php:1403
 msgid "User"
-msgstr "Användare"
+msgstr "Χρήστης"
 
 #. %d: WordPress user ID.
 #: includes/class-vcarb-dataset-service.php:685
 #: includes/class-vcarb-dataset-service.php:694
 msgid "User #%d"
-msgstr "Användare #%d"
+msgstr "Χρήστης #%d"
 
 #: includes/class-vcarb-exports.php:871
 msgid "User ID"
-msgstr "Användar-ID"
+msgstr "ID Χρήστη"
 
 #: includes/class-vcarb-reports-admin.php:1055
 msgid "Uses idempotency flags to prevent double counting."
-msgstr "Använder idempotensflaggor för att förhindra dubbelräkning."
+msgstr "Χρησιμοποιεί σημαίες ανικανότητας για την αποφυγή διπλής μέτρησης."
 
 #: includes/class-vcarb-exports.php:658 includes/class-vcarb-exports.php:683
 #: includes/class-vcarb-exports.php:694 includes/class-vcarb-exports.php:786
 #: includes/class-vcarb-exports.php:989
 msgid "Value"
-msgstr "Värde"
+msgstr "Αξία"
 
 #: verdantcart-ai-reports.php:691
 #: includes/class-vcarb-plugin-pages-admin.php:98
@@ -2042,122 +2115,123 @@ msgstr "VerdantCart"
 
 #: public/class-vcarb-dashboard.php:1421
 msgid "VERDANTCART CARBON REPORTS"
-msgstr "VERDANTCART KOLRAPPORTER"
+msgstr "ΑΝΑΦΟΡΕΣ VERDANTCART CARBON"
 
 #. Name of the plugin
 #: verdantcart-ai-reports.php:690 includes/class-vcarb-reports-admin.php:136
 msgid "VerdantCart Carbon Reports"
-msgstr "VerdantCart-kolrapporter"
+msgstr "Αναφορές VerdantCart Carbon"
 
 #: verdantcart-ai-reports.php:208
 msgid "VerdantCart Carbon Reports:"
-msgstr "VerdantCart-kolrapporter:"
+msgstr "Η VerdantCart Carbon αναφέρει:"
 
 #: includes/class-vcarb-reports-activator.php:128
 msgid "VerdantCart Dashboard"
-msgstr "VerdantCart-instrumentbrädan"
+msgstr "Πίνακας ελέγχου VerdantCart"
 
 #: includes/class-vcarb-plugin-pages-admin.php:121
 #: includes/class-vcarb-plugin-pages-admin.php:221
 msgid "VerdantCart page"
-msgstr "VerdantCart-sidan"
+msgstr "Σελίδα VerdantCart"
 
 #: includes/class-vcarb-plugin-pages-admin.php:137
 msgid "VerdantCart pages"
-msgstr "VerdantCart-sidor"
+msgstr "Σελίδες VerdantCart"
 
 #: includes/class-vcarb-reports-admin.php:1193
 msgid "VerdantCart — All Customers"
-msgstr "VerdantCart — Alla kunder"
+msgstr "VerdantCart — Όλοι οι πελάτες"
 
 #: includes/class-vcarb-exports.php:970 includes/class-vcarb-exports.php:1076
 #: includes/class-vcarb-exports.php:1084
 msgid "VerdantCart — All Customers Report"
-msgstr "VerdantCart — Alla kunder rapporterar"
+msgstr "VerdantCart — Αναφορά όλων των πελατών"
 
 #: includes/class-vcarb-reports-admin.php:1042
 msgid "VerdantCart — Backfill"
-msgstr "VerdantCart — Fyllnadsplats"
+msgstr "VerdantCart — Επίχωση"
 
 #: includes/class-vcarb-reports-admin.php:864
 msgid "VerdantCart — Overview"
-msgstr "VerdantCart — Översikt"
+msgstr "VerdantCart — Επισκόπηση"
 
 #: includes/class-vcarb-reports-admin.php:797
 msgid "VerdantCart — Sustainability Report"
-msgstr "VerdantCart — Hållbarhetsrapport"
+msgstr "VerdantCart — Έκθεση Βιωσιμότητας"
 
 #: includes/class-vcarb-exports.php:776 includes/class-vcarb-exports.php:845
 #: includes/class-vcarb-exports.php:853
 msgid "VerdantCart — User Report"
-msgstr "VerdantCart — Användarrapport"
+msgstr "VerdantCart — Αναφορά χρήστη"
 
 #: includes/class-vcarb-insights.php:80
 msgid "Verify checkout and payment flow."
-msgstr "Verifiera kassa och betalningsflöde."
+msgstr "Επαληθεύστε τη ροή ολοκλήρωσης αγοράς και πληρωμής."
 
 #: includes/class-vcarb-insights.php:449
 msgid "Verify order pipeline"
-msgstr "Verifiera orderpipeline"
+msgstr "Επαλήθευση διοχέτευσης παραγγελίας"
 
 #: includes/class-vcarb-exports.php:472 includes/class-vcarb-exports.php:488
 #: includes/class-vcarb-exports.php:875 includes/class-vcarb-exports.php:1104
 #: includes/class-vcarb-sustainability-summary.php:96
 msgid "View"
-msgstr "Visa"
+msgstr "Προβολή"
 
 #: public/class-vcarb-dashboard.php:942
 msgid "View Orders"
-msgstr "Visa ordrar"
+msgstr "Προβολή Παραγγελιών"
 
 #: includes/class-vcarb-reports-admin.php:963
 msgid "View Plans & Services"
-msgstr "Visa planer och tjänster"
+msgstr "Προβολή Προγραμμάτων & Υπηρεσιών"
 
 #: includes/class-vcarb-reports-admin.php:922
 msgid "View store-wide KPIs, charts, exports, and customer breakdown."
-msgstr "Se butiksövergripande KPI:er, diagram, export och kunduppdelning."
+msgstr ""
+"Δείτε KPI σε όλο το κατάστημα, γραφήματα, εξαγωγές και ανάλυση πελατών."
 
 #: includes/class-vcarb-reports-admin.php:959
 msgid "Visit Store Homepage"
-msgstr "Besök butikens hemsida"
+msgstr "Επισκεφθείτε την αρχική σελίδα του καταστήματος"
 
 #: includes/class-vcarb-insights-renderer.php:216
 #: includes/class-vcarb-insights-renderer.php:225
 #: public/class-vcarb-dashboard.php:212
 msgid "Warnings"
-msgstr "Varningar"
+msgstr "Προειδοποιήσεις"
 
 #: includes/class-vcarb-reports-admin.php:810
 #: includes/class-vcarb-reports-admin.php:1239
 #: public/class-vcarb-dashboard.php:1578
 msgid "Week"
-msgstr "Vecka"
+msgstr "Εβδομάδα"
 
 #. 1: ISO week number, 2: 4-digit year.
 #: includes/class-vcarb-exports.php:434
 #, php-format
 msgid "Week %1$02d, %2$04d"
-msgstr "Vecka %1$02d, %2$04d"
+msgstr "Εβδομάδα %1$02d, %2$04d"
 
 #. 1: ISO week number, 2: year.
 #: includes/class-vcarb-sustainability-summary.php:325
 #: public/class-vcarb-dashboard.php:505
 #, php-format
 msgid "Week %1$s, %2$s"
-msgstr "Vecka %1$s, %2$s"
+msgstr "Εβδομάδα %1$s, %2$s"
 
 #: includes/class-vcarb-reports-admin.php:871
 msgid "Welcome to VerdantCart"
-msgstr "Välkommen till VerdantCart"
+msgstr "Καλώς ήρθατε στο VerdantCart"
 
 #: includes/class-vcarb-reports-admin.php:1049
 msgid "What this does"
-msgstr "Vad detta gör"
+msgstr "Τι κάνει αυτό"
 
 #: includes/class-vcarb-insights-renderer.php:338
 msgid "Why this appears"
-msgstr "Varför detta dyker upp"
+msgstr "Γιατί εμφανίζεται αυτό"
 
 #: includes/class-vcarb-reports-admin.php:984
 msgid "WooCommerce"
@@ -2165,29 +2239,29 @@ msgstr "WooCommerce"
 
 #: includes/class-vcarb-reports-admin.php:879
 msgid "WooCommerce connected"
-msgstr "WooCommerce kopplat"
+msgstr "Συνδεδεμένο WooCommerce"
 
 #: includes/class-vcarb-backfill-ajax.php:36
 msgid "WooCommerce is not active."
-msgstr "WooCommerce är inte aktivt."
+msgstr "Το WooCommerce δεν είναι ενεργό."
 
 #: verdantcart-ai-reports.php:210
 msgid "WooCommerce is required for this plugin to run."
-msgstr "WooCommerce krävs för att detta plugin ska kunna köras."
+msgstr "Το WooCommerce απαιτείται για την εκτέλεση αυτής της προσθήκης."
 
 #: includes/class-vcarb-reports-admin.php:879
 msgid "WooCommerce missing"
-msgstr "WooCommerce saknas"
+msgstr "Λείπει το WooCommerce"
 
 #: includes/class-vcarb-reports-admin.php:814
 #: includes/class-vcarb-reports-admin.php:1246
 #: public/class-vcarb-dashboard.php:1579
 msgid "Year"
-msgstr "År"
+msgstr "Έτος"
 
 #. Author of the plugin
 msgid "Yonas"
-msgstr "Yonas"
+msgstr "Γιόνας"
 
 #: includes/class-vcarb-reports-admin.php:268
 #: includes/class-vcarb-reports-admin.php:641
@@ -2196,16 +2270,17 @@ msgstr "Yonas"
 #: includes/class-vcarb-reports-admin.php:1109
 #: includes/gc-vcarb-admin-guard.php:128
 msgid "You do not have permission to access this page."
-msgstr "Du har inte behörighet att komma åt den här sidan."
+msgstr "Δεν έχετε άδεια πρόσβασης σε αυτήν την σελίδα."
 
 #: includes/class-vcarb-exports.php:78
 msgid "You must be logged in to export."
-msgstr "Du måste vara inloggad för att exportera."
+msgstr "Πρέπει να είστε συνδεδεμένοι για εξαγωγή."
 
 #: includes/class-vcarb-insights.php:669
 msgid "Your CO₂ per order improved compared with the previous snapshot period."
 msgstr ""
-"Din CO₂ per beställning förbättrades jämfört med föregående ögonblicksperiod."
+"Το CO₂ ανά παραγγελία βελτιώθηκε σε σύγκριση με την προηγούμενη περίοδο "
+"στιγμιότυπου."
 
 #: includes/class-vcarb-dataset-service.php:919
 #: includes/class-vcarb-insights.php:665
@@ -2213,40 +2288,43 @@ msgid ""
 "Your estimated emissions decreased compared with the previous snapshot "
 "period."
 msgstr ""
-"Dina uppskattade utsläpp minskade jämfört med föregående ögonblicksperiod."
+"Οι εκτιμώμενες εκπομπές σας μειώθηκαν σε σύγκριση με την προηγούμενη περίοδο "
+"στιγμιότυπου."
 
 #: includes/class-vcarb-dataset-service.php:923
 msgid ""
 "Your estimated emissions increased compared with the previous snapshot "
 "period."
 msgstr ""
-"Dina uppskattade utsläpp ökade jämfört med föregående ögonblicksperiod."
+"Οι εκτιμώμενες εκπομπές σας αυξήθηκαν σε σύγκριση με την προηγούμενη περίοδο "
+"στιγμιότυπου."
 
 #: includes/class-vcarb-dataset-service.php:926
 msgid ""
 "Your estimated emissions stayed nearly unchanged compared with the previous "
 "snapshot period."
 msgstr ""
-"Dina uppskattade utsläpp förblev nästan oförändrade jämfört med föregående "
-"ögonblicksperiod."
+"Οι εκτιμώμενες εκπομπές σας παρέμειναν σχεδόν αμετάβλητες σε σύγκριση με την "
+"προηγούμενη περίοδο στιγμιότυπου."
 
 #: includes/class-vcarb-insights.php:673
 msgid ""
 "Your snapshot data shows a stable sustainability profile for this period."
 msgstr ""
-"Dina ögonblicksdata visar en stabil hållbarhetsprofil för denna period."
+"Τα δεδομένα στιγμιότυπου δείχνουν ένα σταθερό προφίλ βιωσιμότητας για αυτήν "
+"την περίοδο."
 
 #: includes/class-vcarb-insights-ajax.php:225
 msgid "Your Sustainability Insights"
-msgstr "Dina hållbarhetsinsikter"
+msgstr "Οι γνώσεις σας για τη βιωσιμότητα"
 
 #: includes/class-vcarb-dataset-service.php:913
 msgid ""
 "Your sustainability score is based on CO₂ per order, emissions trend, "
 "reporting history, and hotspot concentration."
 msgstr ""
-"Din hållbarhetspoäng baseras på CO₂ per order, utsläppstrend, "
-"rapporteringshistorik och hotspot-koncentration."
+"Η βαθμολογία βιωσιμότητας βασίζεται στο CO₂ ανά παραγγελία, την τάση "
+"εκπομπών, το ιστορικό αναφορών και τη συγκέντρωση hotspot."
 
 #: includes/class-vcarb-exports.php:1154
 #: includes/class-vcarb-reports-admin.php:1407
@@ -2256,7 +2334,7 @@ msgstr "Δ CO₂"
 #: includes/class-vcarb-exports.php:1152
 #: includes/class-vcarb-reports-admin.php:1405
 msgid "Δ Orders"
-msgstr "Δ Orders"
+msgstr "Δ Παραγγελίες"
 
 #: includes/class-vcarb-dataset-service.php:962
 #: includes/class-vcarb-insights.php:545 public/class-vcarb-dashboard.php:1117
@@ -2268,10 +2346,10 @@ msgstr "—"
 #: includes/class-vcarb-dataset-service.php:991
 #, php-format
 msgid "↑ %s%% vs previous"
-msgstr "↑ %s%% jämfört med tidigare"
+msgstr "↑ %s%% έναντι του προηγούμενου"
 
 #. %s: percentage change compared with previous period.
 #: includes/class-vcarb-dataset-service.php:984
 #, php-format
 msgid "↓ %s%% vs previous"
-msgstr "↓ %s%% jämfört med tidigare"
+msgstr "↓ %s%% έναντι του προηγούμενου"

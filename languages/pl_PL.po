@@ -4,14 +4,15 @@ msgstr ""
 "Project-Id-Version: VerdantCart Carbon Reports\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-15 12:50+0000\n"
-"PO-Revision-Date: 2026-06-07 11:34+0200\n"
+"PO-Revision-Date: 2026-06-07 12:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: sv_SE\n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.9\n"
 "X-Loco-Version: 2.8.3; wp-6.9.4; php-8.3.30\n"
 "X-Domain: verdantcart-ai-reports\n"
@@ -20,13 +21,13 @@ msgstr ""
 #: includes/class-vcarb-insights.php:354
 #, php-format
 msgid "%1$s accounts for about %2$s of emissions this period."
-msgstr "%1$s står för ungefär %2$s av utsläppen under denna period."
+msgstr "%1$s odpowiada za około %2$s emisji w tym okresie."
 
 #. 1: emissions driver label, 2: percentage share of emissions.
 #: includes/class-vcarb-insights.php:380
 #, php-format
 msgid "%1$s accounts for about %2$s of emissions."
-msgstr "%1$s står för ungefär %2$s utsläpp."
+msgstr "%1$s odpowiada za około %2$s emisji."
 
 #. %s: kilogram amount.
 #: includes/class-vcarb-sustainability-summary.php:338
@@ -38,23 +39,24 @@ msgstr "%s kg"
 #: includes/class-vcarb-dataset-service.php:895
 #, php-format
 msgid "%s kg CO₂ / order"
-msgstr "%s kg CO₂ / beställning"
+msgstr "%s kg CO₂ / rząd"
 
 #. %s: order count.
 #: includes/class-vcarb-sustainability-summary.php:520
 #, php-format
 msgid "%s order"
 msgid_plural "%s orders"
-msgstr[0] "%s ordning"
-msgstr[1] "%s beställningar"
+msgstr[0] "%s kolejność"
+msgstr[1] ""
+msgstr[2] ""
 
 #: includes/class-vcarb-reports-admin.php:1007
 msgid "A quick summary of how data flows through VerdantCart."
-msgstr "En snabb sammanfattning av hur data flödar genom VerdantCart."
+msgstr "Szybkie podsumowanie, jak dane przepływają przez VerdantCart."
 
 #: includes/class-vcarb-reports-admin.php:977
 msgid "A quick view of the plugin environment and setup state."
-msgstr "En snabb översikt över plugin-miljön och installationsstatus."
+msgstr "Szybki przegląd środowiska wtyczki i stanu konfiguracji."
 
 #: public/class-vcarb-dashboard.php:952
 msgid ""
@@ -62,155 +64,154 @@ msgid ""
 "Store snapshots use user_id=0 and power charts, exports, hotspots, and "
 "insights."
 msgstr ""
-"En ögonblicksbild skapas när slutförda orderutsläpp sparas under en period. "
-"Butiksögonblicksbilder använder user_id=0 och kraftdiagram, export, hotspots "
-"och insikter."
+"Migawka powstaje, gdy emisje z zamówień są przechowywane przez określony "
+"czas. Snapshoty sklepu wykorzystują user_id=0 oraz wykresy mocy, eksporty, "
+"hotspoty i analizy."
 
 #: includes/class-vcarb-insights.php:325
 msgid "Abnormal CO₂ spike"
-msgstr "Onormal CO₂-topp"
+msgstr "Nieprawidłowy skok CO₂"
 
 #: includes/class-vcarb-insights-renderer.php:210
 #: public/class-vcarb-dashboard.php:210
 msgid "All"
-msgstr "Alla"
+msgstr "Wszystkie"
 
 #: verdantcart-ai-reports.php:710 verdantcart-ai-reports.php:711
 #: includes/class-vcarb-reports-admin.php:921
 msgid "All Customers"
-msgstr "Alla kunder"
+msgstr "Wszyscy Klienci"
 
 #: includes/class-vcarb-exports.php:686
 msgid "All Customers Carbon Report"
-msgstr "Alla kunders koldioxidrapport"
+msgstr "Raport Carbon dla wszystkich klientów"
 
 #: includes/class-vcarb-plugin-pages-admin.php:136
 msgid "All pages"
-msgstr "Alla sidor"
+msgstr "Wszystkie strony"
 
 #: includes/class-vcarb-sustainability-summary.php:85
 msgid ""
 "An operational sustainability summary generated from saved VerdantCart "
 "Carbon Reports snapshot data."
 msgstr ""
-"En sammanfattning av operativ hållbarhet genererad från sparade "
-"ögonblicksbilder från VerdantCart Carbon Reports."
+"Podsumowanie zrównoważonego rozwoju operacyjnego wygenerowane na podstawie "
+"zapisanych danych z raportów VerdantCart Carbon Reports."
 
 #: includes/class-vcarb-exports.php:473 includes/class-vcarb-exports.php:489
 msgid "Anchor (snapshot)"
-msgstr "Ankare (ögonblicksbild)"
+msgstr "Kotwica (migawka)"
 
 #: includes/class-vcarb-exports.php:883 includes/class-vcarb-exports.php:1112
 msgid "Anchor Snapshot"
-msgstr "Ankaröversikt"
+msgstr "Migawka kotwicy"
 
 #: public/class-vcarb-dashboard.php:946
 msgid "Ask the store admin to run Backfill"
-msgstr "Be butiksadministratören att köra utfyllning"
+msgstr "Poproś administratora sklepu o uruchomienie Backfill"
 
 #: includes/class-vcarb-sustainability-summary.php:102
 msgid "Available"
-msgstr "Tillgänglig"
+msgstr "Dostępne"
 
 #: includes/class-vcarb-exports.php:1063
 msgid "Average emissions intensity could not be calculated for this snapshot."
 msgstr ""
-"Genomsnittlig emissionsintensitet kunde inte beräknas för denna "
-"ögonblicksbild."
+"Średniej intensywności emisji nie można było obliczyć dla tego zdjęcia."
 
 #. %s: average emissions per order in kg CO2.
 #: includes/class-vcarb-exports.php:540 includes/class-vcarb-exports.php:1060
 #, php-format
 msgid "Average emissions intensity was %s kg CO₂ per order."
-msgstr "Genomsnittlig utsläppsintensitet var %s kg CO₂ per ordning."
+msgstr "Średnia intensywność emisji wynosiła %s kg CO₂ na zamówienie."
 
 #: includes/class-vcarb-reports-admin.php:1323
 #: includes/class-vcarb-sustainability-summary.php:120
 msgid "Average intensity"
-msgstr "Genomsnittlig intensitet"
+msgstr "Średnia intensywność"
 
 #: verdantcart-ai-reports.php:737 verdantcart-ai-reports.php:738
 msgid "Backfill"
-msgstr "Fyllnadsutfyllning"
+msgstr "Zasypywanie"
 
 #: includes/class-vcarb-backfill-ajax.php:409
 #: includes/class-vcarb-backfill-ajax.php:511
 msgid "Backfill completed."
-msgstr "Fyllning slutförd."
+msgstr "Zasypanie zakończone."
 
 #. %s: error message.
 #: includes/class-vcarb-backfill-ajax.php:519
 #, php-format
 msgid "Backfill failed: %s"
-msgstr "Fyllnadsstopp misslyckades: %s"
+msgstr "Zasypanie nie powiodło się: %s"
 
 #: includes/class-vcarb-backfill-ajax.php:343
 msgid ""
 "Backfill is already running. Please wait a few seconds, then click Stop or "
 "refresh and start again."
 msgstr ""
-"Fyllnad är redan igång. Vänta några sekunder, klicka sedan på Stopp eller "
-"uppdatera och börja om."
+"Zasypywanie już działa. Proszę odczekać kilka sekund, potem kliknąć Stop lub "
+"odśwież i zacznij od nowa."
 
 #: includes/class-vcarb-backfill-ajax.php:359
 msgid "Backfill not started."
-msgstr "Fyllnadsmaterial har inte startats."
+msgstr "Zasypywanie nie rozpoczęto."
 
 #: includes/class-vcarb-backfill-ajax.php:307
 msgid "Backfill started."
-msgstr "Fyllning har börjat."
+msgstr "Rozpoczęto zasypywanie się."
 
 #: includes/class-vcarb-backfill-ajax.php:273
 msgid "Backfill stopped."
-msgstr "Fyllnad stoppades."
+msgstr "Zasypywanie zostało wstrzymane."
 
 #: includes/class-vcarb-exports.php:135 includes/class-vcarb-exports.php:159
 #: includes/class-vcarb-exports.php:232 includes/class-vcarb-exports.php:240
 msgid "Bad Request"
-msgstr "Felaktig begäran"
+msgstr "Błędne zapytanie"
 
 #: includes/class-vcarb-dataset-service.php:900
 msgid "Based on snapshot metrics"
-msgstr "Baserat på ögonblicksmätvärden"
+msgstr "Na podstawie metryk snapshotów"
 
 #: includes/class-vcarb-backfill-ajax.php:512
 msgid "Batch processed."
-msgstr "Batchbearbetat."
+msgstr "Przetwarzane partią."
 
 #: public/class-vcarb-dashboard.php:221 public/class-vcarb-dashboard.php:1035
 msgid "Biggest driver:"
-msgstr "Största drivkraften:"
+msgstr "Największy czynnik:"
 
 #: includes/class-vcarb-insights.php:95
 msgid "Build more reporting history"
-msgstr "Bygg mer rapporteringshistorik"
+msgstr "Buduj więcej historii raportowania"
 
 #: includes/class-vcarb-insights.php:478
 msgid "Bundle shipments to reduce delivery trips."
-msgstr "Paketera leveranser för att minska leveransresor."
+msgstr "Łącz przesyłki, aby zmniejszyć liczbę dostaw."
 
 #: public/class-vcarb-dashboard.php:873
 msgid "Calculations are based on completed orders during the selected period."
 msgstr ""
-"Beräkningarna baseras på slutförda beställningar under den valda perioden."
+"Obliczenia opierają się na ukończonych zamówieniach w wybranym okresie."
 
 #: includes/class-vcarb-admin-report-ajax.php:49
 #: includes/class-vcarb-dataset-service.php:56
 #: includes/class-vcarb-dataset-service.php:123
 msgid "Calculator missing."
-msgstr "Kalkylatorn saknas."
+msgstr "Kalkulator brakuje."
 
 #: includes/class-vcarb-admin-report-ajax.php:274
 msgid "Calculator period helper missing."
-msgstr "Kalkylatorn för periodhjälp saknas."
+msgstr "Kalkulator do okresu zaginął."
 
 #. Description of the plugin
 msgid "Carbon analytics and reporting for WooCommerce stores."
-msgstr "Koldioxidanalys och rapportering för WooCommerce-butiker."
+msgstr "Analiza emisji i raportowanie dla sklepów WooCommerce."
 
 #: public/class-vcarb-dashboard.php:1424
 msgid "Carbon Dashboard"
-msgstr "Kolfiberinstrumentpanel"
+msgstr "Carbon Dashboard"
 
 #: includes/class-vcarb-exports.php:914
 msgid ""
@@ -218,9 +219,10 @@ msgid ""
 "the selected reporting period. Results are intended for operational "
 "sustainability analysis rather than certified carbon accounting."
 msgstr ""
-"Koldioxidutsläppen uppskattas baserat på slutförda WooCommerce-beställningar "
-"under den valda rapporteringsperioden. Resultaten är avsedda för analys av "
-"operativ hållbarhet snarare än certifierad koldioxidredovisning."
+"Emisje dwutlenku węgla szacowane są na podstawie zrealizowanych zamówień "
+"WooCommerce w wybranym okresie sprawozdawczym. Wyniki są przeznaczone do "
+"analizy zrównoważonego rozwoju operacyjnego, a nie do certyfikowanego "
+"rozliczania emisji dwutlenku węgla."
 
 #: includes/class-vcarb-exports.php:1187
 msgid ""
@@ -230,97 +232,100 @@ msgid ""
 "same reporting window. Results are intended for operational sustainability "
 "analysis rather than certified carbon accounting."
 msgstr ""
-"Koldioxidutsläppen uppskattas baserat på berättigade WooCommerce-"
-"beställningar under den valda rapporteringsperioden. Butikssummor beräknas "
-"från det valda ögonblicksankaret, och kundnivårader speglar värdena som "
-"lagrats för samma rapporteringsfönster. Resultaten är avsedda för analys av "
-"operativ hållbarhet snarare än certifierad koldioxidredovisning."
+"Emisje dwutlenku węgla szacowane są na podstawie kwalifikujących się "
+"zamówień WooCommerce w wybranym okresie sprawozdawczym. Sumy sklepów są "
+"obliczane na podstawie wybranego kotwicy snapshot, a wiersze na poziomie "
+"klienta odzwierciedlają wartości zapisane dla tego samego okna raportowania. "
+"Wyniki są przeznaczone do analizy zrównoważonego rozwoju operacyjnego, a nie "
+"do certyfikowanego rozliczania emisji dwutlenku węgla."
 
 #: includes/class-vcarb-reports-admin.php:1341
 msgid "Carbon emissions over time"
-msgstr "Koldioxidutsläpp över tid"
+msgstr "Emisje dwutlenku węgla w czasie"
 
 #: public/class-vcarb-dashboard.php:218 public/class-vcarb-dashboard.php:994
 msgid "Carbon Hotspot"
-msgstr "Kol-hotspot"
+msgstr "Hot spot węglowy"
 
 #: public/class-vcarb-dashboard.php:990
 msgid "Carbon hotspot"
-msgstr "Kol-hotspot"
+msgstr "Hotspot węglowy"
 
 #: includes/class-vcarb-reports-admin.php:865
 msgid "Carbon reporting and emissions insights for WooCommerce stores."
-msgstr "Koldioxidrapportering och utsläppsinsikter för WooCommerce-butiker."
+msgstr ""
+"Raportowanie emisji dwutlenku węgla i analizy emisji dla sklepów WooCommerce."
 
 #: includes/class-vcarb-reports-admin.php:1331
 msgid "Change vs Previous"
-msgstr "Förändring vs Tidigare"
+msgstr "Zmiana vs Poprzednie"
 
 #: includes/class-vcarb-insights.php:453
 msgid "Check checkout and payment gateway logs."
-msgstr "Kolla loggar över utcheckning och betalningsgateway."
+msgstr "Sprawdź logi płatności i bram płatniczych."
 
 #: includes/class-vcarb-insights.php:289
 msgid "Check if a few heavy shipments dominated this period."
-msgstr "Kolla om några tunga leveranser dominerade denna period."
+msgstr "Sprawdź, czy w tym okresie nie dominowało kilka ciężkich przesyłek."
 
 #: includes/class-vcarb-insights.php:167
 msgid "Check shipping methods, packaging weight, and product mix changes."
 msgstr ""
-"Kontrollera fraktsätt, förpackningsvikt och förändringar i produktmixen."
+"Sprawdź metody wysyłki, wagę opakowania i zmiany w asortymencie produktów."
 
 #: includes/class-vcarb-insights.php:121
 msgid "Check whether a few large orders caused the spike."
-msgstr "Kontrollera om några stora beställningar orsakade toppen."
+msgstr "Sprawdź, czy kilka dużych zamówień spowodowało skok."
 
 #: includes/class-vcarb-insights.php:196
 msgid "Check whether basket size or long-distance orders increased."
-msgstr "Kolla om korgstorleken eller långdistansbeställningarna har ökat."
+msgstr ""
+"Sprawdź, czy wzrosła wielkość koszyka lub zamówienia na połączenia "
+"dalekosiężne."
 
 #: includes/class-vcarb-insights.php:333
 msgid ""
 "Check whether refunds, returns, or unusual order patterns affected the "
 "snapshot."
 msgstr ""
-"Kontrollera om återbetalningar, returer eller ovanliga ordermönster "
-"påverkade ögonblicksbildet."
+"Sprawdź, czy zwroty, zwroty lub nietypowe wzorce zamówień wpłynęły na ten "
+"migawkę."
 
 #: includes/class-vcarb-insights.php:79
 msgid "Check WooCommerce order statuses."
-msgstr "Kolla WooCommerce-orderstatus."
+msgstr "Sprawdź statusy zamówień na WooCommerce."
 
 #: includes/class-vcarb-insights.php:496
 msgid "Compare the same drivers and top orders next period."
-msgstr "Jämför samma drivrutiner och toppbeställningar nästa period."
+msgstr "Porównaj tych samych kierowców i kolejne kolejki w kolejnej księdze."
 
 #: includes/class-vcarb-reports-admin.php:1312
 msgid "Completed orders"
-msgstr "Slutförda order"
+msgstr "Zakończone zamówienia"
 
 #: includes/class-vcarb-insights.php:452
 msgid "Confirm the WooCommerce order status filter."
-msgstr "Bekräfta WooCommerce-orderstatusfiltret."
+msgstr "Potwierdź filtr statusu zamówienia w WooCommerce."
 
 #: includes/class-vcarb-reports-admin.php:986
 msgid "Connected"
-msgstr "Ansluten"
+msgstr "Połączony"
 
 #: includes/class-vcarb-insights.php:219
 msgid "Consider optimizing shipping zones or carrier selection."
-msgstr "Överväg att optimera fraktzoner eller val av transportör."
+msgstr "Rozważ optymalizację stref wysyłki lub wyboru przewoźnika."
 
 #: includes/class-vcarb-insights.php:98
 msgid "Continue generating snapshots so trends become more meaningful."
-msgstr ""
-"Fortsätt generera ögonblicksbilder så att trender blir mer meningsfulla."
+msgstr "Kontynuuj generowanie migawek, aby trendy stały się bardziej znaczące."
 
 #: public/class-vcarb-dashboard.php:204
 msgid "Could not load dashboard data. Please try again."
-msgstr "Kunde inte ladda dashboard-data. Försök igen, tack."
+msgstr "Nie udało się załadować danych z dashboardu. Proszę, spróbuj ponownie."
 
 #: includes/class-vcarb-exports.php:768 includes/class-vcarb-exports.php:962
 msgid "Could not open export stream."
-msgstr "Kunde inte öppna exportströmmen."
+msgstr "Nie udało się otworzyć strumienia eksportu."
 
 #: includes/class-vcarb-exports.php:631
 msgid "CO₂ (kg)"
@@ -328,11 +333,11 @@ msgstr "CO₂ (kg)"
 
 #: includes/class-vcarb-reports-admin.php:1343
 msgid "CO₂ (kg) and completed orders for the selected period."
-msgstr "CO₂ (kg) och slutförda beställningar för den valda perioden."
+msgstr "CO₂ (kg) oraz zrealizowanych zamówień na wybrany okres."
 
 #: public/class-vcarb-dashboard.php:1090
 msgid "CO₂ change"
-msgstr "CO₂-förändring"
+msgstr "Zmiana CO₂"
 
 #. %s: percentage increase in CO2 versus previous period.
 #: includes/class-vcarb-insights.php:328
@@ -341,44 +346,44 @@ msgid ""
 "CO₂ increased %s versus the previous period. This may indicate an outlier "
 "event."
 msgstr ""
-"CO₂ ökade %s jämfört med föregående period. Detta kan tyda på en avvikande "
-"händelse."
+"CO₂ wzrósł %s w porównaniu z poprzednim okresem. Może to wskazywać na "
+"zdarzenie odstępcze."
 
 #: includes/class-vcarb-insights.php:113
 msgid "CO₂ increased sharply"
-msgstr "CO₂ ökade kraftigt"
+msgstr "CO₂ gwałtownie wzrósł"
 
 #: includes/class-vcarb-product-insights.php:656
 msgid ""
 "CO₂ increased sharply vs previous month. Check promotions, pricing changes, "
 "or shipping method changes."
 msgstr ""
-"CO₂ ökade kraftigt jämfört med föregående månad. Kolla kampanjer, "
-"prisändringar eller ändringar i fraktmetod."
+"CO₂ gwałtownie wzrosło w porównaniu z poprzednim miesiącem. Sprawdź "
+"promocje, zmiany cen lub metody wysyłki."
 
 #: includes/class-vcarb-exports.php:895
 #: includes/class-vcarb-reports-admin.php:1320
 msgid "CO₂ per Order"
-msgstr "CO₂ per Order"
+msgstr "CO₂ na zamówienie"
 
 #: includes/class-vcarb-sustainability-summary.php:120
 msgid "CO₂ per order"
-msgstr "CO₂ per ordning"
+msgstr "CO₂ na zamówienie"
 
 #: includes/class-vcarb-exports.php:663 includes/class-vcarb-exports.php:699
 #: includes/class-vcarb-exports.php:1124
 msgid "CO₂ per Order (kg)"
-msgstr "CO₂ per ordning (kg)"
+msgstr "CO₂ na rząd (kg)"
 
 #. %s: percentage increase in CO2 per order.
 #: includes/class-vcarb-insights.php:163
 #, php-format
 msgid "CO₂ per order increased %s versus the previous period."
-msgstr "CO₂ per order ökade %s jämfört med föregående period."
+msgstr "CO₂ na zamówienie wzrósł %s w porównaniu z poprzednim okresem."
 
 #: includes/class-vcarb-exports.php:713
 msgid "CO₂ vs Previous %"
-msgstr "CO₂ vs Tidigare %"
+msgstr "CO₂ vs Poprzedni procent"
 
 #: public/class-vcarb-dashboard.php:962
 msgid ""
@@ -386,72 +391,72 @@ msgid ""
 "Completed. VerdantCart will calculate and store the reporting snapshot "
 "automatically."
 msgstr ""
-"Skapa eller ta emot en WooCommerce-beställning, flytta den sedan till "
-"Bearbetning eller Slutfört. VerdantCart kommer automatiskt att beräkna och "
-"lagra rapporteringsögonblicksbild."
+"Utwórz lub odbierz zamówienie WooCommerce, a następnie przenieś je do "
+"Przetwarzania lub Zakończone. VerdantCart automatycznie oblicza i "
+"przechowuje raportujący migawkę."
 
 #: includes/class-vcarb-reports-admin.php:941
 msgid "Create or reconnect the public dashboard page to enable this shortcut."
 msgstr ""
-"Skapa eller återkoppla den publika dashboard-sidan för att aktivera denna "
-"genväg."
+"Utwórz lub ponownie połącz publiczną stronę panelu nawigacyjnego, aby "
+"włączyć ten skrót."
 
 #: includes/class-vcarb-reports-admin.php:1268
 #: public/class-vcarb-dashboard.php:1547
 msgid "Current"
-msgstr "Nuvarande"
+msgstr "Aktualne"
 
 #. %s: current CO2 per order in kg.
 #: includes/class-vcarb-insights.php:472
 #, php-format
 msgid "Current CO₂ per order is about %s kg."
-msgstr "Nuvarande CO₂ per order är cirka %s kg."
+msgstr "Obecna ilość CO₂ na zamówienie wynosi około %s kg."
 
 #: includes/class-vcarb-exports.php:1146
 msgid "Customer Breakdown"
-msgstr "Kundfördelning"
+msgstr "Analiza klienta"
 
 #: includes/class-vcarb-reports-admin.php:1392
 msgid "Customer breakdown"
-msgstr "Kundfördelning"
+msgstr "Analiza klienta"
 
 #: includes/class-vcarb-exports.php:552
 msgid ""
 "Customer breakdown excludes the store-total row because it is already "
 "summarized above."
 msgstr ""
-"Kunduppdelning utesluter butikstotalraden eftersom den redan sammanfattas "
-"ovan."
+"Podział na klientów nie uwzględnia wiersza o łącznej liczbie sklepów, "
+"ponieważ jest już podsumowany powyżej."
 
 #. %d: number of customer rows in the report.
 #: includes/class-vcarb-exports.php:1066
 msgid "Customer breakdown includes %d row(s)."
-msgstr "Kunduppdelning inkluderar %d rad(er)."
+msgstr "Podział klientów obejmuje %d wiersze."
 
 #: includes/class-vcarb-sustainability-summary.php:218
 msgid "Customer Sustainability Summary"
-msgstr "Sammanfattning av kundhållbarhet"
+msgstr "Podsumowanie zrównoważonego rozwoju klienta"
 
 #: includes/class-vcarb-reports-admin.php:933
 #: includes/class-vcarb-reports-admin.php:939
 msgid "Customer view"
-msgstr "Kundvy"
+msgstr "Widok klienta"
 
 #: verdantcart-ai-reports.php:719 verdantcart-ai-reports.php:720
 msgid "Dashboard"
-msgstr "Instrumentpanel"
+msgstr "Kokpit"
 
 #: includes/class-vcarb-reports-admin.php:883
 msgid "Dashboard page missing"
-msgstr "Dashboard-sida saknas"
+msgstr "Brak strony na pulpicie"
 
 #: includes/class-vcarb-reports-admin.php:883
 msgid "Dashboard ready"
-msgstr "Instrumentbrädan redo"
+msgstr "Deska gotowa"
 
 #: includes/class-vcarb-admin-report-ajax.php:56
 msgid "Dataset service missing."
-msgstr "Dataset-tjänst saknas."
+msgstr "Brak usługi zbioru danych."
 
 #: includes/class-vcarb-sustainability-summary.php:169
 msgid ""
@@ -459,165 +464,168 @@ msgid ""
 "certified ESG report, GHG Protocol report, legal compliance document, or "
 "verified carbon audit."
 msgstr ""
-"Ansvarsfriskrivning: Detta är en sammanfattning av operativ hållbarhet. Det "
-"är inte en certifierad ESG-rapport, GHG-protokollrapport, juridiskt "
-"efterlevnadsdokument eller verifierad koldioxidkontroll."
+"Zastrzeżenie: To jest podsumowanie operacyjnego zrównoważonego rozwoju. Nie "
+"jest to certyfikowany raport ESG, raport protokołu GHG, dokument zgodności "
+"prawnej ani zweryfikowany audyt węglowy."
 
 #: includes/class-vcarb-insights.php:286
 msgid "Efficiency dropped sharply"
-msgstr "Effektiviteten sjönk kraftigt"
+msgstr "Wydajność gwałtownie spadła"
 
 #: includes/class-vcarb-insights.php:136
 msgid "Efficiency improved"
-msgstr "Förbättrad effektivitet"
+msgstr "Poprawiona efektywność"
 
 #: includes/class-vcarb-insights.php:160
 msgid "Efficiency regression detected"
-msgstr "Effektivitetsregression upptäckt"
+msgstr "Wykryto regresję efektywności"
 
 #: includes/class-vcarb-sustainability-summary.php:119
 msgid "Eligible orders included"
-msgstr "Behöriga ordnar inkluderade"
+msgstr "Wśród uprawnionych rozkazów"
 
 #: includes/class-vcarb-reports-admin.php:1375
 msgid "Emission hotspots"
-msgstr "Utsläppshotspots"
+msgstr "Hotspoty emisji"
 
 #: includes/class-vcarb-insights.php:234
 msgid "Emissions decreased"
-msgstr "Utsläppen minskade"
+msgstr "Emisje zmniejszyły się"
 
 #. %s: percentage change text.
 #: includes/class-vcarb-exports.php:523
 #, php-format
 msgid "Emissions decreased %s versus the previous period."
-msgstr "Utsläppen minskade %s jämfört med föregående period."
+msgstr "Emisje zmniejszyły się %s w porównaniu z poprzednim okresem."
 
 #: includes/class-vcarb-insights.php:260
 msgid "Emissions increased"
-msgstr "Utsläppen ökade"
+msgstr "Wzrost emisji"
 
 #. %s: percentage change text.
 #: includes/class-vcarb-exports.php:517
 #, php-format
 msgid "Emissions increased %s versus the previous period."
-msgstr "Utsläppen ökade %s jämfört med föregående period."
+msgstr "Emisje wzrosły %s w porównaniu z poprzednim okresem."
 
 #: includes/class-vcarb-insights.php:188
 msgid "Emissions increased without growth"
-msgstr "Utsläppen ökade utan tillväxt"
+msgstr "Emisje rosły bez wzrostu"
 
 #: includes/class-vcarb-exports.php:527
 msgid "Emissions were unchanged compared with the previous period."
-msgstr "Utsläppen var oförändrade jämfört med föregående period."
+msgstr "Emisje pozostały niezmienione w porównaniu z poprzednim okresem."
 
 #: includes/class-vcarb-insights.php:809
 msgid "Energy"
-msgstr "Energi"
+msgstr "Energia"
 
 #: includes/class-vcarb-reports-admin.php:1013
 msgid ""
 "Estimated emissions are calculated from eligible WooCommerce order data."
-msgstr "Uppskattade utsläpp beräknas från godkänd WooCommerce-orderdata."
+msgstr ""
+"Szacowane emisje są obliczane na podstawie kwalifikujących się danych "
+"zamówień WooCommerce."
 
 #: public/class-vcarb-dashboard.php:1233
 msgid ""
 "Estimated score based on emissions trend, emissions per order, reporting "
 "history, and hotspot concentration."
 msgstr ""
-"Uppskattad poäng baserad på utsläppstrend, utsläpp per order, "
-"rapporteringshistorik och hotspot-koncentration."
+"Szacowany wynik oparty na trendzie emisji, emisji na zamówienie, historii "
+"raportowania oraz koncentracji hotspotów."
 
 #: includes/class-vcarb-dataset-service.php:874
 #: includes/class-vcarb-insights.php:640
 #: includes/class-vcarb-sustainability-summary.php:379
 #: public/class-vcarb-dashboard.php:1196
 msgid "Excellent"
-msgstr "Utmärkt"
+msgstr "Doskonały"
 
 #: includes/class-vcarb-sustainability-summary.php:125
 msgid "Executive summary"
-msgstr "Sammanfattning"
+msgstr "Streszczenie wykonawcze"
 
 #: public/class-vcarb-dashboard.php:929
 msgid "Existing old orders need Backfill one time."
-msgstr "Befintliga gamla beställningar behöver fylla ut en gång."
+msgstr "Istniejące stare zamówienia wymagają jednorazowego uzupełnienia."
 
 #: public/class-vcarb-dashboard.php:793
 msgid "Export"
-msgstr "Exportera"
+msgstr "Eksport"
 
 #: public/class-vcarb-dashboard.php:208 public/class-vcarb-dashboard.php:809
 #: public/class-vcarb-dashboard.php:837
 msgid "Export CSV"
-msgstr "Exportera CSV"
+msgstr "Eksportuj CSV"
 
 #: includes/class-vcarb-reports-admin.php:627
 msgid "Export is unavailable until a snapshot exists for this period."
-msgstr ""
-"Export är inte tillgänglig förrän en ögonblicksbild finns för denna period."
+msgstr "Eksport jest niedostępny, dopóki nie pojawi się migawka z tego okresu."
 
 #: public/class-vcarb-dashboard.php:776
 msgid "Export is unavailable until a store snapshot exists for this period."
 msgstr ""
-"Export är inte tillgängligt förrän en butikssnapshot finns för denna period."
+"Eksport jest niedostępny, dopóki nie istnieje migawka sklepu na ten okres."
 
 #: public/class-vcarb-dashboard.php:202
 msgid "Export is unavailable until data exists for this period."
-msgstr "Export är inte tillgänglig förrän data finns för denna period."
+msgstr "Eksport jest niedostępny, dopóki dane z tego okresu nie istnieją."
 
 #: public/class-vcarb-dashboard.php:826
 msgid "Export options"
-msgstr "Exportalternativ"
+msgstr "Eksportuj opcje"
 
 #: public/class-vcarb-dashboard.php:209 public/class-vcarb-dashboard.php:850
 msgid "Export PDF"
-msgstr "Exportera PDF"
+msgstr "Eksportuj plik PDF"
 
 #: includes/class-vcarb-exports.php:687
 msgid "Exported By Admin ID"
-msgstr "Exporterad av administratörs-ID"
+msgstr "Eksportowane przez Admin ID"
 
 #: includes/class-vcarb-dataset-service.php:882
 #: includes/class-vcarb-insights.php:648
 #: includes/class-vcarb-sustainability-summary.php:387
 #: public/class-vcarb-dashboard.php:1204
 msgid "Fair"
-msgstr "Uppehåll"
+msgstr "Zadowalający"
 
 #: includes/class-vcarb-access.php:164
 msgid "Feature link is unavailable in this build."
-msgstr "Funktionslänken är inte tillgänglig i denna version."
+msgstr "Link do funkcji nie jest dostępny w tej wersji."
 
 #: includes/class-vcarb-exports.php:682
 msgid "Field"
-msgstr "Fält"
+msgstr "Pole"
 
 #: includes/class-vcarb-reports-admin.php:1068
 msgid "Fill missing store total and hotspots for already-counted orders"
-msgstr "Fyll i saknade butiker och hotspots för redan räknade beställningar"
+msgstr ""
+"Uzupełnij liczbę brakujących sklepów oraz hotspoty dla już zliczonych "
+"zamówień"
 
 #: includes/class-vcarb-insights-renderer.php:208
 msgid "Filter insights"
-msgstr "Filterinsikter"
+msgstr "Filtruj analizy"
 
 #. %s: emissions driver label.
 #: includes/class-vcarb-insights.php:361
 #, php-format
 msgid "Focus improvements on %s first because it has the biggest leverage."
-msgstr "Fokusera förbättringar på %s först eftersom det har störst hävstvidd."
+msgstr "Najpierw skup się na ulepszaniu %s, bo ma największą przewagę."
 
 #: includes/class-vcarb-insights.php:511
 msgid "Focus on the top drivers first"
-msgstr "Fokusera först på de bästa förarna"
+msgstr "Najpierw skup się na najlepszych kierowcach"
 
 #: public/class-vcarb-dashboard.php:959
 msgid "For new stores"
-msgstr "För nya butiker"
+msgstr "Dla nowych sklepów"
 
 #: public/class-vcarb-dashboard.php:968
 msgid "For stores with old orders"
-msgstr "För butiker med gamla beställningar"
+msgstr "Dla sklepów z starymi zamówieniami"
 
 #: includes/class-vcarb-exports.php:90 includes/class-vcarb-exports.php:124
 #: includes/class-vcarb-reports-admin.php:269
@@ -628,163 +636,162 @@ msgstr "För butiker med gamla beställningar"
 #: includes/gc-vcarb-admin-guard.php:129
 #: includes/trait-vcarb-ajax-helpers.php:48
 msgid "Forbidden"
-msgstr "Förbjuden"
+msgstr "Zabronione"
 
 #: includes/class-vcarb-reports-admin.php:991
 msgid "Front dashboard page"
-msgstr "Frontpanel-sidan"
+msgstr "Strona z przodu deski rozdzielczej"
 
 #: includes/class-vcarb-reports-admin.php:651
 msgid "Front dashboard page not found."
-msgstr "Frontpanelsidan hittas inte."
+msgstr "Strona na panelu początkowym nie znaleziona."
 
 #: includes/class-vcarb-reports-admin.php:940
 msgid "Front Dashboard Unavailable"
-msgstr "Framinstrumentbrädan ej tillgänglig"
+msgstr "Przednia deska deski rozdzielczej niedostępna"
 
 #: includes/class-vcarb-exports.php:475 includes/class-vcarb-exports.php:491
 msgid "Generated (UTC)"
-msgstr "Genererad (UTC)"
+msgstr "Wygenerowane (UTC)"
 
 #: includes/class-vcarb-dataset-service.php:878
 #: includes/class-vcarb-insights.php:644
 #: includes/class-vcarb-sustainability-summary.php:383
 #: public/class-vcarb-dashboard.php:1200
 msgid "Good"
-msgstr "Bra"
+msgstr "Dobry"
 
 #: includes/class-vcarb-product-insights.php:652
 msgid ""
 "High CO₂ per order vs store average. Check weight/dimensions, shipping "
 "zones, or fulfillment methods."
 msgstr ""
-"Hög CO₂ per beställning jämfört med butikens genomsnitt. Kontrollera vikt/"
-"mått, fraktzoner eller leveransmetoder."
+"Wysoki CO₂ na zamówienie w porównaniu do średniej sklepowej. Sprawdź wagę/"
+"wymiary, strefy wysyłki lub metody realizacji zamówień."
 
 #: includes/class-vcarb-product-insights.php:646
 msgid ""
 "High impact product (large share of emissions). Review packaging and "
 "shipping settings."
 msgstr ""
-"Högpåverkande produkt (stor andel utsläpp). Granska förpacknings- och "
-"fraktinställningar."
+"Produkt o dużym wpływie (duży udział w emisjach). Przejrzyj ustawienia "
+"pakowania i wysyłki."
 
 #: public/class-vcarb-dashboard.php:1151
 msgid "Higher"
-msgstr "Högre"
+msgstr "Wyższy"
 
 #: includes/class-vcarb-calculator.php:392
 msgid "higher"
-msgstr "högre"
+msgstr "wyższe"
 
 #: public/class-vcarb-dashboard.php:1529
 msgid "Historical period browsing"
-msgstr "Historisk period"
+msgstr "Przeglądanie epoki historycznej"
 
 #: includes/class-vcarb-insights.php:377
 msgid "Hotspot concentration detected"
-msgstr "Hotspot-koncentration upptäckt"
+msgstr "Wykryto stężenie hotspotu"
 
 #: includes/class-vcarb-reports-admin.php:1003
 msgid "How reporting works"
-msgstr "Hur rapportering fungerar"
+msgstr "Jak działa raportowanie"
 
 #: includes/class-vcarb-insights.php:514
 msgid ""
 "Identify the top products, shipping zones, or order types contributing to "
 "emissions."
 msgstr ""
-"Identifiera de viktigaste produkterna, fraktzonerna eller ordertyperna som "
-"bidrar till utsläppen."
+"Zidentyfikuj najlepsze produkty, strefy wysyłki lub typy zamówień "
+"przyczyniające się do emisji."
 
 #: includes/class-vcarb-reports-admin.php:1016
 msgid "If historical data is missing, use Backfill to rebuild it safely."
 msgstr ""
-"Om historisk data saknas, använd Backfill för att återställa den säkert."
+"Jeśli brakuje danych historycznych, użyj Backfill, aby bezpiecznie go "
+"odbudować."
 
 #: includes/class-vcarb-insights.php:76
 msgid "Inactive store"
-msgstr "Inaktiv butik"
+msgstr "Nieaktywny magazyn"
 
 #: public/class-vcarb-dashboard.php:993
 msgid "INSIGHTS"
-msgstr "INSIKTER"
+msgstr "WNIOSKI"
 
 #: includes/class-vcarb-sustainability-summary.php:143
 msgid "Insights overview"
-msgstr "Översikt av insikter"
+msgstr "Przegląd wglądów"
 
 #: public/class-vcarb-dashboard.php:1180
 msgid ""
 "Insights will appear after snapshot or backfill is available for this week."
 msgstr ""
-"Insikter kommer att visas efter att snapshot eller backfill är tillgängligt "
-"för denna vecka."
+"Wnioski pojawią się po udostępnieniu snapshotu lub uzupełnienia w tym "
+"tygodniu."
 
 #: includes/class-vcarb-dataset-service.php:789
 #: includes/class-vcarb-insights-ajax.php:60
 msgid "Insights will appear once a snapshot is available for this period."
-msgstr ""
-"Insikter kommer att visas när en ögonblicksbild finns tillgänglig för denna "
-"period."
+msgstr "Wgląd pojawi się, gdy tylko pojawi się migawka z tego okresu."
 
 #: includes/class-vcarb-insights.php:332
 msgid "Inspect orders with long-distance shipping or unusually large baskets."
 msgstr ""
-"Inspektera beställningar med långväga frakt eller ovanligt stora korgar."
+"Sprawdź zamówienia przy przesyłce dalekosiężnej lub nietypowo dużych koszach."
 
 #: includes/class-vcarb-admin-report-ajax.php:147
 msgid "Invalid admin dataset."
-msgstr "Ogiltig administratörsdataset."
+msgstr "Nieprawidłowy zbiór danych administratora."
 
 #: public/class-vcarb-dashboard.php:393 public/class-vcarb-dashboard.php:1308
 msgid "Invalid dashboard dataset."
-msgstr "Ogiltig dashboard-datamängd."
+msgstr "Nieprawidłowy zestaw danych dashboardu."
 
 #: includes/class-vcarb-admin-report-ajax.php:239
 msgid "Invalid hotspot period."
-msgstr "Ogiltig hotspot punkt."
+msgstr "Nieważny hotspot kropka."
 
 #: includes/class-vcarb-insights-ajax.php:106
 #: includes/trait-vcarb-ajax-helpers.php:77
 msgid "Invalid nonce"
-msgstr "Ogiltig engångskod"
+msgstr "Nieprawidłowa wartość nonce"
 
 #: includes/trait-vcarb-ajax-helpers.php:60
 msgid "Invalid nonce action"
-msgstr "Ogiltig nonce-åtgärd"
+msgstr "Nieprawidłowa akcja nonce"
 
 #: includes/class-vcarb-exports.php:123 public/class-vcarb-dashboard.php:356
 msgid "Invalid nonce."
-msgstr "Ogiltigt nonce-värde."
+msgstr "Nieprawidłowy identyfikator jednorazowy."
 
 #: includes/class-vcarb-admin-report-ajax.php:303
 msgid "Invalid resolved period."
-msgstr "Ogiltig löst punkt."
+msgstr "Nieprawidłowe rozwiązanie, kropka."
 
 #: includes/trait-vcarb-ajax-helpers.php:34
 #: includes/trait-vcarb-ajax-helpers.php:89
 msgid "Invalid user"
-msgstr "Ogiltig användare"
+msgstr "Nieprawidłowy użytkownik"
 
 #: includes/class-vcarb-dataset-service.php:45
 #: includes/class-vcarb-exports.php:134 includes/class-vcarb-exports.php:158
 #: includes/class-vcarb-sustainability-summary.php:209
 #: public/class-vcarb-dashboard.php:342
 msgid "Invalid user."
-msgstr "Ogiltig användare."
+msgstr "Nieprawidłowy użytkownik."
 
 #: includes/class-vcarb-insights.php:241
 msgid ""
 "Keep the changes that drove this drop and monitor whether it holds next "
 "period."
 msgstr ""
-"Behåll de förändringar som drev detta fall och följ om det håller nästa "
-"period."
+"Zachowaj zmiany, które spowodowały ten spadek i obserwuj, czy utrzyma się w "
+"kolejnym okresie."
 
 #: includes/class-vcarb-insights.php:144
 msgid "Keep the changes that improved efficiency."
-msgstr "Behåll de förändringar som förbättrade effektiviteten."
+msgstr "Zachowaj zmiany, które poprawiły efektywność."
 
 #: public/class-vcarb-dashboard.php:1069
 msgid "kg CO₂"
@@ -792,137 +799,137 @@ msgstr "kg CO₂"
 
 #: public/class-vcarb-dashboard.php:1112
 msgid "Last updated"
-msgstr "Senast uppdaterad"
+msgstr "Ostatnio zaktualizowany"
 
 #: includes/class-vcarb-reports-admin.php:1088
 msgid "Live progress will appear here."
-msgstr "Live-framsteg visas här."
+msgstr "Postępy na żywo pojawią się tutaj."
 
 #: public/class-vcarb-dashboard.php:866
 msgid "Loading emissions data..."
-msgstr "Laddar utsläppsdata..."
+msgstr "Ładowanie danych emisji..."
 
 #: public/class-vcarb-dashboard.php:206
 msgid "Loading emissions data…"
-msgstr "Laddar utsläppsdata..."
+msgstr "Ładowanie danych emisji..."
 
 #: public/class-vcarb-dashboard.php:207
 msgid "Loading insights…"
-msgstr "Laddar insikter..."
+msgstr "Ładowanie spostrzeżeń..."
 
 #: includes/class-vcarb-reports-admin.php:625
 #: includes/class-vcarb-reports-admin.php:1367
 #: includes/class-vcarb-reports-admin.php:1384
 #: includes/class-vcarb-reports-admin.php:1415
 msgid "Loading…"
-msgstr "Laddar…"
+msgstr "Wczytywanie…"
 
 #: public/class-vcarb-dashboard.php:471
 msgid "log in"
-msgstr "logga in"
+msgstr "zaloguj się"
 
 #: includes/class-vcarb-insights.php:168
 msgid "Look for high-CO₂ orders driving the average."
-msgstr "Titta efter hög-CO₂-order som driver genomsnittet."
+msgstr "Szukaj zamówień o wysokiej emisji CO₂, które będą napędzać średnią."
 
 #: public/class-vcarb-dashboard.php:1144
 msgid "Lower"
-msgstr "Lägre"
+msgstr "Niżej"
 
 #: includes/class-vcarb-calculator.php:385
 msgid "lower"
-msgstr "Nedre"
+msgstr "niski"
 
 #: includes/class-vcarb-reports-admin.php:926
 msgid "Maintenance"
-msgstr "Underhåll"
+msgstr "Konserwacja"
 
 #: includes/class-vcarb-reports-admin.php:1050
 msgid "Manual only"
-msgstr "Endast manuellt"
+msgstr "Tylko manualnie"
 
 #: includes/class-vcarb-reports-admin.php:1060
 msgid "Manual only:"
-msgstr "Endast manuellt:"
+msgstr "Tylko instrukcja:"
 
 #: includes/class-vcarb-product-insights.php:648
 msgid ""
 "Meaningful emissions contributor. Consider optimizing shipping methods or "
 "packaging."
 msgstr ""
-"Betydande utsläppsbidragsgivare. Överväg att optimera fraktmetoder eller "
-"förpackningar."
+"Znaczący przyczyniający się do emisji. Rozważ optymalizację metod wysyłki "
+"lub pakowania."
 
 #: public/class-vcarb-dashboard.php:1428
 msgid "Measure emissions per period, compare trends, and share progress."
-msgstr "Mät utsläpp per period, jämför trender och dela framsteg."
+msgstr "Mierz emisje w okresie, porównuj trendy i dziel się postępami."
 
 #: includes/class-vcarb-exports.php:912 includes/class-vcarb-exports.php:1185
 msgid "Methodology"
-msgstr "Metodik"
+msgstr "Metodologia"
 
 #: includes/class-vcarb-sustainability-summary.php:153
 msgid "Methodology note"
-msgstr "Metodologinot"
+msgstr "Notatka metodologiczna"
 
 #: includes/class-vcarb-exports.php:657 includes/class-vcarb-exports.php:693
 msgid "Metric"
-msgstr "Metriska"
+msgstr "Metryczne"
 
 #: includes/class-vcarb-reports-admin.php:986
 #: includes/class-vcarb-sustainability-summary.php:102
 msgid "Missing"
-msgstr "Saknas"
+msgstr "Brakujący"
 
 #: includes/class-vcarb-exports.php:145
 msgid "Missing dataset classes."
-msgstr "Saknade datasetklasser."
+msgstr "Brakujące klasy zbioru danych."
 
 #: includes/class-vcarb-exports.php:231
 msgid "Missing or invalid snapshot date."
-msgstr "Saknad eller ogiltig snapshot-datum."
+msgstr "Brakująca lub nieprawidłowa data snapshot."
 
 #: includes/class-vcarb-insights-ajax.php:50
 #: public/class-vcarb-dashboard.php:249 public/class-vcarb-dashboard.php:485
 msgid "Missing required classes."
-msgstr "Missade obligatoriska lektioner."
+msgstr "Opuszczanie obowiązkowych zajęć."
 
 #: includes/class-vcarb-insights.php:493
 msgid "Monitor the next snapshot"
-msgstr "Övervaka nästa snapshot"
+msgstr "Monitoruj następne zdjęcie"
 
 #: includes/class-vcarb-insights.php:145
 msgid "Monitor the next snapshot to confirm the improvement holds."
-msgstr "Följ nästa ögonblicksbild för att bekräfta att förbättringen håller."
+msgstr "Monitoruj kolejne zdjęcie, aby potwierdzić, że poprawa jest aktualna."
 
 #: includes/class-vcarb-reports-admin.php:806
 #: includes/class-vcarb-reports-admin.php:1232
 #: public/class-vcarb-dashboard.php:1577
 msgid "Month"
-msgstr "Månad"
+msgstr "Miesiąc"
 
 #: includes/class-vcarb-dataset-service.php:885
 #: includes/class-vcarb-insights.php:651
 #: includes/class-vcarb-sustainability-summary.php:390
 #: public/class-vcarb-dashboard.php:1207
 msgid "Needs work"
-msgstr "Behöver arbete"
+msgstr "Wymaga poprawy"
 
 #: public/class-vcarb-dashboard.php:205
 msgid "Network error. Please try again."
-msgstr "Nätverksfel. Försök igen, tack."
+msgstr "Błąd sieci. Proszę, spróbuj ponownie."
 
 #: includes/class-vcarb-reports-admin.php:1054
 msgid "Never changes stored historical CO₂ values."
-msgstr "Ändrar aldrig lagrade historiska CO₂-värden."
+msgstr "Nigdy nie zmienia przechowywanych historycznych wartości CO₂."
 
 #: includes/class-vcarb-dataset-service.php:1136
 msgid "New"
-msgstr "Ny"
+msgstr "Nowy"
 
 #: public/class-vcarb-dashboard.php:928
 msgid "New completed orders are tracked automatically."
-msgstr "Nya slutförda beställningar spåras automatiskt."
+msgstr "Nowe ukończone zamówienia są śledzone automatycznie."
 
 #: public/class-vcarb-dashboard.php:924
 msgid ""
@@ -930,136 +937,136 @@ msgid ""
 "plugin is active. If this store already has older completed orders, run "
 "Backfill once to build historical carbon reports."
 msgstr ""
-"Nya färdigställda WooCommerce-beställningar kommer att spåras automatiskt "
-"efter att pluginet är aktivt. Om butiken redan har äldre färdigställda "
-"beställningar, kör Backfill en gång för att skapa historiska "
-"koldioxidrapporter."
+"Nowo zrealizowane zamówienia WooCommerce będą automatycznie śledzone po "
+"aktywacji wtyczki. Jeśli ten sklep ma już starsze, ukończone zamówienia, "
+"uruchom Backfill raz, aby zbudować historyczne raporty węglowe."
 
 #: includes/class-vcarb-reports-admin.php:1276
 #: includes/class-vcarb-reports-admin.php:1280
 #: public/class-vcarb-dashboard.php:1554 public/class-vcarb-dashboard.php:1558
 msgid "Next"
-msgstr "Nästa"
+msgstr "Następny"
 
 #: includes/class-vcarb-dataset-service.php:284
 msgid "No activity in this period yet."
-msgstr "Ingen aktivitet under denna period än."
+msgstr "W tym okresie nie ma jeszcze żadnej aktywności."
 
 #: includes/class-vcarb-reports-admin.php:1093
 msgid "No backfill started yet."
-msgstr "Ingen påfyllning har påbörjats än."
+msgstr "Jeszcze nie rozpoczęto zasypywania."
 
 #: includes/class-vcarb-dataset-service.php:996
 msgid "No change vs previous."
-msgstr "Ingen förändring jämfört med tidigare."
+msgstr "Brak zmian w porównaniu do poprzedniego."
 
 #: includes/class-vcarb-insights.php:77
 msgid "No completed or processing orders were detected for this period."
-msgstr "Inga slutförda eller bearbetningsorder upptäcktes under denna period."
+msgstr ""
+"W tym okresie nie wykryto żadnych zamówień ukończonych ani przetwarzanych."
 
 #: includes/class-vcarb-insights.php:546
 msgid ""
 "No completed order emissions are available for this selected snapshot period "
 "yet."
 msgstr ""
-"Inga slutförda beställningsutsläpp finns tillgängliga för denna valda "
-"ögonblicksperiod än."
+"Nie ma jeszcze dostępnych emisji zakończonych zamówień dla tego wybranego "
+"okresu snapshot."
 
 #: public/class-vcarb-dashboard.php:220 public/class-vcarb-dashboard.php:1001
 msgid "No data"
-msgstr "Ingen data"
+msgstr "Brak danych"
 
 #: includes/class-vcarb-dataset-service.php:1057
 msgid "No data available."
-msgstr "Uppgifter saknas."
+msgstr "Brak dostępnych danych."
 
 #: includes/class-vcarb-exports.php:1161
 msgid "No data found for this snapshot period."
-msgstr "Inga data hittades för denna ögonblicksperiod."
+msgstr "Nie znaleziono danych dotyczących tego okresu migawki."
 
 #: public/class-vcarb-dashboard.php:203
 msgid "No emissions data for this period yet."
-msgstr "Inga utsläppsdata för denna period än."
+msgstr "Na razie brak danych dotyczących emisji z tego okresu."
 
 #: includes/class-vcarb-dataset-service.php:788
 msgid "No insights available yet"
-msgstr "Inga insikter finns än"
+msgstr "Na razie brak dostępnych informacji"
 
 #: includes/class-vcarb-insights-renderer.php:205
 #: public/class-vcarb-dashboard.php:215 public/class-vcarb-dashboard.php:1181
 msgid "No insights available yet."
-msgstr "Inga insikter finns tillgängliga än."
+msgstr "Na razie brak dostępnych informacji."
 
 #: includes/class-vcarb-product-insights.php:664
 msgid ""
 "No major anomalies detected. Monitor over time as more snapshot periods "
 "accumulate."
 msgstr ""
-"Inga större avvikelser upptäckta. Övervaka över tid när fler "
-"ögonblicksperioder samlas på hög."
+"Nie wykryto żadnych poważnych anomalii. Monitoruj w czasie, gdy liczba "
+"okresów migawek się kumuluje."
 
 #: includes/class-vcarb-sustainability-summary.php:147
 msgid "No major risks detected for this period."
-msgstr "Inga större risker upptäcktes under denna period."
+msgstr "W tym okresie nie wykryto poważnych zagrożeń."
 
 #: includes/class-vcarb-dataset-service.php:963
 msgid "No orders are available for this selected snapshot period yet."
-msgstr ""
-"Inga beställningar finns tillgängliga för denna valda snapshot-period än."
+msgstr "Na razie nie ma dostępnych zamówień na ten wybrany okres snapshot."
 
 #: includes/class-vcarb-insights.php:450
 msgid "No orders were detected in this period."
-msgstr "Inga order upptäcktes under denna period."
+msgstr "W tym okresie nie wykryto żadnych rozkazów."
 
 #: includes/class-vcarb-dataset-service.php:964
 msgid "No orders yet for this period."
-msgstr "Inga order än för denna period."
+msgstr "Na ten okres nie ma jeszcze żadnych zamówień."
 
 #: includes/class-vcarb-sustainability-summary.php:92
 msgid "No period selected"
-msgstr "Ingen period vald"
+msgstr "Nie wybrano okresu"
 
 #: includes/class-vcarb-dataset-service.php:253
 msgid "No personal activity in this period yet."
-msgstr "Ingen personlig aktivitet under denna period än."
+msgstr "W tym okresie nie było jeszcze żadnej aktywności osobistej."
 
 #: includes/class-vcarb-sustainability-summary.php:146
 msgid "No positive signals detected for this period."
-msgstr "Inga positiva signaler upptäcktes under denna period."
+msgstr "W tym okresie nie wykryto żadnych sygnałów pozytywnych."
 
 #: includes/class-vcarb-exports.php:513
 msgid "No previous snapshot exists yet, so trend comparison is not available."
 msgstr ""
-"Ingen tidigare snapshot finns än, så trendjämförelse är inte tillgänglig."
+"Nie istnieje jeszcze żaden wcześniejszy snapshot, więc porównanie trendów "
+"nie jest dostępne."
 
 #: includes/class-vcarb-insights.php:96
 msgid "No previous snapshot was available for comparison."
-msgstr "Ingen tidigare snapshot fanns tillgänglig för jämförelse."
+msgstr "Nie było dostępnych wcześniejszych zdjęć do porównania."
 
 #: includes/class-vcarb-sustainability-summary.php:459
 msgid "No product hotspots are available for this period."
-msgstr "Inga produkthotspots finns tillgängliga för denna period."
+msgstr "W tym okresie nie ma dostępnych hotspotów produktów."
 
 #: public/class-vcarb-dashboard.php:1007
 msgid ""
 "No product hotspots yet for this period. Add completed orders or run "
 "Backfill."
 msgstr ""
-"Inga produkthotspots än för denna period. Lägg till slutför beställningar "
-"eller kör Backfill."
+"Na razie nie ma gorących punktów produktowych w tym okresie. Dodaj ukończone "
+"zamówienia lub uruchom uzupełnianie."
 
 #: includes/class-vcarb-sustainability-summary.php:148
 msgid "No recommendations available yet."
-msgstr "Inga rekommendationer finns än."
+msgstr "Na razie nie ma żadnych rekomendacji."
 
 #: includes/class-vcarb-insights-renderer.php:239
 #: public/class-vcarb-dashboard.php:216
 msgid "No recommendations yet for this period."
-msgstr "Inga rekommendationer än för denna period."
+msgstr "Na razie brak rekomendacji na ten okres."
 
 #: public/class-vcarb-dashboard.php:920
 msgid "No reporting snapshot available yet"
-msgstr "Ingen rapporteringsöversikt finns än"
+msgstr "Brak dostępnego raportowego snapshota"
 
 #: includes/class-vcarb-reports-admin.php:892
 msgid ""
@@ -1067,228 +1074,229 @@ msgid ""
 "be tracked automatically after activation. If this store already has "
 "completed orders, run Backfill once to build historical carbon reports."
 msgstr ""
-"Inga rapporteringsögonblick har hittats än. Nya slutförda WooCommerce-"
-"beställningar kommer att spåras automatiskt efter aktivering. Om denna butik "
-"redan har slutfört beställningar, kör Backfill en gång för att skapa "
-"historiska koldioxidrapporter."
+"Nie znaleziono jeszcze żadnych zdjęć raportowych. Nowe ukończone zamówienia "
+"WooCommerce będą automatycznie śledzone po aktywacji. Jeśli sklep ma już "
+"ukończone zamówienia, uruchom Backfill raz, aby zbudować historyczne raporty "
+"węglowe."
 
 #: includes/class-vcarb-sustainability-summary.php:375
 msgid "No score available"
-msgstr "Ingen poäng tillgänglig"
+msgstr "Brak dostępnych punktów"
 
 #: public/class-vcarb-dashboard.php:914
 msgid "No snapshot available"
-msgstr "Ingen snapshot tillgänglig"
+msgstr "Brak dostępnego snapshotu"
 
 #: includes/class-vcarb-dataset-service.php:72
 #: includes/class-vcarb-dataset-service.php:139
 msgid "No snapshot available for this period yet."
-msgstr "Ingen snapshot finns tillgänglig för denna period än."
+msgstr "Na razie nie ma dostępnych zdjęć z tego okresu."
 
 #: includes/class-vcarb-sustainability-summary.php:109
 msgid ""
 "No snapshot is available for this period yet. Run Backfill or wait until "
 "eligible WooCommerce orders are processed."
 msgstr ""
-"Ingen snapshot finns ännu tillgänglig för denna period. Kör Backfill eller "
-"vänta tills berättigade WooCommerce-beställningar är behandlade."
+"Nie ma jeszcze dostępnych zdjęć z tego okresu. Uruchom Backfill lub "
+"poczekaj, aż kwalifikujące się zamówienia WooCommerce zostaną przetworzone."
 
 #: includes/class-vcarb-sustainability-summary.php:410
 msgid ""
 "No snapshot is available yet, so a complete sustainability summary cannot be "
 "generated for this period."
 msgstr ""
-"Ingen ögonblicksbild finns än, så en fullständig hållbarhetssammanfattning "
-"kan inte genereras för denna period."
+"Nie ma jeszcze dostępnych danych na podstawie przeglądu danych, więc nie "
+"można stworzyć pełnego podsumowania zrównoważonego rozwoju dla tego okresu."
 
 #: includes/class-vcarb-sustainability-summary.php:414
 msgid "not available"
-msgstr "inte tillgänglig"
+msgstr "niedostępne"
 
 #: includes/trait-vcarb-snapshot.php:368
 msgid "Not Found"
-msgstr "Hittades inte"
+msgstr "Nie znaleziono"
 
 #: includes/class-vcarb-reports-admin.php:652
 #: includes/class-vcarb-reports-admin.php:993
 msgid "Not found"
-msgstr "Hittades inte"
+msgstr "Nie znaleziono"
 
 #: includes/class-vcarb-exports.php:785 includes/class-vcarb-exports.php:988
 msgid "Note"
-msgstr "Anteckning"
+msgstr "Uwaga"
 
 #: includes/class-vcarb-insights-renderer.php:273
 #: public/class-vcarb-dashboard.php:217
 msgid "Nothing detected for this period."
-msgstr "Inget upptäcktes under denna period."
+msgstr "Nic nie wykryto przez ten okres."
 
 #: includes/class-vcarb-reports-admin.php:1061
 msgid "Nothing runs automatically. Click Start when you are ready."
-msgstr "Inget körs automatiskt. Klicka på Start när du är redo."
+msgstr "Nic nie działa automatycznie. Kliknij Start, gdy będziesz gotowy."
 
 #: includes/class-vcarb-exports.php:479
 msgid "Notice"
-msgstr "Notis"
+msgstr "Powiadomienie"
 
 #: public/class-vcarb-dashboard.php:222 public/class-vcarb-dashboard.php:1037
 msgid "of product emissions."
-msgstr "av produktutsläpp."
+msgstr "emisji produktu."
 
 #: includes/class-vcarb-insights.php:477
 msgid "Offer local pickup or greener shipping options where possible."
 msgstr ""
-"Erbjud lokal upphämtning eller grönare fraktalternativ där det är möjligt."
+"Oferuj lokalne odbiór lub bardziej ekologiczne opcje wysyłki, jeśli to "
+"możliwe."
 
 #: verdantcart-ai-reports.php:502
 msgid "Once Monthly"
-msgstr "En gång per månad"
+msgstr "Raz na miesiąc"
 
 #: verdantcart-ai-reports.php:495
 msgid "Once Weekly"
-msgstr "En gång i veckan"
+msgstr "Raz w tygodniu"
 
 #: verdantcart-ai-reports.php:509
 msgid "Once Yearly"
-msgstr "En gång per år"
+msgstr "Raz w roku"
 
 #: includes/class-vcarb-insights.php:351
 msgid "One hotspot dominates emissions"
-msgstr "En hotspot dominerar utsläppen"
+msgstr "Jeden hotspot dominuje emisjami"
 
 #: public/class-vcarb-dashboard.php:816
 msgid "Open export menu"
-msgstr "Öppna exportmeny"
+msgstr "Otwórz menu eksportu"
 
 #: includes/class-vcarb-reports-admin.php:934
 msgid "Open Front Dashboard"
-msgstr "Öppen frontinstrumentpanel"
+msgstr "Otwarta deska rozdzielcza z przodu"
 
 #: includes/class-vcarb-reports-admin.php:901
 msgid "Open Reports"
-msgstr "Öppna rapporter"
+msgstr "Raporty otwarte"
 
 #: includes/class-vcarb-reports-admin.php:913
 msgid "Open the core tools you use most often."
-msgstr "Öppna de grundläggande verktyg du använder oftast."
+msgstr "Otwórz podstawowe narzędzia, których używasz najczęściej."
 
 #: includes/class-vcarb-reports-admin.php:935
 msgid "Open the customer-facing carbon dashboard in a new tab."
-msgstr "Öppna kundriktad koldioxiddashboard i en ny flik."
+msgstr "Otwórz panel węglowy skierowany do klienta w nowej karcie."
 
 #: includes/class-vcarb-reports-admin.php:952
 msgid ""
 "Open the public homepage of the WooCommerce store where this plugin is "
 "installed."
 msgstr ""
-"Öppna den publika startsidan för WooCommerce-butiken där detta plugin är "
-"installerat."
+"Otwórz publiczną stronę główną sklepu WooCommerce, gdzie zainstalowana jest "
+"ta wtyczka."
 
 #: includes/class-vcarb-insights.php:515
 msgid "Optimize the largest driver before spending time on smaller ones."
-msgstr "Optimera den största drivrutinen innan du lägger tid på mindre."
+msgstr "Optymalizuj największy sterownik, zanim poświęcisz czas na mniejsze."
 
 #: includes/class-vcarb-backfill-ajax.php:43
 msgid "Order tracker missing."
-msgstr "Orderspåraren saknas."
+msgstr "Brakuje trackera zamówień."
 
 #: includes/class-vcarb-exports.php:630 includes/class-vcarb-exports.php:710
 #: includes/class-vcarb-exports.php:1151
 #: includes/class-vcarb-reports-admin.php:1404
 #: includes/class-vcarb-sustainability-summary.php:119
 msgid "Orders"
-msgstr "Beställningar"
+msgstr "Zamówienia"
 
 #: includes/class-vcarb-insights.php:287
 msgid ""
 "Orders fell while total CO₂ increased, so emissions per order likely "
 "worsened."
 msgstr ""
-"Beställningarna minskade medan den totala CO₂ ökade, så utsläppen per order "
-"blev troligen sämre."
+"Zamówienia spadły, podczas gdy całkowity CO₂ wzrósł, więc emisje na "
+"zamówienie prawdopodobnie się pogorszyły."
 
 #: includes/class-vcarb-exports.php:662 includes/class-vcarb-exports.php:698
 #: includes/class-vcarb-exports.php:891 includes/class-vcarb-exports.php:1120
 #: includes/class-vcarb-reports-admin.php:1309
 msgid "Orders Included"
-msgstr "Beställningar inkluderade"
+msgstr "Zamówienia zawarte"
 
 #: public/class-vcarb-dashboard.php:1077
 msgid "Orders included"
-msgstr "Beställningar inkluderade"
+msgstr "Zamówienia obejmowały"
 
 #: includes/class-vcarb-product-insights.php:660
 msgid ""
 "Orders increased sharply vs previous month. Ensure the product setup and "
 "shipping settings are optimized."
 msgstr ""
-"Beställningarna ökade kraftigt jämfört med föregående månad. Se till att "
-"produktuppsättningen och leveransinställningarna är optimerade."
+"Zamówienia gwałtownie wzrosły w porównaniu z poprzednim miesiącem. Upewnij "
+"się, że ustawienia produktu i wysyłki są zoptymalizowane."
 
 #. 1: CO2 percentage change, 2: orders percentage change.
 #: includes/class-vcarb-insights.php:139
 #, php-format
 msgid "Orders increased while total CO₂ decreased (%1$s CO₂, %2$s orders)."
 msgstr ""
-"Beställningarna ökade medan den totala CO₂ minskade (%1$s CO₂, %2$s "
-"beställningar)."
+"Zamówienia wzrosły, podczas gdy całkowity CO₂ spadł (%1$s CO₂, %2$s "
+"zamówień)."
 
 #: includes/class-vcarb-insights.php:308
 msgid "Orders increased without increasing total CO₂ significantly."
-msgstr "Beställningarna ökade utan att den totala CO₂ ökade nämnvärt."
+msgstr "Zamówienia wzrosły bez znaczącego wzrostu całkowitej emisji CO₂."
 
 #: includes/class-vcarb-exports.php:711
 msgid "Orders vs Previous %"
-msgstr "Beställningar vs Tidigare %"
+msgstr "Zamówienia vs Poprzedni procent"
 
 #: verdantcart-ai-reports.php:701 verdantcart-ai-reports.php:702
 #: public/class-vcarb-dashboard.php:752
 msgid "Overview"
-msgstr "Översikt"
+msgstr "Przegląd"
 
 #: includes/class-vcarb-insights.php:805
 msgid "Packaging"
-msgstr "Emballage"
+msgstr "Pakowanie"
 
 #: includes/class-vcarb-exports.php:879 includes/class-vcarb-exports.php:1108
 #: includes/class-vcarb-sustainability-summary.php:91
 #: public/class-vcarb-dashboard.php:1452
 msgid "Period"
-msgstr "Period"
+msgstr "Okres"
 
 #: includes/class-vcarb-exports.php:629
 msgid "Period Label"
-msgstr "Periodetikett"
+msgstr "Etykieta z epoki"
 
 #: includes/class-vcarb-reports-admin.php:1334
 msgid "Period trend"
-msgstr "Periodisk trend"
+msgstr "Trend okresowy"
 
 #. %s: login link HTML.
 #: public/class-vcarb-dashboard.php:470
 #, php-format
 msgid "Please %s to view your carbon dashboard."
-msgstr "Vänligen %s för att se din kolfiberinstrumentpanel."
+msgstr "Proszę %s zobaczyć swój dashboard węglowy."
 
 #: includes/class-vcarb-insights-renderer.php:213
 #: includes/class-vcarb-insights-renderer.php:224
 #: public/class-vcarb-dashboard.php:211
 msgid "Positive"
-msgstr "Positiv"
+msgstr "Pozytywny"
 
 #: includes/class-vcarb-reports-admin.php:1256
 #: includes/class-vcarb-reports-admin.php:1260
 #: public/class-vcarb-dashboard.php:1536 public/class-vcarb-dashboard.php:1540
 msgid "Previous"
-msgstr "Föregående"
+msgstr "Poprzedni"
 
 #: includes/class-vcarb-exports.php:850 includes/class-vcarb-exports.php:1081
 msgid "Print / Save as PDF"
-msgstr "Skriv ut / Spara som PDF"
+msgstr "Drukuj / Zapisz jako PDF"
 
 #: includes/class-vcarb-reports-admin.php:819
 msgid "Print / Save PDF"
-msgstr "Skriv ut / Spara PDF"
+msgstr "Drukuj / Zapisz PDF"
 
 #: includes/class-vcarb-insights.php:807
 msgid "Product"
@@ -1296,279 +1304,279 @@ msgstr "Produkt"
 
 #: includes/class-vcarb-admin-report-ajax.php:246
 msgid "Product hotspot service is missing."
-msgstr "Produkt-hotspot-tjänsten saknas."
+msgstr "Brakuje usługi hotspotów produktowych."
 
 #: includes/class-vcarb-insights.php:806
 msgid "Products"
-msgstr "Produkter"
+msgstr "Produkty"
 
 #: public/class-vcarb-dashboard.php:930
 msgid ""
 "Products need weight data, or a fallback weight filter, before emissions can "
 "be estimated."
 msgstr ""
-"Produkter behöver viktdata, eller ett reservviktfilter, innan utsläpp kan "
-"uppskattas."
+"Produkty potrzebują danych o masie lub filtra awaryjnego masy, zanim można "
+"oszacować emisje."
 
 #: includes/class-vcarb-reports-admin.php:911
 msgid "Quick actions"
-msgstr "Snabbåtgärder"
+msgstr "Szybkie akcje"
 
 #: includes/class-vcarb-reports-admin.php:993
 msgid "Ready"
-msgstr "Klar"
+msgstr "Gotowe"
 
 #: includes/class-vcarb-reports-admin.php:1043
 msgid "Rebuild historical carbon data for existing WooCommerce orders."
 msgstr ""
-"Återskapa historisk koldioxiddata för befintliga WooCommerce-beställningar."
+"Odbudowa historycznych danych dotyczących emisji dwutlenku węgla dla "
+"istniejących zamówień WooCommerce."
 
 #: includes/class-vcarb-reports-admin.php:928
 msgid "Rebuild historical reporting data for existing WooCommerce orders."
 msgstr ""
-"Bygg om historisk rapporteringsdata för befintliga WooCommerce-beställningar."
+"Odbuduj historyczne dane raportowe dla istniejących zamówień WooCommerce."
 
 #: includes/class-vcarb-insights-renderer.php:231
 #: includes/class-vcarb-sustainability-summary.php:148
 #: public/class-vcarb-dashboard.php:214
 msgid "Recommendations"
-msgstr "Rekommenderat"
+msgstr "Rekomendacje"
 
 #: includes/class-vcarb-insights.php:469
 msgid "Reduce CO₂ per order"
-msgstr "Minska CO₂ per order"
+msgstr "Zmniejsz emisję CO₂ na zamówienie"
 
 #: includes/class-vcarb-insights.php:512
 msgid ""
 "Reducing the biggest emissions drivers first gives the fastest improvement "
 "opportunity."
 msgstr ""
-"Att först minska de största utsläppsförarna ger den snabbaste "
-"förbättringsmöjligheten."
+"Zmniejszenie największych czynników emisji daje najszybszą szansę na poprawę."
 
 #: includes/class-vcarb-plugin-pages-admin.php:138
 msgid "Regular pages only"
-msgstr "Endast vanliga sidor"
+msgstr "Tylko zwykłe strony"
 
 #: verdantcart-ai-reports.php:729
 msgid "Report"
-msgstr "Rapportera"
+msgstr "Raport"
 
 #: includes/class-vcarb-exports.php:905 includes/class-vcarb-exports.php:1178
 msgid "Report Notes"
-msgstr "Rapportnoteringar"
+msgstr "Notatki z raportu"
 
 #: includes/class-vcarb-reports-admin.php:804
 msgid "Report period"
-msgstr "Rapportperiod"
+msgstr "Okres sprawozdawczy"
 
 #: includes/class-vcarb-exports.php:686
 msgid "Report Type"
-msgstr "Rapporttyp"
+msgstr "Typ raportu"
 
 #: includes/class-vcarb-reports-admin.php:1014
 msgid "Reporting data is grouped into monthly, weekly, and yearly periods."
-msgstr "Rapporteringsdata är grupperade i månads-, vecko- och årsperioder."
+msgstr "Dane raportowe są grupowane na okresy miesięczne, tygodniowe i roczne."
 
 #: includes/class-vcarb-reports-admin.php:891
 msgid "Reporting setup reminder:"
-msgstr "Påminnelse om rapporteringsinställningar:"
+msgstr "Przypomnienie o ustawieniu raportowania:"
 
 #: includes/class-vcarb-reports-admin.php:920
 msgid "Reports"
-msgstr "Rapporter"
+msgstr "Raporty"
 
 #: includes/class-vcarb-insights.php:808
 msgid "Returns"
-msgstr "Returer"
+msgstr "Zwroty"
 
 #: includes/class-vcarb-insights.php:364
 msgid ""
 "Review carrier, packaging, product weight, or routing choices for this "
 "driver."
 msgstr ""
-"Granska transportör, förpackning, produktvikt eller ruttval för denna förare."
+"Przejrzyj opcje transportu, opakowania, wagi produktu lub trasy dla tego "
+"sterownika."
 
 #: includes/class-vcarb-insights.php:476
 msgid "Review packaging weight and materials."
-msgstr "Granska förpackningens vikt och material."
+msgstr "Sprawdź wagę opakowania i materiały."
 
 #: includes/class-vcarb-insights.php:267
 msgid ""
 "Review product mix, shipping zones, and packaging changes in this period."
 msgstr ""
-"Granska produktmix, fraktzoner och förpackningsförändringar under denna "
-"period."
+"Przeanalizuj miks produktów, strefy wysyłki oraz zmiany w opakowaniach w tym "
+"okresie."
 
 #: includes/class-vcarb-insights.php:290
 msgid "Review shipping method changes and packaging weight."
-msgstr "Gå igenom ändringar i fraktmetod och förpackningsvikt."
+msgstr "Przejrzyj zmiany metod transportu i wagę opakowania."
 
 #: includes/class-vcarb-insights.php:195
 msgid "Review shipping zones and carrier changes in this period."
-msgstr "Granska fraktzoner och ändringar i transportörer under denna period."
+msgstr "Przejrzyj strefy wysyłki i zmiany przewoźników w tym okresie."
 
 #: includes/class-vcarb-insights.php:120
 msgid "Review shipping zones and carrier changes."
-msgstr "Gå igenom fraktzoner och ändringar i transportörer."
+msgstr "Przejrzyj strefy wysyłki i zmiany przewoźników."
 
 #: includes/class-vcarb-insights.php:497
 msgid "Review spikes weekly or monthly depending on your reporting view."
 msgstr ""
-"Granskningen toppar veckovis eller månadsvis beroende på hur du rapporterar "
-"om du tittar."
+"Przeglądaj skoki tygodniowo lub co miesiąc, w zależności od widoku raportu."
 
 #: includes/class-vcarb-insights-renderer.php:219
 #: includes/class-vcarb-insights-renderer.php:226
 #: public/class-vcarb-dashboard.php:213
 msgid "Risks"
-msgstr "Risker"
+msgstr "Ryzyka"
 
 #: includes/class-vcarb-insights.php:494
 msgid ""
 "Risks were detected this period. Validate whether they persist next period."
 msgstr ""
-"Risker upptäcktes under denna period. Bekräfta om de fortsätter nästa "
-"lektion."
+"W tym okresie wykryto ryzyko. Sprawdź, czy utrzymują się w kolejnym okresie."
 
 #: includes/class-vcarb-reports-admin.php:897
 #: includes/class-vcarb-reports-admin.php:927
 #: public/class-vcarb-dashboard.php:937
 msgid "Run Backfill"
-msgstr "Run Backfill"
+msgstr "Wykonaj zasypywanie"
 
 #: public/class-vcarb-dashboard.php:971
 msgid ""
 "Run Backfill once to process existing completed orders and create historical "
 "month, week, year, and product hotspot data."
 msgstr ""
-"Kör Backfill en gång för att behandla befintliga avslutade beställningar och "
-"skapa historisk data för månad, vecka, år och produkthotspot."
+"Uruchom Backfill raz, aby przetworzyć istniejące ukończone zamówienia i "
+"utworzyć historyczne dane dotyczące miesięcy, tygodni, lat oraz hotspotów "
+"produktów."
 
 #: includes/class-vcarb-reports-admin.php:1056
 msgid "Runs in batches to avoid timeouts."
-msgstr "Körs i omgångar för att undvika timeouts."
+msgstr "Biega w partiach, żeby uniknąć przerw na żądanie."
 
 #: includes/class-vcarb-reports-admin.php:1069
 msgid "safe"
-msgstr "Säkert"
+msgstr "sejf"
 
 #: includes/class-vcarb-insights.php:307
 msgid "Scale without higher emissions"
-msgstr "Skala utan högre utsläpp"
+msgstr "Skala bez wyższych emisji"
 
 #: includes/class-vcarb-admin-report-ajax.php:270
 msgid "Scheduler missing."
-msgstr "Schemaläggare saknas."
+msgstr "Brakuje harmonogramu."
 
 #: includes/class-vcarb-sustainability-summary.php:121
 #: public/class-vcarb-dashboard.php:1245
 msgid "Score"
-msgstr "Poäng"
+msgstr "Wynik"
 
 #: includes/class-vcarb-reports-admin.php:1360
 msgid ""
 "Score, risks, positives, and recommendations based on the selected carbon "
 "snapshot."
 msgstr ""
-"Poäng, risker, positiva och rekommendationer baserat på den valda "
-"koldioxidögonblicket."
+"Wynik, ryzyka, pozytywy i rekomendacje na podstawie wybranego zdjęcia "
+"węglowego."
 
 #: includes/class-vcarb-exports.php:628 includes/class-vcarb-exports.php:656
 #: includes/class-vcarb-exports.php:681 includes/class-vcarb-exports.php:692
 #: includes/class-vcarb-exports.php:708 includes/class-vcarb-exports.php:784
 #: includes/class-vcarb-exports.php:987
 msgid "Section"
-msgstr "Sektion"
+msgstr "Sekcja"
 
 #: includes/class-vcarb-sustainability-summary.php:118
 msgid "Selected period emissions"
-msgstr "Utvalda periodutsläpp"
+msgstr "Wybrane emisje okresowe"
 
 #: includes/class-vcarb-reports-admin.php:1301
 msgid "Selected period total"
-msgstr "Utvald period totalt"
+msgstr "Wybrany okres"
 
 #: includes/class-vcarb-exports.php:146 includes/class-vcarb-exports.php:769
 #: includes/class-vcarb-exports.php:963
 msgid "Server error"
-msgstr "Serverfel"
+msgstr "Błąd serwera"
 
 #: public/class-vcarb-dashboard.php:917
 msgid "SETUP"
-msgstr "UPPLÄGG"
+msgstr "PRZYGOTOWANIE"
 
 #: includes/class-vcarb-insights.php:803 includes/class-vcarb-insights.php:804
 msgid "Shipping"
-msgstr "Frakt"
+msgstr "Wysyłka"
 
 #. %s: shipping share percentage of total CO2.
 #: includes/class-vcarb-insights.php:214
 #, php-format
 msgid "Shipping accounts for about %s of total CO₂ in this period."
-msgstr "Sjöfarten står för cirka %s av den totala CO₂ under denna period."
+msgstr "Transport stanowi około %s całkowitej emisji CO₂ w tym okresie."
 
 #: includes/class-vcarb-insights.php:211
 msgid "Shipping is the main driver"
-msgstr "Frakten är den främsta drivkraften"
+msgstr "Głównym czynnikiem napędowym jest wysyłka"
 
 #: includes/class-vcarb-exports.php:791 includes/class-vcarb-exports.php:994
 #: includes/class-vcarb-sustainability-summary.php:101
 msgid "Snapshot"
-msgstr "Snapshot"
+msgstr "Zrzut"
 
 #: includes/class-vcarb-exports.php:239
 msgid "Snapshot does not exist for this period."
-msgstr "Snapshot existerar inte för denna period."
+msgstr "Snapshot nie istnieje w tym okresie."
 
 #: includes/class-vcarb-reports-admin.php:626
 #: includes/class-vcarb-reports-admin.php:1219
 msgid "Snapshot missing"
-msgstr "Ögonblicksbild saknas"
+msgstr "Brak migawki"
 
 #: includes/trait-vcarb-snapshot.php:367
 msgid "Snapshot period not found (store total row missing)."
-msgstr "Snapshot-period ej hittad (lagra total rad saknas)."
+msgstr "Okres migawki nie znaleziony (brak liczby wierszy w zapisie)."
 
 #: includes/class-vcarb-exports.php:1140
 msgid "Snapshot Updated"
-msgstr "Snapshot uppdaterad"
+msgstr "Aktualizacja migawki"
 
 #: includes/class-vcarb-exports.php:474 includes/class-vcarb-exports.php:490
 msgid "Snapshot updated"
-msgstr "Snapshot uppdaterad"
+msgstr "Aktualizacja migawki"
 
 #: includes/class-vcarb-sustainability-summary.php:161
 msgid "Snapshot updated:"
-msgstr "Uppdaterad ögonblicksbild:"
+msgstr "Aktualizacja migawki:"
 
 #: includes/class-vcarb-sustainability-summary.php:77
 msgid "Snapshot-based report"
-msgstr "Snapshot-baserad rapport"
+msgstr "Raport oparty na migawkach"
 
 #: includes/class-vcarb-reports-admin.php:798
 msgid "Snapshot-based sustainability reporting summary for the current store."
 msgstr ""
-"Sammanfattning av hållbarhetsrapportering baserad på ögonblicksbilder för "
-"den aktuella butiken."
+"Podsumowanie raportu zrównoważonego rozwoju na podstawie migawki dla "
+"obecnego sklepu."
 
 #. %s: selected snapshot period.
 #: includes/class-vcarb-reports-admin.php:1216
 #, php-format
 msgid "Snapshot: %s"
-msgstr "Ögonblicksbild: %s"
+msgstr "Migawka: %s"
 
 #: includes/class-vcarb-reports-admin.php:1015
 msgid ""
 "Snapshots and aggregates are used for dashboards, trends, hotspots, and "
 "exports."
 msgstr ""
-"Snapshots och aggregat används för instrumentpaneler, trender, hotspots och "
-"export."
+"Migawki i agregaty są wykorzystywane do dashboardów, trendów, hotspotów i "
+"eksportów."
 
 #: includes/class-vcarb-reports-admin.php:1076
 msgid "Start backfill"
-msgstr "Starta återfyllning"
+msgstr "Rozpocznij zasypywanie"
 
 #: includes/class-vcarb-reports-admin.php:1087
 msgid "Status"
@@ -1576,103 +1584,103 @@ msgstr "Status"
 
 #: includes/class-vcarb-reports-admin.php:1080
 msgid "Stop"
-msgstr "Stoppa"
+msgstr "Zatrzymaj"
 
 #: includes/class-vcarb-backfill-ajax.php:325
 msgid "Stop request accepted."
-msgstr "Stopp-begäran accepterad."
+msgstr "Prośba o zatrzymanie przyjęta."
 
 #: includes/class-vcarb-exports.php:860 includes/class-vcarb-exports.php:1092
 msgid "Store"
-msgstr "Butik"
+msgstr "Sklep"
 
 #: includes/class-vcarb-reports-admin.php:1202
 msgid "Store Overview"
-msgstr "Butiksöversikt"
+msgstr "Przegląd sklepu"
 
 #: includes/class-vcarb-reports-admin.php:950
 msgid "Store site"
-msgstr "Butikens webbplats"
+msgstr "Strona sklepu"
 
 #: includes/class-vcarb-exports.php:1100
 msgid "Store Summary"
-msgstr "Butiksöversikt"
+msgstr "Podsumowanie sklepu"
 
 #: includes/class-vcarb-insights-ajax.php:263
 msgid "Store Sustainability Insights"
-msgstr "Insikter om butikens hållbarhet"
+msgstr "Insights dotyczące zrównoważonego rozwoju sklepów"
 
 #: includes/class-vcarb-sustainability-summary.php:28
 #: includes/class-vcarb-sustainability-summary.php:193
 msgid "Store Sustainability Summary"
-msgstr "Sammanfattning av butikens hållbarhet"
+msgstr "Podsumowanie zrównoważonego rozwoju sklepów"
 
 #: includes/class-vcarb-dataset-service.php:669
 msgid "Store Total"
-msgstr "Butikstotal"
+msgstr "Suma w sklepie"
 
 #: includes/class-vcarb-reports-admin.php:1394
 msgid "Store total and per-customer totals for the selected period."
-msgstr "Totalt antal butiker och per kund för den valda perioden."
+msgstr "Przechowuj łącznie i dane na klienta za wybrany okres."
 
 #: includes/class-vcarb-reports-admin.php:1194
 msgid "Store-wide carbon reporting, exports, and customer breakdown."
-msgstr "Butiksomfattande koldioxidrapportering, export och kundfördelning."
+msgstr ""
+"Raportowanie emisji dwutlenku węgla w całym sklepie, eksport i podział "
+"klientów."
 
 #. %s: store name.
 #: includes/class-vcarb-exports.php:859 includes/class-vcarb-exports.php:1091
 #, php-format
 msgid "Store: %s"
-msgstr "Butik: %s"
+msgstr "Sklep: %s"
 
 #: includes/class-vcarb-exports.php:867
 msgid "Summary"
-msgstr "Sammanfattning"
+msgstr "Podsumowanie"
 
 #: includes/class-vcarb-insights-renderer.php:173
 #: includes/class-vcarb-reports-admin.php:1358
 #: public/class-vcarb-dashboard.php:1173
 msgid "Sustainability Insights"
-msgstr "Hållbarhetsinsikter"
+msgstr "Insights Zrównoważonego rozwoju"
 
 #: verdantcart-ai-reports.php:728
 msgid "Sustainability Report"
-msgstr "Hållbarshetsrapport"
+msgstr "Raport o zrównoważonym rozwoju"
 
 #: public/class-vcarb-dashboard.php:1249
 msgid "Sustainability Score"
-msgstr "Hållbarhetspoäng"
+msgstr "Ocena zrównoważonego rozwoju"
 
 #: public/class-vcarb-dashboard.php:1241
 msgid "Sustainability score"
-msgstr "Hållbarhetspoäng"
+msgstr "Ocena zrównoważonego rozwoju"
 
 #: includes/class-vcarb-reports-admin.php:831
 msgid "Sustainability Summary class is not available."
-msgstr "Hållbarhetssammanfattningskurs är inte tillgänglig."
+msgstr "Zajęcia Podsumowania zrównoważonego rozwoju nie są dostępne."
 
 #: includes/class-vcarb-sustainability-summary.php:227
 msgid ""
 "Sustainability summary is unavailable because the dataset service is missing."
 msgstr ""
-"Hållbarhetssammanfattningen är inte tillgänglig eftersom datasettjänsten "
-"saknas."
+"Podsumowanie zrównoważonego rozwoju jest niedostępne, ponieważ usługa zbioru "
+"danych jest niedostępna."
 
 #: includes/class-vcarb-reports-admin.php:975
 msgid "System status"
-msgstr "Systemstatus"
+msgstr "Status systemu"
 
 #. %s: emissions driver label.
 #: includes/class-vcarb-insights.php:387
 #, php-format
 msgid "Target %s optimizations to reduce total footprint fastest."
-msgstr ""
-"Sikta %s optimeringar för att minska det totala fotavtrycket så snabbast som "
-"möjligt."
+msgstr "Celuj %s optymalizacji, aby jak najszybciej zmniejszyć całkowity ślad."
 
 #: includes/class-vcarb-insights.php:218
 msgid "Test lighter packaging and fewer parcels per order."
-msgstr "Testa lättare förpackningar och färre paket per beställning."
+msgstr "Testuj lżejsze opakowania i mniej paczek na zamówienie."
 
 #. 1: number of completed orders, 2: total emissions in kg CO2.
 #: includes/class-vcarb-exports.php:1053
@@ -1680,121 +1688,124 @@ msgstr "Testa lättare förpackningar och färre paket per beställning."
 msgid ""
 "The report covers %1$d eligible orders with total emissions of %2$s kg CO₂."
 msgstr ""
-"Rapporten täcker %1$d berättigade beställningar med totala utsläpp på %2$s "
-"kg CO₂."
+"Raport obejmuje %1$d kwalifikowane zamówienia o łącznej emisji %2$s kg CO₂."
 
 #: includes/class-vcarb-insights.php:175
 msgid ""
 "This appears because average CO₂ per order increased above the efficiency "
 "threshold."
 msgstr ""
-"Detta beror på att genomsnittlig CO₂ per order ökade över "
-"effektivitetströskeln."
+"Wynika to z faktu, że średnia ilość CO₂ na zamówienie wzrosła powyżej progu "
+"sprawności."
 
 #: includes/class-vcarb-insights.php:203
 msgid ""
 "This appears because emissions increased while orders did not grow "
 "significantly."
 msgstr ""
-"Detta verkar bero på att utsläppen ökade medan beställningarna inte ökade "
-"nämnvärt."
+"Wynika to z faktu, że emisje wzrosły, podczas gdy zamówienia nie wzrosły "
+"znacząco."
 
 #: includes/class-vcarb-insights.php:371
 msgid ""
 "This appears because one emissions driver is above the hotspot risk "
 "threshold."
-msgstr "Detta beror på att en utsläppsförare ligger över hotspot-risktröskeln."
+msgstr ""
+"Wynika to z faktu, że jeden z czynników emisji przekracza próg ryzyka "
+"hotspotu."
 
 #: includes/class-vcarb-insights.php:396
 msgid ""
 "This appears because one emissions driver is above the hotspot warning "
 "threshold."
-msgstr "Detta beror på att en utsläppsförare är över hot-varningströskeln."
+msgstr ""
+"Wynika to z faktu, że jeden kierowca spalin przekracza próg ostrzegania o "
+"gorącym punkcie."
 
 #: includes/class-vcarb-insights.php:316
 msgid "This appears because order growth was stronger than emissions growth."
 msgstr ""
-"Detta verkar bero på att ordningstillväxten var starkare än "
-"utsläppstillväxten."
+"Wynika to z faktu, że wzrost zamówień był silniejszy niż wzrost emisji."
 
 #: includes/class-vcarb-insights.php:152
 msgid ""
 "This appears because order volume increased while estimated emissions "
 "decreased."
 msgstr ""
-"Detta verkar eftersom ordervolymen ökade medan uppskattade utsläpp minskade."
+"Wynika to z faktu, że liczba zamówień wzrosła, podczas gdy szacowane emisje "
+"spadły."
 
 #: includes/class-vcarb-insights.php:296
 msgid ""
 "This appears because orders decreased while estimated emissions increased."
 msgstr ""
-"Detta verkar bero på att beställningarna minskade medan uppskattade utsläpp "
-"ökade."
+"Wynika to z faktu, że zamówienia spadły, podczas gdy szacowane emisje "
+"wzrosły."
 
 #: includes/class-vcarb-insights.php:226
 msgid ""
 "This appears because shipping represents more than half of the selected "
 "period’s estimated emissions."
 msgstr ""
-"Detta verkar eftersom sjöfarten står för mer än hälften av den valda "
-"periodens uppskattade utsläpp."
+"Wynika to z faktu, że żegluga stanowi ponad połowę szacowanych emisji "
+"wybranego okresu."
 
 #: includes/class-vcarb-insights.php:340
 msgid ""
 "This appears because the emissions increase crossed the abnormal spike "
 "threshold."
 msgstr ""
-"Detta verkar bero på att utsläppsökningen överskred den onormala "
-"topptröskeln."
+"Wynika to z faktu, że wzrost emisji przekroczył nienormalny próg skoku."
 
 #: includes/class-vcarb-insights.php:105
 msgid ""
 "This appears because the plugin could not compare the selected period with a "
 "previous snapshot."
 msgstr ""
-"Detta beror på att pluginet inte kunde jämföra den valda perioden med en "
-"tidigare snapshot."
+"Wynika to z faktu, że wtyczka nie mogła porównać wybranego okresu z "
+"poprzednim migawką."
 
 #: includes/class-vcarb-insights.php:87
 msgid "This appears because the selected snapshot period has zero orders."
 msgstr ""
-"Detta uppstår eftersom den valda ögonblicksperioden har noll ordningar."
+"Dzieje się tak, ponieważ wybrany okres migawki nie ma żadnych porządków."
 
 #: includes/class-vcarb-insights.php:128
 msgid "This appears because total CO₂ increased above the high-risk threshold."
-msgstr "Detta beror på att total CO₂ ökade över högriskgränsen."
+msgstr ""
+"Wynika to z faktu, że całkowity poziom CO₂ wzrósł powyżej progu wysokiego "
+"ryzyka."
 
 #: includes/class-vcarb-insights.php:248
 msgid ""
 "This appears because total estimated CO₂ decreased beyond the positive "
 "threshold."
 msgstr ""
-"Detta beror på att den totala uppskattade CO₂ minskade bortom den positiva "
-"tröskeln."
+"Wynika to z faktu, że całkowity szacowany CO₂ spadł powyżej dodatniego progu."
 
 #: includes/class-vcarb-insights.php:274
 msgid ""
 "This appears because total estimated CO₂ increased above the warning "
 "threshold."
 msgstr ""
-"Detta verkar eftersom den totala uppskattade CO₂ ökade över varningströskeln."
+"Wynika to z faktu, że całkowity szacowany CO₂ wzrósł powyżej progu "
+"ostrzegawczego."
 
 #. %s: snapshot anchor period.
 #: includes/class-vcarb-exports.php:547 includes/class-vcarb-exports.php:1048
 #, php-format
 msgid "This export reflects snapshot period %s."
-msgstr "Denna export speglar ögonblicksperiod %s."
+msgstr "Ten eksport odzwierciedla okres migawkowy %s."
 
 #: includes/class-vcarb-exports.php:792 includes/class-vcarb-exports.php:995
 msgid "This export reflects the selected snapshot period only."
-msgstr "Denna export speglar endast den valda ögonblicksbildsperioden."
+msgstr "Ten eksport odzwierciedla tylko wybrany okres migawki."
 
 #: includes/class-vcarb-insights.php:310
 msgid ""
 "This indicates improving efficiency. Keep optimizations and monitor hotspots."
 msgstr ""
-"Detta indikerar förbättrad effektivitet. Behåll optimeringar och övervaka "
-"hotspots."
+"To wskazuje na poprawę efektywności. Stale optymalizuj i monitoruj hotspoty."
 
 #: includes/class-vcarb-reports-admin.php:968
 msgid ""
@@ -1802,17 +1813,17 @@ msgid ""
 "in your theme or main product website, not inside the WordPress.org plugin "
 "package."
 msgstr ""
-"Detta öppnar den nuvarande butikens hemsida. Marknadsföringslandningssidor "
-"bör finnas i ditt tema eller din huvudproduktwebbplats, inte i WordPress.org "
-"plugin-paketet."
+"To otwiera aktualną stronę główną sklepu. Strony docelowe marketingowe "
+"powinny znajdować się w Twoim motywie lub głównej stronie produktu, a nie w "
+"pakiecie WordPress.org plugin."
 
 #: includes/class-vcarb-insights.php:676
 msgid ""
 "This period has improvement opportunities based on emissions trend, "
 "efficiency, or hotspot concentration."
 msgstr ""
-"Denna period erbjuder förbättringsmöjligheter baserat på utsläppstrend, "
-"effektivitet eller hotspot-koncentration."
+"Ten okres daje możliwości poprawy w zależności od trendu emisji, "
+"efektywności lub koncentracji hotspotów."
 
 #. 1: total CO2, 2: orders, 3: CO2 per order.
 #: includes/class-vcarb-sustainability-summary.php:420
@@ -1821,8 +1832,8 @@ msgid ""
 "This period includes %1$s of estimated CO₂ across %2$s eligible orders, with "
 "an average intensity of %3$s per order."
 msgstr ""
-"Denna period inkluderar %1$s av uppskattad CO₂ över %2$s berättigade order, "
-"med en genomsnittlig intensitet på %3$s per order."
+"Okres ten obejmuje %1$s szacowanych CO₂ na %2$s uprawnionych zamówień, ze "
+"średnią intensywnością %3$s na zamówienie."
 
 #. 1: total CO2, 2: orders, 3: CO2 per order, 4: score, 5: score label.
 #: includes/class-vcarb-sustainability-summary.php:429
@@ -1832,38 +1843,39 @@ msgid ""
 "an average intensity of %3$s per order. The sustainability score is %4$s/"
 "100, rated %5$s."
 msgstr ""
-"Denna period inkluderar %1$s av uppskattad CO₂ över %2$s berättigade order, "
-"med en genomsnittlig intensitet på %3$s per order. Hållbarhetspoängen är "
-"%4$s/100, med betyg %5$s."
+"Okres ten obejmuje %1$s szacowanych CO₂ na %2$s uprawnionych zamówień, ze "
+"średnią intensywnością %3$s na zamówienie. Ocena zrównoważonego rozwoju to "
+"%4$s/100, oceną %5$s."
 
 #: includes/class-vcarb-insights.php:485
 msgid ""
 "This recommendation appears because CO₂ per order is above the configured "
 "threshold."
 msgstr ""
-"Denna rekommendation beror på att CO₂ per order ligger över den "
-"konfigurerade tröskeln."
+"Rekomendacja ta pojawia się, ponieważ CO₂ na zamówienie przekracza "
+"skonfigurowany próg."
 
 #: includes/class-vcarb-insights.php:503
 msgid ""
 "This recommendation appears because one or more risk insights were detected."
 msgstr ""
-"Denna rekommendation uppstår eftersom en eller flera riskinsikter upptäcktes."
+"To zalecenie pojawia się, ponieważ wykryto jedno lub więcej wniosków o "
+"ryzyku."
 
 #: includes/class-vcarb-insights.php:521
 msgid ""
 "This recommendation appears because the period has measurable estimated "
 "emissions."
 msgstr ""
-"Denna rekommendation kommer eftersom perioden har mätbara uppskattade "
-"utsläpp."
+"Rekomendacja ta pojawia się, ponieważ okres ten charakteryzuje się "
+"mierzalnymi szacunkami emisji."
 
 #: includes/class-vcarb-insights.php:459
 msgid ""
 "This recommendation appears because the selected snapshot has no orders."
 msgstr ""
-"Denna rekommendation uppstår eftersom den valda ögonblicksbild inte har "
-"några order."
+"To zalecenie pojawia się, ponieważ wybrany snapshot nie ma żadnych "
+"kolejności."
 
 #. 1: number of completed orders, 2: total emissions in kg CO2.
 #: includes/class-vcarb-exports.php:532
@@ -1871,16 +1883,15 @@ msgstr ""
 msgid ""
 "This report covers %1$d eligible orders with total emissions of %2$s kg CO₂."
 msgstr ""
-"Denna rapport täcker %1$d berättigade beställningar med totala utsläpp på "
-"%2$s kg CO₂."
+"Raport obejmuje %1$d kwalifikowane zamówienia o łącznej emisji %2$s kg CO₂."
 
 #: includes/class-vcarb-insights.php:661
 msgid ""
 "This score is based on the selected snapshot. Add more snapshot history for "
 "stronger trend analysis."
 msgstr ""
-"Denna poäng baseras på den valda ögonblicksbilden. Lägg till mer "
-"ögonblickshistorik för starkare trendanalys."
+"Ten wynik opiera się na wybranym migawku. Dodaj więcej historii migawek dla "
+"lepszej analizy trendów."
 
 #: includes/class-vcarb-sustainability-summary.php:156
 msgid ""
@@ -1889,150 +1900,152 @@ msgid ""
 "hotspot data, and deterministic local insight rules. Historical snapshots "
 "are intended to keep reporting consistent over time."
 msgstr ""
-"Denna sammanfattning genereras från sparade VerdantCart Carbon Reports "
-"ögonblicksbildsdata. Den använder kvalificerade WooCommerce-orderposter, "
-"lagrade utsläppstotaler, hotspot-data och deterministiska lokala "
-"insiktsregler. Historiska ögonblicksbilder är avsedda att hålla "
-"rapporteringen konsekvent över tid."
+"To podsumowanie zostało wygenerowane na podstawie zapisanych danych z "
+"raportów węglowych VerdantCart. Wykorzystuje kwalifikujące się rekordy "
+"zamówień WooCommerce, sumy magazynowanych emisji, dane z hotspotów oraz "
+"deterministyczne lokalne reguły wglądu. Historyczne migawki mają na celu "
+"utrzymanie spójności raportowania w czasie."
 
 #: includes/class-vcarb-exports.php:169
 msgid "Too many export requests. Please try again shortly."
-msgstr "För många exportförfrågningar. Försök igen snart."
+msgstr "Za dużo próśb eksportowych. Proszę, spróbuj ponownie wkrótce."
 
 #: includes/class-vcarb-exports.php:170
 msgid "Too Many Requests"
-msgstr "För många förfrågningar"
+msgstr "Za dużo próśb"
 
 #: includes/trait-vcarb-ajax-helpers.php:108
 msgid "Too many requests"
-msgstr "För många förfrågningar"
+msgstr "Za dużo żądań"
 
 #: public/class-vcarb-dashboard.php:368
 msgid "Too many requests."
-msgstr "För många önskemål."
+msgstr "Za dużo próśb."
 
 #: public/class-vcarb-dashboard.php:219 public/class-vcarb-dashboard.php:995
 msgid "Top emitting products for this period."
-msgstr "Produkter med de mest utsläppta produkterna under denna period."
+msgstr "Produkty o największej emisji w tym okresie."
 
 #: includes/class-vcarb-sustainability-summary.php:137
 msgid "Top hotspots"
-msgstr "Topphotspots"
+msgstr "Najlepsze miejsca"
 
 #: includes/class-vcarb-sustainability-summary.php:146
 msgid "Top positives"
-msgstr "Topppositiva punkter"
+msgstr "Najważniejsze pozytywy"
 
 #: includes/class-vcarb-reports-admin.php:1377
 msgid "Top products contributing to emissions."
-msgstr "Toppprodukter som bidrar till utsläpp."
+msgstr "Najlepsze produkty przyczyniające się do emisji."
 
 #: includes/class-vcarb-sustainability-summary.php:147
 msgid "Top risks"
-msgstr "Topprisker"
+msgstr "Największe ryzyko"
 
 #: includes/class-vcarb-reports-admin.php:1298
 #: includes/class-vcarb-reports-admin.php:1406
 #: includes/class-vcarb-sustainability-summary.php:118
 msgid "Total CO₂"
-msgstr "Total CO₂"
+msgstr "Całkowity CO₂"
 
 #: includes/class-vcarb-exports.php:661 includes/class-vcarb-exports.php:697
 #: includes/class-vcarb-exports.php:712 includes/class-vcarb-exports.php:1116
 #: includes/class-vcarb-exports.php:1153
 msgid "Total CO₂ (kg)"
-msgstr "Total CO₂ (kg)"
+msgstr "Całkowity CO₂ (kg)"
 
 #: includes/class-vcarb-exports.php:887
 msgid "Total CO₂ Emissions"
-msgstr "Totala CO₂-utsläpp"
+msgstr "Całkowite emisje CO₂"
 
 #. %s: percentage decrease in total CO2.
 #: includes/class-vcarb-insights.php:237
 #, php-format
 msgid "Total CO₂ is down %s versus the previous period."
-msgstr "Total CO₂ är lägre %s jämfört med föregående period."
+msgstr "Całkowity CO₂ spadł %s w porównaniu z poprzednim okresem."
 
 #. %s: percentage increase versus previous period.
 #. %s: percentage increase in total CO2.
 #: includes/class-vcarb-insights.php:116 includes/class-vcarb-insights.php:263
 #, php-format
 msgid "Total CO₂ is up %s versus the previous period."
-msgstr "Total CO₂ har ökat %s jämfört med föregående period."
+msgstr "Całkowity CO₂ wzrósł %s w porównaniu z poprzednim okresem."
 
 #. %s: percentage increase in total CO2.
 #: includes/class-vcarb-insights.php:191
 #, php-format
 msgid "Total CO₂ rose %s while order volume stayed roughly flat."
-msgstr "Total CO₂ steg %s medan ordervolymen förblev ungefär oförändrad."
+msgstr ""
+"Całkowity CO₂ wzrósł %s podczas gdy wolumen zamówień pozostał mniej więcej "
+"na tym samym poziomie."
 
 #: includes/class-vcarb-exports.php:664 includes/class-vcarb-exports.php:700
 #: includes/class-vcarb-exports.php:899 includes/class-vcarb-exports.php:1136
 msgid "Total CO₂ vs Previous"
-msgstr "Total CO₂ jämfört med tidigare"
+msgstr "Całkowite CO₂ vs Poprzednie"
 
 #: public/class-vcarb-dashboard.php:1061
 msgid "Total emissions"
-msgstr "Totala utsläpp"
+msgstr "Emisje całkowite"
 
 #: includes/class-vcarb-exports.php:79 includes/trait-vcarb-ajax-helpers.php:25
 #: public/class-vcarb-dashboard.php:336
 msgid "Unauthorized"
-msgstr "Obehörig"
+msgstr "Brak autoryzacji"
 
 #: includes/class-vcarb-exports.php:89
 msgid "Unauthorized."
-msgstr "Obehörig."
+msgstr "Nieautoryzowany."
 
 #: includes/class-vcarb-insights.php:818
 msgid "Unknown driver"
-msgstr "Okänd förare"
+msgstr "Nieznany kierowca"
 
 #: includes/class-vcarb-sustainability-summary.php:479
 msgid "Unknown product"
-msgstr "Okänd produkt"
+msgstr "Produkt nieznany"
 
 #: includes/class-vcarb-exports.php:714 includes/class-vcarb-exports.php:1155
 #: includes/class-vcarb-reports-admin.php:1408
 msgid "Updated"
-msgstr "Uppdaterad"
+msgstr "Zaktualizowano"
 
 #: includes/class-vcarb-insights.php:99
 msgid "Use historical browsing once more periods are available."
-msgstr "Använd historisk bläddring när fler perioder finns tillgängliga."
+msgstr "Korzystaj z przeglądania historii, gdy dostępne są kolejne okresy."
 
 #: includes/class-vcarb-reports-admin.php:873
 msgid ""
 "Use this page as your control center for reporting, backfill, customer "
 "insights, and public store pages."
 msgstr ""
-"Använd denna sida som ditt kontrollcenter för rapportering, backfill, "
-"kundinsikter och publika butikssidor."
+"Korzystaj z tej strony jako centrum sterowania do raportowania, "
+"uzupełniania, informacji o klientach oraz publicznych stron sklepu."
 
 #: includes/class-vcarb-exports.php:709 includes/class-vcarb-exports.php:1150
 #: includes/class-vcarb-reports-admin.php:1403
 msgid "User"
-msgstr "Användare"
+msgstr "Użytkownik"
 
 #. %d: WordPress user ID.
 #: includes/class-vcarb-dataset-service.php:685
 #: includes/class-vcarb-dataset-service.php:694
 msgid "User #%d"
-msgstr "Användare #%d"
+msgstr "Użytkownik #%d"
 
 #: includes/class-vcarb-exports.php:871
 msgid "User ID"
-msgstr "Användar-ID"
+msgstr "Identyfikator użytkownika"
 
 #: includes/class-vcarb-reports-admin.php:1055
 msgid "Uses idempotency flags to prevent double counting."
-msgstr "Använder idempotensflaggor för att förhindra dubbelräkning."
+msgstr "Używa flag idempotencji, aby zapobiec podwójnemu liczeniu."
 
 #: includes/class-vcarb-exports.php:658 includes/class-vcarb-exports.php:683
 #: includes/class-vcarb-exports.php:694 includes/class-vcarb-exports.php:786
 #: includes/class-vcarb-exports.php:989
 msgid "Value"
-msgstr "Värde"
+msgstr "Wartość"
 
 #: verdantcart-ai-reports.php:691
 #: includes/class-vcarb-plugin-pages-admin.php:98
@@ -2042,122 +2055,124 @@ msgstr "VerdantCart"
 
 #: public/class-vcarb-dashboard.php:1421
 msgid "VERDANTCART CARBON REPORTS"
-msgstr "VERDANTCART KOLRAPPORTER"
+msgstr "RAPORTY O EMISJI WĘGLOWEJ VERDANTCART"
 
 #. Name of the plugin
 #: verdantcart-ai-reports.php:690 includes/class-vcarb-reports-admin.php:136
 msgid "VerdantCart Carbon Reports"
-msgstr "VerdantCart-kolrapporter"
+msgstr "Raporty węglowe VerdantCart"
 
 #: verdantcart-ai-reports.php:208
 msgid "VerdantCart Carbon Reports:"
-msgstr "VerdantCart-kolrapporter:"
+msgstr "VerdantCart Carbon raportuje:"
 
 #: includes/class-vcarb-reports-activator.php:128
 msgid "VerdantCart Dashboard"
-msgstr "VerdantCart-instrumentbrädan"
+msgstr "VerdantCart Dashboard"
 
 #: includes/class-vcarb-plugin-pages-admin.php:121
 #: includes/class-vcarb-plugin-pages-admin.php:221
 msgid "VerdantCart page"
-msgstr "VerdantCart-sidan"
+msgstr "Strona VerdantCart"
 
 #: includes/class-vcarb-plugin-pages-admin.php:137
 msgid "VerdantCart pages"
-msgstr "VerdantCart-sidor"
+msgstr "Strony VerdantCart"
 
 #: includes/class-vcarb-reports-admin.php:1193
 msgid "VerdantCart — All Customers"
-msgstr "VerdantCart — Alla kunder"
+msgstr "VerdantCart — Wszyscy klienci"
 
 #: includes/class-vcarb-exports.php:970 includes/class-vcarb-exports.php:1076
 #: includes/class-vcarb-exports.php:1084
 msgid "VerdantCart — All Customers Report"
-msgstr "VerdantCart — Alla kunder rapporterar"
+msgstr "VerdantCart — Raport wszystkich klientów"
 
 #: includes/class-vcarb-reports-admin.php:1042
 msgid "VerdantCart — Backfill"
-msgstr "VerdantCart — Fyllnadsplats"
+msgstr "VerdantCart — Zasypywanie"
 
 #: includes/class-vcarb-reports-admin.php:864
 msgid "VerdantCart — Overview"
-msgstr "VerdantCart — Översikt"
+msgstr "VerdantCart — Przegląd"
 
 #: includes/class-vcarb-reports-admin.php:797
 msgid "VerdantCart — Sustainability Report"
-msgstr "VerdantCart — Hållbarhetsrapport"
+msgstr "VerdantCart — Raport o zrównoważonym rozwoju"
 
 #: includes/class-vcarb-exports.php:776 includes/class-vcarb-exports.php:845
 #: includes/class-vcarb-exports.php:853
 msgid "VerdantCart — User Report"
-msgstr "VerdantCart — Användarrapport"
+msgstr "VerdantCart — Raport użytkownika"
 
 #: includes/class-vcarb-insights.php:80
 msgid "Verify checkout and payment flow."
-msgstr "Verifiera kassa och betalningsflöde."
+msgstr "Sprawdź dokonanie płatności i przepływ płatności."
 
 #: includes/class-vcarb-insights.php:449
 msgid "Verify order pipeline"
-msgstr "Verifiera orderpipeline"
+msgstr "Weryfikacja potoku zamówień"
 
 #: includes/class-vcarb-exports.php:472 includes/class-vcarb-exports.php:488
 #: includes/class-vcarb-exports.php:875 includes/class-vcarb-exports.php:1104
 #: includes/class-vcarb-sustainability-summary.php:96
 msgid "View"
-msgstr "Visa"
+msgstr "Zobacz"
 
 #: public/class-vcarb-dashboard.php:942
 msgid "View Orders"
-msgstr "Visa ordrar"
+msgstr "Zobacz zamówienia"
 
 #: includes/class-vcarb-reports-admin.php:963
 msgid "View Plans & Services"
-msgstr "Visa planer och tjänster"
+msgstr "Zobacz plany i usługi"
 
 #: includes/class-vcarb-reports-admin.php:922
 msgid "View store-wide KPIs, charts, exports, and customer breakdown."
-msgstr "Se butiksövergripande KPI:er, diagram, export och kunduppdelning."
+msgstr ""
+"Zobacz wskaźniki KPI dla całego sklepu, wykresy, eksport oraz podział "
+"klientów."
 
 #: includes/class-vcarb-reports-admin.php:959
 msgid "Visit Store Homepage"
-msgstr "Besök butikens hemsida"
+msgstr "Odwiedź stronę główną sklepu"
 
 #: includes/class-vcarb-insights-renderer.php:216
 #: includes/class-vcarb-insights-renderer.php:225
 #: public/class-vcarb-dashboard.php:212
 msgid "Warnings"
-msgstr "Varningar"
+msgstr "Ostrzeżenia"
 
 #: includes/class-vcarb-reports-admin.php:810
 #: includes/class-vcarb-reports-admin.php:1239
 #: public/class-vcarb-dashboard.php:1578
 msgid "Week"
-msgstr "Vecka"
+msgstr "Tydzień"
 
 #. 1: ISO week number, 2: 4-digit year.
 #: includes/class-vcarb-exports.php:434
 #, php-format
 msgid "Week %1$02d, %2$04d"
-msgstr "Vecka %1$02d, %2$04d"
+msgstr "Tydzień %1$02d, %2$04d"
 
 #. 1: ISO week number, 2: year.
 #: includes/class-vcarb-sustainability-summary.php:325
 #: public/class-vcarb-dashboard.php:505
 #, php-format
 msgid "Week %1$s, %2$s"
-msgstr "Vecka %1$s, %2$s"
+msgstr "Tydzień %1$s, %2$s"
 
 #: includes/class-vcarb-reports-admin.php:871
 msgid "Welcome to VerdantCart"
-msgstr "Välkommen till VerdantCart"
+msgstr "Witamy w VerdantCart"
 
 #: includes/class-vcarb-reports-admin.php:1049
 msgid "What this does"
-msgstr "Vad detta gör"
+msgstr "Co to robi"
 
 #: includes/class-vcarb-insights-renderer.php:338
 msgid "Why this appears"
-msgstr "Varför detta dyker upp"
+msgstr "Dlaczego to się pojawia"
 
 #: includes/class-vcarb-reports-admin.php:984
 msgid "WooCommerce"
@@ -2165,25 +2180,25 @@ msgstr "WooCommerce"
 
 #: includes/class-vcarb-reports-admin.php:879
 msgid "WooCommerce connected"
-msgstr "WooCommerce kopplat"
+msgstr "WooCommerce połączone"
 
 #: includes/class-vcarb-backfill-ajax.php:36
 msgid "WooCommerce is not active."
-msgstr "WooCommerce är inte aktivt."
+msgstr "WooCommerce nie jest aktywny."
 
 #: verdantcart-ai-reports.php:210
 msgid "WooCommerce is required for this plugin to run."
-msgstr "WooCommerce krävs för att detta plugin ska kunna köras."
+msgstr "Do działania tej wtyczki wymagany jest WooCommerce."
 
 #: includes/class-vcarb-reports-admin.php:879
 msgid "WooCommerce missing"
-msgstr "WooCommerce saknas"
+msgstr "Brak WooCommerce"
 
 #: includes/class-vcarb-reports-admin.php:814
 #: includes/class-vcarb-reports-admin.php:1246
 #: public/class-vcarb-dashboard.php:1579
 msgid "Year"
-msgstr "År"
+msgstr "Rok"
 
 #. Author of the plugin
 msgid "Yonas"
@@ -2196,16 +2211,17 @@ msgstr "Yonas"
 #: includes/class-vcarb-reports-admin.php:1109
 #: includes/gc-vcarb-admin-guard.php:128
 msgid "You do not have permission to access this page."
-msgstr "Du har inte behörighet att komma åt den här sidan."
+msgstr "Nie masz zgody na dostęp do tej strony."
 
 #: includes/class-vcarb-exports.php:78
 msgid "You must be logged in to export."
-msgstr "Du måste vara inloggad för att exportera."
+msgstr "Aby eksportować, musisz być zalogowany."
 
 #: includes/class-vcarb-insights.php:669
 msgid "Your CO₂ per order improved compared with the previous snapshot period."
 msgstr ""
-"Din CO₂ per beställning förbättrades jämfört med föregående ögonblicksperiod."
+"Twój CO₂ na zamówienie poprawił się w porównaniu do poprzedniego okresu "
+"snapshot."
 
 #: includes/class-vcarb-dataset-service.php:919
 #: includes/class-vcarb-insights.php:665
@@ -2213,40 +2229,42 @@ msgid ""
 "Your estimated emissions decreased compared with the previous snapshot "
 "period."
 msgstr ""
-"Dina uppskattade utsläpp minskade jämfört med föregående ögonblicksperiod."
+"Twoje szacowane emisje zmniejszyły się w porównaniu do poprzedniego okresu "
+"snapshot."
 
 #: includes/class-vcarb-dataset-service.php:923
 msgid ""
 "Your estimated emissions increased compared with the previous snapshot "
 "period."
 msgstr ""
-"Dina uppskattade utsläpp ökade jämfört med föregående ögonblicksperiod."
+"Twoje szacowane emisje wzrosły w porównaniu do poprzedniego okresu snapshot."
 
 #: includes/class-vcarb-dataset-service.php:926
 msgid ""
 "Your estimated emissions stayed nearly unchanged compared with the previous "
 "snapshot period."
 msgstr ""
-"Dina uppskattade utsläpp förblev nästan oförändrade jämfört med föregående "
-"ögonblicksperiod."
+"Twoje szacowane emisje pozostały niemal niezmienione w porównaniu do "
+"poprzedniego okresu snapshot."
 
 #: includes/class-vcarb-insights.php:673
 msgid ""
 "Your snapshot data shows a stable sustainability profile for this period."
 msgstr ""
-"Dina ögonblicksdata visar en stabil hållbarhetsprofil för denna period."
+"Twoje dane migawkowe pokazują stabilny profil zrównoważonego rozwoju w tym "
+"okresie."
 
 #: includes/class-vcarb-insights-ajax.php:225
 msgid "Your Sustainability Insights"
-msgstr "Dina hållbarhetsinsikter"
+msgstr "Twoje spostrzeżenia dotyczące zrównoważonego rozwoju"
 
 #: includes/class-vcarb-dataset-service.php:913
 msgid ""
 "Your sustainability score is based on CO₂ per order, emissions trend, "
 "reporting history, and hotspot concentration."
 msgstr ""
-"Din hållbarhetspoäng baseras på CO₂ per order, utsläppstrend, "
-"rapporteringshistorik och hotspot-koncentration."
+"Twój wynik zrównoważonego rozwoju opiera się na CO₂ na zamówienie, trendzie "
+"emisji, historii raportowania oraz stężeniu hotspotów."
 
 #: includes/class-vcarb-exports.php:1154
 #: includes/class-vcarb-reports-admin.php:1407
@@ -2256,7 +2274,7 @@ msgstr "Δ CO₂"
 #: includes/class-vcarb-exports.php:1152
 #: includes/class-vcarb-reports-admin.php:1405
 msgid "Δ Orders"
-msgstr "Δ Orders"
+msgstr "Δ Rozkazy"
 
 #: includes/class-vcarb-dataset-service.php:962
 #: includes/class-vcarb-insights.php:545 public/class-vcarb-dashboard.php:1117
@@ -2268,10 +2286,10 @@ msgstr "—"
 #: includes/class-vcarb-dataset-service.php:991
 #, php-format
 msgid "↑ %s%% vs previous"
-msgstr "↑ %s%% jämfört med tidigare"
+msgstr "↑ %s%% vs poprzednie"
 
 #. %s: percentage change compared with previous period.
 #: includes/class-vcarb-dataset-service.php:984
 #, php-format
 msgid "↓ %s%% vs previous"
-msgstr "↓ %s%% jämfört med tidigare"
+msgstr "↓ %s%% vs poprzednie"
