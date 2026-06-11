@@ -1165,3 +1165,96 @@ body.gc-layout--app .gc-shell {
         box-shadow: none !important;
     }
 }
+
+/* ==================================================
+   VerdantCart AI Pro - Mobile Advanced Page
+   ================================================== */
+
+@media (max-width: 782px) {
+
+    /* Main cards */
+    .vcartpro-advanced-grid,
+    .vcartpro-pro-grid,
+    .vcartpro-license-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Feature card */
+    .vcartpro-features-card,
+    .vcartpro-license-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* License rows */
+    .vcartpro-license-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .vcartpro-license-meta-row {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    /* Long license keys */
+    .vcartpro-license-key {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    /* Buttons */
+    .vcartpro-license-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .vcartpro-license-actions .button,
+    .vcartpro-license-actions .button-primary {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Pricing buttons */
+    .vcartpro-upsell-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .vcartpro-upsell-actions .button,
+    .vcartpro-upsell-actions .button-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Comparison table */
+    .vcartpro-comparison-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .vcartpro-comparison-table table {
+        min-width: 500px;
+    }
+
+    /* Smaller spacing */
+    .vcartpro-features-card,
+    .vcartpro-license-card {
+        padding: 20px;
+    }
+
+    .vcartpro-features-card h2,
+    .vcartpro-license-card h2 {
+        font-size: 24px;
+        line-height: 1.3;
+    }
+}

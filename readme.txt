@@ -137,15 +137,16 @@ No. VerdantCart Carbon Reports provides operational sustainability summaries and
 == Changelog ==
 
 = 1.2.2 =
-* Added improved VerdantCart AI Pro experience.
-* Added feature descriptions and Free vs Pro comparison table.
-* Improved license management interface and upgrade flow.
-* Added direct product, pricing, and upgrade links.
-* Updated plugin website and author branding to VerdantCart AI.
-* Improved VerdantCart naming consistency across plugin metadata.
-* Removed remaining legacy references and internal cleanup.
-* Improved admin UI consistency, maintainability, and usability.
-* Various stability and code quality improvements.
+* Enhanced VerdantCart AI Pro experience and upgrade workflow.
+* Added detailed feature descriptions and a Free vs Pro comparison table.
+* Improved license management interface and validation experience.
+* Added direct links to product, pricing, documentation, and upgrade resources.
+* Updated plugin branding, author information, and website references to VerdantCart AI.
+* Improved branding consistency throughout plugin metadata and admin screens.
+* Removed legacy references and completed internal codebase cleanup.
+* Improved Advanced Reporting admin page layout and usability.
+* Enhanced overall admin UI consistency and maintainability.
+* General stability, performance, and code quality improvements.
 
 = 1.2.1 =
 * Fixed: undefined method `VCARB_Export_Audit::table()` causing a fatal error on CSV and PDF export requests.

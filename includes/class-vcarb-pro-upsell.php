@@ -196,22 +196,6 @@ class VCARB_Pro_Upsell
      */
     private function resolve_pricing_url(): string
     {
-        $page = get_page_by_path('pricing', OBJECT, 'page');
-
-        if ($page instanceof WP_Post && $page->post_status !== 'trash') {
-            $permalink = get_permalink($page->ID);
-            if (is_string($permalink) && '' !== $permalink) {
-                return $permalink;
-            }
-        }
-
-        /**
-         * Filter the upgrade-to-Pro URL when the local /pricing/ page
-         * isn't available. Use this to point at your hosted checkout
-         * (LemonSqueezy, EDD, Gumroad, etc.) instead of a marketing page.
-         *
-         * @param string $url Default fallback URL.
-         */
         return (string) apply_filters(
             'vcarb_pro_upgrade_url',
             'https://verdantcart.ai/pricing/'

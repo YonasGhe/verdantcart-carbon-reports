@@ -155,6 +155,7 @@ class VCARB_Reports_Admin
         self::PAGE_ALL_CUSTOMERS,
         self::PAGE_BACKFILL,
         self::PAGE_SUSTAINABILITY_SUMMARY,
+        self::PAGE_ADVANCED,
       ],
       true
     );
@@ -692,32 +693,12 @@ class VCARB_Reports_Admin
 
   private static function get_public_home_url(): string
   {
-    $front_page_id = (int) get_option('page_on_front', 0);
-
-    if ($front_page_id > 0) {
-      $permalink = get_permalink($front_page_id);
-
-      if (is_string($permalink) && $permalink !== '') {
-        return $permalink;
-      }
-    }
-
-    return home_url('/');
+    return 'https://verdantcart.ai/';
   }
 
   private static function get_public_plans_url(): string
   {
-    $page = get_page_by_path('pricing', OBJECT, 'page');
-
-    if ($page instanceof WP_Post && $page->post_status !== 'trash') {
-      $permalink = get_permalink($page->ID);
-
-      if (is_string($permalink) && $permalink !== '') {
-        return $permalink;
-      }
-    }
-
-    return home_url('/pricing/');
+    return 'https://verdantcart.ai/pricing/';
   }
 
   /* -------------------------------------------------------------------------
@@ -1067,7 +1048,7 @@ class VCARB_Reports_Admin
     $upsell = VCARB_Pro_Upsell::instance();
 
     $pricing_url    = $upsell->build_upgrade_url('advanced_page');
-    $learn_more_url = home_url('/');
+    $learn_more_url = 'https://verdantcart.ai/';
 
     /*
      * Save license.
@@ -1075,7 +1056,7 @@ class VCARB_Reports_Admin
     if (
       isset($_POST['vcarb_activate_license']) &&
       check_admin_referer('vcarb_activate_license')
-    ) { 
+    ) {
 
       $license = isset($_POST['vcarb_license_key'])
         ? sanitize_text_field(wp_unslash($_POST['vcarb_license_key']))
@@ -1114,108 +1095,108 @@ class VCARB_Reports_Admin
     }
 
   ?>
- 
-<div class="wrap">
 
-    <h1><?php esc_html_e( 'VerdantCart AI Pro', 'verdantcart-ai-reports' ); ?></h1>
+    <div class="wrap">
 
-    <p>
+      <h1><?php esc_html_e('VerdantCart AI Pro', 'verdantcart-ai-reports'); ?></h1>
+
+      <p>
         <?php
         esc_html_e(
-            'Advanced sustainability intelligence and executive reporting for WooCommerce.',
-            'verdantcart-ai-reports'
+          'Advanced sustainability intelligence and executive reporting for WooCommerce.',
+          'verdantcart-ai-reports'
         );
         ?>
-    </p>
+      </p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;max-width:1200px;">
+      <div class="vcarb-pro-advanced-grid">
 
         <!-- PRO FEATURES -->
 
         <div class="postbox" style="padding:20px;">
 
-            <h2 style="margin-top:0;">
-                <?php esc_html_e( 'Included in Pro', 'verdantcart-ai-reports' ); ?>
-            </h2>
+          <h2 style="margin-top:0;">
+            <?php esc_html_e('Included in Pro', 'verdantcart-ai-reports'); ?>
+          </h2>
 
-            <div style="margin-bottom:18px;">
-                <strong><?php esc_html_e( 'Executive Summary', 'verdantcart-ai-reports' ); ?></strong>
-                <p>
-                    <?php esc_html_e(
-                        'AI-generated sustainability overview for managers and stakeholders.',
-                        'verdantcart-ai-reports'
-                    ); ?>
-                </p>
-            </div>
-
-            <div style="margin-bottom:18px;">
-                <strong><?php esc_html_e( 'Scheduled Reports', 'verdantcart-ai-reports' ); ?></strong>
-                <p>
-                    <?php esc_html_e(
-                        'Automatically generate and deliver reports on a schedule.',
-                        'verdantcart-ai-reports'
-                    ); ?>
-                </p>
-            </div>
-
-            <div style="margin-bottom:18px;">
-                <strong><?php esc_html_e( 'Goal Tracking', 'verdantcart-ai-reports' ); ?></strong>
-                <p>
-                    <?php esc_html_e(
-                        'Monitor progress against sustainability targets.',
-                        'verdantcart-ai-reports'
-                    ); ?>
-                </p>
-            </div>
-
-            <div style="margin-bottom:18px;">
-                <strong><?php esc_html_e( 'Advanced Analytics', 'verdantcart-ai-reports' ); ?></strong>
-                <p>
-                    <?php esc_html_e(
-                        'Deeper trend analysis and performance reporting.',
-                        'verdantcart-ai-reports'
-                    ); ?>
-                </p>
-            </div>
-
-            <div>
-                <strong><?php esc_html_e( 'AI Recommendations', 'verdantcart-ai-reports' ); ?></strong>
-                <p>
-                    <?php esc_html_e(
-                        'Actionable recommendations for reducing environmental impact.',
-                        'verdantcart-ai-reports'
-                    ); ?>
-                </p>
-            </div>
-
-            <hr>
-
+          <div class="vcarb-pro-feature">
+            <strong><?php esc_html_e('Executive Summary', 'verdantcart-ai-reports'); ?></strong>
             <p>
-                <strong>$9/month</strong><br>
-                <strong>$89/year</strong><br>
-                <em><?php esc_html_e(
-                    'Save 18% with annual billing.',
-                    'verdantcart-ai-reports'
+              <?php esc_html_e(
+                'AI-generated sustainability overview for managers and stakeholders.',
+                'verdantcart-ai-reports'
+              ); ?>
+            </p>
+          </div>
+
+          <div class="vcarb-pro-feature">
+            <strong><?php esc_html_e('Scheduled Reports', 'verdantcart-ai-reports'); ?></strong>
+            <p>
+              <?php esc_html_e(
+                'Automatically generate and deliver reports on a schedule.',
+                'verdantcart-ai-reports'
+              ); ?>
+            </p>
+          </div>
+
+          <div class="vcarb-pro-feature">
+            <strong><?php esc_html_e('Goal Tracking', 'verdantcart-ai-reports'); ?></strong>
+            <p>
+              <?php esc_html_e(
+                'Monitor progress against sustainability targets.',
+                'verdantcart-ai-reports'
+              ); ?>
+            </p>
+          </div>
+
+          <div class="vcarb-pro-feature">
+            <strong><?php esc_html_e('Advanced Analytics', 'verdantcart-ai-reports'); ?></strong>
+            <p>
+              <?php esc_html_e(
+                'Deeper trend analysis and performance reporting.',
+                'verdantcart-ai-reports'
+              ); ?>
+            </p>
+          </div>
+
+          <div class="vcarb-pro-feature">
+            <strong><?php esc_html_e('AI Recommendations', 'verdantcart-ai-reports'); ?></strong>
+            <p>
+              <?php esc_html_e(
+                'Actionable recommendations for reducing environmental impact.',
+                'verdantcart-ai-reports'
+              ); ?>
+            </p>
+          </div>
+
+          <hr>
+
+          <p>
+            <strong>$9/month</strong><br>
+            <strong>$89/year</strong><br>
+            <em><?php esc_html_e(
+                  'Save 18% with annual billing.',
+                  'verdantcart-ai-reports'
                 ); ?></em>
-            </p>
+          </p>
 
-            <p>
-                <a
-                    class="button button-secondary"
-                    href="<?php echo esc_url( $learn_more_url ); ?>"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    <?php esc_html_e( 'Learn More', 'verdantcart-ai-reports' ); ?>
-                </a>
+          <p>
+            <a
+              class="button button-secondary"
+              href="<?php echo esc_url($learn_more_url); ?>"
+              target="_blank"
+              rel="noopener noreferrer">
+              <?php esc_html_e('Learn More', 'verdantcart-ai-reports'); ?>
+            </a>
 
-                <a
-                    class="button button-primary"
-                    href="<?php echo esc_url( $pricing_url ); ?>"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    <?php esc_html_e( 'Upgrade to Pro', 'verdantcart-ai-reports' ); ?>
-                </a>
-            </p>
+            <a
+              class="button button-primary"
+              href="<?php echo esc_url($pricing_url); ?>"
+              target="_blank"
+              rel="noopener noreferrer">
+              <?php esc_html_e('Upgrade to Pro', 'verdantcart-ai-reports'); ?>
+            </a>
+          </p>
 
         </div>
 
@@ -1223,18 +1204,18 @@ class VCARB_Reports_Admin
 
         <div class="postbox" style="padding:20px;">
 
-            <h2 style="margin-top:0;">
-                <?php esc_html_e( 'License Management', 'verdantcart-ai-reports' ); ?>
-            </h2>
+          <h2 style="margin-top:0;">
+            <?php esc_html_e('License Management', 'verdantcart-ai-reports'); ?>
+          </h2>
 
-            <form method="post">
+          <form method="post">
 
-                <?php wp_nonce_field( 'vcarb_activate_license' ); ?>
+            <?php wp_nonce_field('vcarb_activate_license'); ?>
 
-                <?php if ( ! empty( $license_key ) ) : ?>
+            <?php if (! empty($license_key)) : ?>
 
-                    <div
-                        style="
+              <div
+                style="
                             background:#ecfdf5;
                             border:1px solid #bbf7d0;
                             border-radius:8px;
@@ -1242,62 +1223,62 @@ class VCARB_Reports_Admin
                             margin-bottom:20px;
                         ">
 
-                        <strong style="color:#166534;">
-                            <?php esc_html_e( '✓ License Active', 'verdantcart-ai-reports' ); ?>
-                        </strong>
+                <strong style="color:#166534;">
+                  <?php esc_html_e('✓ License Active', 'verdantcart-ai-reports'); ?>
+                </strong>
 
-                    </div>
+              </div>
 
-                    <table class="form-table">
+              <table class="form-table">
 
-                        <tr>
-                            <th>
-                                <?php esc_html_e( 'Plan', 'verdantcart-ai-reports' ); ?>
-                            </th>
-                            <td>VerdantCart AI Pro</td>
-                        </tr>
+                <tr>
+                  <th>
+                    <?php esc_html_e('Plan', 'verdantcart-ai-reports'); ?>
+                  </th>
+                  <td>VerdantCart AI Pro</td>
+                </tr>
 
-                        <tr>
-                            <th>
-                                <?php esc_html_e( 'License Key', 'verdantcart-ai-reports' ); ?>
-                            </th>
-                            <td>
-                                <code><?php echo esc_html( $masked_key ); ?></code>
-                            </td>
-                        </tr>
+                <tr>
+                  <th>
+                    <?php esc_html_e('License Key', 'verdantcart-ai-reports'); ?>
+                  </th>
+                  <td>
+                    <code><?php echo esc_html($masked_key); ?></code>
+                  </td>
+                </tr>
 
-                        <tr>
-                            <th>
-                                <?php esc_html_e( 'Status', 'verdantcart-ai-reports' ); ?>
-                            </th>
-                            <td>
-                                <?php esc_html_e( 'Valid', 'verdantcart-ai-reports' ); ?>
-                            </td>
-                        </tr>
+                <tr>
+                  <th>
+                    <?php esc_html_e('Status', 'verdantcart-ai-reports'); ?>
+                  </th>
+                  <td>
+                    <?php esc_html_e('Valid', 'verdantcart-ai-reports'); ?>
+                  </td>
+                </tr>
 
-                    </table>
+              </table>
 
-                    <p>
+              <p>
 
-                        <button
-                            type="submit"
-                            name="vcarb_deactivate_license"
-                            class="button">
-                            <?php esc_html_e( 'Deactivate', 'verdantcart-ai-reports' ); ?>
-                        </button>
+                <button
+                  type="submit"
+                  name="vcarb_deactivate_license"
+                  class="button">
+                  <?php esc_html_e('Deactivate', 'verdantcart-ai-reports'); ?>
+                </button>
 
-                        <button
-                            type="button"
-                            class="button">
-                            <?php esc_html_e( 'Re-validate', 'verdantcart-ai-reports' ); ?>
-                        </button>
+                <button
+                  type="button"
+                  class="button">
+                  <?php esc_html_e('Re-validate', 'verdantcart-ai-reports'); ?>
+                </button>
 
-                    </p>
+              </p>
 
-                <?php else : ?>
+            <?php else : ?>
 
-                    <div
-                        style="
+              <div
+                style="
                             background:#fef2f2;
                             border:1px solid #fecaca;
                             border-radius:8px;
@@ -1305,109 +1286,109 @@ class VCARB_Reports_Admin
                             margin-bottom:20px;
                         ">
 
-                        <strong style="color:#b91c1c;">
-                            <?php esc_html_e( 'No active license', 'verdantcart-ai-reports' ); ?>
-                        </strong>
+                <strong style="color:#b91c1c;">
+                  <?php esc_html_e('No active license', 'verdantcart-ai-reports'); ?>
+                </strong>
 
-                    </div>
+              </div>
 
-                    <input
-                        type="text"
-                        name="vcarb_license_key"
-                        class="regular-text"
-                        placeholder="<?php echo esc_attr__( 'XXXX-XXXX-XXXX-XXXX', 'verdantcart-ai-reports' ); ?>" />
+              <input
+                type="text"
+                name="vcarb_license_key"
+                class="regular-text"
+                placeholder="<?php echo esc_attr__('XXXX-XXXX-XXXX-XXXX', 'verdantcart-ai-reports'); ?>" />
 
-                    <p>
+              <p>
 
-                        <button
-                            type="submit"
-                            name="vcarb_activate_license"
-                            class="button button-primary">
-                            <?php esc_html_e( 'Activate License', 'verdantcart-ai-reports' ); ?>
-                        </button>
+                <button
+                  type="submit"
+                  name="vcarb_activate_license"
+                  class="button button-primary">
+                  <?php esc_html_e('Activate License', 'verdantcart-ai-reports'); ?>
+                </button>
 
-                    </p>
+              </p>
 
-                <?php endif; ?>
+            <?php endif; ?>
 
-            </form>
+          </form>
 
         </div>
 
-    </div>
+      </div>
 
-    <div style="margin-top:30px;max-width:1200px;">
+      <div style="margin-top:30px;max-width:1200px;">
 
-        <h2><?php esc_html_e( 'Free vs Pro', 'verdantcart-ai-reports' ); ?></h2>
+        <h2><?php esc_html_e('Free vs Pro', 'verdantcart-ai-reports'); ?></h2>
 
         <table class="widefat striped">
 
-            <thead>
-                <tr>
-                    <th><?php esc_html_e( 'Feature', 'verdantcart-ai-reports' ); ?></th>
-                    <th><?php esc_html_e( 'Free', 'verdantcart-ai-reports' ); ?></th>
-                    <th><?php esc_html_e( 'Pro', 'verdantcart-ai-reports' ); ?></th>
-                </tr>
-            </thead>
+          <thead>
+            <tr>
+              <th><?php esc_html_e('Feature', 'verdantcart-ai-reports'); ?></th>
+              <th><?php esc_html_e('Free', 'verdantcart-ai-reports'); ?></th>
+              <th><?php esc_html_e('Pro', 'verdantcart-ai-reports'); ?></th>
+            </tr>
+          </thead>
 
-            <tbody>
+          <tbody>
 
-                <tr>
-                    <td>Carbon Reports</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                </tr>
+            <tr>
+              <td>Carbon Reports</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
 
-                <tr>
-                    <td>Customer Dashboard</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                </tr>
+            <tr>
+              <td>Customer Dashboard</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
 
-                <tr>
-                    <td>CSV / PDF Exports</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                </tr>
+            <tr>
+              <td>CSV / PDF Exports</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
 
-                <tr>
-                    <td>Executive Summary</td>
-                    <td>—</td>
-                    <td>✓</td>
-                </tr>
+            <tr>
+              <td>Executive Summary</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
 
-                <tr>
-                    <td>Scheduled Reports</td>
-                    <td>—</td>
-                    <td>✓</td>
-                </tr>
+            <tr>
+              <td>Scheduled Reports</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
 
-                <tr>
-                    <td>Goal Tracking</td>
-                    <td>—</td>
-                    <td>✓</td>
-                </tr>
+            <tr>
+              <td>Goal Tracking</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
 
-                <tr>
-                    <td>Advanced Analytics</td>
-                    <td>—</td>
-                    <td>✓</td>
-                </tr>
+            <tr>
+              <td>Advanced Analytics</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
 
-                <tr>
-                    <td>AI Recommendations</td>
-                    <td>—</td>
-                    <td>✓</td>
-                </tr>
+            <tr>
+              <td>AI Recommendations</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
 
-            </tbody>
+          </tbody>
 
         </table>
 
-    </div>
+      </div>
 
-</div>
-<?php
+    </div>
+  <?php
 
   }
 
