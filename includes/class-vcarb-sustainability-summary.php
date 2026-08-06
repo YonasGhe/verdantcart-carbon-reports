@@ -56,15 +56,22 @@ final class VCARB_Sustainability_Summary
         $has_snapshot = !empty($snapshot['has']);
         $period_label = self::period_label($view, $date);
 
-        $total_co2 = (float) ($metrics['total_co2'] ?? 0.0);
-        $orders    = (int) ($metrics['orders'] ?? 0);
-        $cpo       = ($orders > 0) ? ($total_co2 / max(1, $orders)) : null;
+        $total_co2  = (float) ($metrics['total_co2'] ?? 0.0);
+        $orders     = (int) ($metrics['orders'] ?? 0);
+        $has_orders = ($orders > 0);
+        $cpo        = $has_orders ? ($total_co2 / max(1, $orders)) : null;
 
         $updated = trim((string) ($snapshot['updated'] ?? ($metrics['updated'] ?? '')));
 
         $score_value   = self::score_value($score);
         $score_label   = self::score_label($score, $score_value);
         $score_summary = self::score_summary($score);
+
+        if ($has_snapshot && !$has_orders) {
+            $score_value   = null;
+            $score_label   = __('Waiting for order data', 'verdantcart-ai-reports');
+            $score_summary = __('A sustainability score will appear after eligible WooCommerce orders are included in this snapshot.', 'verdantcart-ai-reports');
+        }
 
         $groups = self::normalize_insights($insights);
 
@@ -147,7 +154,7 @@ final class VCARB_Sustainability_Summary
                     </h2>
 
                     <p class="vcarb-summary__subtitle">
-                        <?php echo esc_html__('An operational sustainability summary generated from saved VerdantCart Carbon Reports snapshot data.', 'verdantcart-ai-reports'); ?>
+                        <?php echo esc_html__('Snapshot-based summary of emissions, order activity, product drivers, insights, and recommended next actions.', 'verdantcart-ai-reports'); ?>
                     </p>
                 </div>
 
@@ -172,6 +179,10 @@ final class VCARB_Sustainability_Summary
             <?php if (!$has_snapshot) : ?>
                 <div class="vcarb-summary__notice">
                     <?php echo esc_html__('No snapshot is available for this period yet. Run Backfill or wait until eligible WooCommerce orders are processed.', 'verdantcart-ai-reports'); ?>
+                </div>
+            <?php elseif (!$has_orders && !empty($args['show_notice'])) : ?>
+                <div class="vcarb-summary__notice">
+                    <?php echo esc_html__('Snapshot available, but no eligible WooCommerce orders were found for this period yet.', 'verdantcart-ai-reports'); ?>
                 </div>
             <?php elseif ($notice !== '' && !empty($args['show_notice'])) : ?>
                 <div class="vcarb-summary__notice">
@@ -199,7 +210,7 @@ final class VCARB_Sustainability_Summary
             </section>
 
             <section class="vcarb-summary__section">
-                <h3><?php echo esc_html__('Top hotspots', 'verdantcart-ai-reports'); ?></h3>
+                <h3><?php echo esc_html__('Top product drivers', 'verdantcart-ai-reports'); ?></h3>
 
                 <?php echo wp_kses_post(self::render_hotspots($hotspots)); ?>
             </section>
@@ -484,6 +495,10 @@ final class VCARB_Sustainability_Summary
             return __('No snapshot is available yet, so a complete sustainability summary cannot be generated for this period.', 'verdantcart-ai-reports');
         }
 
+        if ($orders <= 0) {
+            return __('This snapshot is available, but no eligible WooCommerce orders were found for the selected period. VerdantCart will generate a complete sustainability summary after completed or processing orders are included.', 'verdantcart-ai-reports');
+        }
+
         $co2_per_order_text = $co2_per_order === null
             ? __('not available', 'verdantcart-ai-reports')
             : self::format_kg($co2_per_order);
@@ -530,7 +545,7 @@ final class VCARB_Sustainability_Summary
     {
         if (empty($hotspots)) {
             return '<p class="vcarb-summary__empty">' .
-                esc_html__('No product hotspots are available for this period.', 'verdantcart-ai-reports') .
+                esc_html__('No product hotspots are available yet for this period. Hotspots appear after eligible orders with product emissions are included in a snapshot.', 'verdantcart-ai-reports') .
                 '</p>';
         }
 

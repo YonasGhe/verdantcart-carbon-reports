@@ -322,6 +322,8 @@ jQuery(function ($) {
   function setKpisFromReport(data) {
     const metrics = getStoreMetrics(data);
 
+    toggleEmptyReportState(metrics.orders <= 0);
+
     $('[data-gc-kpi="co2"]').text(Number(metrics.totalCo2).toFixed(2) + " kg");
     $('[data-gc-kpi="orders"]').text(String(metrics.orders));
 
@@ -332,6 +334,35 @@ jQuery(function ($) {
     );
 
     $('[data-gc-kpi="delta"]').html(metrics.deltaHtml);
+  }
+
+  function toggleEmptyReportState(isEmpty) {
+    const $state = $("[data-gc-empty-report-state]").first();
+
+    if (!$state.length) {
+      return;
+    }
+
+    $state.prop("hidden", !isEmpty);
+    $state.toggleClass("is-visible", !!isEmpty);
+  }
+
+  function renderGuidedTableEmpty() {
+    return (
+      '<tr><td colspan="6" class="gc-empty gc-empty--guided">' +
+      '<strong>No customer rows yet.</strong>' +
+      '<span>Completed WooCommerce orders will appear here after the next snapshot. Run Backfill if this store already had orders before VerdantCart was installed.</span>' +
+      "</td></tr>"
+    );
+  }
+
+  function renderGuidedPanelEmpty(title, text) {
+    return (
+      '<div class="gc-empty gc-empty--guided gc-empty--panel">' +
+      '<strong>' + escHtml(title) + '</strong>' +
+      '<span>' + escHtml(text) + '</span>' +
+      "</div>"
+    );
   }
 
   function setTableLoading() {
@@ -366,9 +397,7 @@ jQuery(function ($) {
     }
 
     if (!Array.isArray(rows) || !rows.length) {
-      $tbody.html(
-        '<tr><td colspan="6" class="gc-empty">No customer data found for this period.</td></tr>'
-      );
+      $tbody.html(renderGuidedTableEmpty());
       return;
     }
 
@@ -433,7 +462,7 @@ jQuery(function ($) {
       }
     }
 
-    ensureChartEmptyState(message || "No chart data available for this period.");
+    ensureChartEmptyState(message || "No emission trend yet. New orders will chart automatically; use Backfill for historical orders.");
   }
 
   function formatPeriodTitle(view, period) {
@@ -624,7 +653,7 @@ jQuery(function ($) {
     const currentPeriod = String(selectedPeriod || "");
 
     if (!baseLabels.length || !rawCo2.length || !rawOrders.length) {
-      setChartEmpty("No chart data available for this period.");
+      setChartEmpty("No emission trend yet. New orders will chart automatically; use Backfill for historical orders.");
       return;
     }
 
@@ -900,7 +929,7 @@ jQuery(function ($) {
     }
 
     if (!hasSnapshot || !date) {
-      el.innerHTML = '<div class="gc-empty">No snapshot available yet.</div>';
+      el.innerHTML = renderGuidedPanelEmpty("No insights yet", "Insights appear after a reporting snapshot has eligible order data. Run Backfill if historical orders need to be prepared.");
       return;
     }
 
@@ -916,7 +945,7 @@ jQuery(function ($) {
     }
 
     if (!hasSnapshot || !date) {
-      el.innerHTML = '<div class="gc-empty">No snapshot available yet.</div>';
+      el.innerHTML = renderGuidedPanelEmpty("No insights yet", "Insights appear after a reporting snapshot has eligible order data. Run Backfill if historical orders need to be prepared.");
       return;
     }
 
@@ -1030,7 +1059,12 @@ jQuery(function ($) {
     }
 
     if (!Array.isArray(items) || !items.length) {
-      $box.html('<div class="gc-empty">No product hotspot data yet for this period.</div>');
+      $box.html(
+        renderGuidedPanelEmpty(
+          "No product hotspots yet",
+          "Hotspots appear after eligible orders are captured or historical orders are prepared with Backfill."
+        )
+      );
       return;
     }
 
@@ -1268,7 +1302,7 @@ jQuery(function ($) {
           setTableError(msg);
           setInsightsError(msg);
           setHotspotsError(msg);
-          setChartEmpty("No chart data available for this period.");
+          setChartEmpty("No emission trend yet. New orders will chart automatically; use Backfill for historical orders.");
           return;
         }
 
@@ -1289,7 +1323,7 @@ jQuery(function ($) {
 
         try {
           if (!hasChart) {
-            setChartEmpty("No chart data available for this period.");
+            setChartEmpty("No emission trend yet. New orders will chart automatically; use Backfill for historical orders.");
           } else {
             renderChart(chartPayload, returnedDate, returnedView);
           }
@@ -1316,7 +1350,10 @@ jQuery(function ($) {
           fetchHotspots(returnedView, returnedDate);
         } else {
           $("#gcHotspotsBody").html(
-            '<div class="gc-empty">No product hotspot data yet for this period.</div>'
+            renderGuidedPanelEmpty(
+              "No product hotspots yet",
+              "Hotspots appear after eligible orders are captured or historical orders are prepared with Backfill."
+            )
           );
         }
       })
@@ -1340,7 +1377,7 @@ jQuery(function ($) {
         setTableError(msg);
         setInsightsError(msg);
         setHotspotsError(msg);
-        setChartEmpty("No chart data available for this period.");
+        setChartEmpty("No emission trend yet. New orders will chart automatically; use Backfill for historical orders.");
       })
       .always(function () {
         reportRequest = null;

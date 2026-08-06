@@ -621,3 +621,121 @@
         background: #ffffff !important;
     }
 }
+
+/* =========================
+   Sustainability summary polish
+   ========================= */
+.wrap.gc-wrap.gc-report-page .vcarb-summary {
+    padding: 30px 34px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__brand {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__header {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+    gap: 32px;
+    margin-bottom: 22px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__title {
+    max-width: 840px;
+    font-size: 38px;
+    letter-spacing: 0;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__subtitle {
+    max-width: 760px;
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__meta {
+    gap: 10px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__meta>div {
+    min-height: 70px;
+    padding: 14px 18px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__grid {
+    margin: 22px 0 18px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__metric {
+    min-height: 118px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__metric-value {
+    letter-spacing: 0;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__section {
+    margin-top: 18px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__section h3 {
+    letter-spacing: 0;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__section--insights {
+    background: #f8fafc;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__section--insights>h3 {
+    margin-bottom: 18px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__insight-card {
+    background: #ffffff;
+}
+
+@media (max-width: 960px) {
+    .wrap.gc-wrap.gc-report-page .vcarb-summary__meta {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 782px) {
+    .wrap.gc-wrap.gc-report-page .vcarb-summary__title {
+        font-size: 30px;
+    }
+
+    .wrap.gc-wrap.gc-report-page .vcarb-summary__meta {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================
+   Sustainability summary insight density
+   ========================= */
+.wrap.gc-wrap.gc-report-page .vcarb-summary__section--insights {
+    padding-bottom: 24px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__section--insights .vcarb-summary__insight-grid {
+    align-items: start;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__section--insights .vcarb-summary__insight-card {
+    align-self: start;
+    min-height: 0;
+    padding: 18px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__section--insights .vcarb-summary__insight-list {
+    gap: 10px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__section--insights .vcarb-summary__insight-list > li {
+    padding: 14px 16px;
+}
+
+.wrap.gc-wrap.gc-report-page .vcarb-summary__section--insights .vcarb-summary__empty {
+    min-height: 0;
+    padding: 16px 18px;
+}
+

@@ -13,7 +13,7 @@
 }
 
 .wrap.gc-wrap.gc-overview-page .gc-page-brand {
-    margin-bottom: 22px;
+    margin-bottom: 16px;
 }
 
 .wrap.gc-wrap.gc-overview-page .gc-page-brand__logo {
@@ -61,10 +61,10 @@
 .wrap.gc-wrap.gc-overview-page .gc-overview-hero__title {
     margin: 0 0 8px;
     color: #071126;
-    font-size: 28px;
-    line-height: 1.12;
+    font-size: 30px;
+    line-height: 1.14;
     font-weight: 950;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.02em;
 }
 
 .wrap.gc-wrap.gc-overview-page .gc-overview-hero__text {
@@ -72,8 +72,9 @@
     max-width: 840px;
     color: #475569;
     font-size: 16px;
-    line-height: 1.65;
+    line-height: 1.55;
 }
+
 
 /* =========================
    3) Status badges
@@ -129,7 +130,7 @@
     background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 24px;
-    padding: 24px;
+    padding: 20px;
     box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
 }
 
@@ -138,7 +139,7 @@
 }
 
 .wrap.gc-wrap.gc-overview-page .gc-overview-card__head {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
 }
 
 .wrap.gc-wrap.gc-overview-page .gc-overview-card__title {
@@ -166,12 +167,13 @@
     gap: 16px;
 }
 
+
 .wrap.gc-wrap.gc-overview-page .gc-action-tile {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-height: 150px;
+    min-height: 160px;
     padding: 22px;
     overflow: hidden;
     border: 1px solid #e2e8f0;
@@ -224,8 +226,8 @@
 
 .wrap.gc-wrap.gc-overview-page .gc-action-tile__title {
     color: #071126;
-    font-size: 22px;
-    line-height: 1.15;
+    font-size: 23px;
+    line-height: 1.14;
     font-weight: 950;
     letter-spacing: -0.02em;
 }
@@ -243,8 +245,44 @@
     color: #ffffff;
 }
 
+.wrap.gc-wrap.gc-overview-page .gc-action-tile__marker {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 950;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.wrap.gc-wrap.gc-overview-page .gc-backfill-hint {
+    margin: 16px 0 0;
+    padding: 12px 14px;
+    border: 1px solid #fde68a;
+    border-radius: 16px;
+    background: #fffbeb;
+    color: #92400e;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.wrap.gc-wrap.gc-overview-page .gc-backfill-hint strong {
+    color: #78350f;
+    font-weight: 950;
+}
+
 /* =========================
-   6) Store site card
+   6) Supporting cards
    ========================= */
 .wrap.gc-wrap.gc-overview-page .gc-action-stack {
     display: flex;
@@ -306,7 +344,8 @@
 /* =========================
    8) How reporting works
    ========================= */
-.wrap.gc-wrap.gc-overview-page .gc-note-list {
+.wrap.gc-wrap.gc-overview-page .gc-note-list,
+.wrap.gc-wrap.gc-overview-page .gc-flow-list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -319,6 +358,72 @@
     color: #334155;
     font-size: 15px;
     line-height: 1.7;
+}
+
+.wrap.gc-wrap.gc-overview-page .gc-flow-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    counter-reset: gc-flow;
+}
+
+.wrap.gc-wrap.gc-overview-page .gc-flow-list li {
+    position: relative;
+    min-height: 150px;
+    padding: 20px 20px 20px 58px;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    background: #ffffff;
+    counter-increment: gc-flow;
+}
+
+.wrap.gc-wrap.gc-overview-page .gc-flow-list li::before {
+    content: counter(gc-flow);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    background: #16a34a;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 950;
+}
+
+.wrap.gc-wrap.gc-overview-page .gc-flow-list strong,
+.wrap.gc-wrap.gc-overview-page .gc-flow-list span {
+    display: block;
+}
+
+.wrap.gc-wrap.gc-overview-page .gc-flow-list strong {
+    margin-bottom: 8px;
+    color: #071126;
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 950;
+}
+
+.wrap.gc-wrap.gc-overview-page .gc-flow-list span {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.wrap.gc-wrap.gc-overview-page .gc-overview-discovery {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-left: 4px solid #16a34a;
+}
+
+.wrap.gc-wrap.gc-overview-page .gc-overview-discovery .gc-btn {
+    flex: 0 0 auto;
+    min-width: 170px;
 }
 
 .wrap.gc-wrap.gc-overview-page .gc-note-list li:last-child {
@@ -342,8 +447,9 @@
    ========================= */
 @media (max-width: 1200px) {
     .wrap.gc-wrap.gc-overview-page .gc-action-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
 }
 
 @media (max-width: 960px) {
@@ -362,7 +468,8 @@
         grid-template-columns: 1fr;
     }
 
-    .wrap.gc-wrap.gc-overview-page .gc-action-grid {
+    .wrap.gc-wrap.gc-overview-page .gc-action-grid,
+    .wrap.gc-wrap.gc-overview-page .gc-flow-list {
         grid-template-columns: 1fr;
     }
 
@@ -403,6 +510,11 @@
         border-radius: 22px;
     }
 
+    .wrap.gc-wrap.gc-overview-page .gc-overview-discovery {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
     .wrap.gc-wrap.gc-overview-page .gc-overview-hero__title,
     .wrap.gc-wrap.gc-overview-page .gc-overview-card__title {
         font-size: 25px;
@@ -440,6 +552,12 @@
         border-radius: 18px;
     }
 
+    .wrap.gc-wrap.gc-overview-page .gc-action-tile__marker {
+        position: static;
+        align-self: flex-start;
+        order: -1;
+    }
+
     .wrap.gc-wrap.gc-overview-page .gc-action-tile__title {
         font-size: 22px;
         line-height: 1.15;
@@ -450,7 +568,8 @@
         align-items: stretch;
     }
 
-    .wrap.gc-wrap.gc-overview-page .gc-action-stack .gc-btn {
+    .wrap.gc-wrap.gc-overview-page .gc-action-stack .gc-btn,
+    .wrap.gc-wrap.gc-overview-page .gc-overview-discovery .gc-btn {
         width: 100%;
         min-width: 0;
     }

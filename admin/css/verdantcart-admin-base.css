@@ -83,8 +83,8 @@
     color: var(--gc-heading);
     font-size: 30px;
     line-height: 1.08;
-    font-weight: 950;
-    letter-spacing: -0.04em;
+    font-weight: 900;
+    letter-spacing: 0;
 }
 
 .wrap.gc-wrap .gc-section__title {
@@ -92,8 +92,8 @@
     color: var(--gc-heading);
     font-size: 22px;
     line-height: 1.15;
-    font-weight: 950;
-    letter-spacing: -0.03em;
+    font-weight: 900;
+    letter-spacing: 0;
 }
 
 .wrap.gc-wrap .gc-section__sub {
@@ -179,6 +179,7 @@
    5) Shared page brand/header
    ========================= */
 .wrap.gc-wrap .gc-page-brand {
+    scroll-margin-top: 80px;
     display: flex;
     align-items: center;
     gap: 18px;
@@ -204,8 +205,8 @@
     color: #061735;
     font-size: 36px;
     line-height: 1.12;
-    font-weight: 950;
-    letter-spacing: -0.045em;
+    font-weight: 900;
+    letter-spacing: 0;
 }
 
 .wrap.gc-wrap .gc-page-brand__subtitle {

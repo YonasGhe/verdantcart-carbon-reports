@@ -15,6 +15,16 @@ final class VCARB_Plugin_Pages_Admin
 {
     public const META_PLUGIN_PAGE = 'vcarb_plugin_page';
 
+    /**
+     * Legacy backwards-compatibility meta key for pages marked as plugin-managed
+     * by older plugin versions. The activator class persists pages with this
+     * meta key; this class re-declares it so is_plugin_page() can detect both
+     * new (META_PLUGIN_PAGE) and legacy (META_MANAGED_PAGE) markers.
+     *
+     * Must match VCARB_Reports_Activator::META_MANAGED_PAGE.
+     */
+    public const META_MANAGED_PAGE = '_vcarb_managed_page';
+
     private const FILTER_KEY = 'vcarb_pages';
 
     private const COLUMN_KEY = 'vcarb_plugin_page';

@@ -61,14 +61,24 @@
       STRINGS.noRecommendations || "No recommendations yet for this period.";
     const NOTHING_DETECTED =
       STRINGS.nothingDetected || "Nothing detected for this period.";
-    const HOTSPOT_TITLE = STRINGS.carbonHotspot || "Carbon Hotspot";
+    const HOTSPOT_TITLE = STRINGS.carbonHotspot || "Top product drivers";
     const HOTSPOT_SUB =
-      STRINGS.topProducts || "Top emitting products for the selected period.";
+      STRINGS.topProducts || "Products contributing the most estimated CO₂ in this period.";
     const HOTSPOT_NO_DATA = STRINGS.noData || "No data";
     const HOTSPOT_BIGGEST_DRIVER =
       STRINGS.biggestDriver || "Biggest driver:";
     const HOTSPOT_SUFFIX =
       STRINGS.productEmissions || "of product emissions.";
+    const HOTSPOT_EMPTY =
+      STRINGS.noHotspots ||
+      "No product hotspots are available yet for this period. Hotspots appear after eligible orders with product emissions are included in a snapshot.";
+    const WAITING_FOR_ORDERS =
+      STRINGS.waitingForOrders || "Waiting for order data";
+    const SCORE_NEEDS_ORDERS =
+      STRINGS.scoreNeedsOrders ||
+      "A sustainability score will appear after eligible WooCommerce orders are included in this snapshot.";
+    const NO_ELIGIBLE_ORDERS =
+      STRINGS.noEligibleOrders || "No eligible orders yet";
 
     function setUrlParams(view, date) {
       try {
@@ -451,7 +461,7 @@
 
       if (!bars.length) {
         html +=
-          '<div class="gc-panel__note">No product hotspots yet for this period. Add completed orders or run Backfill.</div>';
+          '<div class="gc-panel__note">' + escHtml(HOTSPOT_EMPTY) + '</div>';
         return html;
       }
 
@@ -521,12 +531,10 @@
         scoreVal === null || Number.isNaN(scoreVal) ? "—" : String(scoreVal);
       const ringP = scoreVal === null || Number.isNaN(scoreVal) ? 0 : scoreVal;
 
-      let status = "—";
+      let status = score.label ? String(score.label) : "—";
 
-      if (scoreVal !== null && !Number.isNaN(scoreVal)) {
-        if (score.label) {
-          status = String(score.label);
-        } else if (scoreVal >= 85) {
+      if (scoreVal !== null && !Number.isNaN(scoreVal) && !score.label) {
+        if (scoreVal >= 85) {
           status = "Excellent";
         } else if (scoreVal >= 70) {
           status = "Good";
@@ -934,6 +942,8 @@
         const $orders = idSel("MetricOrders");
         const $delta = idSel("MetricDelta");
         const $updated = idSel("MetricUpdated");
+        const $chartTotal = idSel("ChartTotal");
+        const $chartOrders = idSel("ChartOrders");
 
         if ($total.length) {
           const v = Number(m.total_co2 || 0).toFixed(2);
@@ -2044,8 +2054,17 @@
             updateMetrics(data.metrics);
           }
 
+          const orderCount = Number(data.metrics && data.metrics.orders);
+          const hasOrders = Number.isFinite(orderCount) && orderCount > 0;
+
           if (data.score) {
-            updateScorePanel($ui, data.score);
+            updateScorePanel($ui, hasOrders ? data.score : {
+              score: null,
+              label: WAITING_FOR_ORDERS,
+              summary: SCORE_NEEDS_ORDERS,
+              delta_class: "gc-neutral",
+              delta_text: '<span class="gc-neutral">' + escHtml(NO_ELIGIBLE_ORDERS) + '</span>'
+            });
           }
 
           renderChart(

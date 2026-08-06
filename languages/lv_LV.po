@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: VerdantCart Carbon Reports\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-15 12:50+0000\n"
-"PO-Revision-Date: 2026-06-11 23:21+0200\n"
+"PO-Revision-Date: 2026-07-21 15:14+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lv_LV\n"
@@ -21,42 +21,42 @@ msgstr ""
 #: includes/class-vcarb-insights.php:354
 #, php-format
 msgid "%1$s accounts for about %2$s of emissions this period."
-msgstr ""
+msgstr "%1$s veido aptuveni %2$s no emisijām šajā periodā."
 
 #. 1: emissions driver label, 2: percentage share of emissions.
 #: includes/class-vcarb-insights.php:380
 #, php-format
 msgid "%1$s accounts for about %2$s of emissions."
-msgstr ""
+msgstr "%1$s veido aptuveni %2$s emisiju."
 
 #. %s: kilogram amount.
 #: includes/class-vcarb-sustainability-summary.php:338
 #, php-format
 msgid "%s kg"
-msgstr ""
+msgstr "%s kg"
 
 #. %s: CO2 per order value in kg.
 #: includes/class-vcarb-dataset-service.php:895
 #, php-format
 msgid "%s kg CO₂ / order"
-msgstr ""
+msgstr "%s kg CO₂ / pasūtījums"
 
 #. %s: order count.
 #: includes/class-vcarb-sustainability-summary.php:520
 #, php-format
 msgid "%s order"
 msgid_plural "%s orders"
-msgstr[0] ""
+msgstr[0] "%s pasūtījums"
 msgstr[1] ""
 msgstr[2] ""
 
 #: includes/class-vcarb-reports-admin.php:1007
 msgid "A quick summary of how data flows through VerdantCart."
-msgstr ""
+msgstr "Īss kopsavilkums par to, kā dati plūst caur VerdantCart."
 
 #: includes/class-vcarb-reports-admin.php:977
 msgid "A quick view of the plugin environment and setup state."
-msgstr ""
+msgstr "Ātrs spraudņa vides un iestatīšanas stāvokļa skats."
 
 #: public/class-vcarb-dashboard.php:952
 msgid ""
@@ -64,10 +64,13 @@ msgid ""
 "Store snapshots use user_id=0 and power charts, exports, hotspots, and "
 "insights."
 msgstr ""
+"Momentuzņēmums tiek izveidots, kad pabeigto pasūtījumu emisijas tiek "
+"saglabātas uz noteiktu periodu. Veikala momentuzņēmumos tiek izmantots "
+"user_id=0 un jaudas diagrammas, eksports, tīklāji un ieskati."
 
 #: includes/class-vcarb-insights.php:325
 msgid "Abnormal CO₂ spike"
-msgstr ""
+msgstr "Nenormāls CO₂ kāpums"
 
 #: includes/class-vcarb-insights-renderer.php:210
 #: public/class-vcarb-dashboard.php:210
@@ -81,29 +84,31 @@ msgstr "Visi klienti"
 
 #: includes/class-vcarb-exports.php:686
 msgid "All Customers Carbon Report"
-msgstr ""
+msgstr "Visu klientu oglekļa pārskats"
 
 #: includes/class-vcarb-plugin-pages-admin.php:136
 msgid "All pages"
-msgstr ""
+msgstr "Visas lapas"
 
 #: includes/class-vcarb-sustainability-summary.php:85
 msgid ""
 "An operational sustainability summary generated from saved VerdantCart "
 "Carbon Reports snapshot data."
 msgstr ""
+"Darbības ilgtspējas kopsavilkums, kas ģenerēts no saglabātajiem VerdantCart "
+"Carbon Reports momentuzņēmumu datiem."
 
 #: includes/class-vcarb-exports.php:473 includes/class-vcarb-exports.php:489
 msgid "Anchor (snapshot)"
-msgstr ""
+msgstr "Enkurs (momentuzņēmums)"
 
 #: includes/class-vcarb-exports.php:883 includes/class-vcarb-exports.php:1112
 msgid "Anchor Snapshot"
-msgstr ""
+msgstr "Enkura momentuzņēmums"
 
 #: public/class-vcarb-dashboard.php:946
 msgid "Ask the store admin to run Backfill"
-msgstr ""
+msgstr "Lūdziet veikala administratoram palaist aizpildīšanu"
 
 #: includes/class-vcarb-sustainability-summary.php:102
 msgid "Available"
@@ -111,98 +116,100 @@ msgstr "Pieejams"
 
 #: includes/class-vcarb-exports.php:1063
 msgid "Average emissions intensity could not be calculated for this snapshot."
-msgstr ""
+msgstr "Šim momentuzņēmumam nevarēja aprēķināt vidējo emisiju intensitāti."
 
 #. %s: average emissions per order in kg CO2.
 #: includes/class-vcarb-exports.php:540 includes/class-vcarb-exports.php:1060
 #, php-format
 msgid "Average emissions intensity was %s kg CO₂ per order."
-msgstr ""
+msgstr "Vidējā emisiju intensitāte bija %s kg CO₂ uz vienu pasūtījumu."
 
 #: includes/class-vcarb-reports-admin.php:1323
 #: includes/class-vcarb-sustainability-summary.php:120
 msgid "Average intensity"
-msgstr ""
+msgstr "Vidējā intensitāte"
 
 #: verdantcart-ai-reports.php:737 verdantcart-ai-reports.php:738
 msgid "Backfill"
-msgstr ""
+msgstr "Aizpildīšana"
 
 #: includes/class-vcarb-backfill-ajax.php:409
 #: includes/class-vcarb-backfill-ajax.php:511
 msgid "Backfill completed."
-msgstr ""
+msgstr "Aizpildīšana pabeigta."
 
 #. %s: error message.
 #: includes/class-vcarb-backfill-ajax.php:519
 #, php-format
 msgid "Backfill failed: %s"
-msgstr ""
+msgstr "Aizpildīšana neizdevās: %s"
 
 #: includes/class-vcarb-backfill-ajax.php:343
 msgid ""
 "Backfill is already running. Please wait a few seconds, then click Stop or "
 "refresh and start again."
 msgstr ""
+"Aizpildīšana jau darbojas. Lūdzu, uzgaidiet dažas sekundes, pēc tam "
+"noklikšķiniet uz Apturēt vai atsvaidzināt un sākt no jauna."
 
 #: includes/class-vcarb-backfill-ajax.php:359
 msgid "Backfill not started."
-msgstr ""
+msgstr "Aizpildīšana nav sākta."
 
 #: includes/class-vcarb-backfill-ajax.php:307
 msgid "Backfill started."
-msgstr ""
+msgstr "Sākās aizpildīšana."
 
 #: includes/class-vcarb-backfill-ajax.php:273
 msgid "Backfill stopped."
-msgstr ""
+msgstr "Aizpildīšana apstājās."
 
 #: includes/class-vcarb-exports.php:135 includes/class-vcarb-exports.php:159
 #: includes/class-vcarb-exports.php:232 includes/class-vcarb-exports.php:240
 msgid "Bad Request"
-msgstr ""
+msgstr "Slikts pieprasījums"
 
 #: includes/class-vcarb-dataset-service.php:900
 msgid "Based on snapshot metrics"
-msgstr ""
+msgstr "Pamatojoties uz momentuzņēmumu metriku"
 
 #: includes/class-vcarb-backfill-ajax.php:512
 msgid "Batch processed."
-msgstr ""
+msgstr "Partijas apstrādāts."
 
 #: public/class-vcarb-dashboard.php:221 public/class-vcarb-dashboard.php:1035
 msgid "Biggest driver:"
-msgstr ""
+msgstr "Lielākais virzītājspēks:"
 
 #: includes/class-vcarb-insights.php:95
 msgid "Build more reporting history"
-msgstr ""
+msgstr "Plašākas pārskatu vēstures izveide"
 
 #: includes/class-vcarb-insights.php:478
 msgid "Bundle shipments to reduce delivery trips."
-msgstr ""
+msgstr "Komplektējiet sūtījumus, lai samazinātu piegādes braucienus."
 
 #: public/class-vcarb-dashboard.php:873
 msgid "Calculations are based on completed orders during the selected period."
-msgstr ""
+msgstr "Aprēķini ir balstīti uz izpildītajiem pasūtījumiem izvēlētajā periodā."
 
 #: includes/class-vcarb-admin-report-ajax.php:49
 #: includes/class-vcarb-dataset-service.php:56
 #: includes/class-vcarb-dataset-service.php:123
 msgid "Calculator missing."
-msgstr ""
+msgstr "Trūkst kalkulatora."
 
 #: includes/class-vcarb-admin-report-ajax.php:274
 msgid "Calculator period helper missing."
-msgstr ""
+msgstr "Trūkst kalkulatora perioda palīga."
 
 #. Description of the plugin
 msgid "Carbon analytics and reporting for WooCommerce stores."
-msgstr ""
+msgstr "Oglekļa analīze un pārskati WooCommerce veikaliem."
 
 #: public/class-vcarb-dashboard.php:1424
 msgid "Carbon Dashboard"
-msgstr ""
+msgstr "Oglekļa informācijas panelis"
 
 #: includes/class-vcarb-exports.php:914
 msgid ""
@@ -210,6 +217,9 @@ msgid ""
 "the selected reporting period. Results are intended for operational "
 "sustainability analysis rather than certified carbon accounting."
 msgstr ""
+"Oglekļa emisijas tiek aprēķinātas, pamatojoties uz izpildītajiem WooCommerce "
+"pasūtījumiem izvēlētajā pārskata periodā. Rezultāti ir paredzēti darbības "
+"ilgtspējas analīzei, nevis sertificētai oglekļa uzskaitei."
 
 #: includes/class-vcarb-exports.php:1187
 msgid ""
@@ -219,68 +229,79 @@ msgid ""
 "same reporting window. Results are intended for operational sustainability "
 "analysis rather than certified carbon accounting."
 msgstr ""
+"Oglekļa emisijas tiek aprēķinātas, pamatojoties uz atbilstošiem WooCommerce "
+"pasūtījumiem izvēlētajā pārskata periodā. Veikala kopsummas tiek aprēķinātas "
+"no atlasītā momentuzņēmuma enkura, un klienta līmeņa rindas atspoguļo "
+"vērtības, kas saglabātas tajā pašā atskaišu periodā. Rezultāti ir paredzēti "
+"darbības ilgtspējas analīzei, nevis sertificētai oglekļa uzskaitei."
 
 #: includes/class-vcarb-reports-admin.php:1341
 msgid "Carbon emissions over time"
-msgstr ""
+msgstr "Oglekļa emisijas laika gaitā"
 
 #: public/class-vcarb-dashboard.php:218 public/class-vcarb-dashboard.php:994
 msgid "Carbon Hotspot"
-msgstr ""
+msgstr "Oglekļa karstais punkts"
 
 #: public/class-vcarb-dashboard.php:990
 msgid "Carbon hotspot"
-msgstr ""
+msgstr "Oglekļa karstais punkts"
 
 #: includes/class-vcarb-reports-admin.php:865
 msgid "Carbon reporting and emissions insights for WooCommerce stores."
-msgstr ""
+msgstr "Oglekļa pārskati un emisiju ieskati WooCommerce veikaliem."
 
 #: includes/class-vcarb-reports-admin.php:1331
 msgid "Change vs Previous"
-msgstr ""
+msgstr "Izmaiņas salīdzinājumā ar iepriekšējo"
 
 #: includes/class-vcarb-insights.php:453
 msgid "Check checkout and payment gateway logs."
-msgstr ""
+msgstr "Pārbaudiet norēķinu un maksājumu vārtejas žurnālus."
 
 #: includes/class-vcarb-insights.php:289
 msgid "Check if a few heavy shipments dominated this period."
-msgstr ""
+msgstr "Pārbaudiet, vai šajā periodā dominēja daži smagi sūtījumi."
 
 #: includes/class-vcarb-insights.php:167
 msgid "Check shipping methods, packaging weight, and product mix changes."
 msgstr ""
+"Pārbaudiet piegādes veidus, iepakojuma svaru un produktu klāsta izmaiņas."
 
 #: includes/class-vcarb-insights.php:121
 msgid "Check whether a few large orders caused the spike."
-msgstr ""
+msgstr "Pārbaudiet, vai daži lieli pasūtījumi izraisīja pieaugumu."
 
 #: includes/class-vcarb-insights.php:196
 msgid "Check whether basket size or long-distance orders increased."
 msgstr ""
+"Pārbaudiet, vai groza lielums vai tālsatiksmes pasūtījumi nav "
+"palielinājušies."
 
 #: includes/class-vcarb-insights.php:333
 msgid ""
 "Check whether refunds, returns, or unusual order patterns affected the "
 "snapshot."
 msgstr ""
+"Pārbaudiet, vai atmaksa, atgriešana vai neparasti pasūtījumu modeļi ir "
+"ietekmējuši momentuzņēmumu."
 
 #: includes/class-vcarb-insights.php:79
 msgid "Check WooCommerce order statuses."
-msgstr ""
+msgstr "Pārbaudiet WooCommerce pasūtījumu statusus."
 
 #: includes/class-vcarb-insights.php:496
 msgid "Compare the same drivers and top orders next period."
 msgstr ""
+"Salīdziniet tos pašus autovadītājus un labākos pasūtījumus nākamajā periodā."
 
 #: includes/class-vcarb-reports-admin.php:1312
 msgid "Completed orders"
-msgstr ""
+msgstr "Izpildīti pasūtījumi"
 
 #: includes/class-vcarb-insights.php:452
 msgid "Confirm the WooCommerce order status filter."
-msgstr ""
+msgstr "Apstipriniet WooCommerce pasūtījuma statusa filtru."
 
 #: includes/class-vcarb-reports-admin.php:986
 msgid "Connected"
@@ -288,31 +309,31 @@ msgstr "Savienots"
 
 #: includes/class-vcarb-insights.php:219
 msgid "Consider optimizing shipping zones or carrier selection."
-msgstr ""
+msgstr "Apsveriet iespēju optimizēt piegādes zonas vai pārvadātāja izvēli."
 
 #: includes/class-vcarb-insights.php:98
 msgid "Continue generating snapshots so trends become more meaningful."
-msgstr ""
+msgstr "Turpiniet ģenerēt momentuzņēmumus, lai tendences kļūtu jēgpilnākas."
 
 #: public/class-vcarb-dashboard.php:204
 msgid "Could not load dashboard data. Please try again."
-msgstr ""
+msgstr "Nevarēja ielādēt informācijas paneļa datus. Lūdzu, mēģiniet vēlreiz."
 
 #: includes/class-vcarb-exports.php:768 includes/class-vcarb-exports.php:962
 msgid "Could not open export stream."
-msgstr ""
+msgstr "Nevarēja atvērt eksportēšanas plūsmu."
 
 #: includes/class-vcarb-exports.php:631
 msgid "CO₂ (kg)"
-msgstr ""
+msgstr "CO₂ (kg)"
 
 #: includes/class-vcarb-reports-admin.php:1343
 msgid "CO₂ (kg) and completed orders for the selected period."
-msgstr ""
+msgstr "CO₂ (kg) un izpildītajiem pasūtījumiem izvēlētajā periodā."
 
 #: public/class-vcarb-dashboard.php:1090
 msgid "CO₂ change"
-msgstr ""
+msgstr "CO₂ izmaiņas"
 
 #. %s: percentage increase in CO2 versus previous period.
 #: includes/class-vcarb-insights.php:328
@@ -321,40 +342,46 @@ msgid ""
 "CO₂ increased %s versus the previous period. This may indicate an outlier "
 "event."
 msgstr ""
+"CO₂ palielinājās %s salīdzinājumā ar iepriekšējo periodu. Tas var liecināt "
+"par ārkārtēju notikumu."
 
 #: includes/class-vcarb-insights.php:113
 msgid "CO₂ increased sharply"
-msgstr ""
+msgstr "CO₂ strauji palielinājās"
 
 #: includes/class-vcarb-product-insights.php:656
 msgid ""
 "CO₂ increased sharply vs previous month. Check promotions, pricing changes, "
 "or shipping method changes."
 msgstr ""
+"CO₂ strauji palielinājās salīdzinājumā ar iepriekšējo mēnesi. Pārbaudiet "
+"akcijas, cenu izmaiņas vai piegādes veidu izmaiņas."
 
 #: includes/class-vcarb-exports.php:895
 #: includes/class-vcarb-reports-admin.php:1320
 msgid "CO₂ per Order"
-msgstr ""
+msgstr "CO₂ par pasūtījumu"
 
 #: includes/class-vcarb-sustainability-summary.php:120
 msgid "CO₂ per order"
-msgstr ""
+msgstr "CO₂ par pasūtījumu"
 
 #: includes/class-vcarb-exports.php:663 includes/class-vcarb-exports.php:699
 #: includes/class-vcarb-exports.php:1124
 msgid "CO₂ per Order (kg)"
-msgstr ""
+msgstr "CO₂ par pasūtījumu (kg)"
 
 #. %s: percentage increase in CO2 per order.
 #: includes/class-vcarb-insights.php:163
 #, php-format
 msgid "CO₂ per order increased %s versus the previous period."
 msgstr ""
+"CO₂ uz vienu pasūtījumu palielinājās par %s salīdzinājumā ar iepriekšējo "
+"periodu."
 
 #: includes/class-vcarb-exports.php:713
 msgid "CO₂ vs Previous %"
-msgstr ""
+msgstr "CO₂ salīdzinājumā ar iepriekšējo %"
 
 #: public/class-vcarb-dashboard.php:962
 msgid ""
@@ -362,10 +389,15 @@ msgid ""
 "Completed. VerdantCart will calculate and store the reporting snapshot "
 "automatically."
 msgstr ""
+"Izveidojiet vai saņemiet WooCommerce pasūtījumu, pēc tam pārvietojiet to uz "
+"Apstrāde vai Pabeigts. VerdantCart automātiski aprēķinās un saglabās "
+"pārskatu momentuzņēmumu."
 
 #: includes/class-vcarb-reports-admin.php:941
 msgid "Create or reconnect the public dashboard page to enable this shortcut."
 msgstr ""
+"Izveidojiet vai atkārtoti pievienojiet publiskā informācijas paneļa lapu, "
+"lai iespējotu šo saīsni."
 
 #: includes/class-vcarb-reports-admin.php:1268
 #: public/class-vcarb-dashboard.php:1547
@@ -376,35 +408,37 @@ msgstr "Pašreizējais"
 #: includes/class-vcarb-insights.php:472
 #, php-format
 msgid "Current CO₂ per order is about %s kg."
-msgstr ""
+msgstr "Pašreizējais CO₂ uz vienu pasūtījumu ir aptuveni %s kg."
 
 #: includes/class-vcarb-exports.php:1146
 msgid "Customer Breakdown"
-msgstr ""
+msgstr "Klientu sadalījums"
 
 #: includes/class-vcarb-reports-admin.php:1392
 msgid "Customer breakdown"
-msgstr ""
+msgstr "Klientu sadalījums"
 
 #: includes/class-vcarb-exports.php:552
 msgid ""
 "Customer breakdown excludes the store-total row because it is already "
 "summarized above."
 msgstr ""
+"Klientu sadalījums izslēdz veikala kopsummas rindu, jo tā jau ir apkopota "
+"iepriekš."
 
 #. %d: number of customer rows in the report.
 #: includes/class-vcarb-exports.php:1066
 msgid "Customer breakdown includes %d row(s)."
-msgstr ""
+msgstr "Klientu sadalījumā ietilpst %d rinda(-es)."
 
 #: includes/class-vcarb-sustainability-summary.php:218
 msgid "Customer Sustainability Summary"
-msgstr ""
+msgstr "Klientu ilgtspējas kopsavilkums"
 
 #: includes/class-vcarb-reports-admin.php:933
 #: includes/class-vcarb-reports-admin.php:939
 msgid "Customer view"
-msgstr ""
+msgstr "Klientu skats"
 
 #: verdantcart-ai-reports.php:719 verdantcart-ai-reports.php:720
 msgid "Dashboard"
@@ -412,15 +446,15 @@ msgstr "Kontrolpanelis"
 
 #: includes/class-vcarb-reports-admin.php:883
 msgid "Dashboard page missing"
-msgstr ""
+msgstr "Trūkst informācijas paneļa lapas"
 
 #: includes/class-vcarb-reports-admin.php:883
 msgid "Dashboard ready"
-msgstr ""
+msgstr "Gatavs informācijas panelim"
 
 #: includes/class-vcarb-admin-report-ajax.php:56
 msgid "Dataset service missing."
-msgstr ""
+msgstr "Trūkst datu kopas pakalpojuma."
 
 #: includes/class-vcarb-sustainability-summary.php:169
 msgid ""
@@ -428,84 +462,91 @@ msgid ""
 "certified ESG report, GHG Protocol report, legal compliance document, or "
 "verified carbon audit."
 msgstr ""
+"Atruna: Šis ir darbības ilgtspējas kopsavilkums. Tas nav sertificēts ESG "
+"ziņojums, SEG protokola ziņojums, juridiskās atbilstības dokuments vai "
+"pārbaudīts oglekļa audits."
 
 #: includes/class-vcarb-insights.php:286
 msgid "Efficiency dropped sharply"
-msgstr ""
+msgstr "Efektivitāte strauji samazinājās"
 
 #: includes/class-vcarb-insights.php:136
 msgid "Efficiency improved"
-msgstr ""
+msgstr "Uzlabota efektivitāte"
 
 #: includes/class-vcarb-insights.php:160
 msgid "Efficiency regression detected"
-msgstr ""
+msgstr "Konstatēta efektivitātes regresija"
 
 #: includes/class-vcarb-sustainability-summary.php:119
 msgid "Eligible orders included"
-msgstr ""
+msgstr "Iekļauti atbilstošie pasūtījumi"
 
 #: includes/class-vcarb-reports-admin.php:1375
 msgid "Emission hotspots"
-msgstr ""
+msgstr "Emisiju karstie punkti"
 
 #: includes/class-vcarb-insights.php:234
 msgid "Emissions decreased"
-msgstr ""
+msgstr "Samazinātas emisijas"
 
 #. %s: percentage change text.
 #: includes/class-vcarb-exports.php:523
 #, php-format
 msgid "Emissions decreased %s versus the previous period."
-msgstr ""
+msgstr "Emisijas samazinājās %s salīdzinājumā ar iepriekšējo periodu."
 
 #: includes/class-vcarb-insights.php:260
 msgid "Emissions increased"
-msgstr ""
+msgstr "Emisijas palielinājās"
 
 #. %s: percentage change text.
 #: includes/class-vcarb-exports.php:517
 #, php-format
 msgid "Emissions increased %s versus the previous period."
-msgstr ""
+msgstr "Emisijas palielinājās par %s salīdzinājumā ar iepriekšējo periodu."
 
 #: includes/class-vcarb-insights.php:188
 msgid "Emissions increased without growth"
-msgstr ""
+msgstr "Emisijas palielinājās bez pieauguma"
 
 #: includes/class-vcarb-exports.php:527
 msgid "Emissions were unchanged compared with the previous period."
-msgstr ""
+msgstr "Emisijas nemainījās salīdzinājumā ar iepriekšējo periodu."
 
 #: includes/class-vcarb-insights.php:809
 msgid "Energy"
-msgstr ""
+msgstr "Enerģētika"
 
 #: includes/class-vcarb-reports-admin.php:1013
 msgid ""
 "Estimated emissions are calculated from eligible WooCommerce order data."
 msgstr ""
+"Aplēstās emisijas tiek aprēķinātas no atbilstošiem WooCommerce pasūtījumu "
+"datiem."
 
 #: public/class-vcarb-dashboard.php:1233
 msgid ""
 "Estimated score based on emissions trend, emissions per order, reporting "
 "history, and hotspot concentration."
 msgstr ""
+"Aprēķinātais rezultāts, pamatojoties uz emisiju tendencēm, emisijām pa "
+"pasūtījumiem, pārskatu vēsturi un karsto punktu koncentrāciju."
 
 #: includes/class-vcarb-dataset-service.php:874
 #: includes/class-vcarb-insights.php:640
 #: includes/class-vcarb-sustainability-summary.php:379
 #: public/class-vcarb-dashboard.php:1196
 msgid "Excellent"
-msgstr ""
+msgstr "Fantastiski"
 
 #: includes/class-vcarb-sustainability-summary.php:125
 msgid "Executive summary"
-msgstr ""
+msgstr "Kopsavilkums"
 
 #: public/class-vcarb-dashboard.php:929
 msgid "Existing old orders need Backfill one time."
-msgstr ""
+msgstr "Esošajiem vecajiem pasūtījumiem ir nepieciešams aizpildīt vienu reizi."
 
 #: public/class-vcarb-dashboard.php:793
 msgid "Export"
@@ -519,67 +560,73 @@ msgstr "Eksportēt CSV formātu"
 #: includes/class-vcarb-reports-admin.php:627
 msgid "Export is unavailable until a snapshot exists for this period."
 msgstr ""
+"Eksportēšana nav pieejama, kamēr nav izveidots momentuzņēmums par šo periodu."
 
 #: public/class-vcarb-dashboard.php:776
 msgid "Export is unavailable until a store snapshot exists for this period."
 msgstr ""
+"Eksportēšana nav pieejama, kamēr šajā periodā nav veikala momentuzņēmuma."
 
 #: public/class-vcarb-dashboard.php:202
 msgid "Export is unavailable until data exists for this period."
-msgstr ""
+msgstr "Eksportēšana nav pieejama, kamēr nav datu par šo periodu."
 
 #: public/class-vcarb-dashboard.php:826
 msgid "Export options"
-msgstr ""
+msgstr "Eksportēšanas iespējas"
 
 #: public/class-vcarb-dashboard.php:209 public/class-vcarb-dashboard.php:850
 msgid "Export PDF"
-msgstr ""
+msgstr "PDF eksportēšana"
 
 #: includes/class-vcarb-exports.php:687
 msgid "Exported By Admin ID"
-msgstr ""
+msgstr "Eksportēts pēc administratora ID"
 
 #: includes/class-vcarb-dataset-service.php:882
 #: includes/class-vcarb-insights.php:648
 #: includes/class-vcarb-sustainability-summary.php:387
 #: public/class-vcarb-dashboard.php:1204
 msgid "Fair"
-msgstr ""
+msgstr "Godīgi"
 
 #: includes/class-vcarb-access.php:164
 msgid "Feature link is unavailable in this build."
-msgstr ""
+msgstr "Līdzekļu saite šajā būvējumā nav pieejama."
 
 #: includes/class-vcarb-exports.php:682
 msgid "Field"
-msgstr ""
+msgstr "Lauks"
 
 #: includes/class-vcarb-reports-admin.php:1068
 msgid "Fill missing store total and hotspots for already-counted orders"
 msgstr ""
+"Aizpildiet trūkstošo veikalu kopsummu un karstos punktus jau saskaitītajiem "
+"pasūtījumiem"
 
 #: includes/class-vcarb-insights-renderer.php:208
 msgid "Filter insights"
-msgstr ""
+msgstr "Ieskatu filtrēšana"
 
 #. %s: emissions driver label.
 #: includes/class-vcarb-insights.php:361
 #, php-format
 msgid "Focus improvements on %s first because it has the biggest leverage."
 msgstr ""
+"Vispirms koncentrējieties uz uzlabojumiem %s, jo tam ir vislielākais sviras "
+"efekts."
 
 #: includes/class-vcarb-insights.php:511
 msgid "Focus on the top drivers first"
-msgstr ""
+msgstr "Vispirms koncentrējieties uz labākajiem autovadītājiem"
 
 #: public/class-vcarb-dashboard.php:959
 msgid "For new stores"
-msgstr ""
+msgstr "Jauniem veikaliem"
 
 #: public/class-vcarb-dashboard.php:968
 msgid "For stores with old orders"
-msgstr ""
+msgstr "Veikaliem ar veciem pasūtījumiem"
 
 #: includes/class-vcarb-exports.php:90 includes/class-vcarb-exports.php:124
 #: includes/class-vcarb-reports-admin.php:269
@@ -590,23 +637,23 @@ msgstr ""
 #: includes/gc-vcarb-admin-guard.php:129
 #: includes/trait-vcarb-ajax-helpers.php:48
 msgid "Forbidden"
-msgstr ""
+msgstr "Aizliegts"
 
 #: includes/class-vcarb-reports-admin.php:991
 msgid "Front dashboard page"
-msgstr ""
+msgstr "Priekšējā informācijas paneļa lapa"
 
 #: includes/class-vcarb-reports-admin.php:651
 msgid "Front dashboard page not found."
-msgstr ""
+msgstr "Priekšējā informācijas paneļa lapa nav atrasta."
 
 #: includes/class-vcarb-reports-admin.php:940
 msgid "Front Dashboard Unavailable"
-msgstr ""
+msgstr "Priekšējais informācijas panelis nav pieejams"
 
 #: includes/class-vcarb-exports.php:475 includes/class-vcarb-exports.php:491
 msgid "Generated (UTC)"
-msgstr ""
+msgstr "Ģenerēts (UTC)"
 
 #: includes/class-vcarb-dataset-service.php:878
 #: includes/class-vcarb-insights.php:644
@@ -620,135 +667,148 @@ msgid ""
 "High CO₂ per order vs store average. Check weight/dimensions, shipping "
 "zones, or fulfillment methods."
 msgstr ""
+"Augsts CO₂ uz vienu pasūtījumu salīdzinājumā ar veikala vidējo rādītāju. "
+"Pārbaudiet svaru/izmērus, piegādes zonas vai izpildes metodes."
 
 #: includes/class-vcarb-product-insights.php:646
 msgid ""
 "High impact product (large share of emissions). Review packaging and "
 "shipping settings."
 msgstr ""
+"Augstas ietekmes produkts (liela emisiju daļa). Pārskatiet iepakojuma un "
+"piegādes iestatījumus."
 
 #: public/class-vcarb-dashboard.php:1151
 msgid "Higher"
-msgstr ""
+msgstr "Augstāks"
 
 #: includes/class-vcarb-calculator.php:392
 msgid "higher"
-msgstr ""
+msgstr "augstāks"
 
 #: public/class-vcarb-dashboard.php:1529
 msgid "Historical period browsing"
-msgstr ""
+msgstr "Vēsturiskā perioda pārlūkošana"
 
 #: includes/class-vcarb-insights.php:377
 msgid "Hotspot concentration detected"
-msgstr ""
+msgstr "Konstatētā karstā punkta koncentrācija"
 
 #: includes/class-vcarb-reports-admin.php:1003
 msgid "How reporting works"
-msgstr ""
+msgstr "Kā darbojas pārskatu veidošana"
 
 #: includes/class-vcarb-insights.php:514
 msgid ""
 "Identify the top products, shipping zones, or order types contributing to "
 "emissions."
 msgstr ""
+"Identificējiet populārākos produktus, piegādes zonas vai pasūtījumu veidus, "
+"kas veicina emisijas."
 
 #: includes/class-vcarb-reports-admin.php:1016
 msgid "If historical data is missing, use Backfill to rebuild it safely."
 msgstr ""
+"Ja trūkst vēsturisko datu, izmantojiet aizpildīšanu, lai to droši atjaunotu."
 
 #: includes/class-vcarb-insights.php:76
 msgid "Inactive store"
-msgstr ""
+msgstr "Neaktīvs veikals"
 
 #: public/class-vcarb-dashboard.php:993
 msgid "INSIGHTS"
-msgstr ""
+msgstr "IESKATS"
 
 #: includes/class-vcarb-sustainability-summary.php:143
 msgid "Insights overview"
-msgstr ""
+msgstr "Ieskats pārskats"
 
 #: public/class-vcarb-dashboard.php:1180
 msgid ""
 "Insights will appear after snapshot or backfill is available for this week."
 msgstr ""
+"Ieskati parādīsies pēc tam, kad šonedēļ būs pieejams momentuzņēmums vai "
+"aizpildījums."
 
 #: includes/class-vcarb-dataset-service.php:789
 #: includes/class-vcarb-insights-ajax.php:60
 msgid "Insights will appear once a snapshot is available for this period."
 msgstr ""
+"Ieskati tiks parādīti, tiklīdz būs pieejams momentuzņēmums par šo periodu."
 
 #: includes/class-vcarb-insights.php:332
 msgid "Inspect orders with long-distance shipping or unusually large baskets."
 msgstr ""
+"Pārbaudiet pasūtījumus ar tālsatiksmes piegādi vai neparasti lieliem groziem."
 
 #: includes/class-vcarb-admin-report-ajax.php:147
 msgid "Invalid admin dataset."
-msgstr ""
+msgstr "Nederīga administratora datu kopa."
 
 #: public/class-vcarb-dashboard.php:393 public/class-vcarb-dashboard.php:1308
 msgid "Invalid dashboard dataset."
-msgstr ""
+msgstr "Nederīga informācijas paneļa datu kopa."
 
 #: includes/class-vcarb-admin-report-ajax.php:239
 msgid "Invalid hotspot period."
-msgstr ""
+msgstr "Nederīgs tīklāja periods."
 
 #: includes/class-vcarb-insights-ajax.php:106
 #: includes/trait-vcarb-ajax-helpers.php:77
 msgid "Invalid nonce"
-msgstr ""
+msgstr "Nederīgs nonce"
 
 #: includes/trait-vcarb-ajax-helpers.php:60
 msgid "Invalid nonce action"
-msgstr ""
+msgstr "Nederīga nonce darbība"
 
 #: includes/class-vcarb-exports.php:123 public/class-vcarb-dashboard.php:356
 msgid "Invalid nonce."
-msgstr ""
+msgstr "Nederīga nonce."
 
 #: includes/class-vcarb-admin-report-ajax.php:303
 msgid "Invalid resolved period."
-msgstr ""
+msgstr "Nederīgs atrisinātais periods."
 
 #: includes/trait-vcarb-ajax-helpers.php:34
 #: includes/trait-vcarb-ajax-helpers.php:89
 msgid "Invalid user"
-msgstr ""
+msgstr "Nederīgs lietotājs"
 
 #: includes/class-vcarb-dataset-service.php:45
 #: includes/class-vcarb-exports.php:134 includes/class-vcarb-exports.php:158
 #: includes/class-vcarb-sustainability-summary.php:209
 #: public/class-vcarb-dashboard.php:342
 msgid "Invalid user."
-msgstr ""
+msgstr "Nederīgs lietotājs."
 
 #: includes/class-vcarb-insights.php:241
 msgid ""
 "Keep the changes that drove this drop and monitor whether it holds next "
 "period."
 msgstr ""
+"Saglabājiet izmaiņas, kas veicināja šo kritumu, un uzraugiet, vai tas "
+"saglabājas nākamajā periodā."
 
 #: includes/class-vcarb-insights.php:144
 msgid "Keep the changes that improved efficiency."
-msgstr ""
+msgstr "Saglabājiet izmaiņas, kas uzlaboja efektivitāti."
 
 #: public/class-vcarb-dashboard.php:1069
 msgid "kg CO₂"
-msgstr ""
+msgstr "kg CO₂"
 
 #: public/class-vcarb-dashboard.php:1112
 msgid "Last updated"
-msgstr ""
+msgstr "Pēdējo reizi atjaunināts"
 
 #: includes/class-vcarb-reports-admin.php:1088
 msgid "Live progress will appear here."
-msgstr ""
+msgstr "Tiešraides progress parādīsies šeit."
 
 #: public/class-vcarb-dashboard.php:866
 msgid "Loading emissions data..."
-msgstr ""
+msgstr "Emisiju datu ielāde..."
 
 #: public/class-vcarb-dashboard.php:206
 msgid "Loading emissions data…"
@@ -756,30 +816,30 @@ msgstr ""
 
 #: public/class-vcarb-dashboard.php:207
 msgid "Loading insights…"
-msgstr ""
+msgstr "Ielādē ieskatus..."
 
 #: includes/class-vcarb-reports-admin.php:625
 #: includes/class-vcarb-reports-admin.php:1367
 #: includes/class-vcarb-reports-admin.php:1384
 #: includes/class-vcarb-reports-admin.php:1415
 msgid "Loading…"
-msgstr ""
+msgstr "Ielāde ..."
 
 #: public/class-vcarb-dashboard.php:471
 msgid "log in"
-msgstr ""
+msgstr "Pieteikties"
 
 #: includes/class-vcarb-insights.php:168
 msgid "Look for high-CO₂ orders driving the average."
-msgstr ""
+msgstr "Meklējiet pasūtījumus ar augstu CO₂ līmeni, kas virza vidējo rādītāju."
 
 #: public/class-vcarb-dashboard.php:1144
 msgid "Lower"
-msgstr ""
+msgstr "Zemāks"
 
 #: includes/class-vcarb-calculator.php:385
 msgid "lower"
-msgstr ""
+msgstr "zemāks"
 
 #: includes/class-vcarb-reports-admin.php:926
 msgid "Maintenance"
@@ -787,59 +847,64 @@ msgstr "Tehniskās apkope"
 
 #: includes/class-vcarb-reports-admin.php:1050
 msgid "Manual only"
-msgstr ""
+msgstr "Tikai manuāli"
 
 #: includes/class-vcarb-reports-admin.php:1060
 msgid "Manual only:"
-msgstr ""
+msgstr "Tikai manuāli:"
 
 #: includes/class-vcarb-product-insights.php:648
 msgid ""
 "Meaningful emissions contributor. Consider optimizing shipping methods or "
 "packaging."
 msgstr ""
+"Nozīmīgs emisiju veicinātājs. Apsveriet iespēju optimizēt piegādes metodes "
+"vai iepakojumu."
 
 #: public/class-vcarb-dashboard.php:1428
 msgid "Measure emissions per period, compare trends, and share progress."
 msgstr ""
+"Izmēriet emisijas pa periodiem, salīdziniet tendences un dalieties ar "
+"progresu."
 
 #: includes/class-vcarb-exports.php:912 includes/class-vcarb-exports.php:1185
 msgid "Methodology"
-msgstr ""
+msgstr "Metodoloģija"
 
 #: includes/class-vcarb-sustainability-summary.php:153
 msgid "Methodology note"
-msgstr ""
+msgstr "Metodoloģijas piezīme"
 
 #: includes/class-vcarb-exports.php:657 includes/class-vcarb-exports.php:693
 msgid "Metric"
-msgstr ""
+msgstr "Metrika"
 
 #: includes/class-vcarb-reports-admin.php:986
 #: includes/class-vcarb-sustainability-summary.php:102
 msgid "Missing"
-msgstr ""
+msgstr "Trūkst"
 
 #: includes/class-vcarb-exports.php:145
 msgid "Missing dataset classes."
-msgstr ""
+msgstr "Trūkst datu kopu klases."
 
 #: includes/class-vcarb-exports.php:231
 msgid "Missing or invalid snapshot date."
-msgstr ""
+msgstr "Trūkst vai nav nederīgs momentuzņēmuma datums."
 
 #: includes/class-vcarb-insights-ajax.php:50
 #: public/class-vcarb-dashboard.php:249 public/class-vcarb-dashboard.php:485
 msgid "Missing required classes."
-msgstr ""
+msgstr "Trūkst nepieciešamo nodarbību."
 
 #: includes/class-vcarb-insights.php:493
 msgid "Monitor the next snapshot"
-msgstr ""
+msgstr "Nākamā momentuzņēmuma pārraudzība"
 
 #: includes/class-vcarb-insights.php:145
 msgid "Monitor the next snapshot to confirm the improvement holds."
 msgstr ""
+"Pārraugiet nākamo momentuzņēmumu, lai apstiprinātu, ka uzlabojumi ir spēkā."
 
 #: includes/class-vcarb-reports-admin.php:806
 #: includes/class-vcarb-reports-admin.php:1232
@@ -852,15 +917,15 @@ msgstr "Mēnesis"
 #: includes/class-vcarb-sustainability-summary.php:390
 #: public/class-vcarb-dashboard.php:1207
 msgid "Needs work"
-msgstr ""
+msgstr "Nepieciešams darbs"
 
 #: public/class-vcarb-dashboard.php:205
 msgid "Network error. Please try again."
-msgstr ""
+msgstr "Tīkla kļūda. Lūdzu, mēģiniet vēlreiz."
 
 #: includes/class-vcarb-reports-admin.php:1054
 msgid "Never changes stored historical CO₂ values."
-msgstr ""
+msgstr "Nekad nemaina saglabātās vēsturiskās CO₂ vērtības."
 
 #: includes/class-vcarb-dataset-service.php:1136
 msgid "New"
@@ -868,7 +933,7 @@ msgstr "Jauns"
 
 #: public/class-vcarb-dashboard.php:928
 msgid "New completed orders are tracked automatically."
-msgstr ""
+msgstr "Jauni pabeigtie pasūtījumi tiek izsekoti automātiski."
 
 #: public/class-vcarb-dashboard.php:924
 msgid ""
@@ -876,6 +941,10 @@ msgid ""
 "plugin is active. If this store already has older completed orders, run "
 "Backfill once to build historical carbon reports."
 msgstr ""
+"Jauni pabeigtie WooCommerce pasūtījumi tiks izsekoti automātiski pēc "
+"spraudņa aktivitātes. Ja šajā veikalā jau ir vecāki pabeigti pasūtījumi, "
+"palaidiet aizpildīšanu vienu reizi, lai izveidotu vēsturiskos oglekļa "
+"pārskatus."
 
 #: includes/class-vcarb-reports-admin.php:1276
 #: includes/class-vcarb-reports-admin.php:1280
@@ -885,25 +954,27 @@ msgstr "Nākamais"
 
 #: includes/class-vcarb-dataset-service.php:284
 msgid "No activity in this period yet."
-msgstr ""
+msgstr "Šajā periodā vēl nav aktivitātes."
 
 #: includes/class-vcarb-reports-admin.php:1093
 msgid "No backfill started yet."
-msgstr ""
+msgstr "Aizpildīšana vēl nav sākusies."
 
 #: includes/class-vcarb-dataset-service.php:996
 msgid "No change vs previous."
-msgstr ""
+msgstr "Nav izmaiņu salīdzinājumā ar iepriekšējo."
 
 #: includes/class-vcarb-insights.php:77
 msgid "No completed or processing orders were detected for this period."
-msgstr ""
+msgstr "Šajā periodā netika konstatēti pabeigti vai apstrādājami pasūtījumi."
 
 #: includes/class-vcarb-insights.php:546
 msgid ""
 "No completed order emissions are available for this selected snapshot period "
 "yet."
 msgstr ""
+"Šajā izvēlētajā momentuzņēmuma periodā vēl nav pieejamas pabeigtas "
+"pasūtījuma emisijas."
 
 #: public/class-vcarb-dashboard.php:220 public/class-vcarb-dashboard.php:1001
 msgid "No data"
@@ -911,89 +982,95 @@ msgstr "Nav datu"
 
 #: includes/class-vcarb-dataset-service.php:1057
 msgid "No data available."
-msgstr ""
+msgstr "Dati nav pieejami."
 
 #: includes/class-vcarb-exports.php:1161
 msgid "No data found for this snapshot period."
-msgstr ""
+msgstr "Par šo momentuzņēmumu periodu nav atrasti dati."
 
 #: public/class-vcarb-dashboard.php:203
 msgid "No emissions data for this period yet."
-msgstr ""
+msgstr "Par šo periodu vēl nav emisiju datu."
 
 #: includes/class-vcarb-dataset-service.php:788
 msgid "No insights available yet"
-msgstr ""
+msgstr "Vēl nav pieejami ieskati"
 
 #: includes/class-vcarb-insights-renderer.php:205
 #: public/class-vcarb-dashboard.php:215 public/class-vcarb-dashboard.php:1181
 msgid "No insights available yet."
-msgstr ""
+msgstr "Vēl nav pieejami ieskati."
 
 #: includes/class-vcarb-product-insights.php:664
 msgid ""
 "No major anomalies detected. Monitor over time as more snapshot periods "
 "accumulate."
 msgstr ""
+"Būtiskas anomālijas nav konstatētas. Pārraugiet laika gaitā, kad uzkrājas "
+"vairāk momentuzņēmumu periodu."
 
 #: includes/class-vcarb-sustainability-summary.php:147
 msgid "No major risks detected for this period."
-msgstr ""
+msgstr "Šajā periodā nav konstatēti būtiski riski."
 
 #: includes/class-vcarb-dataset-service.php:963
 msgid "No orders are available for this selected snapshot period yet."
-msgstr ""
+msgstr "Šim izvēlētajam momentuzņēmumu periodam vēl nav pieejami pasūtījumi."
 
 #: includes/class-vcarb-insights.php:450
 msgid "No orders were detected in this period."
-msgstr ""
+msgstr "Šajā periodā pasūtījumi netika konstatēti."
 
 #: includes/class-vcarb-dataset-service.php:964
 msgid "No orders yet for this period."
-msgstr ""
+msgstr "Šim periodam vēl nav pasūtījumu."
 
 #: includes/class-vcarb-sustainability-summary.php:92
 msgid "No period selected"
-msgstr ""
+msgstr "Nav izvēlēts punkts"
 
 #: includes/class-vcarb-dataset-service.php:253
 msgid "No personal activity in this period yet."
-msgstr ""
+msgstr "Šajā periodā vēl nav personiskas aktivitātes."
 
 #: includes/class-vcarb-sustainability-summary.php:146
 msgid "No positive signals detected for this period."
-msgstr ""
+msgstr "Šajā periodā nav konstatēti pozitīvi signāli."
 
 #: includes/class-vcarb-exports.php:513
 msgid "No previous snapshot exists yet, so trend comparison is not available."
 msgstr ""
+"Iepriekšējais momentuzņēmums vēl neeksistē, tāpēc tendenču salīdzinājums nav "
+"pieejams."
 
 #: includes/class-vcarb-insights.php:96
 msgid "No previous snapshot was available for comparison."
-msgstr ""
+msgstr "Salīdzināšanai nebija pieejams neviens iepriekšējais momentuzņēmums."
 
 #: includes/class-vcarb-sustainability-summary.php:459
 msgid "No product hotspots are available for this period."
-msgstr ""
+msgstr "Šajā periodā nav pieejami produktu tīklāji."
 
 #: public/class-vcarb-dashboard.php:1007
 msgid ""
 "No product hotspots yet for this period. Add completed orders or run "
 "Backfill."
 msgstr ""
+"Šajā periodā vēl nav produktu karsto punktu. Pievienojiet pabeigtus "
+"pasūtījumus vai palaidiet aizpildīšanu."
 
 #: includes/class-vcarb-sustainability-summary.php:148
 msgid "No recommendations available yet."
-msgstr ""
+msgstr "Vēl nav pieejami ieteikumi."
 
 #: includes/class-vcarb-insights-renderer.php:239
 #: public/class-vcarb-dashboard.php:216
 msgid "No recommendations yet for this period."
-msgstr ""
+msgstr "Šim periodam vēl nav ieteikumu."
 
 #: public/class-vcarb-dashboard.php:920
 msgid "No reporting snapshot available yet"
-msgstr ""
+msgstr "Vēl nav pieejams pārskatu momentuzņēmums"
 
 #: includes/class-vcarb-reports-admin.php:892
 msgid ""
@@ -1001,73 +1078,82 @@ msgid ""
 "be tracked automatically after activation. If this store already has "
 "completed orders, run Backfill once to build historical carbon reports."
 msgstr ""
+"Vēl netika atrasti ziņošanas momentuzņēmumi. Jauni pabeigtie WooCommerce "
+"pasūtījumi tiks automātiski izsekoti pēc aktivizēšanas. Ja šajā veikalā jau "
+"ir izpildīti pasūtījumi, palaidiet aizpildīšanu vienu reizi, lai izveidotu "
+"vēsturiskās oglekļa atskaites."
 
 #: includes/class-vcarb-sustainability-summary.php:375
 msgid "No score available"
-msgstr ""
+msgstr "Nav pieejams rezultāts"
 
 #: public/class-vcarb-dashboard.php:914
 msgid "No snapshot available"
-msgstr ""
+msgstr "Nav pieejams momentuzņēmums"
 
 #: includes/class-vcarb-dataset-service.php:72
 #: includes/class-vcarb-dataset-service.php:139
 msgid "No snapshot available for this period yet."
-msgstr ""
+msgstr "Šim periodam vēl nav pieejams momentuzņēmums."
 
 #: includes/class-vcarb-sustainability-summary.php:109
 msgid ""
 "No snapshot is available for this period yet. Run Backfill or wait until "
 "eligible WooCommerce orders are processed."
 msgstr ""
+"Šim periodam vēl nav pieejams momentuzņēmums. Palaidiet aizpildīšanu vai "
+"pagaidiet, līdz tiek apstrādāti piemērotie WooCommerce pasūtījumi."
 
 #: includes/class-vcarb-sustainability-summary.php:410
 msgid ""
 "No snapshot is available yet, so a complete sustainability summary cannot be "
 "generated for this period."
 msgstr ""
+"Pagaidām nav pieejams momentuzņēmums, tāpēc nav iespējams izveidot pilnīgu "
+"ilgtspējas kopsavilkumu par šo periodu."
 
 #: includes/class-vcarb-sustainability-summary.php:414
 msgid "not available"
-msgstr ""
+msgstr "nav pieejams"
 
 #: includes/trait-vcarb-snapshot.php:368
 msgid "Not Found"
-msgstr ""
+msgstr "Nav atrasts"
 
 #: includes/class-vcarb-reports-admin.php:652
 #: includes/class-vcarb-reports-admin.php:993
 msgid "Not found"
-msgstr ""
+msgstr "Nav atrasts"
 
 #: includes/class-vcarb-exports.php:785 includes/class-vcarb-exports.php:988
 msgid "Note"
-msgstr ""
+msgstr "Piezīme"
 
 #: includes/class-vcarb-insights-renderer.php:273
 #: public/class-vcarb-dashboard.php:217
 msgid "Nothing detected for this period."
-msgstr ""
+msgstr "Šajā periodā nekas netika atklāts."
 
 #: includes/class-vcarb-reports-admin.php:1061
 msgid "Nothing runs automatically. Click Start when you are ready."
-msgstr ""
+msgstr "Nekas nedarbojas automātiski. Noklikšķiniet uz Sākt, kad esat gatavs."
 
 #: includes/class-vcarb-exports.php:479
 msgid "Notice"
-msgstr ""
+msgstr "Paziņojums"
 
 #: public/class-vcarb-dashboard.php:222 public/class-vcarb-dashboard.php:1037
 msgid "of product emissions."
-msgstr ""
+msgstr "produktu emisijas."
 
 #: includes/class-vcarb-insights.php:477
 msgid "Offer local pickup or greener shipping options where possible."
 msgstr ""
+"Ja iespējams, piedāvājiet vietējās saņemšanas vai zaļākas piegādes iespējas."
 
 #: verdantcart-ai-reports.php:502
 msgid "Once Monthly"
-msgstr ""
+msgstr "Reizi mēnesī"
 
 #: verdantcart-ai-reports.php:495
 msgid "Once Weekly"
@@ -1075,45 +1161,47 @@ msgstr "Reizi nedēļā"
 
 #: verdantcart-ai-reports.php:509
 msgid "Once Yearly"
-msgstr ""
+msgstr "Reizi gadā"
 
 #: includes/class-vcarb-insights.php:351
 msgid "One hotspot dominates emissions"
-msgstr ""
+msgstr "Viens karstais punkts dominē emisijās"
 
 #: public/class-vcarb-dashboard.php:816
 msgid "Open export menu"
-msgstr ""
+msgstr "Atvērt eksporta izvēlni"
 
 #: includes/class-vcarb-reports-admin.php:934
 msgid "Open Front Dashboard"
-msgstr ""
+msgstr "Atvērt priekšējo informācijas paneli"
 
 #: includes/class-vcarb-reports-admin.php:901
 msgid "Open Reports"
-msgstr ""
+msgstr "Atvērt atskaites"
 
 #: includes/class-vcarb-reports-admin.php:913
 msgid "Open the core tools you use most often."
-msgstr ""
+msgstr "Atveriet visbiežāk izmantotos pamatrīkus."
 
 #: includes/class-vcarb-reports-admin.php:935
 msgid "Open the customer-facing carbon dashboard in a new tab."
-msgstr ""
+msgstr "Atveriet klientam paredzēto oglekļa informācijas paneli jaunā cilnē."
 
 #: includes/class-vcarb-reports-admin.php:952
 msgid ""
 "Open the public homepage of the WooCommerce store where this plugin is "
 "installed."
 msgstr ""
+"Atveriet WooCommerce veikala publisko mājaslapu, kurā ir instalēts šis "
+"spraudnis."
 
 #: includes/class-vcarb-insights.php:515
 msgid "Optimize the largest driver before spending time on smaller ones."
-msgstr ""
+msgstr "Optimizējiet lielāko draiveri, pirms veltiet laiku mazākiem."
 
 #: includes/class-vcarb-backfill-ajax.php:43
 msgid "Order tracker missing."
-msgstr ""
+msgstr "Trūkst pasūtījumu izsekotāja."
 
 #: includes/class-vcarb-exports.php:630 includes/class-vcarb-exports.php:710
 #: includes/class-vcarb-exports.php:1151
@@ -1127,36 +1215,43 @@ msgid ""
 "Orders fell while total CO₂ increased, so emissions per order likely "
 "worsened."
 msgstr ""
+"Pasūtījumi samazinājās, bet kopējais CO₂ palielinājās, tāpēc emisijas uz "
+"vienu pasūtījumu, visticamāk, pasliktinājās."
 
 #: includes/class-vcarb-exports.php:662 includes/class-vcarb-exports.php:698
 #: includes/class-vcarb-exports.php:891 includes/class-vcarb-exports.php:1120
 #: includes/class-vcarb-reports-admin.php:1309
 msgid "Orders Included"
-msgstr ""
+msgstr "Iekļautie pasūtījumi"
 
 #: public/class-vcarb-dashboard.php:1077
 msgid "Orders included"
-msgstr ""
+msgstr "Iekļauti pasūtījumi"
 
 #: includes/class-vcarb-product-insights.php:660
 msgid ""
 "Orders increased sharply vs previous month. Ensure the product setup and "
 "shipping settings are optimized."
 msgstr ""
+"Pasūtījumi strauji palielinājās salīdzinājumā ar iepriekšējo mēnesi. "
+"Pārliecinieties, ka produkta iestatīšana un piegādes iestatījumi ir "
+"optimizēti."
 
 #. 1: CO2 percentage change, 2: orders percentage change.
 #: includes/class-vcarb-insights.php:139
 #, php-format
 msgid "Orders increased while total CO₂ decreased (%1$s CO₂, %2$s orders)."
 msgstr ""
+"Pasūtījumi palielinājās, bet kopējais CO₂ samazinājās (%1$s CO₂, %2$s "
+"pasūtījumi)."
 
 #: includes/class-vcarb-insights.php:308
 msgid "Orders increased without increasing total CO₂ significantly."
-msgstr ""
+msgstr "Pasūtījumi palielinājās, būtiski nepalielinot kopējo CO₂."
 
 #: includes/class-vcarb-exports.php:711
 msgid "Orders vs Previous %"
-msgstr ""
+msgstr "Pasūtījumi pret iepriekšējo %"
 
 #: verdantcart-ai-reports.php:701 verdantcart-ai-reports.php:702
 #: public/class-vcarb-dashboard.php:752
@@ -1165,7 +1260,7 @@ msgstr "Pārskats"
 
 #: includes/class-vcarb-insights.php:805
 msgid "Packaging"
-msgstr ""
+msgstr "Iepakojums"
 
 #: includes/class-vcarb-exports.php:879 includes/class-vcarb-exports.php:1108
 #: includes/class-vcarb-sustainability-summary.php:91
@@ -1175,17 +1270,17 @@ msgstr "Periods"
 
 #: includes/class-vcarb-exports.php:629
 msgid "Period Label"
-msgstr ""
+msgstr "Perioda etiķete"
 
 #: includes/class-vcarb-reports-admin.php:1334
 msgid "Period trend"
-msgstr ""
+msgstr "Perioda tendence"
 
 #. %s: login link HTML.
 #: public/class-vcarb-dashboard.php:470
 #, php-format
 msgid "Please %s to view your carbon dashboard."
-msgstr ""
+msgstr "Lūdzu, %s, lai apskatītu savu oglekļa informācijas paneli."
 
 #: includes/class-vcarb-insights-renderer.php:213
 #: includes/class-vcarb-insights-renderer.php:224
@@ -1201,11 +1296,11 @@ msgstr "Iepriekšējais"
 
 #: includes/class-vcarb-exports.php:850 includes/class-vcarb-exports.php:1081
 msgid "Print / Save as PDF"
-msgstr ""
+msgstr "Drukāt / saglabāt PDF formātā"
 
 #: includes/class-vcarb-reports-admin.php:819
 msgid "Print / Save PDF"
-msgstr ""
+msgstr "Drukāt / saglabāt PDF"
 
 #: includes/class-vcarb-insights.php:807
 msgid "Product"
@@ -1213,7 +1308,7 @@ msgstr "Produkts"
 
 #: includes/class-vcarb-admin-report-ajax.php:246
 msgid "Product hotspot service is missing."
-msgstr ""
+msgstr "Trūkst produkta tīklāja pakalpojuma."
 
 #: includes/class-vcarb-insights.php:806
 msgid "Products"
@@ -1224,42 +1319,48 @@ msgid ""
 "Products need weight data, or a fallback weight filter, before emissions can "
 "be estimated."
 msgstr ""
+"Produktiem ir nepieciešami svara dati vai rezerves svara filtrs, lai varētu "
+"novērtēt emisijas."
 
 #: includes/class-vcarb-reports-admin.php:911
 msgid "Quick actions"
-msgstr ""
+msgstr "Ātrās darbības"
 
 #: includes/class-vcarb-reports-admin.php:993
 msgid "Ready"
-msgstr ""
+msgstr "Gatavs"
 
 #: includes/class-vcarb-reports-admin.php:1043
 msgid "Rebuild historical carbon data for existing WooCommerce orders."
 msgstr ""
+"Pārveidojiet vēsturiskos oglekļa datus esošajiem WooCommerce pasūtījumiem."
 
 #: includes/class-vcarb-reports-admin.php:928
 msgid "Rebuild historical reporting data for existing WooCommerce orders."
 msgstr ""
+"Pārveidojiet vēsturiskos pārskatu datus esošajiem WooCommerce pasūtījumiem."
 
 #: includes/class-vcarb-insights-renderer.php:231
 #: includes/class-vcarb-sustainability-summary.php:148
 #: public/class-vcarb-dashboard.php:214
 msgid "Recommendations"
-msgstr ""
+msgstr "Ieteikumi"
 
 #: includes/class-vcarb-insights.php:469
 msgid "Reduce CO₂ per order"
-msgstr ""
+msgstr "Samaziniet CO₂ uz vienu pasūtījumu"
 
 #: includes/class-vcarb-insights.php:512
 msgid ""
 "Reducing the biggest emissions drivers first gives the fastest improvement "
 "opportunity."
 msgstr ""
+"Vispirms samazinot lielākos emisiju virzītājfaktorus, ir visātrākās "
+"uzlabojumu iespējas."
 
 #: includes/class-vcarb-plugin-pages-admin.php:138
 msgid "Regular pages only"
-msgstr ""
+msgstr "Tikai parastās lapas"
 
 #: verdantcart-ai-reports.php:729
 msgid "Report"
@@ -1267,11 +1368,11 @@ msgstr "Atskaite"
 
 #: includes/class-vcarb-exports.php:905 includes/class-vcarb-exports.php:1178
 msgid "Report Notes"
-msgstr ""
+msgstr "Ziņojuma piezīmes"
 
 #: includes/class-vcarb-reports-admin.php:804
 msgid "Report period"
-msgstr ""
+msgstr "Pārskata periods"
 
 #: includes/class-vcarb-exports.php:686
 msgid "Report Type"
@@ -1279,11 +1380,11 @@ msgstr "Ziņojuma veids"
 
 #: includes/class-vcarb-reports-admin.php:1014
 msgid "Reporting data is grouped into monthly, weekly, and yearly periods."
-msgstr ""
+msgstr "Pārskatu dati ir sagrupēti mēneša, nedēļas un gada periodos."
 
 #: includes/class-vcarb-reports-admin.php:891
 msgid "Reporting setup reminder:"
-msgstr ""
+msgstr "Atgādinājums par atskaišu iestatīšanu:"
 
 #: includes/class-vcarb-reports-admin.php:920
 msgid "Reports"
@@ -1298,70 +1399,79 @@ msgid ""
 "Review carrier, packaging, product weight, or routing choices for this "
 "driver."
 msgstr ""
+"Pārskatiet šī draivera pārvadātāja, iepakojuma, produkta svara vai "
+"maršrutēšanas izvēli."
 
 #: includes/class-vcarb-insights.php:476
 msgid "Review packaging weight and materials."
-msgstr ""
+msgstr "Pārskatiet iepakojuma svaru un materiālus."
 
 #: includes/class-vcarb-insights.php:267
 msgid ""
 "Review product mix, shipping zones, and packaging changes in this period."
 msgstr ""
+"Pārskatiet produktu klāstu, piegādes zonas un iepakojuma izmaiņas šajā "
+"periodā."
 
 #: includes/class-vcarb-insights.php:290
 msgid "Review shipping method changes and packaging weight."
-msgstr ""
+msgstr "Pārskatiet piegādes metodes izmaiņas un iepakojuma svaru."
 
 #: includes/class-vcarb-insights.php:195
 msgid "Review shipping zones and carrier changes in this period."
-msgstr ""
+msgstr "Pārskatiet kuģošanas zonas un pārvadātāju izmaiņas šajā periodā."
 
 #: includes/class-vcarb-insights.php:120
 msgid "Review shipping zones and carrier changes."
-msgstr ""
+msgstr "Pārskatiet piegādes zonas un pārvadātāju izmaiņas."
 
 #: includes/class-vcarb-insights.php:497
 msgid "Review spikes weekly or monthly depending on your reporting view."
-msgstr ""
+msgstr "Pārskatiet katru nedēļu vai mēnesi atkarībā no pārskatu skata."
 
 #: includes/class-vcarb-insights-renderer.php:219
 #: includes/class-vcarb-insights-renderer.php:226
 #: public/class-vcarb-dashboard.php:213
 msgid "Risks"
-msgstr ""
+msgstr "Riski"
 
 #: includes/class-vcarb-insights.php:494
 msgid ""
 "Risks were detected this period. Validate whether they persist next period."
 msgstr ""
+"Šajā periodā tika konstatēti riski. Pārbaudiet, vai tie saglabājas nākamajā "
+"periodā."
 
 #: includes/class-vcarb-reports-admin.php:897
 #: includes/class-vcarb-reports-admin.php:927
 #: public/class-vcarb-dashboard.php:937
 msgid "Run Backfill"
-msgstr ""
+msgstr "Palaist aizpildīšanu"
 
 #: public/class-vcarb-dashboard.php:971
 msgid ""
 "Run Backfill once to process existing completed orders and create historical "
 "month, week, year, and product hotspot data."
 msgstr ""
+"Palaidiet aizpildīšanu vienu reizi, lai apstrādātu esošos pabeigtos "
+"pasūtījumus un izveidotu vēsturiskos mēneša, nedēļas, gada un produktu "
+"tīklāju datus."
 
 #: includes/class-vcarb-reports-admin.php:1056
 msgid "Runs in batches to avoid timeouts."
-msgstr ""
+msgstr "Darbojas pa partijām, lai izvairītos no taimautiem."
 
 #: includes/class-vcarb-reports-admin.php:1069
 msgid "safe"
-msgstr ""
+msgstr "Drošs"
 
 #: includes/class-vcarb-insights.php:307
 msgid "Scale without higher emissions"
-msgstr ""
+msgstr "Mērogs bez lielākām emisijām"
 
 #: includes/class-vcarb-admin-report-ajax.php:270
 msgid "Scheduler missing."
-msgstr ""
+msgstr "Trūkst plānotāja."
 
 #: includes/class-vcarb-sustainability-summary.php:121
 #: public/class-vcarb-dashboard.php:1245
@@ -1373,6 +1483,8 @@ msgid ""
 "Score, risks, positives, and recommendations based on the selected carbon "
 "snapshot."
 msgstr ""
+"Rezultāts, riski, pozitīvie un ieteikumi, pamatojoties uz izvēlēto oglekļa "
+"momentuzņēmumu."
 
 #: includes/class-vcarb-exports.php:628 includes/class-vcarb-exports.php:656
 #: includes/class-vcarb-exports.php:681 includes/class-vcarb-exports.php:692
@@ -1383,20 +1495,20 @@ msgstr "Sadaļa"
 
 #: includes/class-vcarb-sustainability-summary.php:118
 msgid "Selected period emissions"
-msgstr ""
+msgstr "Izvēlētā perioda emisijas"
 
 #: includes/class-vcarb-reports-admin.php:1301
 msgid "Selected period total"
-msgstr ""
+msgstr "Izvēlētā perioda kopsumma"
 
 #: includes/class-vcarb-exports.php:146 includes/class-vcarb-exports.php:769
 #: includes/class-vcarb-exports.php:963
 msgid "Server error"
-msgstr ""
+msgstr "Servera kļūda"
 
 #: public/class-vcarb-dashboard.php:917
 msgid "SETUP"
-msgstr ""
+msgstr "IESTATĪŠANA"
 
 #: includes/class-vcarb-insights.php:803 includes/class-vcarb-insights.php:804
 msgid "Shipping"
@@ -1406,65 +1518,69 @@ msgstr "Piegāde"
 #: includes/class-vcarb-insights.php:214
 #, php-format
 msgid "Shipping accounts for about %s of total CO₂ in this period."
-msgstr ""
+msgstr "Kuģniecība šajā periodā veido aptuveni %s no kopējā CO₂."
 
 #: includes/class-vcarb-insights.php:211
 msgid "Shipping is the main driver"
-msgstr ""
+msgstr "Kuģniecība ir galvenais virzītājspēks"
 
 #: includes/class-vcarb-exports.php:791 includes/class-vcarb-exports.php:994
 #: includes/class-vcarb-sustainability-summary.php:101
 msgid "Snapshot"
-msgstr ""
+msgstr "Momentuzņēmums"
 
 #: includes/class-vcarb-exports.php:239
 msgid "Snapshot does not exist for this period."
-msgstr ""
+msgstr "Momentuzņēmums šajā periodā nepastāv."
 
 #: includes/class-vcarb-reports-admin.php:626
 #: includes/class-vcarb-reports-admin.php:1219
 msgid "Snapshot missing"
-msgstr ""
+msgstr "Trūkst momentuzņēmuma"
 
 #: includes/trait-vcarb-snapshot.php:367
 msgid "Snapshot period not found (store total row missing)."
-msgstr ""
+msgstr "Momentuzņēmuma periods nav atrasts (trūkst krātuves kopējās rindas)."
 
 #: includes/class-vcarb-exports.php:1140
 msgid "Snapshot Updated"
-msgstr ""
+msgstr "Momentuzņēmums atjaunināts"
 
 #: includes/class-vcarb-exports.php:474 includes/class-vcarb-exports.php:490
 msgid "Snapshot updated"
-msgstr ""
+msgstr "Momentuzņēmums atjaunināts"
 
 #: includes/class-vcarb-sustainability-summary.php:161
 msgid "Snapshot updated:"
-msgstr ""
+msgstr "Momentuzņēmums atjaunināts:"
 
 #: includes/class-vcarb-sustainability-summary.php:77
 msgid "Snapshot-based report"
-msgstr ""
+msgstr "Momentuzņēmumu atskaite"
 
 #: includes/class-vcarb-reports-admin.php:798
 msgid "Snapshot-based sustainability reporting summary for the current store."
 msgstr ""
+"Uz momentuzņēmumu balstīts ilgtspējas pārskatu kopsavilkums pašreizējam "
+"veikalam."
 
 #. %s: selected snapshot period.
 #: includes/class-vcarb-reports-admin.php:1216
 #, php-format
 msgid "Snapshot: %s"
-msgstr ""
+msgstr "Momentuzņēmums: %s"
 
 #: includes/class-vcarb-reports-admin.php:1015
 msgid ""
 "Snapshots and aggregates are used for dashboards, trends, hotspots, and "
 "exports."
 msgstr ""
+"Momentuzņēmumi un apkopojumi tiek izmantoti informācijas paneļiem, "
+"tendencēm, karstajiem punktiem un eksportam."
 
 #: includes/class-vcarb-reports-admin.php:1076
 msgid "Start backfill"
-msgstr ""
+msgstr "Sākt aizpildīšanu"
 
 #: includes/class-vcarb-reports-admin.php:1087
 msgid "Status"
@@ -1476,50 +1592,50 @@ msgstr "Pietura"
 
 #: includes/class-vcarb-backfill-ajax.php:325
 msgid "Stop request accepted."
-msgstr ""
+msgstr "Apturēšanas pieprasījums pieņemts."
 
 #: includes/class-vcarb-exports.php:860 includes/class-vcarb-exports.php:1092
 msgid "Store"
-msgstr ""
+msgstr "Veikals"
 
 #: includes/class-vcarb-reports-admin.php:1202
 msgid "Store Overview"
-msgstr ""
+msgstr "Veikala pārskats"
 
 #: includes/class-vcarb-reports-admin.php:950
 msgid "Store site"
-msgstr ""
+msgstr "Veikala vietne"
 
 #: includes/class-vcarb-exports.php:1100
 msgid "Store Summary"
-msgstr ""
+msgstr "Veikala kopsavilkums"
 
 #: includes/class-vcarb-insights-ajax.php:263
 msgid "Store Sustainability Insights"
-msgstr ""
+msgstr "Veikalu ilgtspējas ieskati"
 
 #: includes/class-vcarb-sustainability-summary.php:28
 #: includes/class-vcarb-sustainability-summary.php:193
 msgid "Store Sustainability Summary"
-msgstr ""
+msgstr "Veikala ilgtspējas kopsavilkums"
 
 #: includes/class-vcarb-dataset-service.php:669
 msgid "Store Total"
-msgstr ""
+msgstr "Veikala kopsumma"
 
 #: includes/class-vcarb-reports-admin.php:1394
 msgid "Store total and per-customer totals for the selected period."
-msgstr ""
+msgstr "Uzglabāt kopsummas un kopsummas katram klientam atlasītajā periodā."
 
 #: includes/class-vcarb-reports-admin.php:1194
 msgid "Store-wide carbon reporting, exports, and customer breakdown."
-msgstr ""
+msgstr "Veikala oglekļa pārskati, eksports un klientu sadalījums."
 
 #. %s: store name.
 #: includes/class-vcarb-exports.php:859 includes/class-vcarb-exports.php:1091
 #, php-format
 msgid "Store: %s"
-msgstr ""
+msgstr "Veikals: %s"
 
 #: includes/class-vcarb-exports.php:867
 msgid "Summary"
@@ -1529,28 +1645,29 @@ msgstr "Kopsavilkums"
 #: includes/class-vcarb-reports-admin.php:1358
 #: public/class-vcarb-dashboard.php:1173
 msgid "Sustainability Insights"
-msgstr ""
+msgstr "Ilgtspējas ieskats"
 
 #: verdantcart-ai-reports.php:728
 msgid "Sustainability Report"
-msgstr ""
+msgstr "Ilgtspējas ziņojums"
 
 #: public/class-vcarb-dashboard.php:1249
 msgid "Sustainability Score"
-msgstr ""
+msgstr "Ilgtspējas rādītājs"
 
 #: public/class-vcarb-dashboard.php:1241
 msgid "Sustainability score"
-msgstr ""
+msgstr "Ilgtspējas rādītājs"
 
 #: includes/class-vcarb-reports-admin.php:831
 msgid "Sustainability Summary class is not available."
-msgstr ""
+msgstr "Ilgtspējas kopsavilkuma klase nav pieejama."
 
 #: includes/class-vcarb-sustainability-summary.php:227
 msgid ""
 "Sustainability summary is unavailable because the dataset service is missing."
 msgstr ""
+"Ilgtspējas kopsavilkums nav pieejams, jo trūkst datu kopas pakalpojuma."
 
 #: includes/class-vcarb-reports-admin.php:975
 msgid "System status"
@@ -1560,11 +1677,11 @@ msgstr "Sistēmas statuss"
 #: includes/class-vcarb-insights.php:387
 #, php-format
 msgid "Target %s optimizations to reduce total footprint fastest."
-msgstr ""
+msgstr "Mērķa %s optimizācijas, lai visātrāk samazinātu kopējo nospiedumu."
 
 #: includes/class-vcarb-insights.php:218
 msgid "Test lighter packaging and fewer parcels per order."
-msgstr ""
+msgstr "Pārbaudiet vieglāku iepakojumu un mazāk paku vienā pasūtījumā."
 
 #. 1: number of completed orders, 2: total emissions in kg CO2.
 #: includes/class-vcarb-exports.php:1053
@@ -1572,98 +1689,127 @@ msgstr ""
 msgid ""
 "The report covers %1$d eligible orders with total emissions of %2$s kg CO₂."
 msgstr ""
+"Pārskats aptver %1$d atbilstīgos pasūtījumus ar kopējām emisijām %2$s kg CO₂."
 
 #: includes/class-vcarb-insights.php:175
 msgid ""
 "This appears because average CO₂ per order increased above the efficiency "
 "threshold."
 msgstr ""
+"Tas parādās tāpēc, ka vidējais CO₂ daudzums uz vienu pasūtījumu palielinājās "
+"virs efektivitātes sliekšņa."
 
 #: includes/class-vcarb-insights.php:203
 msgid ""
 "This appears because emissions increased while orders did not grow "
 "significantly."
 msgstr ""
+"Tas parādās tāpēc, ka emisijas palielinājās, bet pasūtījumi būtiski "
+"nepieauga."
 
 #: includes/class-vcarb-insights.php:371
 msgid ""
 "This appears because one emissions driver is above the hotspot risk "
 "threshold."
 msgstr ""
+"Tas parādās tāpēc, ka viens emisiju virzītājspēks pārsniedz karsto punktu "
+"riska slieksni."
 
 #: includes/class-vcarb-insights.php:396
 msgid ""
 "This appears because one emissions driver is above the hotspot warning "
 "threshold."
 msgstr ""
+"Tas parādās tāpēc, ka viens emisiju virzītājs pārsniedz karsto punktu "
+"brīdinājuma slieksni."
 
 #: includes/class-vcarb-insights.php:316
 msgid "This appears because order growth was stronger than emissions growth."
 msgstr ""
+"Tas parādās tāpēc, ka pasūtījumu pieaugums bija spēcīgāks nekā emisiju "
+"pieaugums."
 
 #: includes/class-vcarb-insights.php:152
 msgid ""
 "This appears because order volume increased while estimated emissions "
 "decreased."
 msgstr ""
+"Tas parādās tāpēc, ka pasūtījumu apjoms palielinājās, bet aplēstās emisijas "
+"samazinājās."
 
 #: includes/class-vcarb-insights.php:296
 msgid ""
 "This appears because orders decreased while estimated emissions increased."
 msgstr ""
+"Tas parādās tāpēc, ka pasūtījumi samazinājās, bet aplēstās emisijas "
+"palielinājās."
 
 #: includes/class-vcarb-insights.php:226
 msgid ""
 "This appears because shipping represents more than half of the selected "
 "period’s estimated emissions."
 msgstr ""
+"Tas parādās tāpēc, ka kuģniecība veido vairāk nekā pusi no izvēlētā perioda "
+"aplēstajām emisijām."
 
 #: includes/class-vcarb-insights.php:340
 msgid ""
 "This appears because the emissions increase crossed the abnormal spike "
 "threshold."
 msgstr ""
+"Tas parādās tāpēc, ka emisiju pieaugums pārsniedza nenormālu pīķa slieksni."
 
 #: includes/class-vcarb-insights.php:105
 msgid ""
 "This appears because the plugin could not compare the selected period with a "
 "previous snapshot."
 msgstr ""
+"Tas parādās, jo spraudnis nevarēja salīdzināt atlasīto periodu ar "
+"iepriekšējo momentuzņēmumu."
 
 #: includes/class-vcarb-insights.php:87
 msgid "This appears because the selected snapshot period has zero orders."
 msgstr ""
+"Tas tiek parādīts, jo atlasītajam momentuzņēmuma periodam ir nulles "
+"pasūtījumi."
 
 #: includes/class-vcarb-insights.php:128
 msgid "This appears because total CO₂ increased above the high-risk threshold."
 msgstr ""
+"Tas parādās tāpēc, ka kopējais CO₂ palielinājās virs augsta riska sliekšņa."
 
 #: includes/class-vcarb-insights.php:248
 msgid ""
 "This appears because total estimated CO₂ decreased beyond the positive "
 "threshold."
 msgstr ""
+"Tas parādās tāpēc, ka kopējais aprēķinātais CO₂ samazinājās virs pozitīvās "
+"robežvērtības."
 
 #: includes/class-vcarb-insights.php:274
 msgid ""
 "This appears because total estimated CO₂ increased above the warning "
 "threshold."
 msgstr ""
+"Tas parādās tāpēc, ka kopējais aprēķinātais CO₂ palielinājās virs "
+"brīdinājuma sliekšņa."
 
 #. %s: snapshot anchor period.
 #: includes/class-vcarb-exports.php:547 includes/class-vcarb-exports.php:1048
 #, php-format
 msgid "This export reflects snapshot period %s."
-msgstr ""
+msgstr "Šis eksports atspoguļo momentuzņēmumu periodu %s."
 
 #: includes/class-vcarb-exports.php:792 includes/class-vcarb-exports.php:995
 msgid "This export reflects the selected snapshot period only."
-msgstr ""
+msgstr "Šis eksports atspoguļo tikai atlasīto momentuzņēmumu periodu."
 
 #: includes/class-vcarb-insights.php:310
 msgid ""
 "This indicates improving efficiency. Keep optimizations and monitor hotspots."
 msgstr ""
+"Tas norāda uz efektivitātes uzlabošanu. Saglabājiet optimizāciju un "
+"pārraugiet karstos punktus."
 
 #: includes/class-vcarb-reports-admin.php:968
 msgid ""
@@ -1671,12 +1817,17 @@ msgid ""
 "in your theme or main product website, not inside the WordPress.org plugin "
 "package."
 msgstr ""
+"Tiek atvērta pašreizējā veikala sākumlapa. Mārketinga galvenajām lapām "
+"jāatrodas jūsu tēmā vai galvenajā produkta vietnē, nevis WordPress.org "
+"spraudņa pakotnē."
 
 #: includes/class-vcarb-insights.php:676
 msgid ""
 "This period has improvement opportunities based on emissions trend, "
 "efficiency, or hotspot concentration."
 msgstr ""
+"Šajā periodā ir uzlabojumu iespējas, pamatojoties uz emisiju tendenci, "
+"efektivitāti vai karsto punktu koncentrāciju."
 
 #. 1: total CO2, 2: orders, 3: CO2 per order.
 #: includes/class-vcarb-sustainability-summary.php:420
@@ -1685,6 +1836,8 @@ msgid ""
 "This period includes %1$s of estimated CO₂ across %2$s eligible orders, with "
 "an average intensity of %3$s per order."
 msgstr ""
+"Šis periods ietver aplēsto CO₂ %1$s %2$s atbilstīgajiem pasūtījumiem ar "
+"vidējo intensitāti %3$s vienam pasūtījumam."
 
 #. 1: total CO2, 2: orders, 3: CO2 per order, 4: score, 5: score label.
 #: includes/class-vcarb-sustainability-summary.php:429
@@ -1694,28 +1847,36 @@ msgid ""
 "an average intensity of %3$s per order. The sustainability score is %4$s/"
 "100, rated %5$s."
 msgstr ""
+"Šis periods ietver aplēsto CO₂ %1$s %2$s atbilstīgajiem pasūtījumiem ar "
+"vidējo intensitāti %3$s vienam pasūtījumam. Ilgtspējas rādītājs ir %4$s/100, "
+"novērtēts ar %5$s."
 
 #: includes/class-vcarb-insights.php:485
 msgid ""
 "This recommendation appears because CO₂ per order is above the configured "
 "threshold."
 msgstr ""
+"Šis ieteikums tiek parādīts, jo CO₂ par pasūtījumu pārsniedz konfigurēto "
+"slieksni."
 
 #: includes/class-vcarb-insights.php:503
 msgid ""
 "This recommendation appears because one or more risk insights were detected."
 msgstr ""
+"Šis ieteikums parādās tāpēc, ka tika atklāts viens vai vairāki riska ieskati."
 
 #: includes/class-vcarb-insights.php:521
 msgid ""
 "This recommendation appears because the period has measurable estimated "
 "emissions."
 msgstr ""
+"Šis ieteikums parādās tāpēc, ka periodā ir izmērāmas aplēstās emisijas."
 
 #: includes/class-vcarb-insights.php:459
 msgid ""
 "This recommendation appears because the selected snapshot has no orders."
 msgstr ""
+"Šis ieteikums tiek parādīts, jo atlasītajam momentuzņēmumam nav pasūtījumu."
 
 #. 1: number of completed orders, 2: total emissions in kg CO2.
 #: includes/class-vcarb-exports.php:532
@@ -1723,12 +1884,16 @@ msgstr ""
 msgid ""
 "This report covers %1$d eligible orders with total emissions of %2$s kg CO₂."
 msgstr ""
+"Šis pārskats aptver %1$d atbilstīgos pasūtījumus ar kopējām emisijām %2$s kg "
+"CO₂."
 
 #: includes/class-vcarb-insights.php:661
 msgid ""
 "This score is based on the selected snapshot. Add more snapshot history for "
 "stronger trend analysis."
 msgstr ""
+"Šis rezultāts ir balstīts uz atlasīto momentuzņēmumu. Pievienojiet vairāk "
+"momentuzņēmumu vēstures, lai veiktu spēcīgāku tendenču analīzi."
 
 #: includes/class-vcarb-sustainability-summary.php:156
 msgid ""
@@ -1737,103 +1902,110 @@ msgid ""
 "hotspot data, and deterministic local insight rules. Historical snapshots "
 "are intended to keep reporting consistent over time."
 msgstr ""
+"Šis kopsavilkums tiek ģenerēts no saglabātajiem VerdantCart Carbon Reports "
+"momentuzņēmumu datiem. Tas izmanto piemērotus WooCommerce pasūtījumu "
+"ierakstus, saglabātās emisiju kopsummas, karsto punktu datus un "
+"deterministiskus vietējos ieskatu noteikumus. Vēsturiskie momentuzņēmumi ir "
+"paredzēti, lai laika gaitā saglabātu pārskatu konsekvenci."
 
 #: includes/class-vcarb-exports.php:169
 msgid "Too many export requests. Please try again shortly."
-msgstr ""
+msgstr "Pārāk daudz eksporta pieprasījumu. Lūdzu, drīzumā mēģiniet vēlreiz."
 
 #: includes/class-vcarb-exports.php:170
 msgid "Too Many Requests"
-msgstr ""
+msgstr "Pārāk daudz pieprasījumu"
 
 #: includes/trait-vcarb-ajax-helpers.php:108
 msgid "Too many requests"
-msgstr ""
+msgstr "Pārāk daudz pieprasījumu"
 
 #: public/class-vcarb-dashboard.php:368
 msgid "Too many requests."
-msgstr ""
+msgstr "Pārāk daudz pieprasījumu."
 
 #: public/class-vcarb-dashboard.php:219 public/class-vcarb-dashboard.php:995
 msgid "Top emitting products for this period."
-msgstr ""
+msgstr "Visvairāk emitējošie produkti šajā periodā."
 
 #: includes/class-vcarb-sustainability-summary.php:137
 msgid "Top hotspots"
-msgstr ""
+msgstr "Populārākie karstie punkti"
 
 #: includes/class-vcarb-sustainability-summary.php:146
 msgid "Top positives"
-msgstr ""
+msgstr "Populārākie pozitīvie aspekti"
 
 #: includes/class-vcarb-reports-admin.php:1377
 msgid "Top products contributing to emissions."
-msgstr ""
+msgstr "Populārākie produkti, kas veicina emisijas."
 
 #: includes/class-vcarb-sustainability-summary.php:147
 msgid "Top risks"
-msgstr ""
+msgstr "Galvenie riski"
 
 #: includes/class-vcarb-reports-admin.php:1298
 #: includes/class-vcarb-reports-admin.php:1406
 #: includes/class-vcarb-sustainability-summary.php:118
 msgid "Total CO₂"
-msgstr ""
+msgstr "Kopējais CO₂"
 
 #: includes/class-vcarb-exports.php:661 includes/class-vcarb-exports.php:697
 #: includes/class-vcarb-exports.php:712 includes/class-vcarb-exports.php:1116
 #: includes/class-vcarb-exports.php:1153
 msgid "Total CO₂ (kg)"
-msgstr ""
+msgstr "Kopējais CO₂ (kg)"
 
 #: includes/class-vcarb-exports.php:887
 msgid "Total CO₂ Emissions"
-msgstr ""
+msgstr "Kopējās CO₂ emisijas"
 
 #. %s: percentage decrease in total CO2.
 #: includes/class-vcarb-insights.php:237
 #, php-format
 msgid "Total CO₂ is down %s versus the previous period."
 msgstr ""
+"Kopējais CO₂ ir samazinājies par %s salīdzinājumā ar iepriekšējo periodu."
 
 #. %s: percentage increase versus previous period.
 #. %s: percentage increase in total CO2.
 #: includes/class-vcarb-insights.php:116 includes/class-vcarb-insights.php:263
 #, php-format
 msgid "Total CO₂ is up %s versus the previous period."
-msgstr ""
+msgstr "Kopējais CO₂ daudzums ir par %s lielāks nekā iepriekšējā periodā."
 
 #. %s: percentage increase in total CO2.
 #: includes/class-vcarb-insights.php:191
 #, php-format
 msgid "Total CO₂ rose %s while order volume stayed roughly flat."
 msgstr ""
+"Kopējais CO₂ pieauga %s, bet pasūtījumu apjoms palika aptuveni nemainīgs."
 
 #: includes/class-vcarb-exports.php:664 includes/class-vcarb-exports.php:700
 #: includes/class-vcarb-exports.php:899 includes/class-vcarb-exports.php:1136
 msgid "Total CO₂ vs Previous"
-msgstr ""
+msgstr "Kopējais CO₂ salīdzinājumā ar iepriekšējo"
 
 #: public/class-vcarb-dashboard.php:1061
 msgid "Total emissions"
-msgstr ""
+msgstr "Kopējās emisijas"
 
 #: includes/class-vcarb-exports.php:79 includes/trait-vcarb-ajax-helpers.php:25
 #: public/class-vcarb-dashboard.php:336
 msgid "Unauthorized"
-msgstr ""
+msgstr "Nesankcionēts"
 
 #: includes/class-vcarb-exports.php:89
 msgid "Unauthorized."
-msgstr ""
+msgstr "Neatļauts."
 
 #: includes/class-vcarb-insights.php:818
 msgid "Unknown driver"
-msgstr ""
+msgstr "Nezināms draiveris"
 
 #: includes/class-vcarb-sustainability-summary.php:479
 msgid "Unknown product"
-msgstr ""
+msgstr "Nezināms produkts"
 
 #: includes/class-vcarb-exports.php:714 includes/class-vcarb-exports.php:1155
 #: includes/class-vcarb-reports-admin.php:1408
@@ -1842,13 +2014,15 @@ msgstr "Aktualizēts"
 
 #: includes/class-vcarb-insights.php:99
 msgid "Use historical browsing once more periods are available."
-msgstr ""
+msgstr "Izmantojiet vēsturisko pārlūkošanu, kad ir pieejami vēl citi periodi."
 
 #: includes/class-vcarb-reports-admin.php:873
 msgid ""
 "Use this page as your control center for reporting, backfill, customer "
 "insights, and public store pages."
 msgstr ""
+"Izmantojiet šo lapu kā vadības centru atskaišu veidošanai, aizpildīšanai, "
+"klientu ieskatiem un publisko veikalu lapām."
 
 #: includes/class-vcarb-exports.php:709 includes/class-vcarb-exports.php:1150
 #: includes/class-vcarb-reports-admin.php:1403
@@ -1859,7 +2033,7 @@ msgstr "Lietotājs"
 #: includes/class-vcarb-dataset-service.php:685
 #: includes/class-vcarb-dataset-service.php:694
 msgid "User #%d"
-msgstr ""
+msgstr "Lietotājs #%d"
 
 #: includes/class-vcarb-exports.php:871
 msgid "User ID"
@@ -1867,7 +2041,7 @@ msgstr "Lietotāja ID"
 
 #: includes/class-vcarb-reports-admin.php:1055
 msgid "Uses idempotency flags to prevent double counting."
-msgstr ""
+msgstr "Izmanto idempotences karodziņus, lai novērstu dubultu uzskaiti."
 
 #: includes/class-vcarb-exports.php:658 includes/class-vcarb-exports.php:683
 #: includes/class-vcarb-exports.php:694 includes/class-vcarb-exports.php:786
@@ -1879,67 +2053,67 @@ msgstr "Value"
 #: includes/class-vcarb-plugin-pages-admin.php:98
 #: includes/class-vcarb-plugin-pages-admin.php:103
 msgid "VerdantCart"
-msgstr ""
+msgstr "VerdantCart"
 
 #: public/class-vcarb-dashboard.php:1421
 msgid "VERDANTCART CARBON REPORTS"
-msgstr ""
+msgstr "VERDANTCART OGLEKĻA PĀRSKATI"
 
 #. Name of the plugin
 #: verdantcart-ai-reports.php:690 includes/class-vcarb-reports-admin.php:136
 msgid "VerdantCart Carbon Reports"
-msgstr ""
+msgstr "VerdantCart oglekļa pārskati"
 
 #: verdantcart-ai-reports.php:208
 msgid "VerdantCart Carbon Reports:"
-msgstr ""
+msgstr "VerdantCart oglekļa ziņojumi:"
 
 #: includes/class-vcarb-reports-activator.php:128
 msgid "VerdantCart Dashboard"
-msgstr ""
+msgstr "VerdantCart informācijas panelis"
 
 #: includes/class-vcarb-plugin-pages-admin.php:121
 #: includes/class-vcarb-plugin-pages-admin.php:221
 msgid "VerdantCart page"
-msgstr ""
+msgstr "VerdantCart lapa"
 
 #: includes/class-vcarb-plugin-pages-admin.php:137
 msgid "VerdantCart pages"
-msgstr ""
+msgstr "VerdantCart lapas"
 
 #: includes/class-vcarb-reports-admin.php:1193
 msgid "VerdantCart — All Customers"
-msgstr ""
+msgstr "VerdantCart — Visi klienti"
 
 #: includes/class-vcarb-exports.php:970 includes/class-vcarb-exports.php:1076
 #: includes/class-vcarb-exports.php:1084
 msgid "VerdantCart — All Customers Report"
-msgstr ""
+msgstr "VerdantCart — Visu klientu atskaite"
 
 #: includes/class-vcarb-reports-admin.php:1042
 msgid "VerdantCart — Backfill"
-msgstr ""
+msgstr "VerdantCart — aizpildīšana"
 
 #: includes/class-vcarb-reports-admin.php:864
 msgid "VerdantCart — Overview"
-msgstr ""
+msgstr "VerdantCart - Pārskats"
 
 #: includes/class-vcarb-reports-admin.php:797
 msgid "VerdantCart — Sustainability Report"
-msgstr ""
+msgstr "VerdantCart — ilgtspējas ziņojums"
 
 #: includes/class-vcarb-exports.php:776 includes/class-vcarb-exports.php:845
 #: includes/class-vcarb-exports.php:853
 msgid "VerdantCart — User Report"
-msgstr ""
+msgstr "VerdantCart — lietotāja ziņojums"
 
 #: includes/class-vcarb-insights.php:80
 msgid "Verify checkout and payment flow."
-msgstr ""
+msgstr "Pārbaudiet norēķināšanos un maksājumu plūsmu."
 
 #: includes/class-vcarb-insights.php:449
 msgid "Verify order pipeline"
-msgstr ""
+msgstr "Pasūtījumu konveijera pārbaude"
 
 #: includes/class-vcarb-exports.php:472 includes/class-vcarb-exports.php:488
 #: includes/class-vcarb-exports.php:875 includes/class-vcarb-exports.php:1104
@@ -1949,25 +2123,26 @@ msgstr "Skatīt"
 
 #: public/class-vcarb-dashboard.php:942
 msgid "View Orders"
-msgstr ""
+msgstr "Skatīt pasūtījumus"
 
 #: includes/class-vcarb-reports-admin.php:963
 msgid "View Plans & Services"
-msgstr ""
+msgstr "Skatīt plānus un pakalpojumus"
 
 #: includes/class-vcarb-reports-admin.php:922
 msgid "View store-wide KPIs, charts, exports, and customer breakdown."
 msgstr ""
+"Skatiet veikala mēroga KPI, diagrammas, eksportu un klientu sadalījumu."
 
 #: includes/class-vcarb-reports-admin.php:959
 msgid "Visit Store Homepage"
-msgstr ""
+msgstr "Apmeklējiet veikala mājaslapu"
 
 #: includes/class-vcarb-insights-renderer.php:216
 #: includes/class-vcarb-insights-renderer.php:225
 #: public/class-vcarb-dashboard.php:212
 msgid "Warnings"
-msgstr ""
+msgstr "Brīdinājumi"
 
 #: includes/class-vcarb-reports-admin.php:810
 #: includes/class-vcarb-reports-admin.php:1239

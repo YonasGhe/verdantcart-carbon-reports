@@ -4,14 +4,14 @@ msgstr ""
 "Project-Id-Version: VerdantCart Carbon Reports\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-15 12:50+0000\n"
-"PO-Revision-Date: 2026-07-21 15:02+0200\n"
+"PO-Revision-Date: 2026-07-21 15:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: fr_FR\n"
+"Language: id_ID\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.9\n"
 "X-Loco-Version: 2.8.3; wp-6.9.4; php-8.3.30\n"
 "X-Domain: verdantcart-ai-reports\n"
@@ -20,13 +20,13 @@ msgstr ""
 #: includes/class-vcarb-insights.php:354
 #, php-format
 msgid "%1$s accounts for about %2$s of emissions this period."
-msgstr "%1$s représente environ %2$s des émissions cette période."
+msgstr "%1$s menyumbang sekitar %2$s emisi periode ini."
 
 #. 1: emissions driver label, 2: percentage share of emissions.
 #: includes/class-vcarb-insights.php:380
 #, php-format
 msgid "%1$s accounts for about %2$s of emissions."
-msgstr "%1$s représente environ %2$s d’émissions."
+msgstr "%1$s menyumbang sekitar %2$s emisi."
 
 #. %s: kilogram amount.
 #: includes/class-vcarb-sustainability-summary.php:338
@@ -38,25 +38,22 @@ msgstr "%s kg"
 #: includes/class-vcarb-dataset-service.php:895
 #, php-format
 msgid "%s kg CO₂ / order"
-msgstr "%s kg CO₂ / ordre"
+msgstr "%s kg CO₂ / pesanan"
 
 #. %s: order count.
 #: includes/class-vcarb-sustainability-summary.php:520
 #, php-format
 msgid "%s order"
 msgid_plural "%s orders"
-msgstr[0] "%s commande"
-msgstr[1] "%s commandes"
+msgstr[0] "%s pesanan"
 
 #: includes/class-vcarb-reports-admin.php:1007
 msgid "A quick summary of how data flows through VerdantCart."
-msgstr ""
-"Un résumé rapide de la façon dont les données circulent dans VerdantCart."
+msgstr "Ringkasan singkat tentang bagaimana data mengalir melalui VerdantCart."
 
 #: includes/class-vcarb-reports-admin.php:977
 msgid "A quick view of the plugin environment and setup state."
-msgstr ""
-"Un aperçu rapide de l’environnement du plugin et de l’état de configuration."
+msgstr "Tampilan singkat lingkungan plugin dan status penyiapan."
 
 #: public/class-vcarb-dashboard.php:952
 msgid ""
@@ -64,156 +61,154 @@ msgid ""
 "Store snapshots use user_id=0 and power charts, exports, hotspots, and "
 "insights."
 msgstr ""
-"Un instantané est créé lorsque les émissions de commande terminée sont "
-"conservées pendant une période. Les instantanés de magasin utilisent "
-"user_id=0 ainsi que les graphiques de puissance, les exportations, les "
-"points chauds et les insights."
+"Snapshot dibuat saat emisi pesanan yang telah selesai disimpan untuk jangka "
+"waktu tertentu. Rekam jepret penyimpanan menggunakan user_id=0 dan bagan "
+"daya, ekspor, hotspot, dan wawasan."
 
 #: includes/class-vcarb-insights.php:325
 msgid "Abnormal CO₂ spike"
-msgstr "Pic anormal de CO₂"
+msgstr "Lonjakan CO₂ abnormal"
 
 #: includes/class-vcarb-insights-renderer.php:210
 #: public/class-vcarb-dashboard.php:210
 msgid "All"
-msgstr "Tout"
+msgstr "Semua"
 
 #: verdantcart-ai-reports.php:710 verdantcart-ai-reports.php:711
 #: includes/class-vcarb-reports-admin.php:921
 msgid "All Customers"
-msgstr "Tous les clients"
+msgstr "Semua Pelanggan"
 
 #: includes/class-vcarb-exports.php:686
 msgid "All Customers Carbon Report"
-msgstr "Rapport carbone de tous les clients"
+msgstr "Laporan Karbon Semua Pelanggan"
 
 #: includes/class-vcarb-plugin-pages-admin.php:136
 msgid "All pages"
-msgstr "Toutes les pages"
+msgstr "Semua halaman"
 
 #: includes/class-vcarb-sustainability-summary.php:85
 msgid ""
 "An operational sustainability summary generated from saved VerdantCart "
 "Carbon Reports snapshot data."
 msgstr ""
-"Un résumé de la durabilité opérationnelle généré à partir des données "
-"d’instantanés sauvegardées de VerdantCart Carbon Reports."
+"Ringkasan keberlanjutan operasional yang dihasilkan dari data snapshot "
+"VerdantCart Carbon Reports yang disimpan."
 
 #: includes/class-vcarb-exports.php:473 includes/class-vcarb-exports.php:489
 msgid "Anchor (snapshot)"
-msgstr "Ancre (instantané)"
+msgstr "Jangkar (snapshot)"
 
 #: includes/class-vcarb-exports.php:883 includes/class-vcarb-exports.php:1112
 msgid "Anchor Snapshot"
-msgstr "Aperçu de l’ancrage"
+msgstr "Snapshot Jangkar"
 
 #: public/class-vcarb-dashboard.php:946
 msgid "Ask the store admin to run Backfill"
-msgstr "Demandez à l’administrateur du magasin de gérer le remplacement"
+msgstr "Minta admin toko untuk menjalankan Isi Ulang"
 
 #: includes/class-vcarb-sustainability-summary.php:102
 msgid "Available"
-msgstr "Disponible"
+msgstr "Tersedia"
 
 #: includes/class-vcarb-exports.php:1063
 msgid "Average emissions intensity could not be calculated for this snapshot."
-msgstr ""
-"L’intensité moyenne des émissions n’a pas pu être calculée pour ce cliché."
+msgstr "Intensitas emisi rata-rata tidak dapat dihitung untuk snapshot ini."
 
 #. %s: average emissions per order in kg CO2.
 #: includes/class-vcarb-exports.php:540 includes/class-vcarb-exports.php:1060
 #, php-format
 msgid "Average emissions intensity was %s kg CO₂ per order."
-msgstr "L’intensité moyenne des émissions était de %s kg de CO₂ par commande."
+msgstr "Intensitas emisi rata-rata adalah %s kg CO₂ per pesanan."
 
 #: includes/class-vcarb-reports-admin.php:1323
 #: includes/class-vcarb-sustainability-summary.php:120
 msgid "Average intensity"
-msgstr "Intensité moyenne"
+msgstr "Intensitas rata-rata"
 
 #: verdantcart-ai-reports.php:737 verdantcart-ai-reports.php:738
 msgid "Backfill"
-msgstr "Remblai"
+msgstr "Isi ulang"
 
 #: includes/class-vcarb-backfill-ajax.php:409
 #: includes/class-vcarb-backfill-ajax.php:511
 msgid "Backfill completed."
-msgstr "Remblai terminé."
+msgstr "Pengisian selesai."
 
 #. %s: error message.
 #: includes/class-vcarb-backfill-ajax.php:519
 #, php-format
 msgid "Backfill failed: %s"
-msgstr "Remblai échoué : %s"
+msgstr "Pengisian kembali gagal: %s"
 
 #: includes/class-vcarb-backfill-ajax.php:343
 msgid ""
 "Backfill is already running. Please wait a few seconds, then click Stop or "
 "refresh and start again."
 msgstr ""
-"Le remblai est déjà en marche. Veuillez patienter quelques secondes, puis "
-"cliquer sur Arrêter ou rafraîchir et recommencer."
+"Pengisian ulang sudah berjalan. Harap tunggu beberapa detik, lalu klik "
+"Berhenti atau refresh dan mulai lagi."
 
 #: includes/class-vcarb-backfill-ajax.php:359
 msgid "Backfill not started."
-msgstr "Le remblai n’a pas démarré."
+msgstr "Pengisian ulang tidak dimulai."
 
 #: includes/class-vcarb-backfill-ajax.php:307
 msgid "Backfill started."
-msgstr "Le remblai a commencé."
+msgstr "Pengisian dimulai."
 
 #: includes/class-vcarb-backfill-ajax.php:273
 msgid "Backfill stopped."
-msgstr "Le remblai s’est arrêté."
+msgstr "Penimbunan berhenti."
 
 #: includes/class-vcarb-exports.php:135 includes/class-vcarb-exports.php:159
 #: includes/class-vcarb-exports.php:232 includes/class-vcarb-exports.php:240
 msgid "Bad Request"
-msgstr "Requête erronée"
+msgstr "Permintaan Buruk"
 
 #: includes/class-vcarb-dataset-service.php:900
 msgid "Based on snapshot metrics"
-msgstr "Basé sur des métriques d’instantanés"
+msgstr "Berdasarkan metrik rekam jepret"
 
 #: includes/class-vcarb-backfill-ajax.php:512
 msgid "Batch processed."
-msgstr "Traitement en lot."
+msgstr "Diproses secara batch."
 
 #: public/class-vcarb-dashboard.php:221 public/class-vcarb-dashboard.php:1035
 msgid "Biggest driver:"
-msgstr "Principal moteur :"
+msgstr "Pengemudi terbesar:"
 
 #: includes/class-vcarb-insights.php:95
 msgid "Build more reporting history"
-msgstr "Construisez un historique de reporting supplémentaire"
+msgstr "Buat lebih banyak riwayat pelaporan"
 
 #: includes/class-vcarb-insights.php:478
 msgid "Bundle shipments to reduce delivery trips."
-msgstr "Regroupez les expéditions pour réduire les trajets de livraison."
+msgstr "Bundel pengiriman untuk mengurangi perjalanan pengiriman."
 
 #: public/class-vcarb-dashboard.php:873
 msgid "Calculations are based on completed orders during the selected period."
 msgstr ""
-"Les calculs sont basés sur les commandes terminées durant la période "
-"sélectionnée."
+"Perhitungan didasarkan pada pesanan yang diselesaikan selama periode yang "
+"dipilih."
 
 #: includes/class-vcarb-admin-report-ajax.php:49
 #: includes/class-vcarb-dataset-service.php:56
 #: includes/class-vcarb-dataset-service.php:123
 msgid "Calculator missing."
-msgstr "Calculatrice manquante."
+msgstr "Kalkulator hilang."
 
 #: includes/class-vcarb-admin-report-ajax.php:274
 msgid "Calculator period helper missing."
-msgstr "Calculatrice d’assistance menstruelle manquante."
+msgstr "Pembantu periode kalkulator hilang."
 
 #. Description of the plugin
 msgid "Carbon analytics and reporting for WooCommerce stores."
-msgstr "Analyse carbone et reporting pour les magasins WooCommerce."
+msgstr "Analitik dan pelaporan karbon untuk toko WooCommerce."
 
 #: public/class-vcarb-dashboard.php:1424
 msgid "Carbon Dashboard"
-msgstr "Tableau de bord Carbon"
+msgstr "Dasbor Karbon"
 
 #: includes/class-vcarb-exports.php:914
 msgid ""
@@ -221,10 +216,9 @@ msgid ""
 "the selected reporting period. Results are intended for operational "
 "sustainability analysis rather than certified carbon accounting."
 msgstr ""
-"Les émissions de carbone sont estimées en fonction des commandes WooCommerce "
-"terminées durant la période de rapport sélectionnée. Les résultats sont "
-"destinés à l’analyse de la durabilité opérationnelle plutôt qu’à la "
-"comptabilité carbone certifiée."
+"Emisi karbon diperkirakan berdasarkan pesanan WooCommerce yang diselesaikan "
+"selama periode pelaporan yang dipilih. Hasil ditujukan untuk analisis "
+"keberlanjutan operasional daripada akuntansi karbon bersertifikat."
 
 #: includes/class-vcarb-exports.php:1187
 msgid ""
@@ -234,107 +228,96 @@ msgid ""
 "same reporting window. Results are intended for operational sustainability "
 "analysis rather than certified carbon accounting."
 msgstr ""
-"Les émissions de carbone sont estimées en fonction des commandes WooCommerce "
-"éligibles durant la période de rapport sélectionnée. Les totaux de magasin "
-"sont calculés à partir de l’ancre snapshot sélectionnée, et les lignes au "
-"niveau du client reflètent les valeurs stockées pour cette même fenêtre de "
-"rapport. Les résultats sont destinés à l’analyse de la durabilité "
-"opérationnelle plutôt qu’à la comptabilité carbone certifiée."
+"Emisi karbon diperkirakan berdasarkan pesanan WooCommerce yang memenuhi "
+"syarat selama periode pelaporan yang dipilih. Total toko dihitung dari "
+"jangkar rekam jepret yang dipilih, dan baris tingkat pelanggan mencerminkan "
+"nilai yang disimpan untuk jendela pelaporan yang sama. Hasil ditujukan untuk "
+"analisis keberlanjutan operasional daripada akuntansi karbon bersertifikat."
 
 #: includes/class-vcarb-reports-admin.php:1341
 msgid "Carbon emissions over time"
-msgstr "Émissions de carbone au fil du temps"
+msgstr "Emisi karbon dari waktu ke waktu"
 
 #: public/class-vcarb-dashboard.php:218 public/class-vcarb-dashboard.php:994
 msgid "Carbon Hotspot"
-msgstr "Point chaud carbone"
+msgstr "Hotspot Karbon"
 
 #: public/class-vcarb-dashboard.php:990
 msgid "Carbon hotspot"
-msgstr "Hotspot de carbone"
+msgstr "Hotspot karbon"
 
 #: includes/class-vcarb-reports-admin.php:865
 msgid "Carbon reporting and emissions insights for WooCommerce stores."
-msgstr ""
-"Rapports carbone et analyses sur les émissions pour les magasins WooCommerce."
+msgstr "Pelaporan karbon dan wawasan emisi untuk toko WooCommerce."
 
 #: includes/class-vcarb-reports-admin.php:1331
 msgid "Change vs Previous"
-msgstr "Changement vs Précédent"
+msgstr "Perubahan vs Sebelumnya"
 
 #: includes/class-vcarb-insights.php:453
 msgid "Check checkout and payment gateway logs."
-msgstr "Vérifiez les registres de paiement et de passerelle de paiement."
+msgstr "Periksa log checkout dan gateway pembayaran."
 
 #: includes/class-vcarb-insights.php:289
 msgid "Check if a few heavy shipments dominated this period."
-msgstr "Vérifiez si quelques expéditions lourdes dominaient cette période."
+msgstr "Periksa apakah beberapa pengiriman berat mendominasi periode ini."
 
 #: includes/class-vcarb-insights.php:167
 msgid "Check shipping methods, packaging weight, and product mix changes."
-msgstr ""
-"Vérifiez les méthodes d’expédition, le poids de l’emballage et les "
-"changements de composition des produits."
+msgstr "Periksa metode pengiriman, berat kemasan, dan perubahan bauran produk."
 
 #: includes/class-vcarb-insights.php:121
 msgid "Check whether a few large orders caused the spike."
-msgstr "Vérifiez si quelques grosses commandes ont causé le pic."
+msgstr "Periksa apakah beberapa pesanan besar menyebabkan lonjakan."
 
 #: includes/class-vcarb-insights.php:196
 msgid "Check whether basket size or long-distance orders increased."
-msgstr ""
-"Vérifiez si la taille du panier ou des commandes longue distance ont "
-"augmenté."
+msgstr "Periksa apakah ukuran keranjang atau pesanan jarak jauh meningkat."
 
 #: includes/class-vcarb-insights.php:333
 msgid ""
 "Check whether refunds, returns, or unusual order patterns affected the "
 "snapshot."
 msgstr ""
-"Vérifiez si les remboursements, les retours ou des habitudes de commandes "
-"inhabituelles ont influencé l’instantané."
+"Periksa apakah pengembalian dana, pengembalian, atau pola pesanan yang tidak "
+"biasa memengaruhi snapshot."
 
 #: includes/class-vcarb-insights.php:79
 msgid "Check WooCommerce order statuses."
-msgstr "Consultez l’état des commandes WooCommerce."
+msgstr "Periksa status pesanan WooCommerce."
 
 #: includes/class-vcarb-insights.php:496
 msgid "Compare the same drivers and top orders next period."
-msgstr ""
-"Comparez les mêmes chauffeurs et les commandes les plus élevées à la "
-"prochaine période."
+msgstr "Bandingkan driver yang sama dan pesanan teratas periode berikutnya."
 
 #: includes/class-vcarb-reports-admin.php:1312
 msgid "Completed orders"
-msgstr "Commandes exécutées"
+msgstr "Pesanan yang diselesaikan"
 
 #: includes/class-vcarb-insights.php:452
 msgid "Confirm the WooCommerce order status filter."
-msgstr "Confirmez le filtre de statut des commandes WooCommerce."
+msgstr "Konfirmasikan filter status pesanan WooCommerce."
 
 #: includes/class-vcarb-reports-admin.php:986
 msgid "Connected"
-msgstr "Connecté"
+msgstr "Terhubung"
 
 #: includes/class-vcarb-insights.php:219
 msgid "Consider optimizing shipping zones or carrier selection."
 msgstr ""
-"Envisagez d’optimiser les zones d’expédition ou le choix du transporteur."
+"Pertimbangkan untuk mengoptimalkan zona pengiriman atau pemilihan operator."
 
 #: includes/class-vcarb-insights.php:98
 msgid "Continue generating snapshots so trends become more meaningful."
-msgstr ""
-"Continuez à générer des instantanés pour que les tendances deviennent plus "
-"pertinentes."
+msgstr "Terus membuat snapshot sehingga tren menjadi lebih bermakna."
 
 #: public/class-vcarb-dashboard.php:204
 msgid "Could not load dashboard data. Please try again."
-msgstr ""
-"Impossible de charger les données du tableau de bord. Veuillez réessayer."
+msgstr "Tidak dapat memuat data dasbor. Silakan coba lagi."
 
 #: includes/class-vcarb-exports.php:768 includes/class-vcarb-exports.php:962
 msgid "Could not open export stream."
-msgstr "Impossible d’ouvrir le flux d’exportation."
+msgstr "Tidak dapat membuka aliran ekspor."
 
 #: includes/class-vcarb-exports.php:631
 msgid "CO₂ (kg)"
@@ -342,11 +325,11 @@ msgstr "CO₂ (kg)"
 
 #: includes/class-vcarb-reports-admin.php:1343
 msgid "CO₂ (kg) and completed orders for the selected period."
-msgstr "CO₂ (kg) et les commandes terminées pour la période sélectionnée."
+msgstr "CO₂ (kg) dan pesanan yang diselesaikan untuk periode yang dipilih."
 
 #: public/class-vcarb-dashboard.php:1090
 msgid "CO₂ change"
-msgstr "Changement de CO₂"
+msgstr "Perubahan CO₂"
 
 #. %s: percentage increase in CO2 versus previous period.
 #: includes/class-vcarb-insights.php:328
@@ -355,45 +338,44 @@ msgid ""
 "CO₂ increased %s versus the previous period. This may indicate an outlier "
 "event."
 msgstr ""
-"Le CO₂ a augmenté %s par rapport à la période précédente. Cela peut indiquer "
-"un événement exceptionnel."
+"CO₂ meningkat %s dibandingkan periode sebelumnya. Ini mungkin "
+"mengindikasikan peristiwa outlier."
 
 #: includes/class-vcarb-insights.php:113
 msgid "CO₂ increased sharply"
-msgstr "Le CO₂ a fortement augmenté"
+msgstr "CO₂ meningkat tajam"
 
 #: includes/class-vcarb-product-insights.php:656
 msgid ""
 "CO₂ increased sharply vs previous month. Check promotions, pricing changes, "
 "or shipping method changes."
 msgstr ""
-"Le CO₂ a fortement augmenté par rapport au mois précédent. Vérifiez les "
-"promotions, les changements de prix ou les modifications des modes de "
-"livraison."
+"CO₂ meningkat tajam dibandingkan bulan sebelumnya. Periksa promosi, "
+"perubahan harga, atau perubahan metode pengiriman."
 
 #: includes/class-vcarb-exports.php:895
 #: includes/class-vcarb-reports-admin.php:1320
 msgid "CO₂ per Order"
-msgstr "CO₂ par commande"
+msgstr "CO₂ per Pesanan"
 
 #: includes/class-vcarb-sustainability-summary.php:120
 msgid "CO₂ per order"
-msgstr "CO₂ par ordre"
+msgstr "CO₂ per pesanan"
 
 #: includes/class-vcarb-exports.php:663 includes/class-vcarb-exports.php:699
 #: includes/class-vcarb-exports.php:1124
 msgid "CO₂ per Order (kg)"
-msgstr "CO₂ par ordre (kg)"
+msgstr "CO₂ per Pesanan (kg)"
 
 #. %s: percentage increase in CO2 per order.
 #: includes/class-vcarb-insights.php:163
 #, php-format
 msgid "CO₂ per order increased %s versus the previous period."
-msgstr "Le CO₂ par ordre a augmenté %s par rapport à la période précédente."
+msgstr "CO₂ per pesanan meningkat %s dibandingkan periode sebelumnya."
 
 #: includes/class-vcarb-exports.php:713
 msgid "CO₂ vs Previous %"
-msgstr "CO₂ vs % précédent"
+msgstr "CO₂ vs % sebelumnya"
 
 #: public/class-vcarb-dashboard.php:962
 msgid ""
@@ -401,72 +383,72 @@ msgid ""
 "Completed. VerdantCart will calculate and store the reporting snapshot "
 "automatically."
 msgstr ""
-"Créez ou recevez une commande WooCommerce, puis transférez-la dans "
-"Traitement ou Terminé. VerdantCart calculera et stockera automatiquement "
-"l’instantané de rapport."
+"Buat atau terima pesanan WooCommerce, lalu pindahkan ke Pemrosesan atau "
+"Selesai. VerdantCart akan menghitung dan menyimpan snapshot pelaporan secara "
+"otomatis."
 
 #: includes/class-vcarb-reports-admin.php:941
 msgid "Create or reconnect the public dashboard page to enable this shortcut."
 msgstr ""
-"Créez ou reconnectez la page du tableau de bord public pour activer ce "
-"raccourci."
+"Buat atau sambungkan kembali halaman dasbor publik untuk mengaktifkan "
+"pintasan ini."
 
 #: includes/class-vcarb-reports-admin.php:1268
 #: public/class-vcarb-dashboard.php:1547
 msgid "Current"
-msgstr "Actuel"
+msgstr "Saat ini"
 
 #. %s: current CO2 per order in kg.
 #: includes/class-vcarb-insights.php:472
 #, php-format
 msgid "Current CO₂ per order is about %s kg."
-msgstr "Le CO₂ actuel par commande est d’environ %s kg."
+msgstr "CO₂ saat ini per pesanan sekitar %s kg."
 
 #: includes/class-vcarb-exports.php:1146
 msgid "Customer Breakdown"
-msgstr "Analyse des clients"
+msgstr "Perincian Pelanggan"
 
 #: includes/class-vcarb-reports-admin.php:1392
 msgid "Customer breakdown"
-msgstr "Répartition des clients"
+msgstr "Perincian pelanggan"
 
 #: includes/class-vcarb-exports.php:552
 msgid ""
 "Customer breakdown excludes the store-total row because it is already "
 "summarized above."
 msgstr ""
-"La répartition des clients exclut la ligne du total de magasins car elle est "
-"déjà résumée ci-dessus."
+"Perincian pelanggan mengecualikan baris total toko karena sudah dirangkum di "
+"atas."
 
 #. %d: number of customer rows in the report.
 #: includes/class-vcarb-exports.php:1066
 msgid "Customer breakdown includes %d row(s)."
-msgstr "La répartition des clients inclut %d ou les rangées."
+msgstr "Perincian pelanggan mencakup baris %d."
 
 #: includes/class-vcarb-sustainability-summary.php:218
 msgid "Customer Sustainability Summary"
-msgstr "Résumé de la durabilité client"
+msgstr "Ringkasan Keberlanjutan Pelanggan"
 
 #: includes/class-vcarb-reports-admin.php:933
 #: includes/class-vcarb-reports-admin.php:939
 msgid "Customer view"
-msgstr "Vue client"
+msgstr "Tampilan pelanggan"
 
 #: verdantcart-ai-reports.php:719 verdantcart-ai-reports.php:720
 msgid "Dashboard"
-msgstr "Tableau de bord"
+msgstr "Dasbor"
 
 #: includes/class-vcarb-reports-admin.php:883
 msgid "Dashboard page missing"
-msgstr "Page du tableau de bord manquante"
+msgstr "Halaman dasbor hilang"
 
 #: includes/class-vcarb-reports-admin.php:883
 msgid "Dashboard ready"
-msgstr "Tableau de bord prêt"
+msgstr "Siap dasbor"
 
 #: includes/class-vcarb-admin-report-ajax.php:56
 msgid "Dataset service missing."
-msgstr "Service de jeu de données manquant."
+msgstr "Layanan himpunan data hilang."
 
 #: includes/class-vcarb-sustainability-summary.php:169
 msgid ""
@@ -474,176 +456,168 @@ msgid ""
 "certified ESG report, GHG Protocol report, legal compliance document, or "
 "verified carbon audit."
 msgstr ""
-"Avertissement : Ceci est un résumé de durabilité opérationnelle. Ce n’est "
-"pas un rapport ESG certifié, un rapport du protocole GHG, un document de "
-"conformité légal ou un audit carbone vérifié."
+"Penafian: Ini adalah ringkasan keberlanjutan operasional. Ini bukan laporan "
+"ESG bersertifikat, laporan Protokol GRK, dokumen kepatuhan hukum, atau audit "
+"karbon terverifikasi."
 
 #: includes/class-vcarb-insights.php:286
 msgid "Efficiency dropped sharply"
-msgstr "L’efficacité a chuté brutalement"
+msgstr "Efisiensi turun tajam"
 
 #: includes/class-vcarb-insights.php:136
 msgid "Efficiency improved"
-msgstr "Efficacité améliorée"
+msgstr "Efisiensi ditingkatkan"
 
 #: includes/class-vcarb-insights.php:160
 msgid "Efficiency regression detected"
-msgstr "Régression d’efficacité détectée"
+msgstr "Regresi efisiensi terdeteksi"
 
 #: includes/class-vcarb-sustainability-summary.php:119
 msgid "Eligible orders included"
-msgstr "Les ordres éligibles comprenaient"
+msgstr "Termasuk pesanan yang memenuhi syarat"
 
 #: includes/class-vcarb-reports-admin.php:1375
 msgid "Emission hotspots"
-msgstr "Points chauds d’émission"
+msgstr "Titik panas emisi"
 
 #: includes/class-vcarb-insights.php:234
 msgid "Emissions decreased"
-msgstr "Émissions diminuées"
+msgstr "Emisi menurun"
 
 #. %s: percentage change text.
 #: includes/class-vcarb-exports.php:523
 #, php-format
 msgid "Emissions decreased %s versus the previous period."
-msgstr "Les émissions ont diminué %s par rapport à la période précédente."
+msgstr "Emisi menurun %s dibandingkan periode sebelumnya."
 
 #: includes/class-vcarb-insights.php:260
 msgid "Emissions increased"
-msgstr "Augmentation des émissions"
+msgstr "Emisi meningkat"
 
 #. %s: percentage change text.
 #: includes/class-vcarb-exports.php:517
 #, php-format
 msgid "Emissions increased %s versus the previous period."
-msgstr "Les émissions ont augmenté %s par rapport à la période précédente."
+msgstr "Emisi meningkat %s dibandingkan periode sebelumnya."
 
 #: includes/class-vcarb-insights.php:188
 msgid "Emissions increased without growth"
-msgstr "Les émissions ont augmenté sans croissance"
+msgstr "Emisi meningkat tanpa pertumbuhan"
 
 #: includes/class-vcarb-exports.php:527
 msgid "Emissions were unchanged compared with the previous period."
-msgstr ""
-"Les émissions sont restées inchangées par rapport à la période précédente."
+msgstr "Emisi tidak berubah dibandingkan dengan periode sebelumnya."
 
 #: includes/class-vcarb-insights.php:809
 msgid "Energy"
-msgstr "Énergie"
+msgstr "Energi"
 
 #: includes/class-vcarb-reports-admin.php:1013
 msgid ""
 "Estimated emissions are calculated from eligible WooCommerce order data."
 msgstr ""
-"Les émissions estimées sont calculées à partir des données de commandes "
-"éligibles de WooCommerce."
+"Perkiraan emisi dihitung dari data pesanan WooCommerce yang memenuhi syarat."
 
 #: public/class-vcarb-dashboard.php:1233
 msgid ""
 "Estimated score based on emissions trend, emissions per order, reporting "
 "history, and hotspot concentration."
 msgstr ""
-"Score estimé basé sur la tendance des émissions, les émissions par commande, "
-"l’historique de déclaration et la concentration des points chauds."
+"Perkiraan skor berdasarkan tren emisi, emisi per pesanan, riwayat pelaporan, "
+"dan konsentrasi hotspot."
 
 #: includes/class-vcarb-dataset-service.php:874
 #: includes/class-vcarb-insights.php:640
 #: includes/class-vcarb-sustainability-summary.php:379
 #: public/class-vcarb-dashboard.php:1196
 msgid "Excellent"
-msgstr "Excellent"
+msgstr "Sempurna"
 
 #: includes/class-vcarb-sustainability-summary.php:125
 msgid "Executive summary"
-msgstr "Résumé exécutif"
+msgstr "Ringkasan eksekutif"
 
 #: public/class-vcarb-dashboard.php:929
 msgid "Existing old orders need Backfill one time."
-msgstr ""
-"Les anciennes commandes existantes doivent être remplies une seule fois."
+msgstr "Pesanan lama yang ada membutuhkan Isi Ulang satu kali."
 
 #: public/class-vcarb-dashboard.php:793
 msgid "Export"
-msgstr "Exporter"
+msgstr "Ekspor"
 
 #: public/class-vcarb-dashboard.php:208 public/class-vcarb-dashboard.php:809
 #: public/class-vcarb-dashboard.php:837
 msgid "Export CSV"
-msgstr "Export CSV"
+msgstr "Ekspor CSV"
 
 #: includes/class-vcarb-reports-admin.php:627
 msgid "Export is unavailable until a snapshot exists for this period."
-msgstr ""
-"L’exportation n’est pas disponible tant qu’un instantané n’existe pas pour "
-"cette période."
+msgstr "Ekspor tidak tersedia hingga rekam jepret ada untuk periode ini."
 
 #: public/class-vcarb-dashboard.php:776
 msgid "Export is unavailable until a store snapshot exists for this period."
 msgstr ""
-"L’exportation n’est pas disponible tant qu’un instantané de magasin n’existe "
-"pas pour cette période."
+"Ekspor tidak tersedia hingga rekam jepret penyimpanan ada untuk periode ini."
 
 #: public/class-vcarb-dashboard.php:202
 msgid "Export is unavailable until data exists for this period."
-msgstr ""
-"L’exportation n’est pas disponible tant que les données n’existent pas pour "
-"cette période."
+msgstr "Ekspor tidak tersedia hingga data ada untuk periode ini."
 
 #: public/class-vcarb-dashboard.php:826
 msgid "Export options"
-msgstr "Options d’importation"
+msgstr "Opsi ekspor"
 
 #: public/class-vcarb-dashboard.php:209 public/class-vcarb-dashboard.php:850
 msgid "Export PDF"
-msgstr "Exporter PDF"
+msgstr "Ekspor PDF"
 
 #: includes/class-vcarb-exports.php:687
 msgid "Exported By Admin ID"
-msgstr "Exporté par identifiant administrateur"
+msgstr "Diekspor Berdasarkan ID Admin"
 
 #: includes/class-vcarb-dataset-service.php:882
 #: includes/class-vcarb-insights.php:648
 #: includes/class-vcarb-sustainability-summary.php:387
 #: public/class-vcarb-dashboard.php:1204
 msgid "Fair"
-msgstr "Acceptable"
+msgstr "Wajar"
 
 #: includes/class-vcarb-access.php:164
 msgid "Feature link is unavailable in this build."
-msgstr "Le lien de fonctionnalité n’est pas disponible dans cette version."
+msgstr "Tautan fitur tidak tersedia di build ini."
 
 #: includes/class-vcarb-exports.php:682
 msgid "Field"
-msgstr "Champ"
+msgstr "Field"
 
 #: includes/class-vcarb-reports-admin.php:1068
 msgid "Fill missing store total and hotspots for already-counted orders"
 msgstr ""
-"Combler le total manquant de magasins et les points chauds pour les "
-"commandes déjà comptées"
+"Isi total toko dan hotspot yang hilang untuk pesanan yang sudah dihitung"
 
 #: includes/class-vcarb-insights-renderer.php:208
 msgid "Filter insights"
-msgstr "Filtres des informations"
+msgstr "Filter wawasan"
 
 #. %s: emissions driver label.
 #: includes/class-vcarb-insights.php:361
 #, php-format
 msgid "Focus improvements on %s first because it has the biggest leverage."
 msgstr ""
-"Concentrez-vous d’abord sur %s amélioration car elle a le plus de levier."
+"Fokuskan peningkatan pada %s terlebih dahulu karena memiliki leverage "
+"terbesar."
 
 #: includes/class-vcarb-insights.php:511
 msgid "Focus on the top drivers first"
-msgstr "Concentrez-vous d’abord sur les meilleurs pilotes"
+msgstr "Fokus pada driver teratas terlebih dahulu"
 
 #: public/class-vcarb-dashboard.php:959
 msgid "For new stores"
-msgstr "Pour les nouveaux magasins"
+msgstr "Untuk toko baru"
 
 #: public/class-vcarb-dashboard.php:968
 msgid "For stores with old orders"
-msgstr "Pour les magasins ayant d’anciennes commandes"
+msgstr "Untuk toko dengan pesanan lama"
 
 #: includes/class-vcarb-exports.php:90 includes/class-vcarb-exports.php:124
 #: includes/class-vcarb-reports-admin.php:269
@@ -654,166 +628,163 @@ msgstr "Pour les magasins ayant d’anciennes commandes"
 #: includes/gc-vcarb-admin-guard.php:129
 #: includes/trait-vcarb-ajax-helpers.php:48
 msgid "Forbidden"
-msgstr "Interdit"
+msgstr "Terlarang"
 
 #: includes/class-vcarb-reports-admin.php:991
 msgid "Front dashboard page"
-msgstr "Page du tableau de bord principal"
+msgstr "Halaman dasbor depan"
 
 #: includes/class-vcarb-reports-admin.php:651
 msgid "Front dashboard page not found."
-msgstr "Page du tableau de bord d’accueil non trouvée."
+msgstr "Halaman dasbor depan tidak ditemukan."
 
 #: includes/class-vcarb-reports-admin.php:940
 msgid "Front Dashboard Unavailable"
-msgstr "Tableau de bord avant indisponible"
+msgstr "Dasbor Depan Tidak Tersedia"
 
 #: includes/class-vcarb-exports.php:475 includes/class-vcarb-exports.php:491
 msgid "Generated (UTC)"
-msgstr "Généré (UTC)"
+msgstr "Dihasilkan (UTC)"
 
 #: includes/class-vcarb-dataset-service.php:878
 #: includes/class-vcarb-insights.php:644
 #: includes/class-vcarb-sustainability-summary.php:383
 #: public/class-vcarb-dashboard.php:1200
 msgid "Good"
-msgstr "Bon"
+msgstr "Bagus"
 
 #: includes/class-vcarb-product-insights.php:652
 msgid ""
 "High CO₂ per order vs store average. Check weight/dimensions, shipping "
 "zones, or fulfillment methods."
 msgstr ""
-"Un taux de CO₂ élevé par commande par rapport à la moyenne en magasin. "
-"Vérifiez le poids/les dimensions, les zones d’expédition ou les méthodes de "
-"livraison."
+"CO₂ tinggi per pesanan vs rata-rata toko. Periksa berat/dimensi, zona "
+"pengiriman, atau metode pemenuhan."
 
 #: includes/class-vcarb-product-insights.php:646
 msgid ""
 "High impact product (large share of emissions). Review packaging and "
 "shipping settings."
 msgstr ""
-"Produit à fort impact (grande part des émissions). Consultez les paramètres "
-"d’emballage et d’expédition."
+"Produk berdampak tinggi (bagian emisi yang besar). Tinjau pengaturan "
+"pengemasan dan pengiriman."
 
 #: public/class-vcarb-dashboard.php:1151
 msgid "Higher"
-msgstr "Plus élevé"
+msgstr "Lebih tinggi"
 
 #: includes/class-vcarb-calculator.php:392
 msgid "higher"
-msgstr "supérieur"
+msgstr "lebih tinggi"
 
 #: public/class-vcarb-dashboard.php:1529
 msgid "Historical period browsing"
-msgstr "Parcours de période historique"
+msgstr "Penjelajahan periode sejarah"
 
 #: includes/class-vcarb-insights.php:377
 msgid "Hotspot concentration detected"
-msgstr "Concentration de points chauds détectée"
+msgstr "Konsentrasi hotspot terdeteksi"
 
 #: includes/class-vcarb-reports-admin.php:1003
 msgid "How reporting works"
-msgstr "Comment fonctionne le reporting"
+msgstr "Cara kerja pelaporan"
 
 #: includes/class-vcarb-insights.php:514
 msgid ""
 "Identify the top products, shipping zones, or order types contributing to "
 "emissions."
 msgstr ""
-"Identifiez les principaux produits, les zones d’expédition ou les types de "
-"commandes contribuant aux émissions."
+"Identifikasi produk teratas, zona pengiriman, atau jenis pesanan yang "
+"berkontribusi terhadap emisi."
 
 #: includes/class-vcarb-reports-admin.php:1016
 msgid "If historical data is missing, use Backfill to rebuild it safely."
 msgstr ""
-"Si des données historiques manquent, utilisez Backfill pour la reconstruire "
-"en toute sécurité."
+"Jika data historis tidak ada, gunakan Isi Ulang untuk membangunnya kembali "
+"dengan aman."
 
 #: includes/class-vcarb-insights.php:76
 msgid "Inactive store"
-msgstr "Stockage inactif"
+msgstr "Toko tidak aktif"
 
 #: public/class-vcarb-dashboard.php:993
 msgid "INSIGHTS"
-msgstr "RÉFLEXIONS"
+msgstr "WAWASAN"
 
 #: includes/class-vcarb-sustainability-summary.php:143
 msgid "Insights overview"
-msgstr "Aperçu des Insights"
+msgstr "Gambaran umum Insight"
 
 #: public/class-vcarb-dashboard.php:1180
 msgid ""
 "Insights will appear after snapshot or backfill is available for this week."
 msgstr ""
-"Les insights apparaîtront après la disponibilité du snapshot ou du backfill "
-"cette semaine."
+"Insight akan muncul setelah snapshot atau pengisian ulang tersedia untuk "
+"minggu ini."
 
 #: includes/class-vcarb-dataset-service.php:789
 #: includes/class-vcarb-insights-ajax.php:60
 msgid "Insights will appear once a snapshot is available for this period."
-msgstr ""
-"Les insights apparaîtront dès qu’un instantané sera disponible pour cette "
-"période."
+msgstr "Wawasan akan muncul setelah snapshot tersedia untuk periode ini."
 
 #: includes/class-vcarb-insights.php:332
 msgid "Inspect orders with long-distance shipping or unusually large baskets."
 msgstr ""
-"Inspectez les commandes avec un transport longue distance ou des paniers "
-"exceptionnellement volumineux."
+"Periksa pesanan dengan pengiriman jarak jauh atau keranjang yang luar biasa "
+"besar."
 
 #: includes/class-vcarb-admin-report-ajax.php:147
 msgid "Invalid admin dataset."
-msgstr "Jeu de données administrateur invalide."
+msgstr "Himpunan data admin tidak valid."
 
 #: public/class-vcarb-dashboard.php:393 public/class-vcarb-dashboard.php:1308
 msgid "Invalid dashboard dataset."
-msgstr "Jeu de données de tableau de bord invalide."
+msgstr "Himpunan data dasbor tidak valid."
 
 #: includes/class-vcarb-admin-report-ajax.php:239
 msgid "Invalid hotspot period."
-msgstr "Point d’accès invalide."
+msgstr "Periode hotspot tidak valid."
 
 #: includes/class-vcarb-insights-ajax.php:106
 #: includes/trait-vcarb-ajax-helpers.php:77
 msgid "Invalid nonce"
-msgstr "Nonce invalide"
+msgstr "Nonce tidak valid"
 
 #: includes/trait-vcarb-ajax-helpers.php:60
 msgid "Invalid nonce action"
-msgstr "Action nonce invalide"
+msgstr "Tindakan nonce tidak valid"
 
 #: includes/class-vcarb-exports.php:123 public/class-vcarb-dashboard.php:356
 msgid "Invalid nonce."
-msgstr "Réponse invalide."
+msgstr "Nonce tidak valid."
 
 #: includes/class-vcarb-admin-report-ajax.php:303
 msgid "Invalid resolved period."
-msgstr "Invalide résolu, point final."
+msgstr "Periode penyelesaian tidak valid."
 
 #: includes/trait-vcarb-ajax-helpers.php:34
 #: includes/trait-vcarb-ajax-helpers.php:89
 msgid "Invalid user"
-msgstr "Utilisateur Invalide"
+msgstr "Pengguna tidak valid"
 
 #: includes/class-vcarb-dataset-service.php:45
 #: includes/class-vcarb-exports.php:134 includes/class-vcarb-exports.php:158
 #: includes/class-vcarb-sustainability-summary.php:209
 #: public/class-vcarb-dashboard.php:342
 msgid "Invalid user."
-msgstr "Utilisateur non valide."
+msgstr "Pengguna tidak valid."
 
 #: includes/class-vcarb-insights.php:241
 msgid ""
 "Keep the changes that drove this drop and monitor whether it holds next "
 "period."
 msgstr ""
-"Conservez les changements qui ont provoqué cette baisse et surveillez si "
-"cela se maintient au prochain trimestre."
+"Pertahankan perubahan yang mendorong penurunan ini dan pantau apakah itu "
+"berlaku pada periode berikutnya."
 
 #: includes/class-vcarb-insights.php:144
 msgid "Keep the changes that improved efficiency."
-msgstr "Conservez les changements qui ont amélioré l’efficacité."
+msgstr "Pertahankan perubahan yang meningkatkan efisiensi."
 
 #: public/class-vcarb-dashboard.php:1069
 msgid "kg CO₂"
@@ -821,142 +792,138 @@ msgstr "kg CO₂"
 
 #: public/class-vcarb-dashboard.php:1112
 msgid "Last updated"
-msgstr "Dernière mise à jour"
+msgstr "Terakhir diperbarui"
 
 #: includes/class-vcarb-reports-admin.php:1088
 msgid "Live progress will appear here."
-msgstr "Le suivi en direct sera disponible ici."
+msgstr "Kemajuan langsung akan muncul di sini."
 
 #: public/class-vcarb-dashboard.php:866
 msgid "Loading emissions data..."
-msgstr "Chargement des données d’émissions..."
+msgstr "Memuat data emisi..."
 
 #: public/class-vcarb-dashboard.php:206
 msgid "Loading emissions data…"
-msgstr "Chargement des données d’émissions..."
+msgstr "Memuat data emisi..."
 
 #: public/class-vcarb-dashboard.php:207
 msgid "Loading insights…"
-msgstr "Chargement des infos..."
+msgstr "Memuat wawasan..."
 
 #: includes/class-vcarb-reports-admin.php:625
 #: includes/class-vcarb-reports-admin.php:1367
 #: includes/class-vcarb-reports-admin.php:1384
 #: includes/class-vcarb-reports-admin.php:1415
 msgid "Loading…"
-msgstr "Chargement…"
+msgstr "Memuat…"
 
 #: public/class-vcarb-dashboard.php:471
 msgid "log in"
-msgstr "se connecter"
+msgstr "Log masuk"
 
 #: includes/class-vcarb-insights.php:168
 msgid "Look for high-CO₂ orders driving the average."
-msgstr ""
-"Attendez-vous à des commandes à haut taux de CO₂ qui stimulent la moyenne."
+msgstr "Cari pesanan CO₂ tinggi yang mendorong rata-rata."
 
 #: public/class-vcarb-dashboard.php:1144
 msgid "Lower"
-msgstr "Abaisser"
+msgstr "Bawah"
 
 #: includes/class-vcarb-calculator.php:385
 msgid "lower"
-msgstr "Lower"
+msgstr "lebih rendah"
 
 #: includes/class-vcarb-reports-admin.php:926
 msgid "Maintenance"
-msgstr "Maintenance"
+msgstr "Pemeliharaan"
 
 #: includes/class-vcarb-reports-admin.php:1050
 msgid "Manual only"
-msgstr "Manuel uniquement"
+msgstr "Hanya manual"
 
 #: includes/class-vcarb-reports-admin.php:1060
 msgid "Manual only:"
-msgstr "Manuels uniquement :"
+msgstr "Hanya manual:"
 
 #: includes/class-vcarb-product-insights.php:648
 msgid ""
 "Meaningful emissions contributor. Consider optimizing shipping methods or "
 "packaging."
 msgstr ""
-"Contributeur significatif aux émissions. Envisagez d’optimiser les méthodes "
-"d’expédition ou l’emballage."
+"Kontributor emisi yang berarti. Pertimbangkan untuk mengoptimalkan metode "
+"pengiriman atau pengemasan."
 
 #: public/class-vcarb-dashboard.php:1428
 msgid "Measure emissions per period, compare trends, and share progress."
 msgstr ""
-"Mesurez les émissions par période, comparez les tendances et partagez les "
-"progrès."
+"Mengukur emisi per periode, membandingkan tren, dan membagikan kemajuan."
 
 #: includes/class-vcarb-exports.php:912 includes/class-vcarb-exports.php:1185
 msgid "Methodology"
-msgstr "Méthodologie"
+msgstr "Metodologi"
 
 #: includes/class-vcarb-sustainability-summary.php:153
 msgid "Methodology note"
-msgstr "Note méthodologique"
+msgstr "Catatan metodologi"
 
 #: includes/class-vcarb-exports.php:657 includes/class-vcarb-exports.php:693
 msgid "Metric"
-msgstr "Métrique"
+msgstr "Metrik"
 
 #: includes/class-vcarb-reports-admin.php:986
 #: includes/class-vcarb-sustainability-summary.php:102
 msgid "Missing"
-msgstr "Manquant"
+msgstr "Hilang"
 
 #: includes/class-vcarb-exports.php:145
 msgid "Missing dataset classes."
-msgstr "Classes de jeux de données manquantes."
+msgstr "Kelas himpunan data yang hilang."
 
 #: includes/class-vcarb-exports.php:231
 msgid "Missing or invalid snapshot date."
-msgstr "Date de capture manquante ou invalide."
+msgstr "Tanggal snapshot hilang atau tidak valid."
 
 #: includes/class-vcarb-insights-ajax.php:50
 #: public/class-vcarb-dashboard.php:249 public/class-vcarb-dashboard.php:485
 msgid "Missing required classes."
-msgstr "Cours obligatoires manquants."
+msgstr "Kelas wajib tidak diterima."
 
 #: includes/class-vcarb-insights.php:493
 msgid "Monitor the next snapshot"
-msgstr "Surveillez la prochaine capture d’écran"
+msgstr "Pantau rekam jepret berikutnya"
 
 #: includes/class-vcarb-insights.php:145
 msgid "Monitor the next snapshot to confirm the improvement holds."
-msgstr ""
-"Surveillez le prochain instantané pour confirmer que l’amélioration est "
-"valide."
+msgstr "Pantau snapshot berikutnya untuk mengonfirmasi penahanan peningkatan."
 
 #: includes/class-vcarb-reports-admin.php:806
 #: includes/class-vcarb-reports-admin.php:1232
 #: public/class-vcarb-dashboard.php:1577
 msgid "Month"
-msgstr "Mois"
+msgstr "Bulan"
 
 #: includes/class-vcarb-dataset-service.php:885
 #: includes/class-vcarb-insights.php:651
 #: includes/class-vcarb-sustainability-summary.php:390
 #: public/class-vcarb-dashboard.php:1207
 msgid "Needs work"
-msgstr "Besoin de travail"
+msgstr "Perlu bekerja"
 
 #: public/class-vcarb-dashboard.php:205
 msgid "Network error. Please try again."
-msgstr "Erreur réseau. Veuillez réessayer."
+msgstr "Kesalahan jaringan. Silakan coba lagi."
 
 #: includes/class-vcarb-reports-admin.php:1054
 msgid "Never changes stored historical CO₂ values."
-msgstr "Ne modifie jamais les valeurs historiques de CO₂ stockées."
+msgstr "Jangan pernah mengubah nilai CO₂ historis yang disimpan."
 
 #: includes/class-vcarb-dataset-service.php:1136
 msgid "New"
-msgstr "Nouveau"
+msgstr "Baru"
 
 #: public/class-vcarb-dashboard.php:928
 msgid "New completed orders are tracked automatically."
-msgstr "Les nouvelles commandes terminées sont suivies automatiquement."
+msgstr "Pesanan baru yang diselesaikan dilacak secara otomatis."
 
 #: public/class-vcarb-dashboard.php:924
 msgid ""
@@ -964,141 +931,137 @@ msgid ""
 "plugin is active. If this store already has older completed orders, run "
 "Backfill once to build historical carbon reports."
 msgstr ""
-"Les nouvelles commandes WooCommerce terminées seront automatiquement tracées "
-"après l’activation du plugin. Si ce magasin a déjà des commandes anciennes "
-"terminées, lancez Backfill une fois pour établir des rapports historiques "
-"carbone."
+"Pesanan WooCommerce baru yang telah selesai akan dilacak secara otomatis "
+"setelah plugin aktif. Jika toko ini sudah memiliki pesanan yang lebih lama "
+"yang telah diselesaikan, jalankan Isi ulang sekali untuk membuat laporan "
+"karbon historis."
 
 #: includes/class-vcarb-reports-admin.php:1276
 #: includes/class-vcarb-reports-admin.php:1280
 #: public/class-vcarb-dashboard.php:1554 public/class-vcarb-dashboard.php:1558
 msgid "Next"
-msgstr "Suivant"
+msgstr "Berikutnya"
 
 #: includes/class-vcarb-dataset-service.php:284
 msgid "No activity in this period yet."
-msgstr "Aucune activité pour l’instant cette période."
+msgstr "Belum ada aktivitas pada periode ini."
 
 #: includes/class-vcarb-reports-admin.php:1093
 msgid "No backfill started yet."
-msgstr "Aucun remblai n’a encore commencé."
+msgstr "Belum ada pengisian ulang yang dimulai."
 
 #: includes/class-vcarb-dataset-service.php:996
 msgid "No change vs previous."
-msgstr "Aucun changement par rapport à avant."
+msgstr "Tidak ada perubahan vs sebelumnya."
 
 #: includes/class-vcarb-insights.php:77
 msgid "No completed or processing orders were detected for this period."
 msgstr ""
-"Aucune commande complétée ou en traitement n’a été détectée pour cette "
-"période."
+"Tidak ada pesanan yang diselesaikan atau diproses yang terdeteksi selama "
+"periode ini."
 
 #: includes/class-vcarb-insights.php:546
 msgid ""
 "No completed order emissions are available for this selected snapshot period "
 "yet."
 msgstr ""
-"Aucune commande complète n’est encore disponible pour cette période de "
-"capture sélectionnée."
+"Belum ada emisi pesanan selesai yang tersedia untuk periode snapshot yang "
+"dipilih ini."
 
 #: public/class-vcarb-dashboard.php:220 public/class-vcarb-dashboard.php:1001
 msgid "No data"
-msgstr "Aucune donnée"
+msgstr "Tidak ada data"
 
 #: includes/class-vcarb-dataset-service.php:1057
 msgid "No data available."
-msgstr "Pas de données disponibles."
+msgstr "Tidak ada data yang tersedia."
 
 #: includes/class-vcarb-exports.php:1161
 msgid "No data found for this snapshot period."
-msgstr "Aucune donnée trouvée pour cette période d’instantané."
+msgstr "Tidak ada data yang ditemukan untuk periode snapshot ini."
 
 #: public/class-vcarb-dashboard.php:203
 msgid "No emissions data for this period yet."
-msgstr "Pas encore de données d’émissions pour cette période."
+msgstr "Belum ada data emisi untuk periode ini."
 
 #: includes/class-vcarb-dataset-service.php:788
 msgid "No insights available yet"
-msgstr "Aucune information disponible pour l’instant"
+msgstr "Belum ada wawasan yang tersedia"
 
 #: includes/class-vcarb-insights-renderer.php:205
 #: public/class-vcarb-dashboard.php:215 public/class-vcarb-dashboard.php:1181
 msgid "No insights available yet."
-msgstr "Aucune information disponible pour l’instant."
+msgstr "Belum ada wawasan yang tersedia."
 
 #: includes/class-vcarb-product-insights.php:664
 msgid ""
 "No major anomalies detected. Monitor over time as more snapshot periods "
 "accumulate."
 msgstr ""
-"Aucune anomalie majeure détectée. Surveillez au fil du temps à mesure que de "
-"nouvelles périodes d’instantanés s’accumulent."
+"Tidak ada anomali besar yang terdeteksi. Pantau dari waktu ke waktu karena "
+"lebih banyak periode rekam jepret yang terakumulasi."
 
 #: includes/class-vcarb-sustainability-summary.php:147
 msgid "No major risks detected for this period."
-msgstr "Aucun risque majeur n’a été détecté pour cette période."
+msgstr "Tidak ada risiko besar yang terdeteksi untuk periode ini."
 
 #: includes/class-vcarb-dataset-service.php:963
 msgid "No orders are available for this selected snapshot period yet."
 msgstr ""
-"Aucune commande n’est encore disponible pour cette période de snapshot "
-"sélectionnée."
+"Belum ada pesanan yang tersedia untuk periode snapshot yang dipilih ini."
 
 #: includes/class-vcarb-insights.php:450
 msgid "No orders were detected in this period."
-msgstr "Aucun ordre n’a été détecté durant cette période."
+msgstr "Tidak ada pesanan yang terdeteksi dalam periode ini."
 
 #: includes/class-vcarb-dataset-service.php:964
 msgid "No orders yet for this period."
-msgstr "Pas encore d’ordres pour cette période."
+msgstr "Belum ada pesanan untuk periode ini."
 
 #: includes/class-vcarb-sustainability-summary.php:92
 msgid "No period selected"
-msgstr "Aucune période choisie"
+msgstr "Tidak ada periode yang dipilih"
 
 #: includes/class-vcarb-dataset-service.php:253
 msgid "No personal activity in this period yet."
-msgstr "Aucune activité personnelle à cette époque pour l’instant."
+msgstr "Belum ada aktivitas pribadi dalam periode ini."
 
 #: includes/class-vcarb-sustainability-summary.php:146
 msgid "No positive signals detected for this period."
-msgstr "Aucun signal positif détecté pour cette période."
+msgstr "Tidak ada sinyal positif yang terdeteksi untuk periode ini."
 
 #: includes/class-vcarb-exports.php:513
 msgid "No previous snapshot exists yet, so trend comparison is not available."
-msgstr ""
-"Aucun instantané précédent n’existe encore, donc la comparaison des "
-"tendances n’est pas disponible."
+msgstr "Belum ada snapshot sebelumnya, jadi perbandingan tren tidak tersedia."
 
 #: includes/class-vcarb-insights.php:96
 msgid "No previous snapshot was available for comparison."
-msgstr "Aucun instantané précédent n’était disponible pour comparaison."
+msgstr "Tidak ada snapshot sebelumnya yang tersedia untuk perbandingan."
 
 #: includes/class-vcarb-sustainability-summary.php:459
 msgid "No product hotspots are available for this period."
-msgstr "Aucun point chaud pour produits n’est disponible pour cette période."
+msgstr "Tidak ada hotspot produk yang tersedia untuk periode ini."
 
 #: public/class-vcarb-dashboard.php:1007
 msgid ""
 "No product hotspots yet for this period. Add completed orders or run "
 "Backfill."
 msgstr ""
-"Aucun point chaud pour les produits pour cette période. Ajoutez les "
-"commandes terminées ou effectuez le remplaçant."
+"Belum ada hotspot produk untuk periode ini. Tambahkan pesanan yang telah "
+"selesai atau jalankan Isi Ulang."
 
 #: includes/class-vcarb-sustainability-summary.php:148
 msgid "No recommendations available yet."
-msgstr "Aucune recommandation n’est encore disponible."
+msgstr "Belum ada rekomendasi yang tersedia."
 
 #: includes/class-vcarb-insights-renderer.php:239
 #: public/class-vcarb-dashboard.php:216
 msgid "No recommendations yet for this period."
-msgstr ""
-"Aucune recommandation pour cette période n’a pas encore été recommandée."
+msgstr "Belum ada rekomendasi untuk periode ini."
 
 #: public/class-vcarb-dashboard.php:920
 msgid "No reporting snapshot available yet"
-msgstr "Aucun instantané de reporting n’est encore disponible"
+msgstr "Belum ada snapshot pelaporan yang tersedia"
 
 #: includes/class-vcarb-reports-admin.php:892
 msgid ""
@@ -1106,215 +1069,207 @@ msgid ""
 "be tracked automatically after activation. If this store already has "
 "completed orders, run Backfill once to build historical carbon reports."
 msgstr ""
-"Aucun instantané de rapport n’a encore été trouvé. Les nouvelles commandes "
-"WooCommerce terminées seront automatiquement suivies après leur activation. "
-"Si ce magasin a déjà terminé les commandes, lancez Backfill une fois pour "
-"établir des rapports historiques carbone."
+"Belum ada snapshot pelaporan yang ditemukan. Pesanan WooCommerce baru yang "
+"telah selesai akan dilacak secara otomatis setelah aktivasi. Jika toko ini "
+"sudah menyelesaikan pesanan, jalankan Isi Ulang sekali untuk membuat laporan "
+"karbon historis."
 
 #: includes/class-vcarb-sustainability-summary.php:375
 msgid "No score available"
-msgstr "Aucun score disponible"
+msgstr "Tidak ada skor yang tersedia"
 
 #: public/class-vcarb-dashboard.php:914
 msgid "No snapshot available"
-msgstr "Aucun instantané disponible"
+msgstr "Tidak ada snapshot yang tersedia"
 
 #: includes/class-vcarb-dataset-service.php:72
 #: includes/class-vcarb-dataset-service.php:139
 msgid "No snapshot available for this period yet."
-msgstr "Aucun instantané disponible pour cette période pour l’instant."
+msgstr "Belum ada snapshot yang tersedia untuk periode ini."
 
 #: includes/class-vcarb-sustainability-summary.php:109
 msgid ""
 "No snapshot is available for this period yet. Run Backfill or wait until "
 "eligible WooCommerce orders are processed."
 msgstr ""
-"Aucun instantané n’est encore disponible pour cette période. Faites du "
-"Backfill ou attendez que les commandes WooCommerce éligibles soient traitées."
+"Belum ada snapshot yang tersedia untuk periode ini. Jalankan Isi Ulang atau "
+"tunggu hingga pesanan WooCommerce yang memenuhi syarat diproses."
 
 #: includes/class-vcarb-sustainability-summary.php:410
 msgid ""
 "No snapshot is available yet, so a complete sustainability summary cannot be "
 "generated for this period."
 msgstr ""
-"Aucun instantané n’est encore disponible, il est donc impossible de générer "
-"un résumé complet de la durabilité pour cette période."
+"Belum ada snapshot yang tersedia, jadi ringkasan keberlanjutan lengkap tidak "
+"dapat dibuat untuk periode ini."
 
 #: includes/class-vcarb-sustainability-summary.php:414
 msgid "not available"
-msgstr "pas disponible"
+msgstr "tak tersedia"
 
 #: includes/trait-vcarb-snapshot.php:368
 msgid "Not Found"
-msgstr "Non trouvé"
+msgstr "Tidak ditemukan"
 
 #: includes/class-vcarb-reports-admin.php:652
 #: includes/class-vcarb-reports-admin.php:993
 msgid "Not found"
-msgstr "Non trouvé"
+msgstr "Tidak ditemukan"
 
 #: includes/class-vcarb-exports.php:785 includes/class-vcarb-exports.php:988
 msgid "Note"
-msgstr "Note"
+msgstr "Catatan"
 
 #: includes/class-vcarb-insights-renderer.php:273
 #: public/class-vcarb-dashboard.php:217
 msgid "Nothing detected for this period."
-msgstr "Rien détecté pendant cette période."
+msgstr "Tidak ada yang terdeteksi untuk periode ini."
 
 #: includes/class-vcarb-reports-admin.php:1061
 msgid "Nothing runs automatically. Click Start when you are ready."
-msgstr ""
-"Rien ne fonctionne automatiquement. Cliquez sur Start quand vous êtes prêt."
+msgstr "Tidak ada yang berjalan secara otomatis. Klik Mulai saat Anda siap."
 
 #: includes/class-vcarb-exports.php:479
 msgid "Notice"
-msgstr "Avis"
+msgstr "Pemberitahuan"
 
 #: public/class-vcarb-dashboard.php:222 public/class-vcarb-dashboard.php:1037
 msgid "of product emissions."
-msgstr "des émissions des produits."
+msgstr "emisi produk."
 
 #: includes/class-vcarb-insights.php:477
 msgid "Offer local pickup or greener shipping options where possible."
 msgstr ""
-"Proposez un retrait local ou des options d’expédition plus écologiques "
-"lorsque possible."
+"Tawarkan opsi penjemputan lokal atau pengiriman yang lebih ramah lingkungan "
+"jika memungkinkan."
 
 #: verdantcart-ai-reports.php:502
 msgid "Once Monthly"
-msgstr "Une fois par mois"
+msgstr "Sebulan Sekali"
 
 #: verdantcart-ai-reports.php:495
 msgid "Once Weekly"
-msgstr "Une fois par semaine"
+msgstr "Seminggu Sekali"
 
 #: verdantcart-ai-reports.php:509
 msgid "Once Yearly"
-msgstr "Une fois par année"
+msgstr "Setahun sekali"
 
 #: includes/class-vcarb-insights.php:351
 msgid "One hotspot dominates emissions"
-msgstr "Un point chaud domine les émissions"
+msgstr "Satu hotspot mendominasi emisi"
 
 #: public/class-vcarb-dashboard.php:816
 msgid "Open export menu"
-msgstr "Ouvrir le menu d’exportation"
+msgstr "Buka menu ekspor"
 
 #: includes/class-vcarb-reports-admin.php:934
 msgid "Open Front Dashboard"
-msgstr "Tableau de bord avant ouvert"
+msgstr "Buka Dasbor Depan"
 
 #: includes/class-vcarb-reports-admin.php:901
 msgid "Open Reports"
-msgstr "Rapports ouverts"
+msgstr "Buka Laporan"
 
 #: includes/class-vcarb-reports-admin.php:913
 msgid "Open the core tools you use most often."
-msgstr "Ouvrez les outils de base que vous utilisez le plus souvent."
+msgstr "Buka alat inti yang paling sering Anda gunakan."
 
 #: includes/class-vcarb-reports-admin.php:935
 msgid "Open the customer-facing carbon dashboard in a new tab."
-msgstr ""
-"Ouvrez le tableau de bord carbone destiné aux clients dans un nouvel onglet."
+msgstr "Buka dasbor karbon yang menghadap pelanggan di tab baru."
 
 #: includes/class-vcarb-reports-admin.php:952
 msgid ""
 "Open the public homepage of the WooCommerce store where this plugin is "
 "installed."
-msgstr ""
-"Ouvrez la page d’accueil publique de la boutique WooCommerce où ce plugin "
-"est installé."
+msgstr "Buka beranda publik toko WooCommerce tempat plugin ini diinstal."
 
 #: includes/class-vcarb-insights.php:515
 msgid "Optimize the largest driver before spending time on smaller ones."
 msgstr ""
-"Optimisez le plus gros conducteur avant de passer du temps sur des plus "
-"petits."
+"Optimalkan driver terbesar sebelum menghabiskan waktu untuk yang lebih kecil."
 
 #: includes/class-vcarb-backfill-ajax.php:43
 msgid "Order tracker missing."
-msgstr "Traceur de commande manquant."
+msgstr "Pelacak pesanan hilang."
 
 #: includes/class-vcarb-exports.php:630 includes/class-vcarb-exports.php:710
 #: includes/class-vcarb-exports.php:1151
 #: includes/class-vcarb-reports-admin.php:1404
 #: includes/class-vcarb-sustainability-summary.php:119
 msgid "Orders"
-msgstr "Commandes"
+msgstr "Pesanan"
 
 #: includes/class-vcarb-insights.php:287
 msgid ""
 "Orders fell while total CO₂ increased, so emissions per order likely "
 "worsened."
 msgstr ""
-"Les commandes ont diminué tandis que le CO₂ total a augmenté, donc les "
-"émissions par commande se sont probablement aggravées."
+"Pesanan turun sementara total CO₂ meningkat, sehingga emisi per pesanan "
+"kemungkinan memburuk."
 
 #: includes/class-vcarb-exports.php:662 includes/class-vcarb-exports.php:698
 #: includes/class-vcarb-exports.php:891 includes/class-vcarb-exports.php:1120
 #: includes/class-vcarb-reports-admin.php:1309
 msgid "Orders Included"
-msgstr "Commandes incluses"
+msgstr "Pesanan Termasuk"
 
 #: public/class-vcarb-dashboard.php:1077
 msgid "Orders included"
-msgstr "Commandes incluses"
+msgstr "Pesanan termasuk"
 
 #: includes/class-vcarb-product-insights.php:660
 msgid ""
 "Orders increased sharply vs previous month. Ensure the product setup and "
 "shipping settings are optimized."
 msgstr ""
-"Les commandes ont fortement augmenté par rapport au mois précédent. Assurez-"
-"vous que la configuration du produit et les paramètres d’expédition sont "
-"optimisés."
+"Pesanan meningkat tajam dibandingkan bulan sebelumnya. Pastikan pengaturan "
+"pengaturan produk dan pengiriman dioptimalkan."
 
 #. 1: CO2 percentage change, 2: orders percentage change.
 #: includes/class-vcarb-insights.php:139
 #, php-format
 msgid "Orders increased while total CO₂ decreased (%1$s CO₂, %2$s orders)."
 msgstr ""
-"Les commandes ont augmenté tandis que le CO₂ total a diminué (%1$s CO₂, %2$s "
-"commandes)."
+"Pesanan meningkat sementara total CO₂ menurun (%1$s CO₂, %2$s pesanan)."
 
 #: includes/class-vcarb-insights.php:308
 msgid "Orders increased without increasing total CO₂ significantly."
-msgstr ""
-"Les commandes ont augmenté sans augmenter significativement le CO₂ total."
+msgstr "Pesanan meningkat tanpa meningkatkan total CO₂ secara signifikan."
 
 #: includes/class-vcarb-exports.php:711
 msgid "Orders vs Previous %"
-msgstr "Commandes vs % précédent"
+msgstr "Pesanan vs % sebelumnya"
 
 #: verdantcart-ai-reports.php:701 verdantcart-ai-reports.php:702
 #: public/class-vcarb-dashboard.php:752
 msgid "Overview"
-msgstr "Aperçu"
+msgstr "Ikhtisar"
 
 #: includes/class-vcarb-insights.php:805
 msgid "Packaging"
-msgstr "Emballage"
+msgstr "Kemasan"
 
 #: includes/class-vcarb-exports.php:879 includes/class-vcarb-exports.php:1108
 #: includes/class-vcarb-sustainability-summary.php:91
 #: public/class-vcarb-dashboard.php:1452
 msgid "Period"
-msgstr "Période"
+msgstr "Periode"
 
 #: includes/class-vcarb-exports.php:629
 msgid "Period Label"
-msgstr "Étiquette d’époque"
+msgstr "Label Periode"
 
 #: includes/class-vcarb-reports-admin.php:1334
 msgid "Period trend"
-msgstr "Tendance d’époque"
+msgstr "Tren periode"
 
 #. %s: login link HTML.
 #: public/class-vcarb-dashboard.php:470
 #, php-format
 msgid "Please %s to view your carbon dashboard."
-msgstr "Veuillez %s de consulter votre tableau de bord carbone."
+msgstr "Silakan %s untuk melihat dasbor karbon Anda."
 
 #: includes/class-vcarb-insights-renderer.php:213
 #: includes/class-vcarb-insights-renderer.php:224
@@ -1326,411 +1281,397 @@ msgstr "Positif"
 #: includes/class-vcarb-reports-admin.php:1260
 #: public/class-vcarb-dashboard.php:1536 public/class-vcarb-dashboard.php:1540
 msgid "Previous"
-msgstr "Précédent"
+msgstr "Sebelumnya"
 
 #: includes/class-vcarb-exports.php:850 includes/class-vcarb-exports.php:1081
 msgid "Print / Save as PDF"
-msgstr "Imprimer / Enregistrer au format PDF"
+msgstr "Cetak / Simpan sebagai PDF"
 
 #: includes/class-vcarb-reports-admin.php:819
 msgid "Print / Save PDF"
-msgstr "Imprimer / Enregistrer au format PDF"
+msgstr "Cetak / Simpan PDF"
 
 #: includes/class-vcarb-insights.php:807
 msgid "Product"
-msgstr "Produit"
+msgstr "Produk"
 
 #: includes/class-vcarb-admin-report-ajax.php:246
 msgid "Product hotspot service is missing."
-msgstr "Le service de point chaud produit manque."
+msgstr "Layanan hotspot produk hilang."
 
 #: includes/class-vcarb-insights.php:806
 msgid "Products"
-msgstr "Produits"
+msgstr "Produk"
 
 #: public/class-vcarb-dashboard.php:930
 msgid ""
 "Products need weight data, or a fallback weight filter, before emissions can "
 "be estimated."
 msgstr ""
-"Les produits ont besoin de données de poids, ou d’un filtre de rechange pour "
-"le poids, avant de pouvoir estimer les émissions."
+"Produk membutuhkan data berat, atau filter berat mundur, sebelum emisi dapat "
+"diperkirakan."
 
 #: includes/class-vcarb-reports-admin.php:911
 msgid "Quick actions"
-msgstr "Actions rapides"
+msgstr "Tindakan Cepat"
 
 #: includes/class-vcarb-reports-admin.php:993
 msgid "Ready"
-msgstr "Prêt"
+msgstr "Siap"
 
 #: includes/class-vcarb-reports-admin.php:1043
 msgid "Rebuild historical carbon data for existing WooCommerce orders."
 msgstr ""
-"Reconstruire les données carbones historiques pour les commandes WooCommerce "
-"existantes."
+"Bangun kembali data karbon historis untuk pesanan WooCommerce yang ada."
 
 #: includes/class-vcarb-reports-admin.php:928
 msgid "Rebuild historical reporting data for existing WooCommerce orders."
 msgstr ""
-"Reconstruisez les données historiques de reporting des commandes WooCommerce "
-"existantes."
+"Bangun kembali data pelaporan historis untuk pesanan WooCommerce yang ada."
 
 #: includes/class-vcarb-insights-renderer.php:231
 #: includes/class-vcarb-sustainability-summary.php:148
 #: public/class-vcarb-dashboard.php:214
 msgid "Recommendations"
-msgstr "Recommandations"
+msgstr "Rekomendasi"
 
 #: includes/class-vcarb-insights.php:469
 msgid "Reduce CO₂ per order"
-msgstr "Réduire le CO₂ par ordre"
+msgstr "Kurangi CO₂ per pesanan"
 
 #: includes/class-vcarb-insights.php:512
 msgid ""
 "Reducing the biggest emissions drivers first gives the fastest improvement "
 "opportunity."
 msgstr ""
-"Réduire d’abord les principaux moteurs d’émissions offre la meilleure "
-"opportunité d’amélioration."
+"Mengurangi penggerak emisi terbesar terlebih dahulu memberikan peluang "
+"peningkatan tercepat."
 
 #: includes/class-vcarb-plugin-pages-admin.php:138
 msgid "Regular pages only"
-msgstr "Pages régulières uniquement"
+msgstr "Hanya halaman biasa"
 
 #: verdantcart-ai-reports.php:729
 msgid "Report"
-msgstr "Rapport"
+msgstr "Laporkan"
 
 #: includes/class-vcarb-exports.php:905 includes/class-vcarb-exports.php:1178
 msgid "Report Notes"
-msgstr "Remarques sur le rapport"
+msgstr "Catatan Laporan"
 
 #: includes/class-vcarb-reports-admin.php:804
 msgid "Report period"
-msgstr "Période de rapport"
+msgstr "Periode laporan"
 
 #: includes/class-vcarb-exports.php:686
 msgid "Report Type"
-msgstr "Type de rapport"
+msgstr "Jenis Laporan"
 
 #: includes/class-vcarb-reports-admin.php:1014
 msgid "Reporting data is grouped into monthly, weekly, and yearly periods."
 msgstr ""
-"Les données de reporting sont regroupées en périodes mensuelles, "
-"hebdomadaires et annuelles."
+"Data pelaporan dikelompokkan ke dalam periode bulanan, mingguan, dan tahunan."
 
 #: includes/class-vcarb-reports-admin.php:891
 msgid "Reporting setup reminder:"
-msgstr "Rappel de mise en place des rapports :"
+msgstr "Pengingat penyiapan pelaporan:"
 
 #: includes/class-vcarb-reports-admin.php:920
 msgid "Reports"
-msgstr "Rapports"
+msgstr "Laporan"
 
 #: includes/class-vcarb-insights.php:808
 msgid "Returns"
-msgstr "Retours"
+msgstr "Pengembalian"
 
 #: includes/class-vcarb-insights.php:364
 msgid ""
 "Review carrier, packaging, product weight, or routing choices for this "
 "driver."
 msgstr ""
-"Examinez les choix de transporteur, d’emballage, de poids du produit ou de "
-"route pour ce pilote."
+"Tinjau pilihan operator, kemasan, berat produk, atau perutean untuk driver "
+"ini."
 
 #: includes/class-vcarb-insights.php:476
 msgid "Review packaging weight and materials."
-msgstr "Examinez le poids et les matériaux de l’emballage."
+msgstr "Tinjau berat dan bahan kemasan."
 
 #: includes/class-vcarb-insights.php:267
 msgid ""
 "Review product mix, shipping zones, and packaging changes in this period."
 msgstr ""
-"Examinez la gamme de produits, les zones d’expédition et les changements "
-"d’emballage durant cette période."
+"Tinjau perubahan bauran produk, zona pengiriman, dan kemasan dalam periode "
+"ini."
 
 #: includes/class-vcarb-insights.php:290
 msgid "Review shipping method changes and packaging weight."
-msgstr ""
-"Examinez les changements de méthode d’expédition et le poids de l’emballage."
+msgstr "Tinjau perubahan metode pengiriman dan berat kemasan."
 
 #: includes/class-vcarb-insights.php:195
 msgid "Review shipping zones and carrier changes in this period."
-msgstr ""
-"Examinez les zones d’expédition et les changements de transporteur durant "
-"cette période."
+msgstr "Tinjau zona pengiriman dan perubahan operator dalam periode ini."
 
 #: includes/class-vcarb-insights.php:120
 msgid "Review shipping zones and carrier changes."
-msgstr "Examinez les zones d’expédition et les changements de transporteur."
+msgstr "Tinjau zona pengiriman dan perubahan operator."
 
 #: includes/class-vcarb-insights.php:497
 msgid "Review spikes weekly or monthly depending on your reporting view."
 msgstr ""
-"Passez en revue les pics chaque semaine ou chaque mois selon votre point de "
-"vue de reportage."
+"Tinjau lonjakan mingguan atau bulanan, tergantung pada tampilan pelaporan "
+"Anda."
 
 #: includes/class-vcarb-insights-renderer.php:219
 #: includes/class-vcarb-insights-renderer.php:226
 #: public/class-vcarb-dashboard.php:213
 msgid "Risks"
-msgstr "Risques"
+msgstr "Risiko"
 
 #: includes/class-vcarb-insights.php:494
 msgid ""
 "Risks were detected this period. Validate whether they persist next period."
 msgstr ""
-"Des risques ont été détectés cette période. Validez si elles persistent à la "
-"période suivante."
+"Risiko terdeteksi pada periode ini. Validasi apakah mereka bertahan pada "
+"periode berikutnya."
 
 #: includes/class-vcarb-reports-admin.php:897
 #: includes/class-vcarb-reports-admin.php:927
 #: public/class-vcarb-dashboard.php:937
 msgid "Run Backfill"
-msgstr "Remblai de la piste"
+msgstr "Jalankan Isi Ulang"
 
 #: public/class-vcarb-dashboard.php:971
 msgid ""
 "Run Backfill once to process existing completed orders and create historical "
 "month, week, year, and product hotspot data."
 msgstr ""
-"Effectuez un Backfill une fois pour traiter les commandes déjà terminées et "
-"créer des données historiques sur les mois, semaines, années et points "
-"chauds du produit."
+"Jalankan Isi Ulang sekali untuk memproses pesanan selesai yang ada dan "
+"membuat data historis bulan, minggu, tahun, dan hotspot produk."
 
 #: includes/class-vcarb-reports-admin.php:1056
 msgid "Runs in batches to avoid timeouts."
-msgstr "Il s’exécute par lots pour éviter les temps morts."
+msgstr "Berjalan dalam batch untuk menghindari batas waktu."
 
 #: includes/class-vcarb-reports-admin.php:1069
 msgid "safe"
-msgstr "sécurisée"
+msgstr "aman"
 
 #: includes/class-vcarb-insights.php:307
 msgid "Scale without higher emissions"
-msgstr "Échelle sans émissions plus élevées"
+msgstr "Skala tanpa emisi yang lebih tinggi"
 
 #: includes/class-vcarb-admin-report-ajax.php:270
 msgid "Scheduler missing."
-msgstr "Planificateur manquant."
+msgstr "Penjadwal hilang."
 
 #: includes/class-vcarb-sustainability-summary.php:121
 #: public/class-vcarb-dashboard.php:1245
 msgid "Score"
-msgstr "Score"
+msgstr "Skor"
 
 #: includes/class-vcarb-reports-admin.php:1360
 msgid ""
 "Score, risks, positives, and recommendations based on the selected carbon "
 "snapshot."
 msgstr ""
-"Score, risques, points positifs et recommandations basés sur l’instantané "
-"carbone sélectionné."
+"Skor, risiko, positif, dan rekomendasi berdasarkan snapshot karbon yang "
+"dipilih."
 
 #: includes/class-vcarb-exports.php:628 includes/class-vcarb-exports.php:656
 #: includes/class-vcarb-exports.php:681 includes/class-vcarb-exports.php:692
 #: includes/class-vcarb-exports.php:708 includes/class-vcarb-exports.php:784
 #: includes/class-vcarb-exports.php:987
 msgid "Section"
-msgstr "Section"
+msgstr "Bagian"
 
 #: includes/class-vcarb-sustainability-summary.php:118
 msgid "Selected period emissions"
-msgstr "Émissions de périodes sélectionnées"
+msgstr "Emisi periode tertentu"
 
 #: includes/class-vcarb-reports-admin.php:1301
 msgid "Selected period total"
-msgstr "Total des périodes sélectionnées"
+msgstr "Total periode yang dipilih"
 
 #: includes/class-vcarb-exports.php:146 includes/class-vcarb-exports.php:769
 #: includes/class-vcarb-exports.php:963
 msgid "Server error"
-msgstr "Erreur du serveur"
+msgstr "Kesalahan server"
 
 #: public/class-vcarb-dashboard.php:917
 msgid "SETUP"
-msgstr "CONFIGURER"
+msgstr "PENGATURAN"
 
 #: includes/class-vcarb-insights.php:803 includes/class-vcarb-insights.php:804
 msgid "Shipping"
-msgstr "Livraison"
+msgstr "Pengiriman"
 
 #. %s: shipping share percentage of total CO2.
 #: includes/class-vcarb-insights.php:214
 #, php-format
 msgid "Shipping accounts for about %s of total CO₂ in this period."
-msgstr "Le transport représente environ %s du CO₂ total durant cette période."
+msgstr "Pengiriman menyumbang sekitar %s dari total CO₂ dalam periode ini."
 
 #: includes/class-vcarb-insights.php:211
 msgid "Shipping is the main driver"
-msgstr "Le transport maritime est le principal moteur"
+msgstr "Pengiriman adalah pendorong utama"
 
 #: includes/class-vcarb-exports.php:791 includes/class-vcarb-exports.php:994
 #: includes/class-vcarb-sustainability-summary.php:101
 msgid "Snapshot"
-msgstr "Capture d'écran"
+msgstr "Snapshot"
 
 #: includes/class-vcarb-exports.php:239
 msgid "Snapshot does not exist for this period."
-msgstr "Snapshot n’existe pas pour cette période."
+msgstr "Snapshot tidak ada untuk periode ini."
 
 #: includes/class-vcarb-reports-admin.php:626
 #: includes/class-vcarb-reports-admin.php:1219
 msgid "Snapshot missing"
-msgstr "Instantané manquant"
+msgstr "Rekam jepret hilang"
 
 #: includes/trait-vcarb-snapshot.php:367
 msgid "Snapshot period not found (store total row missing)."
-msgstr ""
-"Période d’instantané non trouvée (rangée totale de stockage manquante)."
+msgstr "Periode rekam jepret tidak ditemukan (total baris penyimpanan hilang)."
 
 #: includes/class-vcarb-exports.php:1140
 msgid "Snapshot Updated"
-msgstr "Aperçu mis à jour"
+msgstr "Snapshot Diperbarui"
 
 #: includes/class-vcarb-exports.php:474 includes/class-vcarb-exports.php:490
 msgid "Snapshot updated"
-msgstr "Aperçu mis à jour"
+msgstr "Snapshot diperbarui"
 
 #: includes/class-vcarb-sustainability-summary.php:161
 msgid "Snapshot updated:"
-msgstr "Aperçu mis à jour :"
+msgstr "Snapshot diperbarui:"
 
 #: includes/class-vcarb-sustainability-summary.php:77
 msgid "Snapshot-based report"
-msgstr "Rapport basé sur des instantanés"
+msgstr "Laporan berbasis rekam jepret"
 
 #: includes/class-vcarb-reports-admin.php:798
 msgid "Snapshot-based sustainability reporting summary for the current store."
 msgstr ""
-"Résumé des rapports de durabilité basé sur des instantanés pour le magasin "
-"actuel."
+"Ringkasan pelaporan keberlanjutan berbasis snapshot untuk toko saat ini."
 
 #. %s: selected snapshot period.
 #: includes/class-vcarb-reports-admin.php:1216
 #, php-format
 msgid "Snapshot: %s"
-msgstr "Instantané : %s"
+msgstr "Snapshot: %s"
 
 #: includes/class-vcarb-reports-admin.php:1015
 msgid ""
 "Snapshots and aggregates are used for dashboards, trends, hotspots, and "
 "exports."
 msgstr ""
-"Les instantanés et agrégats sont utilisés pour les tableaux de bord, les "
-"tendances, les points chauds et les exportations."
+"Snapshot dan agregat digunakan untuk dasbor, tren, hotspot, dan ekspor."
 
 #: includes/class-vcarb-reports-admin.php:1076
 msgid "Start backfill"
-msgstr "Démarrage du remblai"
+msgstr "Mulai pengisian ulang"
 
 #: includes/class-vcarb-reports-admin.php:1087
 msgid "Status"
-msgstr "Statut"
+msgstr "Status"
 
 #: includes/class-vcarb-reports-admin.php:1080
 msgid "Stop"
-msgstr "Arrêter"
+msgstr "Berhenti"
 
 #: includes/class-vcarb-backfill-ajax.php:325
 msgid "Stop request accepted."
-msgstr "Demande d’arrêt acceptée."
+msgstr "Permintaan berhenti diterima."
 
 #: includes/class-vcarb-exports.php:860 includes/class-vcarb-exports.php:1092
 msgid "Store"
-msgstr "Boutique"
+msgstr "Toko"
 
 #: includes/class-vcarb-reports-admin.php:1202
 msgid "Store Overview"
-msgstr "Aperçu du magasin"
+msgstr "Ikhtisar Toko"
 
 #: includes/class-vcarb-reports-admin.php:950
 msgid "Store site"
-msgstr "Site du magasin"
+msgstr "Situs toko"
 
 #: includes/class-vcarb-exports.php:1100
 msgid "Store Summary"
-msgstr "Résumé de la boutique"
+msgstr "Ringkasan Toko"
 
 #: includes/class-vcarb-insights-ajax.php:263
 msgid "Store Sustainability Insights"
-msgstr "Analyses sur la durabilité des magasins"
+msgstr "Wawasan Keberlanjutan Toko"
 
 #: includes/class-vcarb-sustainability-summary.php:28
 #: includes/class-vcarb-sustainability-summary.php:193
 msgid "Store Sustainability Summary"
-msgstr "Résumé de la durabilité des magasins"
+msgstr "Ringkasan Keberlanjutan Toko"
 
 #: includes/class-vcarb-dataset-service.php:669
 msgid "Store Total"
-msgstr "Total des magasins"
+msgstr "Total Toko"
 
 #: includes/class-vcarb-reports-admin.php:1394
 msgid "Store total and per-customer totals for the selected period."
-msgstr "Total de stockage et totaux par client pour la période sélectionnée."
+msgstr "Total toko dan total per pelanggan untuk periode yang dipilih."
 
 #: includes/class-vcarb-reports-admin.php:1194
 msgid "Store-wide carbon reporting, exports, and customer breakdown."
-msgstr ""
-"Rapports carbone à l’échelle du magasin, exportations et répartition des "
-"clients."
+msgstr "Pelaporan karbon di seluruh toko, ekspor, dan perincian pelanggan."
 
 #. %s: store name.
 #: includes/class-vcarb-exports.php:859 includes/class-vcarb-exports.php:1091
 #, php-format
 msgid "Store: %s"
-msgstr "Magasin : %s"
+msgstr "Toko: %s"
 
 #: includes/class-vcarb-exports.php:867
 msgid "Summary"
-msgstr "Résumé"
+msgstr "Ringkasan"
 
 #: includes/class-vcarb-insights-renderer.php:173
 #: includes/class-vcarb-reports-admin.php:1358
 #: public/class-vcarb-dashboard.php:1173
 msgid "Sustainability Insights"
-msgstr "Perspectives sur la durabilité"
+msgstr "Wawasan Keberlanjutan"
 
 #: verdantcart-ai-reports.php:728
 msgid "Sustainability Report"
-msgstr "Rapport sur la durabilité"
+msgstr "Laporan Keberlanjutan"
 
 #: public/class-vcarb-dashboard.php:1249
 msgid "Sustainability Score"
-msgstr "Score de durabilité"
+msgstr "Skor Keberlanjutan"
 
 #: public/class-vcarb-dashboard.php:1241
 msgid "Sustainability score"
-msgstr "Score de durabilité"
+msgstr "Skor keberlanjutan"
 
 #: includes/class-vcarb-reports-admin.php:831
 msgid "Sustainability Summary class is not available."
-msgstr "Le cours de résumé sur la durabilité n’est pas disponible."
+msgstr "Kelas Ringkasan Keberlanjutan tidak tersedia."
 
 #: includes/class-vcarb-sustainability-summary.php:227
 msgid ""
 "Sustainability summary is unavailable because the dataset service is missing."
 msgstr ""
-"Le résumé de durabilité n’est pas disponible car le service de jeu de "
-"données est absent."
+"Ringkasan keberlanjutan tidak tersedia karena layanan himpunan data tidak "
+"ada."
 
 #: includes/class-vcarb-reports-admin.php:975
 msgid "System status"
-msgstr "État du système"
+msgstr "Status sistem"
 
 #. %s: emissions driver label.
 #: includes/class-vcarb-insights.php:387
 #, php-format
 msgid "Target %s optimizations to reduce total footprint fastest."
-msgstr ""
-"Ciblez %s optimisations pour réduire l’empreinte totale le plus rapidement "
-"possible."
+msgstr "Targetkan pengoptimalan %s untuk mengurangi total jejak tercepat."
 
 #: includes/class-vcarb-insights.php:218
 msgid "Test lighter packaging and fewer parcels per order."
-msgstr "Essayez des emballages plus légers et moins de colis par commande."
+msgstr "Uji kemasan yang lebih ringan dan lebih sedikit paket per pesanan."
 
 #. 1: number of completed orders, 2: total emissions in kg CO2.
 #: includes/class-vcarb-exports.php:1053
@@ -1738,128 +1679,123 @@ msgstr "Essayez des emballages plus légers et moins de colis par commande."
 msgid ""
 "The report covers %1$d eligible orders with total emissions of %2$s kg CO₂."
 msgstr ""
-"Le rapport couvre %1$d ordres éligibles avec des émissions totales de %2$s "
-"kg de CO₂."
+"Laporan tersebut mencakup pesanan %1$d memenuhi syarat dengan total emisi "
+"%2$s kg CO₂."
 
 #: includes/class-vcarb-insights.php:175
 msgid ""
 "This appears because average CO₂ per order increased above the efficiency "
 "threshold."
 msgstr ""
-"Cela apparaît parce que le CO₂ moyen par commande a dépassé le seuil "
-"d’efficacité."
+"Ini muncul karena rata-rata CO₂ per pesanan meningkat di atas ambang batas "
+"efisiensi."
 
 #: includes/class-vcarb-insights.php:203
 msgid ""
 "This appears because emissions increased while orders did not grow "
 "significantly."
 msgstr ""
-"Cela semble s’expliquer par une augmentation des émissions alors que les "
-"commandes n’ont pas augmenté de manière significative."
+"Ini muncul karena emisi meningkat sementara pesanan tidak tumbuh secara "
+"signifikan."
 
 #: includes/class-vcarb-insights.php:371
 msgid ""
 "This appears because one emissions driver is above the hotspot risk "
 "threshold."
 msgstr ""
-"Cela apparaît parce qu’un conducteur d’émissions dépasse le seuil de risque "
-"de point chaud."
+"Ini muncul karena satu pendorong emisi berada di atas ambang batas risiko "
+"hotspot."
 
 #: includes/class-vcarb-insights.php:396
 msgid ""
 "This appears because one emissions driver is above the hotspot warning "
 "threshold."
 msgstr ""
-"Cela apparaît parce qu’un conducteur d’émissions dépasse le seuil d’alerte "
-"de point chaud."
+"Ini muncul karena satu driver emisi berada di atas ambang batas peringatan "
+"hotspot."
 
 #: includes/class-vcarb-insights.php:316
 msgid "This appears because order growth was stronger than emissions growth."
 msgstr ""
-"Cela semble s’expliquer par le fait que la croissance des commandes était "
-"plus forte que celle des émissions."
+"Ini muncul karena pertumbuhan pesanan lebih kuat daripada pertumbuhan emisi."
 
 #: includes/class-vcarb-insights.php:152
 msgid ""
 "This appears because order volume increased while estimated emissions "
 "decreased."
 msgstr ""
-"Cela apparaît parce que le volume des commandes a augmenté tandis que les "
-"émissions estimées ont diminué."
+"Ini muncul karena volume pesanan meningkat sementara perkiraan emisi menurun."
 
 #: includes/class-vcarb-insights.php:296
 msgid ""
 "This appears because orders decreased while estimated emissions increased."
-msgstr ""
-"Cela semble s’expliquer par une diminution des commandes tandis que les "
-"émissions estimées augmentaient."
+msgstr "Ini muncul karena pesanan menurun sementara perkiraan emisi meningkat."
 
 #: includes/class-vcarb-insights.php:226
 msgid ""
 "This appears because shipping represents more than half of the selected "
 "period’s estimated emissions."
 msgstr ""
-"Cela semble s’expliquer par le fait que le transport maritime représente "
-"plus de la moitié des émissions estimées de la période sélectionnée."
+"Ini muncul karena pengiriman mewakili lebih dari setengah dari perkiraan "
+"emisi periode yang dipilih."
 
 #: includes/class-vcarb-insights.php:340
 msgid ""
 "This appears because the emissions increase crossed the abnormal spike "
 "threshold."
 msgstr ""
-"Cela apparaît parce que l’augmentation des émissions a dépassé le seuil de "
-"pic anormal."
+"Ini muncul karena peningkatan emisi melewati ambang batas lonjakan abnormal."
 
 #: includes/class-vcarb-insights.php:105
 msgid ""
 "This appears because the plugin could not compare the selected period with a "
 "previous snapshot."
 msgstr ""
-"Cela apparaît parce que le plugin ne pouvait pas comparer la période "
-"sélectionnée avec un instantané précédent."
+"Ini muncul karena plugin tidak dapat membandingkan periode yang dipilih "
+"dengan snapshot sebelumnya."
 
 #: includes/class-vcarb-insights.php:87
 msgid "This appears because the selected snapshot period has zero orders."
 msgstr ""
-"Cela apparaît parce que la période d’instantané sélectionnée n’a aucun ordre."
+"Ini muncul karena periode rekam jepret yang dipilih memiliki pesanan nol."
 
 #: includes/class-vcarb-insights.php:128
 msgid "This appears because total CO₂ increased above the high-risk threshold."
 msgstr ""
-"Cela apparaît parce que le CO₂ total a dépassé le seuil de risque élevé."
+"Ini muncul karena total CO₂ meningkat di atas ambang batas risiko tinggi."
 
 #: includes/class-vcarb-insights.php:248
 msgid ""
 "This appears because total estimated CO₂ decreased beyond the positive "
 "threshold."
 msgstr ""
-"Cela apparaît parce que le CO₂ estimé total a dépassé le seuil positif."
+"Hal ini muncul karena total perkiraan CO₂ menurun melampaui ambang batas "
+"positif."
 
 #: includes/class-vcarb-insights.php:274
 msgid ""
 "This appears because total estimated CO₂ increased above the warning "
 "threshold."
 msgstr ""
-"Cela apparaît parce que le CO₂ estimé total a dépassé le seuil "
-"d’avertissement."
+"Ini muncul karena total perkiraan CO₂ meningkat di atas ambang batas "
+"peringatan."
 
 #. %s: snapshot anchor period.
 #: includes/class-vcarb-exports.php:547 includes/class-vcarb-exports.php:1048
 #, php-format
 msgid "This export reflects snapshot period %s."
-msgstr "Cette exportation reflète la période instantanée %s."
+msgstr "Ekspor ini mencerminkan periode rekam jepret %s."
 
 #: includes/class-vcarb-exports.php:792 includes/class-vcarb-exports.php:995
 msgid "This export reflects the selected snapshot period only."
-msgstr ""
-"Cette exportation reflète uniquement la période d’instantané sélectionnée."
+msgstr "Ekspor ini hanya mencerminkan periode rekam jepret yang dipilih."
 
 #: includes/class-vcarb-insights.php:310
 msgid ""
 "This indicates improving efficiency. Keep optimizations and monitor hotspots."
 msgstr ""
-"Cela indique une amélioration de l’efficacité. Gardez les optimisations et "
-"surveillez les points d’intérêt."
+"Ini menunjukkan peningkatan efisiensi. Pertahankan pengoptimalan dan pantau "
+"hotspot."
 
 #: includes/class-vcarb-reports-admin.php:968
 msgid ""
@@ -1867,17 +1803,17 @@ msgid ""
 "in your theme or main product website, not inside the WordPress.org plugin "
 "package."
 msgstr ""
-"Cela ouvre la page d’accueil actuelle du magasin. Les pages d’atterrissage "
-"marketing doivent se trouver dans votre thème ou votre site principal "
-"produit, et non dans le module WordPress.org plugin."
+"Ini membuka beranda toko saat ini. Halaman arahan pemasaran harus berada di "
+"tema atau situs web produk utama Anda, bukan di dalam paket plugin "
+"WordPress.org."
 
 #: includes/class-vcarb-insights.php:676
 msgid ""
 "This period has improvement opportunities based on emissions trend, "
 "efficiency, or hotspot concentration."
 msgstr ""
-"Cette période offre des opportunités d’amélioration basées sur la tendance "
-"des émissions, l’efficacité ou la concentration des points chauds."
+"Periode ini memiliki peluang peningkatan berdasarkan tren emisi, efisiensi, "
+"atau konsentrasi hotspot."
 
 #. 1: total CO2, 2: orders, 3: CO2 per order.
 #: includes/class-vcarb-sustainability-summary.php:420
@@ -1886,8 +1822,8 @@ msgid ""
 "This period includes %1$s of estimated CO₂ across %2$s eligible orders, with "
 "an average intensity of %3$s per order."
 msgstr ""
-"Cette période inclut %1$s de CO₂ estimé pour %2$s ordres éligibles, avec une "
-"intensité moyenne de %3$s par ordre."
+"Periode ini mencakup %1$s perkiraan CO₂ di seluruh pesanan %2$s memenuhi "
+"syarat, dengan intensitas rata-rata %3$s per pesanan."
 
 #. 1: total CO2, 2: orders, 3: CO2 per order, 4: score, 5: score label.
 #: includes/class-vcarb-sustainability-summary.php:429
@@ -1897,39 +1833,38 @@ msgid ""
 "an average intensity of %3$s per order. The sustainability score is %4$s/"
 "100, rated %5$s."
 msgstr ""
-"Cette période inclut %1$s de CO₂ estimé pour %2$s ordres éligibles, avec une "
-"intensité moyenne de %3$s par ordre. Le score de durabilité est %4$s/100, "
-"noté %5$s."
+"Periode ini mencakup %1$s perkiraan CO₂ di seluruh pesanan %2$s memenuhi "
+"syarat, dengan intensitas rata-rata %3$s per pesanan. Skor keberlanjutan "
+"adalah %4$s/100, diberi peringkat %5$s."
 
 #: includes/class-vcarb-insights.php:485
 msgid ""
 "This recommendation appears because CO₂ per order is above the configured "
 "threshold."
 msgstr ""
-"Cette recommandation apparaît parce que le CO₂ par ordre dépasse le seuil "
-"configuré."
+"Rekomendasi ini muncul karena CO₂ per pesanan berada di atas ambang batas "
+"yang dikonfigurasi."
 
 #: includes/class-vcarb-insights.php:503
 msgid ""
 "This recommendation appears because one or more risk insights were detected."
 msgstr ""
-"Cette recommandation apparaît parce qu’une ou plusieurs informations sur les "
-"risques ont été détectées."
+"Rekomendasi ini muncul karena satu atau beberapa wawasan risiko terdeteksi."
 
 #: includes/class-vcarb-insights.php:521
 msgid ""
 "This recommendation appears because the period has measurable estimated "
 "emissions."
 msgstr ""
-"Cette recommandation apparaît parce que la période comporte des émissions "
-"estimées mesurables."
+"Rekomendasi ini muncul karena periode tersebut memiliki perkiraan emisi yang "
+"terukur."
 
 #: includes/class-vcarb-insights.php:459
 msgid ""
 "This recommendation appears because the selected snapshot has no orders."
 msgstr ""
-"Cette recommandation apparaît parce que l’instantané sélectionné ne comporte "
-"pas d’ordres."
+"Rekomendasi ini muncul karena rekam jepret yang dipilih tidak memiliki "
+"pesanan."
 
 #. 1: number of completed orders, 2: total emissions in kg CO2.
 #: includes/class-vcarb-exports.php:532
@@ -1937,16 +1872,16 @@ msgstr ""
 msgid ""
 "This report covers %1$d eligible orders with total emissions of %2$s kg CO₂."
 msgstr ""
-"Ce rapport traite %1$d ordres éligibles ayant des émissions totales de %2$s "
-"kg de CO₂."
+"Laporan ini mencakup pesanan %1$d yang memenuhi syarat dengan total emisi "
+"%2$s kg CO₂."
 
 #: includes/class-vcarb-insights.php:661
 msgid ""
 "This score is based on the selected snapshot. Add more snapshot history for "
 "stronger trend analysis."
 msgstr ""
-"Ce score est basé sur l’instantané sélectionné. Ajoutez plus d’historique "
-"instantané pour une analyse des tendances plus solide."
+"Skor ini didasarkan pada snapshot yang dipilih. Tambahkan lebih banyak "
+"riwayat rekam jepret untuk analisis tren yang lebih kuat."
 
 #: includes/class-vcarb-sustainability-summary.php:156
 msgid ""
@@ -1955,47 +1890,47 @@ msgid ""
 "hotspot data, and deterministic local insight rules. Historical snapshots "
 "are intended to keep reporting consistent over time."
 msgstr ""
-"Ce résumé est généré à partir des données d’instantanés VerdantCart Carbon "
-"Reports sauvegardées. Il utilise des registres de commandes WooCommerce "
-"éligibles, des totaux d’émissions stockés, des données de points chauds et "
-"des règles d’analyse locale déterministe. Les instantanés historiques sont "
-"destinés à maintenir la cohérence des rapports dans le temps."
+"Ringkasan ini dihasilkan dari data snapshot VerdantCart Carbon Reports yang "
+"disimpan. Ini menggunakan catatan pesanan WooCommerce yang memenuhi syarat, "
+"total emisi yang disimpan, data hotspot, dan aturan wawasan lokal "
+"deterministik. Snapshot historis dimaksudkan untuk menjaga pelaporan tetap "
+"konsisten dari waktu ke waktu."
 
 #: includes/class-vcarb-exports.php:169
 msgid "Too many export requests. Please try again shortly."
-msgstr "Trop de demandes d’exportation. Veuillez réessayer sous peu."
+msgstr "Terlalu banyak permintaan ekspor. Silakan coba lagi segera."
 
 #: includes/class-vcarb-exports.php:170
 msgid "Too Many Requests"
-msgstr "Demandes trop nombreuses"
+msgstr "Terlalu Banyak Permintaan"
 
 #: includes/trait-vcarb-ajax-helpers.php:108
 msgid "Too many requests"
-msgstr "Trop de demandes"
+msgstr "Terlalu banyak permintaan"
 
 #: public/class-vcarb-dashboard.php:368
 msgid "Too many requests."
-msgstr "Trop de requêtes."
+msgstr "Terlalu banyak permintaan."
 
 #: public/class-vcarb-dashboard.php:219 public/class-vcarb-dashboard.php:995
 msgid "Top emitting products for this period."
-msgstr "Les produits à émission principale pour cette période."
+msgstr "Produk pemancar teratas untuk periode ini."
 
 #: includes/class-vcarb-sustainability-summary.php:137
 msgid "Top hotspots"
-msgstr "Principaux points chauds"
+msgstr "Hotspot teratas"
 
 #: includes/class-vcarb-sustainability-summary.php:146
 msgid "Top positives"
-msgstr "Principaux points positifs"
+msgstr "Positif teratas"
 
 #: includes/class-vcarb-reports-admin.php:1377
 msgid "Top products contributing to emissions."
-msgstr "Les meilleurs produits contribuant aux émissions."
+msgstr "Produk teratas yang berkontribusi terhadap emisi."
 
 #: includes/class-vcarb-sustainability-summary.php:147
 msgid "Top risks"
-msgstr "Principaux risques"
+msgstr "Risiko teratas"
 
 #: includes/class-vcarb-reports-admin.php:1298
 #: includes/class-vcarb-reports-admin.php:1406
@@ -2007,228 +1942,223 @@ msgstr "Total CO₂"
 #: includes/class-vcarb-exports.php:712 includes/class-vcarb-exports.php:1116
 #: includes/class-vcarb-exports.php:1153
 msgid "Total CO₂ (kg)"
-msgstr "CO₂ total (kg)"
+msgstr "Total CO₂ (kg)"
 
 #: includes/class-vcarb-exports.php:887
 msgid "Total CO₂ Emissions"
-msgstr "Émissions totales de CO₂"
+msgstr "Total Emisi CO₂"
 
 #. %s: percentage decrease in total CO2.
 #: includes/class-vcarb-insights.php:237
 #, php-format
 msgid "Total CO₂ is down %s versus the previous period."
-msgstr "Le CO₂ total est en baisse %s par rapport à la période précédente."
+msgstr "Total CO₂ turun %s dibandingkan periode sebelumnya."
 
 #. %s: percentage increase versus previous period.
 #. %s: percentage increase in total CO2.
 #: includes/class-vcarb-insights.php:116 includes/class-vcarb-insights.php:263
 #, php-format
 msgid "Total CO₂ is up %s versus the previous period."
-msgstr "Le CO₂ total a augmenté %s par rapport à la période précédente."
+msgstr "Total CO₂ naik %s dibandingkan periode sebelumnya."
 
 #. %s: percentage increase in total CO2.
 #: includes/class-vcarb-insights.php:191
 #, php-format
 msgid "Total CO₂ rose %s while order volume stayed roughly flat."
-msgstr ""
-"Le CO₂ total a augmenté %s tandis que le volume des commandes est resté à "
-"peu près stable."
+msgstr "Total CO₂ naik %s sementara volume pesanan tetap kira-kira datar."
 
 #: includes/class-vcarb-exports.php:664 includes/class-vcarb-exports.php:700
 #: includes/class-vcarb-exports.php:899 includes/class-vcarb-exports.php:1136
 msgid "Total CO₂ vs Previous"
-msgstr "CO₂ total vs précédent"
+msgstr "Total CO₂ vs Sebelumnya"
 
 #: public/class-vcarb-dashboard.php:1061
 msgid "Total emissions"
-msgstr "Émissions totales"
+msgstr "Total emisi"
 
 #: includes/class-vcarb-exports.php:79 includes/trait-vcarb-ajax-helpers.php:25
 #: public/class-vcarb-dashboard.php:336
 msgid "Unauthorized"
-msgstr "Non autorisé"
+msgstr "Tidak resmi"
 
 #: includes/class-vcarb-exports.php:89
 msgid "Unauthorized."
-msgstr "Accès refusé."
+msgstr "Tidak berizin."
 
 #: includes/class-vcarb-insights.php:818
 msgid "Unknown driver"
-msgstr "Conducteur inconnu"
+msgstr "Pengemudi tidak dikenal"
 
 #: includes/class-vcarb-sustainability-summary.php:479
 msgid "Unknown product"
-msgstr "Produit inconnu"
+msgstr "Produk tidak dikenal"
 
 #: includes/class-vcarb-exports.php:714 includes/class-vcarb-exports.php:1155
 #: includes/class-vcarb-reports-admin.php:1408
 msgid "Updated"
-msgstr "Mis à jour"
+msgstr "Diperbarui"
 
 #: includes/class-vcarb-insights.php:99
 msgid "Use historical browsing once more periods are available."
-msgstr ""
-"Utilisez la navigation historique dès que d’autres périodes sont disponibles."
+msgstr "Gunakan penjelajahan historis setelah periode lagi tersedia."
 
 #: includes/class-vcarb-reports-admin.php:873
 msgid ""
 "Use this page as your control center for reporting, backfill, customer "
 "insights, and public store pages."
 msgstr ""
-"Utilisez cette page comme centre de contrôle pour les rapports, le "
-"remplaçant, les informations clients et les pages des boutiques publiques."
+"Gunakan halaman ini sebagai pusat kontrol untuk pelaporan, pengisian ulang, "
+"wawasan pelanggan, dan halaman toko publik."
 
 #: includes/class-vcarb-exports.php:709 includes/class-vcarb-exports.php:1150
 #: includes/class-vcarb-reports-admin.php:1403
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Pengguna"
 
 #. %d: WordPress user ID.
 #: includes/class-vcarb-dataset-service.php:685
 #: includes/class-vcarb-dataset-service.php:694
 msgid "User #%d"
-msgstr "Utilisateur #%d"
+msgstr "Pengguna #%d"
 
 #: includes/class-vcarb-exports.php:871
 msgid "User ID"
-msgstr "ID de l’utilisateur"
+msgstr "ID Pengguna"
 
 #: includes/class-vcarb-reports-admin.php:1055
 msgid "Uses idempotency flags to prevent double counting."
-msgstr "Utilise des indicateurs d’idempotence pour éviter le double comptage."
+msgstr "Menggunakan bendera idempotensi untuk mencegah penghitungan ganda."
 
 #: includes/class-vcarb-exports.php:658 includes/class-vcarb-exports.php:683
 #: includes/class-vcarb-exports.php:694 includes/class-vcarb-exports.php:786
 #: includes/class-vcarb-exports.php:989
 msgid "Value"
-msgstr "Valeur"
+msgstr "Nilai"
 
 #: verdantcart-ai-reports.php:691
 #: includes/class-vcarb-plugin-pages-admin.php:98
 #: includes/class-vcarb-plugin-pages-admin.php:103
 msgid "VerdantCart"
-msgstr "VerdantCart"
+msgstr "Keranjang Hijau"
 
 #: public/class-vcarb-dashboard.php:1421
 msgid "VERDANTCART CARBON REPORTS"
-msgstr "RAPPORTS CARBONE VERDANTCART"
+msgstr "LAPORAN KARBON VERDANTCART"
 
 #. Name of the plugin
 #: verdantcart-ai-reports.php:690 includes/class-vcarb-reports-admin.php:136
 msgid "VerdantCart Carbon Reports"
-msgstr "Rapports carbone VerdantCart"
+msgstr "Laporan Karbon VerdantCart"
 
 #: verdantcart-ai-reports.php:208
 msgid "VerdantCart Carbon Reports:"
-msgstr "Rapports carbone VerdantCart :"
+msgstr "Laporan Karbon VerdantCart:"
 
 #: includes/class-vcarb-reports-activator.php:128
 msgid "VerdantCart Dashboard"
-msgstr "VerdantCart Dashboard"
+msgstr "Dasbor VerdantCart"
 
 #: includes/class-vcarb-plugin-pages-admin.php:121
 #: includes/class-vcarb-plugin-pages-admin.php:221
 msgid "VerdantCart page"
-msgstr "Page VerdantCart"
+msgstr "Halaman GreenCart"
 
 #: includes/class-vcarb-plugin-pages-admin.php:137
 msgid "VerdantCart pages"
-msgstr "Pages VerdantCart"
+msgstr "Halaman GreenCart"
 
 #: includes/class-vcarb-reports-admin.php:1193
 msgid "VerdantCart — All Customers"
-msgstr "VerdantCart — Tous les clients"
+msgstr "VerdantCart — Semua Pelanggan"
 
 #: includes/class-vcarb-exports.php:970 includes/class-vcarb-exports.php:1076
 #: includes/class-vcarb-exports.php:1084
 msgid "VerdantCart — All Customers Report"
-msgstr "VerdantCart — Rapport de tous les clients"
+msgstr "VerdantCart — Laporan Semua Pelanggan"
 
 #: includes/class-vcarb-reports-admin.php:1042
 msgid "VerdantCart — Backfill"
-msgstr "VerdantCart — Remblai"
+msgstr "GreenCart — Isi Ulang"
 
 #: includes/class-vcarb-reports-admin.php:864
 msgid "VerdantCart — Overview"
-msgstr "VerdantCart — Aperçu"
+msgstr "VerdantCart — Ikhtisar"
 
 #: includes/class-vcarb-reports-admin.php:797
 msgid "VerdantCart — Sustainability Report"
-msgstr "VerdantCart — Rapport de durabilité"
+msgstr "VerdantCart — Laporan Keberlanjutan"
 
 #: includes/class-vcarb-exports.php:776 includes/class-vcarb-exports.php:845
 #: includes/class-vcarb-exports.php:853
 msgid "VerdantCart — User Report"
-msgstr "VerdantCart — Rapport utilisateur"
+msgstr "VerdantCart — Laporan Pengguna"
 
 #: includes/class-vcarb-insights.php:80
 msgid "Verify checkout and payment flow."
-msgstr "Vérifiez le paiement et le flux de paiement."
+msgstr "Verifikasi checkout dan alur pembayaran."
 
 #: includes/class-vcarb-insights.php:449
 msgid "Verify order pipeline"
-msgstr "Pipeline de vérification des ordres"
+msgstr "Memverifikasi alur pesanan"
 
 #: includes/class-vcarb-exports.php:472 includes/class-vcarb-exports.php:488
 #: includes/class-vcarb-exports.php:875 includes/class-vcarb-exports.php:1104
 #: includes/class-vcarb-sustainability-summary.php:96
 msgid "View"
-msgstr "Voir"
+msgstr "Lihat"
 
 #: public/class-vcarb-dashboard.php:942
 msgid "View Orders"
-msgstr "Voir les commandes"
+msgstr "Lihat Pesanan"
 
 #: includes/class-vcarb-reports-admin.php:963
 msgid "View Plans & Services"
-msgstr "Voir les plans et services"
+msgstr "Lihat Paket & Layanan"
 
 #: includes/class-vcarb-reports-admin.php:922
 msgid "View store-wide KPIs, charts, exports, and customer breakdown."
-msgstr ""
-"Consultez les indicateurs clés de performance à l’échelle du magasin, les "
-"graphiques, les exportations et la répartition des clients."
+msgstr "Lihat KPI, bagan, ekspor, dan perincian pelanggan di seluruh toko."
 
 #: includes/class-vcarb-reports-admin.php:959
 msgid "Visit Store Homepage"
-msgstr "Visitez la page d’accueil du magasin"
+msgstr "Kunjungi Beranda Toko"
 
 #: includes/class-vcarb-insights-renderer.php:216
 #: includes/class-vcarb-insights-renderer.php:225
 #: public/class-vcarb-dashboard.php:212
 msgid "Warnings"
-msgstr "Avertissements"
+msgstr "Peringatan"
 
 #: includes/class-vcarb-reports-admin.php:810
 #: includes/class-vcarb-reports-admin.php:1239
 #: public/class-vcarb-dashboard.php:1578
 msgid "Week"
-msgstr "Semaine"
+msgstr "Minggu"
 
 #. 1: ISO week number, 2: 4-digit year.
 #: includes/class-vcarb-exports.php:434
 #, php-format
 msgid "Week %1$02d, %2$04d"
-msgstr "Semaine %1$02d, %2$04d"
+msgstr "Minggu %1$02d, %2$04d"
 
 #. 1: ISO week number, 2: year.
 #: includes/class-vcarb-sustainability-summary.php:325
 #: public/class-vcarb-dashboard.php:505
 #, php-format
 msgid "Week %1$s, %2$s"
-msgstr "Semaine %1$s, %2$s"
+msgstr "Minggu %1$s, %2$s"
 
 #: includes/class-vcarb-reports-admin.php:871
 msgid "Welcome to VerdantCart"
-msgstr "Bienvenue sur VerdantCart"
+msgstr "Selamat datang di VerdantCart"
 
 #: includes/class-vcarb-reports-admin.php:1049
 msgid "What this does"
-msgstr "Ce que cela fait"
+msgstr "Apa yang dilakukan ini"
 
 #: includes/class-vcarb-insights-renderer.php:338
 msgid "Why this appears"
-msgstr "Pourquoi cela apparaît"
+msgstr "Mengapa ini muncul"
 
 #: includes/class-vcarb-reports-admin.php:984
 msgid "WooCommerce"
@@ -2236,25 +2166,25 @@ msgstr "WooCommerce"
 
 #: includes/class-vcarb-reports-admin.php:879
 msgid "WooCommerce connected"
-msgstr "Connexion WooCommerce"
+msgstr "WooCommerce terhubung"
 
 #: includes/class-vcarb-backfill-ajax.php:36
 msgid "WooCommerce is not active."
-msgstr "WooCommerce n’est pas actif"
+msgstr "WooCommerce tidak aktif."
 
 #: verdantcart-ai-reports.php:210
 msgid "WooCommerce is required for this plugin to run."
-msgstr "WooCommerce est nécessaire pour que ce plugin fonctionne."
+msgstr "WooCommerce diperlukan agar plugin ini berjalan."
 
 #: includes/class-vcarb-reports-admin.php:879
 msgid "WooCommerce missing"
-msgstr "WooCommerce manquant"
+msgstr "WooCommerce hilang"
 
 #: includes/class-vcarb-reports-admin.php:814
 #: includes/class-vcarb-reports-admin.php:1246
 #: public/class-vcarb-dashboard.php:1579
 msgid "Year"
-msgstr "Année"
+msgstr "Tahun"
 
 #. Author of the plugin
 msgid "Yonas"
@@ -2267,17 +2197,17 @@ msgstr "Yonas"
 #: includes/class-vcarb-reports-admin.php:1109
 #: includes/gc-vcarb-admin-guard.php:128
 msgid "You do not have permission to access this page."
-msgstr "Vous n’avez pas la permission d'accéder à cette page."
+msgstr "Anda tidak memiliki izin untuk mengakses halaman ini."
 
 #: includes/class-vcarb-exports.php:78
 msgid "You must be logged in to export."
-msgstr "Vous devez être connecté pour exporter."
+msgstr "Anda harus masuk untuk mengekspor."
 
 #: includes/class-vcarb-insights.php:669
 msgid "Your CO₂ per order improved compared with the previous snapshot period."
 msgstr ""
-"Votre CO₂ par commande s’est amélioré par rapport à la période d’instantané "
-"précédente."
+"CO₂ per pesanan Anda meningkat dibandingkan dengan periode snapshot "
+"sebelumnya."
 
 #: includes/class-vcarb-dataset-service.php:919
 #: includes/class-vcarb-insights.php:665
@@ -2285,43 +2215,42 @@ msgid ""
 "Your estimated emissions decreased compared with the previous snapshot "
 "period."
 msgstr ""
-"Vos émissions estimées ont diminué par rapport à la période d’instantané "
-"précédente."
+"Perkiraan emisi Anda menurun dibandingkan dengan periode snapshot sebelumnya."
 
 #: includes/class-vcarb-dataset-service.php:923
 msgid ""
 "Your estimated emissions increased compared with the previous snapshot "
 "period."
 msgstr ""
-"Vos émissions estimées ont augmenté par rapport à la période d’instantané "
-"précédente."
+"Perkiraan emisi Anda meningkat dibandingkan dengan periode snapshot "
+"sebelumnya."
 
 #: includes/class-vcarb-dataset-service.php:926
 msgid ""
 "Your estimated emissions stayed nearly unchanged compared with the previous "
 "snapshot period."
 msgstr ""
-"Vos émissions estimées sont restées quasiment inchangées par rapport à la "
-"période précédente de l’instantané."
+"Perkiraan emisi Anda hampir tidak berubah dibandingkan dengan periode "
+"snapshot sebelumnya."
 
 #: includes/class-vcarb-insights.php:673
 msgid ""
 "Your snapshot data shows a stable sustainability profile for this period."
 msgstr ""
-"Vos données d’instantané montrent un profil de durabilité stable pour cette "
-"période."
+"Data snapshot Anda menunjukkan profil keberlanjutan yang stabil untuk "
+"periode ini."
 
 #: includes/class-vcarb-insights-ajax.php:225
 msgid "Your Sustainability Insights"
-msgstr "Vos Perspectives sur la Durabilité"
+msgstr "Wawasan Keberlanjutan Anda"
 
 #: includes/class-vcarb-dataset-service.php:913
 msgid ""
 "Your sustainability score is based on CO₂ per order, emissions trend, "
 "reporting history, and hotspot concentration."
 msgstr ""
-"Votre score de durabilité est basé sur le CO₂ par commande, la tendance des "
-"émissions, l’historique des rapports et la concentration des points chauds."
+"Skor keberlanjutan Anda didasarkan pada CO₂ per pesanan, tren emisi, riwayat "
+"pelaporan, dan konsentrasi hotspot."
 
 #: includes/class-vcarb-exports.php:1154
 #: includes/class-vcarb-reports-admin.php:1407
@@ -2331,7 +2260,7 @@ msgstr "Δ CO₂"
 #: includes/class-vcarb-exports.php:1152
 #: includes/class-vcarb-reports-admin.php:1405
 msgid "Δ Orders"
-msgstr "Δ Ordres"
+msgstr "Δ Pesanan"
 
 #: includes/class-vcarb-dataset-service.php:962
 #: includes/class-vcarb-insights.php:545 public/class-vcarb-dashboard.php:1117
@@ -2343,10 +2272,10 @@ msgstr "—"
 #: includes/class-vcarb-dataset-service.php:991
 #, php-format
 msgid "↑ %s%% vs previous"
-msgstr "↑ %s% % vs précédent"
+msgstr "↑ %s%% vs sebelumnya"
 
 #. %s: percentage change compared with previous period.
 #: includes/class-vcarb-dataset-service.php:984
 #, php-format
 msgid "↓ %s%% vs previous"
-msgstr "↓ %s% % vs Précédent"
+msgstr "↓ %s%% vs sebelumnya"

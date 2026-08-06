@@ -190,7 +190,7 @@ class VCARB_Dashboard
             'backfillUrl' => admin_url('admin.php?page=vcarb-backfill'),
             'strings'     => [
                 'emptyExportMsg'    => __('Export is unavailable until data exists for this period.', 'verdantcart-ai-reports'),
-                'emptyChartMsg'     => __('No emissions data for this period yet.', 'verdantcart-ai-reports'),
+                'emptyChartMsg'     => __('No emissions data is available for this period yet. Completed orders will appear here after the next snapshot or Backfill run.', 'verdantcart-ai-reports'),
                 'loadErrorMsg'      => __('Could not load dashboard data. Please try again.', 'verdantcart-ai-reports'),
                 'networkErrorMsg'   => __('Network error. Please try again.', 'verdantcart-ai-reports'),
                 'loadingChart'      => __('Loading emissions data…', 'verdantcart-ai-reports'),
@@ -202,11 +202,15 @@ class VCARB_Dashboard
                 'warnings'          => __('Warnings', 'verdantcart-ai-reports'),
                 'risks'             => __('Risks', 'verdantcart-ai-reports'),
                 'recommendations'   => __('Recommendations', 'verdantcart-ai-reports'),
-                'noInsights'        => __('No insights available yet.', 'verdantcart-ai-reports'),
+                'noInsights'        => __('No insights are available yet. Insights appear after eligible order data is included in a snapshot.', 'verdantcart-ai-reports'),
                 'noRecommendations' => __('No recommendations yet for this period.', 'verdantcart-ai-reports'),
+                'waitingForOrders'  => __('Waiting for order data', 'verdantcart-ai-reports'),
+                'scoreNeedsOrders'  => __('A sustainability score will appear after eligible WooCommerce orders are included in this snapshot.', 'verdantcart-ai-reports'),
+                'noEligibleOrders'  => __('No eligible orders yet', 'verdantcart-ai-reports'),
+                'noHotspots'        => __('No product hotspots are available yet for this period. Hotspots appear after eligible orders with product emissions are included in a snapshot.', 'verdantcart-ai-reports'),
                 'nothingDetected'   => __('Nothing detected for this period.', 'verdantcart-ai-reports'),
-                'carbonHotspot'     => __('Carbon Hotspot', 'verdantcart-ai-reports'),
-                'topProducts'       => __('Top emitting products for this period.', 'verdantcart-ai-reports'),
+                'carbonHotspot'     => __('Top product drivers', 'verdantcart-ai-reports'),
+                'topProducts'       => __('Products contributing the most estimated CO₂ in this period.', 'verdantcart-ai-reports'),
                 'noData'            => __('No data', 'verdantcart-ai-reports'),
                 'biggestDriver'     => __('Biggest driver:', 'verdantcart-ai-reports'),
                 'productEmissions'  => __('of product emissions.', 'verdantcart-ai-reports'),
@@ -844,14 +848,32 @@ class VCARB_Dashboard
 
         return (string) ob_get_clean();
     }
-
-    private function render_chart_panel(string $uid): string
+    private function render_chart_panel(string $uid, string $view, float $total_co2, int $orders): string
     {
         $canvas_id = $uid . 'EmissionsChart';
 
         ob_start();
     ?>
         <div class="gc-chart" aria-busy="false">
+            <div class="gc-chart__head">
+                <div>
+                    <span class="gc-chart__kicker"><?php echo esc_html__('Trend', 'verdantcart-ai-reports'); ?></span>
+                    <span class="gc-chart__title"><?php echo esc_html__('Emissions trend', 'verdantcart-ai-reports'); ?></span>
+                </div>
+
+                <div class="gc-chart__summary" aria-label="<?php echo esc_attr__('Selected period summary', 'verdantcart-ai-reports'); ?>">
+                    <span>
+                        <strong id="<?php echo esc_attr($uid . 'ChartTotal'); ?>"><?php echo esc_html(number_format_i18n($total_co2, 2)); ?></strong>
+                        <?php echo esc_html__('kg CO₂', 'verdantcart-ai-reports'); ?>
+                    </span>
+                    <span>
+                        <strong id="<?php echo esc_attr($uid . 'ChartOrders'); ?>"><?php echo esc_html(number_format_i18n($orders)); ?></strong>
+                        <?php echo esc_html__('orders', 'verdantcart-ai-reports'); ?>
+                    </span>
+                    <span><?php echo esc_html(ucfirst($view)); ?></span>
+                </div>
+            </div>
+
             <span class="gc-chart__placeholder">
                 <?php esc_html_e('Loading emissions data...', 'verdantcart-ai-reports'); ?>
             </span>
@@ -860,7 +882,7 @@ class VCARB_Dashboard
         </div>
 
         <p class="gc-muted gc-footnote">
-            <?php esc_html_e('Calculations are based on completed orders during the selected period.', 'verdantcart-ai-reports'); ?>
+            <?php esc_html_e('Based on completed orders included in the selected period.', 'verdantcart-ai-reports'); ?>
         </p>
     <?php
 
@@ -871,16 +893,21 @@ class VCARB_Dashboard
     {
         return [
             'div' => [
-                'class'     => true,
-                'id'        => true,
-                'aria-busy' => true,
-                'aria-live' => true,
+                'class'      => true,
+                'id'         => true,
+                'aria-busy'  => true,
+                'aria-live'  => true,
+                'aria-label' => true,
             ],
             'span' => [
                 'class'       => true,
                 'id'          => true,
                 'aria-hidden' => true,
                 'aria-live'   => true,
+            ],
+            'strong' => [
+                'class' => true,
+                'id'    => true,
             ],
             'canvas' => [
                 'id'     => true,
@@ -895,79 +922,59 @@ class VCARB_Dashboard
         ];
     }
 
+
     private function render_empty_snapshot_state(): string
     {
         $can_manage = current_user_can('manage_options');
 
         ob_start();
     ?>
-        <section class="gc-emptySnap" aria-label="<?php echo esc_attr__('No snapshot available', 'verdantcart-ai-reports'); ?>">
+        <section class="gc-emptySnap gc-emptySnap--compact" aria-label="<?php echo esc_attr__('No activity for this period', 'verdantcart-ai-reports'); ?>">
             <div class="gc-emptySnap__inner">
                 <div class="gc-emptySnap__left">
-                    <div class="gc-emptySnap__kicker"><?php echo esc_html__('SETUP', 'verdantcart-ai-reports'); ?></div>
+                    <div class="gc-emptySnap__kicker"><?php echo esc_html__('CURRENT PERIOD', 'verdantcart-ai-reports'); ?></div>
 
                     <h3 class="gc-emptySnap__title">
-                        <?php echo esc_html__('No reporting snapshot available yet', 'verdantcart-ai-reports'); ?>
+                        <?php echo esc_html__('No activity for this period yet', 'verdantcart-ai-reports'); ?>
                     </h3>
 
                     <p class="gc-emptySnap__sub">
-                        <?php echo esc_html__('New completed WooCommerce orders will be tracked automatically after the plugin is active. If this store already has older completed orders, run Backfill once to build historical carbon reports.', 'verdantcart-ai-reports'); ?>
+                        <?php echo esc_html__('This dashboard will update after eligible WooCommerce orders are included in the selected period.', 'verdantcart-ai-reports'); ?>
                     </p>
 
-                    <ul class="gc-emptySnap__list">
-                        <li><?php echo esc_html__('New completed orders are tracked automatically.', 'verdantcart-ai-reports'); ?></li>
-                        <li><?php echo esc_html__('Existing old orders need Backfill one time.', 'verdantcart-ai-reports'); ?></li>
-                        <li><?php echo esc_html__('Products need weight data, or a fallback weight filter, before emissions can be estimated.', 'verdantcart-ai-reports'); ?></li>
-                    </ul>
-
-                    <div class="gc-emptySnap__actions">
-                        <?php if ($can_manage) : ?>
-                            <a class="gc-btn gc-btn--primary"
+                    <?php if ($can_manage) : ?>
+                        <div class="gc-emptySnap__admin">
+                            <span><?php echo esc_html__('Store admins: if older completed orders are missing, run Backfill once.', 'verdantcart-ai-reports'); ?></span>
+                            <a class="gc-btn gc-btn--ghost"
                                 href="<?php echo esc_url(admin_url('admin.php?page=vcarb-backfill')); ?>">
                                 <?php echo esc_html__('Run Backfill', 'verdantcart-ai-reports'); ?>
                             </a>
-
-                            <a class="gc-btn gc-btn--ghost"
-                                href="<?php echo esc_url(admin_url('edit.php?post_type=shop_order')); ?>">
-                                <?php echo esc_html__('View Orders', 'verdantcart-ai-reports'); ?>
-                            </a>
-                        <?php else : ?>
-                            <span class="gc-btn gc-btn--ghost is-disabled" aria-disabled="true">
-                                <?php echo esc_html__('Ask the store admin to run Backfill', 'verdantcart-ai-reports'); ?>
-                            </span>
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="gc-emptySnap__note">
-                        <?php echo esc_html__('A snapshot is created when completed order emissions are saved for a period. Store snapshots use user_id=0 and power charts, exports, hotspots, and insights.', 'verdantcart-ai-reports'); ?>
-                    </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
-                <div class="gc-emptySnap__right" aria-hidden="true">
-                    <div class="gc-emptySnap__card">
-                        <div class="gc-emptySnap__cardTitle">
-                            <?php echo esc_html__('For new stores', 'verdantcart-ai-reports'); ?>
-                        </div>
-                        <div class="gc-emptySnap__cardText">
-                            <?php echo esc_html__('Create or receive a WooCommerce order, then move it to Processing or Completed. VerdantCart will calculate and store the reporting snapshot automatically.', 'verdantcart-ai-reports'); ?>
-                        </div>
+                <div class="gc-emptySnap__stats" aria-label="<?php echo esc_attr__('Current period status', 'verdantcart-ai-reports'); ?>">
+                    <div class="gc-emptySnap__stat">
+                        <span class="gc-emptySnap__statLabel"><?php echo esc_html__('Orders included', 'verdantcart-ai-reports'); ?></span>
+                        <span class="gc-emptySnap__statValue">0</span>
                     </div>
 
-                    <div class="gc-emptySnap__card">
-                        <div class="gc-emptySnap__cardTitle">
-                            <?php echo esc_html__('For stores with old orders', 'verdantcart-ai-reports'); ?>
-                        </div>
-                        <div class="gc-emptySnap__cardText">
-                            <?php echo esc_html__('Run Backfill once to process existing completed orders and create historical month, week, year, and product hotspot data.', 'verdantcart-ai-reports'); ?>
-                        </div>
+                    <div class="gc-emptySnap__stat">
+                        <span class="gc-emptySnap__statLabel"><?php echo esc_html__('Emissions', 'verdantcart-ai-reports'); ?></span>
+                        <span class="gc-emptySnap__statValue"><?php echo esc_html__('0.00 kg CO₂', 'verdantcart-ai-reports'); ?></span>
+                    </div>
+
+                    <div class="gc-emptySnap__stat">
+                        <span class="gc-emptySnap__statLabel"><?php echo esc_html__('Next update', 'verdantcart-ai-reports'); ?></span>
+                        <span class="gc-emptySnap__statValue gc-emptySnap__statValue--small"><?php echo esc_html__('After eligible orders', 'verdantcart-ai-reports'); ?></span>
                     </div>
                 </div>
             </div>
         </section>
     <?php
-
         return (string) ob_get_clean();
     }
+
 
     private function render_hotspot_panel(array $hotspots): string
     {
@@ -981,8 +988,8 @@ class VCARB_Dashboard
             <div class="gc-panel__head">
                 <div>
                     <div class="gc-panel__kicker"><?php echo esc_html__('INSIGHTS', 'verdantcart-ai-reports'); ?></div>
-                    <h3 class="gc-panel__title"><?php echo esc_html__('Carbon Hotspot', 'verdantcart-ai-reports'); ?></h3>
-                    <p class="gc-panel__sub"><?php echo esc_html__('Top emitting products for this period.', 'verdantcart-ai-reports'); ?></p>
+                    <h3 class="gc-panel__title"><?php echo esc_html__('Top product drivers', 'verdantcart-ai-reports'); ?></h3>
+                    <p class="gc-panel__sub"><?php echo esc_html__('Products contributing the most estimated CO₂ in this period.', 'verdantcart-ai-reports'); ?></p>
                 </div>
 
                 <?php if ($hotspot_title !== '') : ?>
@@ -994,7 +1001,7 @@ class VCARB_Dashboard
 
             <?php if (empty($hotspot_bars)) : ?>
                 <div class="gc-panel__note">
-                    <?php echo esc_html__('No product hotspots yet for this period. Add completed orders or run Backfill.', 'verdantcart-ai-reports'); ?>
+                    <?php echo esc_html__('No product hotspots yet for this period. Hotspots appear when completed orders include product emissions.', 'verdantcart-ai-reports'); ?>
                 </div>
             <?php else : ?>
                 <div class="gc-bars">
@@ -1167,8 +1174,8 @@ class VCARB_Dashboard
                     );
                 } else {
                     $empty_message = ($view === 'week' && !$has_snapshot)
-                        ? __('Insights will appear after snapshot or backfill is available for this week.', 'verdantcart-ai-reports')
-                        : __('No insights available yet.', 'verdantcart-ai-reports');
+                        ? __('Insight signals will appear after eligible orders are included in this period.', 'verdantcart-ai-reports')
+                        : __('No insight signals for this period yet.', 'verdantcart-ai-reports');
 
                     echo '<div class="gc-empty">' . esc_html($empty_message) . '</div>';
                 }
@@ -1195,6 +1202,18 @@ class VCARB_Dashboard
         }
 
         return __('Needs work', 'verdantcart-ai-reports');
+    }
+
+    private function empty_order_score_data(): array
+    {
+        return [
+            'score'       => null,
+            'value'       => null,
+            'label'       => __('Waiting for order data', 'verdantcart-ai-reports'),
+            'summary'     => __('A sustainability score will appear after eligible WooCommerce orders are included in this snapshot.', 'verdantcart-ai-reports'),
+            'delta_class' => 'gc-neutral',
+            'delta_text'  => '<span class="gc-neutral">' . esc_html__('No eligible orders yet', 'verdantcart-ai-reports') . '</span>',
+        ];
     }
 
     private function render_score_panel(array $score_data): string
@@ -1316,6 +1335,10 @@ class VCARB_Dashboard
         $orders       = isset($metrics['orders']) ? (int) $metrics['orders'] : 0;
         $delta        = $metrics['delta'] ?? null;
 
+        if ($has_snapshot && $orders <= 0) {
+            $score = $this->empty_order_score_data();
+        }
+
         $export_urls  = $this->get_user_export_urls($view, $date);
         $period_label = $this->get_period_label($view, $date);
 
@@ -1370,7 +1393,7 @@ class VCARB_Dashboard
 
                 <?php
                 echo wp_kses(
-                    $this->render_chart_panel($uid),
+                    $this->render_chart_panel($uid, $view, $total_co2, $orders),
                     $this->chart_panel_allowed_html()
                 );
                 ?>
@@ -1408,14 +1431,14 @@ class VCARB_Dashboard
     ?>
         <div class="gc-top">
             <div class="gc-top__left">
-                <div class="gc-kicker"><?php echo esc_html__('VERDANTCART CARBON REPORTS', 'verdantcart-ai-reports'); ?></div>
+                <div class="gc-kicker"><?php echo esc_html__('CUSTOMER CARBON DASHBOARD', 'verdantcart-ai-reports'); ?></div>
 
                 <h2 class="gc-title">
-                    <?php echo esc_html__('Carbon Dashboard', 'verdantcart-ai-reports'); ?>
+                    <?php echo esc_html__('Your carbon activity', 'verdantcart-ai-reports'); ?>
                 </h2>
 
                 <p class="gc-subtitle">
-                    <?php echo esc_html__('Measure emissions per period, compare trends, and share progress.', 'verdantcart-ai-reports'); ?>
+                    <?php echo esc_html__('Track estimated emissions from your orders, compare periods, and export a simple record when a snapshot is available.', 'verdantcart-ai-reports'); ?>
                 </p>
 
                 <div class="gc-period-row">
@@ -1437,21 +1460,27 @@ class VCARB_Dashboard
             </div>
 
             <div class="gc-top__right">
-                <nav class="gc-tabs"
-                    role="tablist"
-                    aria-label="<?php echo esc_attr__('Period', 'verdantcart-ai-reports'); ?>"
-                    data-gc-instance="<?php echo esc_attr($uid); ?>">
+                <div class="gc-controlGroup">
+                    <span class="gc-controlGroup__label"><?php echo esc_html__('Choose period', 'verdantcart-ai-reports'); ?></span>
+                    <nav class="gc-tabs"
+                        role="tablist"
+                        aria-label="<?php echo esc_attr__('Period', 'verdantcart-ai-reports'); ?>"
+                        data-gc-instance="<?php echo esc_attr($uid); ?>">
 
-                    <?php
-                    echo wp_kses_post($this->render_period_tab($uid, 'month', $view, $base_url));
-                    echo wp_kses_post($this->render_period_tab($uid, 'week', $view, $base_url));
-                    echo wp_kses_post($this->render_period_tab($uid, 'year', $view, $base_url));
-                    ?>
-                </nav>
+                        <?php
+                        echo wp_kses_post($this->render_period_tab($uid, 'month', $view, $base_url));
+                        echo wp_kses_post($this->render_period_tab($uid, 'week', $view, $base_url));
+                        echo wp_kses_post($this->render_period_tab($uid, 'year', $view, $base_url));
+                        ?>
+                    </nav>
+                </div>
 
-                <div class="gc-actions">
-                    <?php echo wp_kses_post($this->render_admin_overview_button()); ?>
-                    <?php echo wp_kses_post($this->render_export_actions($csv_url, $pdf_url, $view, $date, $has_snapshot)); ?>
+                <div class="gc-controlGroup">
+                    <span class="gc-controlGroup__label"><?php echo esc_html__('Actions', 'verdantcart-ai-reports'); ?></span>
+                    <div class="gc-actions">
+                        <?php echo wp_kses_post($this->render_admin_overview_button()); ?>
+                        <?php echo wp_kses_post($this->render_export_actions($csv_url, $pdf_url, $view, $date, $has_snapshot)); ?>
+                    </div>
                 </div>
             </div>
         </div>

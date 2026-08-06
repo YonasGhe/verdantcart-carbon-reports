@@ -230,6 +230,20 @@ final class VCARB_Reports_Activator
 
         /*
          * Prevent duplicate dashboard shortcode insertion.
+         *
+         * IMPORTANT: We deliberately use literal string detection (strpos)
+         * instead of has_shortcode() here. has_shortcode() depends on the
+         * shortcode being REGISTERED via add_shortcode(), which has NOT
+         * yet happened at activation time — activation fires before the
+         * normal plugins_loaded bootstrap that registers shortcodes.
+         *
+         * Using has_shortcode() here would falsely return false even when
+         * [vcarb_dashboard] is literally present in the content, causing
+         * the shortcode to be appended again on every reactivation, plugin
+         * update, or network re-activation — producing duplicate dashboards
+         * on the frontend page.
+         *
+         * Literal string detection works regardless of registration order.
          */
         $dashboard_shortcodes = [
             'vcarb_dashboard',
@@ -238,7 +252,10 @@ final class VCARB_Reports_Activator
         ];
 
         foreach ($dashboard_shortcodes as $shortcode) {
-            if (has_shortcode($content, $shortcode)) {
+            // Match the opening tag with or without attributes:
+            // [vcarb_dashboard], [vcarb_dashboard ...], [vcarb_dashboard/]
+            $needle = '[' . $shortcode;
+            if (strpos($content, $needle) !== false) {
                 return;
             }
         }
