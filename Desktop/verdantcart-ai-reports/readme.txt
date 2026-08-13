@@ -1,11 +1,14 @@
 === VerdantCart Carbon Reports ===
 Contributors: greencart2026
 Tags: woocommerce, carbon footprint, emissions, sustainability, reporting
+Author: VerdantCart
+Support: support@verdantcart.ai
+Author URI: https://verdantcart.ai/
 Requires at least: 6.4
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 8.0
 Requires Plugins: woocommerce
-Stable tag: 1.2.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -136,6 +139,52 @@ No. VerdantCart Carbon Reports provides operational sustainability summaries and
 
 == Changelog ==
 
+= 1.3.2 =
+* Compat: Verified compatible with WordPress 7.1 (releasing August 19, 2026). "Tested up to" bumped from 7.0 to 7.1.
+* No functional changes — carbon reporting, calculations, dashboards, exports, and product insights are unchanged from v1.3.1.
+
+= 1.3.1 =
+* Improved: The Pro tier feature list in the upgrade card now includes "Data Quality Center — find missing product data" to reflect the new Pro feature shipped in VerdantCart AI Pro 1.6.0.
+* No changes to carbon reporting, calculations, dashboards, exports, or product insights — all free features continue to work exactly as in v1.3.0.
+
+= 1.3.0 =
+* New: One-time admin announcement for the VerdantCart AI Pro+ tier — describes the Sustainability Performance Score feature available in Pro+ (0–100 score, downloadable certificate PDF, monthly snapshots, 12-month trend, industry benchmark). Auto-expires 2026-08-15, dismissible per user, hidden automatically if Pro is already active.
+* New: Text-based feature description card on the main carbon reports overview — lists what the Pro+ tier adds on top of the free reporting features. No fake data, no simulated UI — a plain feature description with a link to learn more.
+* Improved: Pro upsell card redesigned as a side-by-side Pro vs Pro+ tier comparison. Pro ($19/mo) is labeled "Most popular" for store owners; Pro+ ($29/mo) is labeled "New" for brands selling sustainability. Both tiers include a 14-day free trial with no credit card required.
+* Improved: Pro upsell CTAs now use separate UTM campaign labels so conversion data can be split between tiers and analyzed independently.
+* No changes to carbon reporting, calculations, dashboards, exports, or product insights — all free features continue to work exactly as in v1.2.5.
+
+= 1.2.5 =
+* Hotfix: Resolved a fatal error ("Undefined constant META_MANAGED_PAGE") that could occur on the WordPress admin Pages list when running PHP 8.0+. The legacy backwards-compatibility constant is now correctly declared in the plugin-pages helper class. Affected users: anyone running PHP 8.0 or higher who opened wp-admin → Pages with plugin-managed pages present. The bug existed in prior versions but was silent on older PHP — PHP 8.x promotes the warning to a fatal.
+* Hotfix: Prevented duplicate insertion of the [vcarb_dashboard] shortcode on the auto-provisioned dashboard page during plugin reactivation, network re-activation, or WordPress update cycles. The duplicate-detection logic now uses literal string detection instead of has_shortcode(), which was unreliable during activation because the shortcode handler is not yet registered at that point in the bootstrap.
+* No changes to reporting, calculations, dashboards, exports, or the v1.4.1 launch notice. Existing pages with duplicate shortcodes need to be cleaned up manually (remove the extra [vcarb_dashboard] line in the page editor) — the hotfix prevents future duplication.
+
+= 1.2.4 =
+* New: In-plugin launch announcement for VerdantCart AI Pro v1.4.1 — appears at the top of wp-admin until 2026-07-04, dismissible per user, with one-click access to VerdantCart AI Pro information and the latest Scope 3 emissions guide.
+* Hidden automatically for users who already have Pro active (via Freemius detection), so existing Pro customers see no noise.
+* No changes to core reporting features — all dashboards, exports, snapshots, and insights continue to work exactly as in v1.2.3.
+
+= 1.2.3 =
+* Corrected Pro pricing display in admin upsell cards: now correctly shows $19/month and $179/year (Save 21% — over 2 months free).
+* Added support contact: support@verdantcart.ai is now displayed in all upgrade prompts so users can reach the team directly.
+* Improved Pro upgrade CTAs across admin: emphasized the 14-day free trial (no credit card required) instead of generic "Upgrade to Pro" buttons.
+* Added subtle Pro discovery hint at the top of free plugin admin pages — informational, brand-colored, with one-click dismiss (auto-reappears after 30 days).
+* Side-by-side layout on the Advanced sub-menu: "Included in Pro" and "License Management" cards now sit next to each other on wide screens, reducing scroll.
+* Refined upsell messaging to clarify trial benefits and reduce friction at the moment of decision.
+* No functional changes to core carbon reporting features — all reports, exports, and analytics work as before.
+
+= 1.2.2 =
+* Enhanced VerdantCart AI Pro experience and upgrade workflow.
+* Added detailed feature descriptions and a Free vs Pro comparison table.
+* Improved license management interface and validation experience.
+* Added direct links to product, pricing, documentation, and upgrade resources.
+* Updated plugin branding, author information, and website references to VerdantCart AI.
+* Improved branding consistency throughout plugin metadata and admin screens.
+* Removed legacy references and completed internal codebase cleanup.
+* Improved Advanced Reporting admin page layout and usability.
+* Enhanced overall admin UI consistency and maintainability.
+* General stability, performance, and code quality improvements.
+
 = 1.2.1 =
 * Fixed: undefined method `VCARB_Export_Audit::table()` causing a fatal error on CSV and PDF export requests.
 * Fixed: trend label "X%lower" / "X%higher" missing a space between the value and the word in CSV exports and PDF exports. Now correctly renders "X% lower" / "X% higher".
@@ -183,6 +232,27 @@ No. VerdantCart Carbon Reports provides operational sustainability summaries and
 * Backfill support for historical orders.
 
 == Upgrade Notice ==
+
+= 1.3.2 =
+Compatibility patch — plugin is now marked "Tested up to WordPress 7.1" ahead of the August 19, 2026 release. No functional changes to carbon reporting.
+
+= 1.3.1 =
+Copy update — the Pro upgrade card now mentions the new "Data Quality Center" feature available in VerdantCart AI Pro 1.6.0. No changes to free features.
+
+= 1.3.0 =
+Adds a description of the new VerdantCart AI Pro+ tier and its Sustainability Performance Score feature. Includes a one-time announcement (auto-expires 2026-08-15) and a text-based feature card on the overview page describing what Pro+ adds. Free reporting features are unchanged.
+
+= 1.2.5 =
+Hotfix: resolves a fatal error on the wp-admin Pages list under PHP 8.0+, and prevents duplicate [vcarb_dashboard] shortcode insertion on reactivation. Recommended for all users.
+
+= 1.2.4 =
+Adds a one-time launch announcement (auto-expires 2026-07-04) for VerdantCart AI Pro v1.4.1 — try Pro free for 14 days, no card required. Hidden automatically if you already have Pro. No changes to core reporting.
+
+= 1.2.3 =
+Corrected Pro pricing display ($19/mo, $179/yr — save 21%), added support@verdantcart.ai contact, and improved Pro upgrade CTAs to emphasize the 14-day free trial.
+
+= 1.2.2 =
+Improves VerdantCart branding, Pro experience, licensing interface, upgrade flow, and overall admin usability.
 
 = 1.2.0 =
 Improves Plugin Check compatibility, version alignment, VerdantCart naming consistency, snapshot reporting reliability, and migration-safe compatibility.

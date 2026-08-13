@@ -2,15 +2,19 @@
 
 /**
  * Plugin Name: VerdantCart Carbon Reports
- * Description: Carbon analytics and reporting for WooCommerce stores.
- * Version: 1.2.1
- * Author: Yonas
+ * Plugin URI: https://verdantcart.ai/
+ * Description: Estimate WooCommerce order emissions and review carbon reports with dashboards, trends, exports, and product insights — all inside WordPress.
+ * Version: 1.3.2
+ * Author: VerdantCart
+ * Support: support@verdantcart.ai
+ * Author URI: https://verdantcart.ai/
  * Text Domain: verdantcart-ai-reports
  * Domain Path: /languages
  * Requires at least: 6.4
+ * Tested up to: 7.1
  * Requires PHP: 8.0
  * WC requires at least: 8.0
- * WC tested up to: 9.7
+ * WC tested up to: 10.6
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -39,7 +43,7 @@ add_action('before_woocommerce_init', 'vcarb_declare_wc_compatibility');
  * Constants
  * ------------------------------------------------------------
  */
-defined('VCARB_VERSION') || define('VCARB_VERSION', '1.2.1');
+defined('VCARB_VERSION') || define('VCARB_VERSION', '1.3.1');
 defined('VCARB_DB_VERSION') || define('VCARB_DB_VERSION', '1.2.1');
 defined('VCARB_PLUGIN_FILE') || define('VCARB_PLUGIN_FILE', __FILE__);
 defined('VCARB_PLUGIN_DIR') || define('VCARB_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -107,7 +111,6 @@ function vcarb_require_files(): void
         'includes/class-vcarb-product-insights.php',
         'includes/class-vcarb-order-tracker.php',
 
-        'includes/class-vcarb-live-week-repository.php',
         'includes/class-vcarb-dataset-service.php',
         'includes/class-vcarb-sustainability-summary.php',
         'includes/class-vcarb-admin-report-ajax.php',
@@ -120,6 +123,8 @@ function vcarb_require_files(): void
         'includes/class-vcarb-exports.php',
         'includes/class-vcarb-reports-admin.php',
         'includes/class-vcarb-front-context.php',
+
+        'includes/class-vcarb-pro-upsell.php',
 
         'public/class-vcarb-dashboard.php',
     ];
@@ -473,6 +478,9 @@ function vcarb_bootstrap(): void
     if (class_exists('VCARB_Exports')) {
         $GLOBALS['vcarb_reports_exports'] = $GLOBALS['vcarb_reports_exports'] ?? new VCARB_Exports();
     }
+
+    // Paid-extension discovery is handled only on the Advanced Tools page.
+    // The legacy upsell helper is not initialized on normal admin screens.
 }
 add_action('plugins_loaded', 'vcarb_bootstrap', 20);
 
@@ -550,7 +558,45 @@ function vcarb_register_admin_menu(): void
         'vcarb-backfill',
         [$admin, 'render_backfill_page']
     );
+
+    add_submenu_page(
+        'verdantcart-carbon-reports',
+        __('Advanced', 'verdantcart-ai-reports'),
+        __('Advanced', 'verdantcart-ai-reports'),
+        'manage_options',
+        'vcarb-advanced',
+        [$admin, 'render_advanced_page']
+    );
 }
+
+/**
+ * ------------------------------------------------------------
+ * Plugin row action links (Plugins screen)
+ * ------------------------------------------------------------
+ *
+ * Adds "Settings" + "Explore features" links next to the "Deactivate" link
+ * on the WordPress Plugins admin page. The second link points back into the
+ * plugin's own Advanced Tools page, where extension discovery is contextual.
+ */
+function vcarb_plugin_action_links(array $links): array
+{
+    $settings_link = sprintf(
+        '<a href="%s">%s</a>',
+        esc_url(admin_url('admin.php?page=verdantcart-carbon-reports')),
+        esc_html__('Settings', 'verdantcart-ai-reports')
+    );
+
+    $features_link = sprintf(
+        '<a href="%s" style="color:#15803d;font-weight:600;">%s</a>',
+        esc_url(admin_url('admin.php?page=vcarb-advanced')),
+        esc_html__('Explore features', 'verdantcart-ai-reports')
+    );
+
+    array_unshift($links, $settings_link, $features_link);
+
+    return $links;
+}
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'vcarb_plugin_action_links');
 
 /**
  * ------------------------------------------------------------
@@ -564,3 +610,46 @@ add_action('vcarb_monthly_event', 'vcarb_handle_monthly_event');
 add_action('vcarb_yearly_event', 'vcarb_handle_yearly_event');
 
 add_action('admin_menu', 'vcarb_register_admin_menu');
+
+/**
+ * Pro discovery hint dismiss handler must be registered EARLY (not inside
+ * admin_menu) because admin-post.php — the endpoint the dismiss button hits —
+ * does not fire admin_menu. Without this early hook registration the X button
+ * would render a blank page instead of dismissing the notice and redirecting
+ * back to the previous screen.
+ */
+add_action('admin_init', 'vcarb_bootstrap_admin_post_handlers');
+
+function vcarb_bootstrap_admin_post_handlers(): void
+{
+    if (!class_exists('VCARB_Reports_Admin')) {
+        return;
+    }
+
+    if (
+        !isset($GLOBALS['vcarb_reports_admin']) ||
+        !($GLOBALS['vcarb_reports_admin'] instanceof VCARB_Reports_Admin)
+    ) {
+        $GLOBALS['vcarb_reports_admin'] = new VCARB_Reports_Admin();
+    }
+
+    // Defensive: re-register the hook if instantiation happened here (constructor
+    // already adds it via init(), but instantiation may be skipped if the class
+    // has self::$did_hooks set from an earlier admin_menu call).
+    if (!has_action('admin_post_vcarb_dismiss_pro_hint')) {
+        add_action(
+            'admin_post_vcarb_dismiss_pro_hint',
+            [$GLOBALS['vcarb_reports_admin'], 'handle_pro_hint_dismiss']
+        );
+    }
+
+    // Same defensive pattern for the v1.4.1 launch-notice dismiss handler — it
+    // also hits admin-post.php and must be registered even when admin_menu
+    // didn't fire.
+    if (!has_action('admin_post_vcarb_dismiss_launch_v141')) {
+        add_action(
+            'admin_post_vcarb_dismiss_launch_v141',
+            [$GLOBALS['vcarb_reports_admin'], 'handle_v141_launch_dismiss']
+        );
+    }
+}
