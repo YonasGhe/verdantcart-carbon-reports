@@ -4,14 +4,14 @@
  * Plugin Name: VerdantCart Carbon Reports
  * Plugin URI: https://verdantcart.ai/
  * Description: Estimate WooCommerce order emissions and review carbon reports with dashboards, trends, exports, and product insights — all inside WordPress.
- * Version: 1.3.1
+ * Version: 1.3.3
  * Author: VerdantCart
  * Support: support@verdantcart.ai
  * Author URI: https://verdantcart.ai/
  * Text Domain: verdantcart-ai-reports
  * Domain Path: /languages
  * Requires at least: 6.4
- * Tested up to: 7.0
+ * Tested up to: 7.1
  * Requires PHP: 8.0
  * WC requires at least: 8.0
  * WC tested up to: 10.6
@@ -125,6 +125,7 @@ function vcarb_require_files(): void
         'includes/class-vcarb-front-context.php',
 
         'includes/class-vcarb-pro-upsell.php',
+        'includes/class-vcarb-engagement-notices.php',
 
         'public/class-vcarb-dashboard.php',
     ];
@@ -481,6 +482,13 @@ function vcarb_bootstrap(): void
 
     // Paid-extension discovery is handled only on the Advanced Tools page.
     // The legacy upsell helper is not initialized on normal admin screens.
+
+    // v1.3.3 — Engagement notices (feedback + Pro upgrade prompts). These
+    // register `admin_notices` and `admin_post_*` hooks internally and are
+    // safe to call on the frontend too (they no-op outside wp-admin).
+    if (class_exists('VCARB_Engagement_Notices')) {
+        VCARB_Engagement_Notices::instance()->init();
+    }
 }
 add_action('plugins_loaded', 'vcarb_bootstrap', 20);
 

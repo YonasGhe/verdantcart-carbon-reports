@@ -85,6 +85,13 @@ final class VCARB_Reports_Activator
 
     private static function install_site(): void
     {
+        // Track the first-activation timestamp so engagement notices
+        // (feedback + Pro upgrade) can respect a minimum age before firing.
+        // Idempotent: add_option only writes when the key is missing.
+        if (!get_option('vcarb_installed_at')) {
+            add_option('vcarb_installed_at', time(), '', false);
+        }
+
         if (function_exists('vcarb_migrate_db')) {
             vcarb_migrate_db();
         }

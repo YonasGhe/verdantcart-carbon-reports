@@ -5,10 +5,10 @@ Author: VerdantCart
 Support: support@verdantcart.ai
 Author URI: https://verdantcart.ai/
 Requires at least: 6.4
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 8.0
 Requires Plugins: woocommerce
-Stable tag: 1.3.1
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,16 @@ No. VerdantCart Carbon Reports provides operational sustainability summaries and
 
 == Changelog ==
 
+= 1.3.3 =
+* NEW: Optional in-admin feedback prompt (after 7 days of use) that lets merchants email the solo maintainer directly with feature ideas or issues — offering a free Pro+ license as thanks for thoughtful feedback.
+* NEW: Optional in-admin prompt (after 14 days of use) describing what VerdantCart AI Pro adds — branded PDF reports, AI executive summaries, and one-click /carbon.txt publishing (Green Web Foundation v0.5 spec). Hidden automatically when the Pro plugin is active.
+* Both prompts are per-user dismissible with "Remind me later" (30-day snooze) or "No thanks / Not interested" (permanent).
+* No changes to carbon reporting, calculations, dashboards, exports, or product insights.
+
+= 1.3.2 =
+* Compat: Verified compatible with WordPress 7.1 (releasing August 19, 2026). "Tested up to" bumped from 7.0 to 7.1.
+* No functional changes — carbon reporting, calculations, dashboards, exports, and product insights are unchanged from v1.3.1.
+
 = 1.3.1 =
 * Improved: The Pro tier feature list in the upgrade card now includes "Data Quality Center — find missing product data" to reflect the new Pro feature shipped in VerdantCart AI Pro 1.6.0.
 * No changes to carbon reporting, calculations, dashboards, exports, or product insights — all free features continue to work exactly as in v1.3.0.
@@ -228,6 +238,12 @@ No. VerdantCart Carbon Reports provides operational sustainability summaries and
 * Backfill support for historical orders.
 
 == Upgrade Notice ==
+
+= 1.3.3 =
+Adds two optional dismissible admin prompts to bridge the gap between the free plugin and VerdantCart AI Pro. After 7 days, an "email the maintainer with feedback" prompt appears; after 14 days, a "meet VerdantCart Pro" prompt describes the paid tier (hidden when Pro is already installed). Both are per-user dismissible with a "Remind me later" snooze. No changes to carbon reporting features.
+
+= 1.3.2 =
+Compatibility patch — plugin is now marked "Tested up to WordPress 7.1" ahead of the August 19, 2026 release. No functional changes to carbon reporting.
 
 = 1.3.1 =
 Copy update — the Pro upgrade card now mentions the new "Data Quality Center" feature available in VerdantCart AI Pro 1.6.0. No changes to free features.
